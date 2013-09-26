@@ -1,0 +1,69 @@
+<% content_for :title, "Payouts"%>
+
+
+<div class="row margin-top-2em">
+	<div class="col-md-12">
+		<h2>League payouts</h2>
+		<p class="lead">A historical archive of awards and their winners for past seasons.</p>
+		<hr />
+		<% if current_user %>
+			<%= render "/features/admin_control_panel" %>
+		<% end %>
+
+
+<div class="row">
+	<div class="col-md-8"><br />
+	<% @payouts.each do |payout| %>
+	
+		<div class="panel panel-default margin-bottom-4em">
+			<div class="panel-heading">
+          		<p class="panel-title bold"><a id="<%= payout.year %>"></a><%= payout.year %> Awards and Payouts</p>
+        	</div>
+        	<table cellspacing="0" cellpadding="0" border="0" class="table">
+				<tr>
+					<th></th>
+					<th>Award</th>
+					<th>Amount</th>
+					<th>Notes</th>
+				</tr>
+				
+				<% payout.awards.each do |award| %>
+				<tr>
+					<td></td>
+					<td><%= award.payout.year %> <%= award.name %></td>
+					<td>$<%= award.amount %></td>
+					<td><%= award.notes %></td>
+				</tr>
+				<% end %>
+			
+				<% if current_user %>
+				<tr>
+					<td></td>
+					<td colspan="4"><br />
+						<p class="bold"><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit these payouts", edit_payout_path(payout) %></p>	
+					</td>
+				</tr>
+				<% end %>
+			</table>	
+      	</div><!-- end of panel -->
+		<%= render 'layouts/back_to_top_link' %>
+	<% end %>
+	</div><!-- end of col-md-6-->
+	
+	
+		<div class="col-lg-offset-1 col-md-3"><br />
+			<div class="panel panel-default">
+				<div class="panel-heading">
+	          		<h3 class="panel-title">League Payouts by Year</h3>
+	        	</div>
+	        	<div class="panel-body">
+					<ul>
+						<% @payouts.each do |payout|%>
+							<li><%= link_to payout.year.to_s + " Awards", "#" + payout.year.to_s %> </li>
+						<% end %>
+					</ul>
+				</div>
+			</div><!-- end of panel -->
+		</div><!-- end of col-md-4-->
+	
+</div><!-- end of row -->

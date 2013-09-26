@@ -1,0 +1,13 @@
+====================================================================================================
+Disciples of Philip Rivers (doprleague.info) site CHANGELOG
+====================================================================================================
+!!starting the changelog with 1.0 despite numerous pre-1.0 release cycles!!
+
+
+Version 1.0 [2013/09/25]
+--------------------------------------------------
+- Converted Payouts index page to use tables like the Members awards breakouts do
+- Added “top” anchor link as the first thing inside of the <body> tag for anchor links sitewide
+- Added “Back to top” anchor links on the Members index, Constitution, and FAQs pages
+- Added link to this file in the footer
+

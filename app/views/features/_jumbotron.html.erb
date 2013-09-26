@@ -1,0 +1,10 @@
+<div class="jumbotron rounded-corners-16">
+	<% @jumbotron.each do |jumbo| %>
+    <h1 class="green"><%= best_in_place_if current_user, jumbo, :title, :html_attrs => { :style => 'width: 890px' } %></h1>
+    <p class="lead"><%= best_in_place_if current_user, jumbo, :content, :type => :textarea, :html_attrs => { :style => 'width: 890px' } %></p>
+
+	<% if current_user %>
+		<br /><i class="icon-pencil icon-white"></i> <%= link_to 'Edit top feature', edit_feature_path(jumbo) %>
+	<% end %>
+<% end %>
+</div>

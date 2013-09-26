@@ -1,0 +1,40 @@
+<% content_for :title, @feature.title %>
+
+<div id="main-features">
+
+	<p id="notice"><%= notice %></p>
+
+	<p>
+	  <b>Title:</b>
+	  <%= @feature.title %>
+	</p>
+
+	<p>
+	  <b>Content:</b>
+	  <%= @feature.content %>
+	</p>
+
+	<p>
+	  <b>Order:</b>
+	  <%= @feature.homepage_order %>
+	</p>
+
+	<p>
+	  <b>On homepage:</b>
+	  <%= @feature.on_homepage %>
+	</p>
+
+	<p>
+	  <b>Show title:</b>
+	  <%= @feature.show_title %>
+	</p>
+
+	<p>
+	  <b>Feature type:</b>
+	  <%= @feature.feature_type %>
+	</p>
+
+
+	<%= link_to 'Edit', edit_feature_path(@feature) %> |
+	<%= link_to 'Back', features_path %>
+</div>

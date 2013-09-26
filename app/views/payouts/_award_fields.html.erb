@@ -1,0 +1,24 @@
+<div class="row">
+
+<fieldset class="margin-bottom-1em">
+	<div class="col-md-3">
+		<%= f.text_field :name, :class => "form-control" %>
+	</div>
+
+	<div class="col-md-2">
+		<%= f.number_field :amount, :class => "form-control" %>
+	</div>
+
+	<div class="col-md-3">
+		<%= f.collection_select(:user_id, User.all, :id, :display_name, {:include_blank => true, :prompt => "Select"}, {:class => "form-control"}) %>
+	</div>
+	
+	<div class="col-md-3">
+		<%= f.text_field :notes, :class => "form-control" %>
+	</div>
+	
+	<div class="col-md-1">
+		<%= f.check_box :_destroy %>	
+	</div>
+</fieldset>
+</div>

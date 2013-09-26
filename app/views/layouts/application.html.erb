@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Disciples of Philip Rivers | <%= yield(:title) %></title>
+
+  <%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
+  <%= stylesheet_link_tag    "custom", :media => "all" %>
+  <% stylesheet_link_tag 	 "application", :media => "all" %>
+  
+  <%= csrf_meta_tags %>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+<style type="text/css">
+	@font-face {
+	  font-family: 'Glyphicons Halflings';
+	  src: url('/fonts/glyphicons-halflings-regular.eot');
+	  src: url('/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+	}
+</style>
+
+</head>
+<body>
+	<a id="top"></a>
+ <!-- Fixed navbar -->
+	    <div class="navbar navbar-inverse navbar-fixed-top">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="/">doprleague.info</a>
+	        </div>
+	        <div class="navbar-collapse collapse">
+	          <ul class="nav navbar-nav">
+	            <li><a href="/"><span class="glyphicon glyphicon-home" style="vertical-align: top;"></span> Home</a></li>
+				<li><a href="/members"><span class="glyphicon glyphicon-user" style="vertical-align: top;"></span> Members</a></li>
+	            <li><a href="/constitution"><span class="glyphicon glyphicon-list" style="vertical-align: top;"></span> Constitution</a></li>
+	            <li><a href="/payouts"><span class="glyphicon glyphicon-stats" style="vertical-align: top;"></span> Payouts</a></li>
+				<li><a href="/faqs"><span class="glyphicon glyphicon-question-sign" style="vertical-align: top;"></span> FAQs</a></li>
+				<% if current_user %><li><a href="/admin"><span class="glyphicon glyphicon-cog" style="vertical-align: top;"></span> Admin</a></li><% end %>
+	          </ul>
+	        </div><!--/.nav-collapse -->
+	      </div>
+	    </div>
+
+
+		<div class="container theme-showcase">
+			<div class="row">
+				<div class="col-md-12">
+					<a href="/"><img src="/assets/dopr_thin.jpg" alt="Disciples of Philip Rivers Fantasy Football League" border="0" class="img-responsive" /></a>
+				</div>
+			</div>
+		
+		
+			<% if flash[:notice] %>
+			<br />
+				<div class="alert alert-success">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					<%= flash[:notice] %>
+				</div>
+			<% end %>
+			
+			<%= yield %>
+			
+			<div id="push"></div>
+				
+	
+	</div><!-- end of container -->
+
+	        <div id="footer">
+	        	<div class="container">
+					<p class="muted credit">This site is built on a custom Rails 3.2.11 content management system structured by <a href="http://twitter.github.io/bootstrap/">Twitter Bootstrap</a> and served up on nginx through Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/">Digital Ocean</a>.</p>
+	            	<p class="muted credit">&copy; 2011-2013 Kyle Kerley. All rights reserved.</p>
+	                <p class="muted credit">
+						<% if current_user %>Logged in as: <%= current_user.display_name %> (<%= current_user.email %>) | <a href="/admin">Admin control panel</a> | <%= link_to "Log out", logout_path %>
+						<% else %><a href="/login">Admin login</a><% end %> | <a href="/changelog.txt">Changelog</a>
+					</p>
+	            </div>
+	        </div>
+	
+	<%= javascript_include_tag "application" %>
+</body>
+</html>

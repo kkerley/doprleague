@@ -1,0 +1,23 @@
+<% content_for :title, "League members: " + @user.display_name %>
+
+<div class="row margin-top-2em">
+	<div class="col-md-8">
+		<h1><%= @user.display_name %></h1>
+		<hr />
+		<h3><%= @user.team.team_name %></h3>
+		
+		<h4><strong>Awards won</strong></h4>
+		<% if @user.awards.empty? %>
+			<p>No awards to date.</p>
+		<% else %>
+		<ul>
+			<% @user.awards.each do |award|%>
+			<li><%= award.name %> - <%= award.amount %><br />
+				<%= award.notes %>
+				</li>
+			<% end %>
+		</ul>
+		<% end %>
+	</div>	
+	
+</div>

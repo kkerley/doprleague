@@ -1,0 +1,42 @@
+	<div class="form-group">
+	    <%= f.label "Type", :class => 'col-lg-2 control-label' %>
+
+		<div class="col-lg-10">
+			<%= f.select :feature_type, {"Choose..." => "Choose...", "Constitution" => "Constitution", "Announcements" => "Announcements", "FAQ" => "FAQ"}, {}, {:class => 'form-control'} %>
+		</div>
+	  </div>
+
+	  <div class="form-group">
+	    <%= f.label "Order", :class => 'col-lg-2 control-label' %>
+
+		<div class="col-lg-10">
+			<%= f.number_field :homepage_order, :style => "width: 50px", :class => 'form-control' %>
+		</div>
+	  </div>
+
+	<% render "form_side_fields_categories", :f => f %> <!-- disabled for now as there's no need for them -->
+	
+	  <div class="form-group">
+		<div class="col-lg-offset-2 col-lg-10">
+			<label class="checkbox">
+				<%= f.check_box :is_published %> Published?
+			</label>
+		</div>
+	  </div>
+	<!-- 
+	  <div class="form-group">
+		<div class="col-lg-10">
+			<label class="checkbox">
+				<% f.check_box :on_homepage %> On the homepage? <br />(only for Jobs and Projects)
+			</label>
+		</div>
+	  </div>
+	
+	  <div class="form-group">
+		<div class="col-lg-10">
+			<label class="checkbox">
+				<%= f.check_box :highlighted_post %> In the jumbotron? <br />(set Order to 0 also if so)
+			</label>
+		</div>
+	  </div>
+	-->

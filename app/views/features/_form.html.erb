@@ -1,0 +1,21 @@
+<%= form_for @feature, :html => { :multipart => true, :class => "form-horizontal" } do |f| %>
+  <% if @feature.errors.any? %>
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Oh snap!</strong> Change the <%= pluralize(@feature.errors.count, "error") %> things wrong below and try submitting again.
+	  <ul>
+      <% @feature.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="col-md-7">
+	<%= render 'form_main_fields', :f => f %>	 
+</div>
+
+<div class="col-md-5">
+	<%= render 'form_side_fields', :f => f %>
+</div>
+
+<% end %>	

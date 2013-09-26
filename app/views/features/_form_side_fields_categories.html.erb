@@ -1,0 +1,26 @@
+<div class="control-group category-group">
+	<div class="controls">
+		<label class="checkbox">
+			<%= f.check_box :category_one_on %> Category 1
+		</label>
+		<%= f.text_field :category_one_text, :style => "width: 130px" %> <%= f.select :category_one_class, {"Choose..." => "Choose...", "Black" => "label-inverse", "Blue" => "label-info", "Gray" => "label-default", "Green" => "label-success", "Orange" => "label-warning", "Red" => "label-important"} %>
+	</div>
+  </div>
+
+<div class="control-group category-group">
+	<div class="controls">
+		<label class="checkbox">
+			<%= f.check_box :category_two_on %> Category 2
+		</label>
+		<%= f.text_field :category_two_text, :style => "width: 130px" %> <%= f.select :category_two_class, {"Choose..." => "Choose...", "Black" => "label-inverse", "Blue" => "label-info", "Gray" => "label-default", "Green" => "label-success", "Orange" => "label-warning", "Red" => "label-important"} %>
+	</div>
+  </div>
+
+<div class="control-group category-group">
+	<div class="controls">
+		<label class="checkbox">
+			<%= f.check_box :category_three_on %> Category 3
+		</label>
+		<%= f.text_field :category_three_text, :style => "width: 130px" %> <%= f.select :category_three_class, {"Choose..." => "Choose...", "Black" => "label-inverse", "Blue" => "label-info", "Gray" => "label-default", "Green" => "label-success", "Orange" => "label-warning", "Red" => "label-important"} %>
+	</div>
+  </div>

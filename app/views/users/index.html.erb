@@ -1,0 +1,124 @@
+<% content_for :title, "League members"%>
+
+<div class="row margin-top-2em">
+	<div class="col-md-12">
+		<h1>League members</h1>
+		<p class="lead">All members&mdash;both past and present&mdash;of the Disciples of Philip Rivers Fantasy Football League.</p>
+		<hr />
+		<% if current_user %>
+		<%= render '/features/admin_control_panel' %>
+		<% end %>
+		
+		
+		<div class="row">
+			
+			<div class="col-md-7"><br />
+			<% @current_members.each do |user| %>
+			
+				<div class="panel panel-success">
+					<div class="panel-heading">
+		          		<p class="panel-title bold"><a id="<%= user.display_name %>"></a><%= user.display_name %>'s information</p>
+		        	</div>
+		        	<div class="panel-body">
+		          		<div class="row">
+							<div class="col-xs-3 bold">Team name:</div>
+							<div class="col-xs-9">
+									<% if user.team %>
+										<%= user.team.team_name %>
+									<% else %>
+										No team.
+									<% end %>
+							</div>
+							<hr />
+						</div>
+					
+						<%= render 'payout_awards_table', :user => user %>
+						
+						<% if current_user %>
+						<div class="row margin-top-1em">
+							<div class="col-md-11">
+								<p><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit this member", edit_user_path(user) %></p>
+							</div>
+						</div>
+						<% end %>
+						
+		        	</div>
+		      	</div><!-- end of panel -->
+			<%= render 'layouts/back_to_top_link' %>
+			<% end %>
+			
+			<h4 class="margin-top-2em">Past league members</h4>
+			<hr />
+			
+			<% @past_members.each do |user| %>
+			
+				<div class="panel panel-default">
+					<div class="panel-heading">
+		          		<p class="panel-title bold"><a id="<%= user.display_name %>"></a><%= user.display_name %>'s information</p>
+		        	</div>
+		        	<div class="panel-body">
+		          		<div class="row">
+							<div class="col-xs-3 bold">Team name:</div>
+							<div class="col-xs-9">
+									<% if user.team %>
+										<%= user.team.team_name %>
+									<% else %>
+										No team.
+									<% end %>
+							</div>
+							<hr />
+						</div>
+						
+						<%= render 'payout_awards_table', :user => user %>
+						
+						<% if current_user %>
+						<div class="row margin-top-1em">
+							<div class="col-md-11">
+								<p><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit this member", edit_user_path(user) %></p>
+							</div>
+						</div>
+						<% end %>
+						
+		        	</div>
+		      	</div><!-- end of panel -->
+			<%= render 'layouts/back_to_top_link' %>
+			<% end %>
+			
+			
+			
+			
+			
+			 
+			</div><!-- end of col-md-6-->
+			
+			<div class="col-lg-offset-1 col-md-4"><br />
+				<div class="panel panel-success">
+					<div class="panel-heading">
+		          		<p class="panel-title bold">Current league members</p>
+		        	</div>
+		        	<div class="panel-body">
+						<ul>
+							<% @current_members.each do |user|%>
+								<%= render 'member_list_nav', :user => user %>
+							<% end %>
+						</ul>
+					</div>
+				</div><!-- end of panel -->
+			</div><!-- end of col-md-4-->
+			
+			
+			<div class="col-lg-offset-1 col-md-4"><br />
+				<div class="panel panel-default">
+					<div class="panel-heading">
+		          		<p class="panel-title bold">Past league members</p>
+		        	</div>
+		        	<div class="panel-body">
+						<ul>
+							<% @past_members.each do |user|%>
+								<%= render 'member_list_nav', :user => user %>
+							<% end %>
+						</ul>
+					</div>
+				</div><!-- end of panel -->
+			</div><!-- end of col-md-4-->
+		</div><!-- end of row -->

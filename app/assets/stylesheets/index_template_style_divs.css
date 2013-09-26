@@ -1,0 +1,215 @@
+#header-container, #black-bar-container, #body-container, #footer-container{
+	width: 100%;
+}
+
+#header-content, #black-bar-content, #body-content, #footer-content{
+	margin: 0 auto;
+	text-align: left;
+	width: 900px;
+}
+
+#header-container{
+	background-color: #00d0ff;
+}
+
+#header-content{
+	background-image: url('/assets/header.jpg');
+	background-position: bottom;
+	background-repeat: no-repeat;
+	height: 298px;
+}
+
+	#header-content ul{
+		list-style-type: none;
+		margin: 0;
+		padding: 50px 0 0 0;
+	}
+	#header-content ul li{
+		font-size: 3em;
+		line-height: 1.2em;
+	}
+	
+	#header-content a, #header-content a:visited{
+		color: #fff;
+		text-decoration: none;
+	}
+	#header-content a:hover{
+		background-color: #333;
+	}
+	
+	
+/* Black bar related styles */
+#black-bar-container{
+	background-color: #333;
+	background-image: url('/assets/bg_black_bar_container.jpg');
+	background-repeat: repeat-x;
+	height: 100px;
+}
+
+	#black-bar-wrapper{
+		background-image: url('/assets/bg_black_bar_content.jpg');
+		background-repeat: no-repeat;
+		margin: 0 auto;
+		width: 920px;
+	}
+
+		#black-bar-content{
+			color: #fff;
+			font-size: 2.25em;
+			height: 100px;
+			line-height: 100px;
+		}
+	
+/* Body related styles */
+#body-container{
+	background-image: url('/assets/bg_content_container.jpg');
+	background-position: center;
+	background-repeat: repeat-y;
+	margin: 0;
+}
+
+	#body-content{
+		background-color: #fff;
+		background-image: url('/920px/wide/slice/with/shadows');
+	}
+	
+	#flickr-row{
+		height: 75px;
+		margin: 0 0 2em 0;
+		padding: 11px 0 0 0;
+		width: 100%;
+	
+	}
+	
+	#top-feature{
+		background-color: #FFAE00;
+		border-bottom: 1px solid #ff7e00;
+		
+		width: auto;
+	}
+		
+	#main-features, #sub-features{
+		padding: 30px;
+		width: auto;
+	}
+	
+		#right-hand-column{
+			
+			clear: both;
+			float: right;
+			margin: 0 0 1em 1em;
+			overflow: hidden;
+			position: relative;
+			width: 250px;
+		}
+		
+			.tweet{
+				position: relative;
+				width: 250px;
+				z-index: 10;
+			}
+		
+	#current-job-row{
+		background-color: #937AFF;
+		border-bottom: 1px solid #7764c9;
+		color: #fff;
+		padding: 1em 30px;
+		width: auto;
+	}
+		#featured-job-logo, #featured-project-pic{
+			background-color: #fff;
+			border: 1px solid #999;
+			-moz-border-radius: 16px;
+			border-radius: 16px;
+			padding: 1em;
+		}
+		
+	#latest-project-row{
+		background-color: #FF0051;
+		border-bottom: 1px solid #ca0040;
+		color: #fff;
+		padding: 1em 30px;
+		width: auto;
+	}
+	
+	
+	.expand a {
+      color: #fff;
+	  display:block;
+	  padding:3px 0;
+	}
+	
+	.expand-black a {
+		color: #333;
+	}
+	
+	.expand a:link, .expand a:visited {
+	  background-image:url(/assets/arrow-down.gif);
+	  background-repeat:no-repeat;
+	  background-position:15% 50%;
+	}
+	
+	.expand-float-left a:link, .expand-float-left a:visited {
+	  background-position:40% 50%;
+	}
+	
+	.expand a:hover, .expand a:active, .expand a:focus {
+	}
+	.expand a.open:link, .expand a.open:visited {
+	  background-image: url(/assets/arrow-up.gif);
+	}
+	
+#footer-container{
+	background-image: url('/assets/content_bottom.jpg');
+	background-position: top center;
+	background-repeat: no-repeat;	
+}
+	#footer-content{
+		font-size: .67em;
+		padding: 2.25em 0 0 0;
+		width: 860px;
+	}
+	
+	#footer {
+	        background-color: #f5f5f5;
+	      }
+
+	      /* Lastly, apply responsive CSS fixes as necessary */
+	      @media (max-width: 767px) {
+	        #footer {
+	          margin-left: -20px;
+	          margin-right: -20px;
+	          padding-left: 20px;
+	          padding-right: 20px;
+	        }
+	      }
+	
+		.container {
+		        width: auto;
+		        max-width: 960px;
+		      }
+		      .container .credit {
+		        margin: 20px 0;
+		      }
+#cbox{
+	width: 960px;
+}
+
+ul#cbox{
+	padding: 0;
+}
+
+ul#cbox li{
+	display: inline;
+	list-style: none;
+	margin: 0;
+	padding: 0 0 0 10px;
+}
+
+ul#cbox li a:link, ul#cbox li a:visited{
+	border-bottom: 3px solid #ececec;
+}
+
+ul#cbox li a:hover{
+	border-bottom: 3px solid #ff0084;
+}

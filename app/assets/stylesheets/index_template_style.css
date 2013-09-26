@@ -1,0 +1,29 @@
+body{
+	background-color: #d2ff00;
+	color: #333;
+	font-family: 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-size: 16pt;
+	margin: 0;
+	padding: 0;
+}
+
+
+ul#cbox{
+	padding: 0 0 0 10px;
+}
+
+ul#cbox li{
+	display: inline;
+	list-style: none;
+	margin: 0;
+	padding: 0 0 0 10px;
+}
+
+ul#cbox li a:link, ul#cbox li a:visited{
+	border-bottom: 3px solid #ececec;
+}
+
+ul#cbox li a:hover{
+	border-bottom: 3px solid #ff0084;
+}
+

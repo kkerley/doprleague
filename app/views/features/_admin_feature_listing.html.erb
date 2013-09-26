@@ -1,0 +1,20 @@
+<div class="row margin-bottom-1em">
+  <div class="col-md-6"><a name="feature" class="expand" style="cursor: pointer;"><%= feature.title %> <i class="icon-chevron-down only-this"></i></a>
+	<div class="hidden admin-hidden">
+		<strong>CONTENT</strong><br />
+		<%= best_in_place_if current_user, feature, :content, :type => :textarea, :html_attrs => { :style => 'width: 420px' }, :display_with => lambda { |v| textilize(v).html_safe } %><br /><br />
+	</div>	
+	</div>
+  	<div class="col-md-1 text-center">
+		<%if feature.is_published? %>
+			<span class="label label-success">Yes</span>
+		<% else %>
+			<span class="label label-important">No</span>
+		<% end %>
+	</div>
+  <div class="col-md-1 text-center"><%= best_in_place_if current_user, feature, :homepage_order, :html_attrs => { :style => 'width: 16px' } %></div>
+
+  <div class="col-md-1 text-center"><%= link_to "Edit", edit_feature_path(feature), :class => 'btn btn-warning btn-small' %></div>
+  <div class="col-md-1 text-center"><%= link_to "Delete", feature, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger btn-small' %></div>
+
+</div>

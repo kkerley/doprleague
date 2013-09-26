@@ -1,0 +1,44 @@
+<% content_for :title, "FAQs"%>
+
+<div class="row margin-top-2em">
+	<div class="col-md-12">
+		<h2>Frequently Asked Questions</h2>
+		<p class="lead">Before posting on Facebook and likely getting lit up for asking a question that's been asked (probably numerous times) before, check here first.</p>
+		<hr />
+		<% if current_user %>
+		<%= render '/features/admin_control_panel' %>
+		<% end %>
+		
+		<div class="row margin-top-2em">
+			<div class="col-md-8">
+		
+		<% @faqs.each do |article| %>
+	      		<p><a id="<%= article.title %>">&nbsp;</a><br /><br /></p>
+				<p class="headline"><a id="<%= article.title %>"></a><%= article.homepage_order %>. <%= best_in_place_if current_user, article, :title, :html_attrs => { :style => 'width: 600px' } %></p>
+
+				<%= best_in_place_if current_user, article, :content, :type => :textarea, :html_attrs => { :style => 'width: 580px' }, :display_with => lambda { |v| textilize(v).html_safe } %>
+	       
+				<% if current_user %>
+					<br />
+					<i class="icon-pencil"></i> <%= link_to 'Edit this article', edit_feature_path(article) %><br /><br />
+				<% end %>
+				<%= render 'layouts/back_to_top_link' %>
+		<% end %>
+	
+	</div><!-- end of col-md-8 -->
+
+	<div class="col-md-4"><br />
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+             		<h3 class="panel-title">FAQs Contents</h3>
+           	</div>
+           	<div class="panel-body">
+             		<ol>
+				<% @faqs.each do |article| %>
+					<li><%= link_to article.title, "#" + article.title %></li>
+				<% end %>
+				</ol>
+           	</div>
+         	</div><!-- end of panel -->
+	</div><!-- end of col-md-4-->
+     </div><!-- end of row -->

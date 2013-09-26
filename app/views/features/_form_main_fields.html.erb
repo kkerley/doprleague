@@ -1,0 +1,61 @@
+<div class="form-group">
+    <%= f.label :title, :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-10">
+		<%= f.text_field :title, :style => 'width: 500px', :class => 'form-control' %>
+	</div>	
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+		<label class="checkbox">
+			<%= f.check_box :show_title %> Show the title?
+		</label>
+	</div>
+  </div>
+<!--
+  <div class="form-group">
+    <% f.label :subtitle, :class => 'col-lg-2 control-label' %>
+
+ 
+	<div class="col-lg-10">
+		<% f.text_field :subtitle, :style => 'width: 500px' %>
+	</div>
+  </div>
+  <div class="form-group">
+    <% f.label :excerpt, :class => 'col-lg-2 control-label' %>
+
+	<div class="col-lg-10">
+		<% f.text_area :excerpt, :style => 'width: 500px; height: 100px' %>
+	</div>
+  </div>  
+
+-->
+  <div class="form-group">
+    <%= f.label :content, :class => 'col-lg-2 control-label' %>
+
+	<div class="col-lg-10">
+		<%= f.text_area :content, :style => 'width: 500px; height: 250px', :class => 'form-control' %>
+	</div>
+  </div>
+  
+<!--
+  <div class="form-group">
+    <%= f.label "Link", :class => 'col-lg-2 control-label' %>
+
+	<div class="col-lg-10">
+		<%= f.text_field :url_path, :style => 'width: 500px' %>
+	</div>
+  </div>
+
+  <div class="form-group">
+	<%= f.label "Add a picture", :class => 'col-lg-2 control-label' %>
+
+	<div class="col-lg-10">
+		<%= f.file_field :avatar, :style => 'width: 500px' %>
+	</div>
+  </div>
+-->
+<div class="form-group">
+	<div class="col-lg-offset-2 col-lg-10">
+   	 <%= f.submit :class => "btn btn-success btn-large" %>
+	</div>
+</div>

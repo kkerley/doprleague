@@ -1,0 +1,58 @@
+<% content_for :title, "Admin"%>
+
+<div class="row margin-top-2em">
+	<div class="col-md-12">
+		<h1>Administrative control panel</h1>
+		<p class="lead">All site content is presented below and most of it can be edited inline. Some things must be done by clicking the "Edit" button.</p>
+		<hr />
+	</div>
+</div>
+
+<%= render 'admin_control_panel' %>
+
+<div class="row">
+	<div class="col-md-12"><p class="headline"><a href="/" style="color: #333;">Announcements</a></p></div>
+  	<div class="col-md-12">               
+    	<%= render 'admin_feature_listing_header' %>
+        <% @announcements.each do |feature| %>
+ 			<%= render 'admin_feature_listing', :feature => feature %>
+		<% end %>
+		<br />
+		<hr />
+	</div>
+</div>
+
+<div class="row ">
+	<div class="col-md-12"><p class="headline"><a href="/constitution" style="color: #333;">Articles of the Constitution</a></p></div>
+  	<div class="col-md-12">               
+    	<%= render 'admin_feature_listing_header' %>
+       	<% @constitution_features.each do |feature| %>
+ 			<%= render 'admin_feature_listing', :feature => feature %>
+		<% end %>
+		<br />
+		<hr />
+	</div>
+</div>
+
+<div class="row ">
+	<div class="col-md-12"><p class="headline"><a href="/faqs" style="color: #333;">FAQs</a></p></div>
+  	<div class="col-md-12">               
+    	<%= render 'admin_feature_listing_header' %>
+       	<% @faqs.each do |feature| %>
+ 			<%= render 'admin_feature_listing', :feature => feature %>
+		<% end %>
+		<br />
+		<hr />
+	</div>
+</div>
+
+<div class="row ">
+	<div class="col-md-12"><p class="headline"><a href="/members" style="color: #333;">Members</a></p></div>
+  	<div class="col-md-12">               
+       	<% @users.each do |user| %>
+ 			<%= render 'admin_user_management', :user => user %>
+		<% end %>
+		<br />
+		<hr />
+	</div>
+</div>

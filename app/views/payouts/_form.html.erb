@@ -1,0 +1,52 @@
+<div class="col-md-12">
+	<%= form_for @payout, :html => { :class => "form-horizontal" } do |f| %>
+	  <% if @payout.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@payout.errors.count, "error") %> prohibited this payout from being saved:</h2>
+
+	      <ul>
+	      <% @payout.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+
+	
+	 <div class="form-group">
+		<h2>Year</h2>
+		<div class="controls">
+			<%= f.number_field :year, :style => "width: 200px;", :class => "form-control" %>
+		</div>
+	  </div>
+	
+	
+	 <div class="form-group">
+		<p class="headline bold">Awards</p>
+		<hr />
+		<div class="row">
+			<div class="col-md-3"><strong>Award</strong></div>
+			<div class="col-md-2"><strong>Amount</strong></div>
+			<div class="col-md-3"><strong>Winner</strong></div>
+			<div class="col-md-3"><strong>Notes</strong></div>
+			<div class="col-md-1"><strong>Remove?</strong></div>
+		</div>
+		<%= f.fields_for :awards do |builder| %>
+	  		<%= render 'award_fields', f: builder %>
+	 	<%end %>	
+	 </div>
+	<br /><br />
+	<div class="form-group">
+		<div class="col-md-12">
+			<%= link_to_add_fields "Add award", f, :awards %>
+		</div>
+	</div>
+	  <div class="form-group">
+		<div class="col-lg-10">
+	   	 <%= f.submit :class => "btn btn-success btn-large" %>
+		</div>
+	</div>
+	<% end %>
+	</div>
+</div>
+</div>
