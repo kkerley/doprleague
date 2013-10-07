@@ -22,13 +22,14 @@
 		        	<div class="panel-body">
 		          		<div class="row">
 							<div class="col-xs-3 bold">Team name:</div>
-							<div class="col-xs-9">
+							<div class="col-xs-6">
 									<% if user.team %>
 										<%= user.team.team_name %>
 									<% else %>
 										No team.
 									<% end %>
 							</div>
+							<div class="col-xs-3 bold"><%= image_tag user.avatar(:thumb), :border => 0 %></div>
 							<hr />
 						</div>
 					
@@ -59,13 +60,14 @@
 		        	<div class="panel-body">
 		          		<div class="row">
 							<div class="col-xs-3 bold">Team name:</div>
-							<div class="col-xs-9">
+							<div class="col-xs-6">
 									<% if user.team %>
 										<%= user.team.team_name %>
 									<% else %>
 										No team.
 									<% end %>
 							</div>
+							<div class="col-xs-3 bold"><%= image_tag user.avatar(:thumb), :border => 0 %></div>
 							<hr />
 						</div>
 						

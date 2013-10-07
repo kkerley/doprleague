@@ -9,7 +9,7 @@
 		<%if feature.is_published? %>
 			<span class="label label-success">Yes</span>
 		<% else %>
-			<span class="label label-important">No</span>
+			<span class="label label-danger">No</span>
 		<% end %>
 	</div>
   <div class="col-md-1 text-center"><%= best_in_place_if current_user, feature, :homepage_order, :html_attrs => { :style => 'width: 16px' } %></div>

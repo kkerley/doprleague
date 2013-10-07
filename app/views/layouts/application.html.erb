@@ -42,9 +42,23 @@
 	        <div class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav">
 	            <li><a href="/"><span class="glyphicon glyphicon-home" style="vertical-align: top;"></span> Home</a></li>
-				<li><a href="/members"><span class="glyphicon glyphicon-user" style="vertical-align: top;"></span> Members</a></li>
-	            <li><a href="/constitution"><span class="glyphicon glyphicon-list" style="vertical-align: top;"></span> Constitution</a></li>
+				<li class="dropdownn">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" style="vertical-align: top;"></span> Members <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="/members"><span class="glyphicon glyphicon-list" style="vertical-align: top;"></span> Directory</a></li>
+						<% User.current_members.each do |user|%>
+							<li><a href="/members/#<%= user.display_name %>"><%= image_tag user.avatar.url(:tiny) %> <%= user.display_name  %></a></li>
+						<% end %>
+					</ul>
+				</li>
 	            <li><a href="/payouts"><span class="glyphicon glyphicon-stats" style="vertical-align: top;"></span> Payouts</a></li>
+				 <li class="dropdownn">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book" style="vertical-align: top;"></span> Bylaws <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/constitution"><span class="glyphicon glyphicon-list-alt" style="vertical-align: top;"></span> Constitution</a></li>
+							<li><a href="/polls"><span class="glyphicon glyphicon-tasks" style="vertical-align: top;"></span> Facebook Polls</a></li>
+						</ul>
+					</li>
 				<li><a href="/faqs"><span class="glyphicon glyphicon-question-sign" style="vertical-align: top;"></span> FAQs</a></li>
 				<% if current_user %><li><a href="/admin"><span class="glyphicon glyphicon-cog" style="vertical-align: top;"></span> Admin</a></li><% end %>
 	          </ul>
