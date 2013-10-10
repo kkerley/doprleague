@@ -1,7 +1,6 @@
 class FeaturesController < ApplicationController
 before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new, :admin]
 
-
   # GET /features
   # GET /features.json
   def index
@@ -52,6 +51,7 @@ before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new,
   # POST /features.json
   def create
     @feature = Feature.new(params[:feature])
+    @feature.user = current_user
 
     respond_to do |format|
       if @feature.save
@@ -105,8 +105,10 @@ before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new,
   
   def constitution
     @constitution_features = Feature.for_constitution.others.published
-    @jumbotron = Feature.for_constitution.jumbotron
-    
+  end
+  
+  def polls
+    @polls_features = Feature.for_polls.others.published
   end
   
   def admin
@@ -116,4 +118,5 @@ before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new,
     @constitution_features = Feature.for_constitution
     @users = User.all
   end
+  
 end

@@ -13,7 +13,8 @@ KkerleyCom::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   # get "projects" => "features#projects", :as => "projects"
   get "faqs" => "features#faqs", :as => "faqs"
-  get "constitution" => "features#constitution", :as => "about"
+  get "constitution" => "features#constitution", :as => "constitution"
+  get "polls" => "features#polls", :as => "polls"
   get "admin" => "features#admin", :as => "admin"
   get "members" => "users#index", :as => "members"
 

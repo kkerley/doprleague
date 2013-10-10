@@ -1,8 +1,35 @@
 ====================================================================================================
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
-!!starting the changelog with 1.0 despite numerous pre-1.0 release cycles!!
 
+Version 1.1 [2013/10/06]
+--------------------------------------------------
+- Fixed Members page layout to show avatars without breaking the page layout
+
+Version 1.1 [2013/10/06]
+--------------------------------------------------
+- Added picture fields back to the Features form
+- Added "Poll" option to the Feature Type dropdown
+- Alphabetized the options in the Feature Type dropdown
+- Added "Polls" page to the site
+- Created a new "Rules" dropdown menu option that contains "Constitution" and "Polls"
+- Changed icon for "Constitution" menu listing
+- Added required logic to find all Features with type "Poll"
+- Changed "Members" to be a dropdown that leads to each user's breakout box (preliminary work for after rosters and contracts are added)
+- Added avatars to User model
+- Updated Payouts page to include a column for the award winner
+- Cleaned up unnecessary scopes and other commented-out legacy code from Feature.rb
+- Groundwork for Capistrano deployments added
+- Added author to the byline for announcements by pulling the current_user ID before creation of the record
+
+
+Version 1.0.1 [2013/09/28]
+--------------------------------------------------
+- Adjusted the CSS style for unpublished items' badges on the Admin page.
+- Adjusted the code for the user management edit and delete buttons so they line up correctly with the rest of the row
+
+
+!!starting the changelog with 1.0 despite numerous pre-1.0 release cycles!!
 
 Version 1.0 [2013/09/25]
 --------------------------------------------------
@@ -10,4 +37,5 @@ Version 1.0 [2013/09/25]
 - Added “top” anchor link as the first thing inside of the <body> tag for anchor links sitewide
 - Added “Back to top” anchor links on the Members index, Constitution, and FAQs pages
 - Added link to this file in the footer
+- Added lifetime winnings total to the right-hand nav on the Members page
 

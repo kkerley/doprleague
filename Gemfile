@@ -8,7 +8,7 @@ gem 'rails', '3.2.11'
 gem 'sqlite3'
 gem 'sorcery'
 # gem 'kramdown'
-gem 'RedCloth', "~> 4.2.7", :require => 'redcloth'
+gem 'RedCloth', "~> 4.2.3", :require => 'redcloth'
 gem "paperclip", "~> 3.0"
 gem "pg"
 gem "best_in_place"

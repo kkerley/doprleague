@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130921201824) do
+ActiveRecord::Schema.define(:version => 20131008052746) do
 
   create_table "awards", :force => true do |t|
     t.text     "name"
@@ -23,6 +23,32 @@ ActiveRecord::Schema.define(:version => 20130921201824) do
     t.string   "notes"
   end
 
+  create_table "client_applications", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "support_url"
+    t.string   "callback_url"
+    t.string   "key",          :limit => 40
+    t.string   "secret",       :limit => 40
+    t.integer  "user_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "client_applications", ["key"], :name => "index_client_applications_on_key", :unique => true
+
+  create_table "consumer_tokens", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "type",           :limit => 30
+    t.string   "token",          :limit => 1024
+    t.string   "secret"
+    t.string   "session_handle"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "consumer_tokens", ["token"], :name => "index_consumer_tokens_on_token", :unique => true
+
   create_table "features", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -30,8 +56,8 @@ ActiveRecord::Schema.define(:version => 20130921201824) do
     t.boolean  "on_homepage"
     t.boolean  "show_title"
     t.string   "feature_type"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.boolean  "is_published"
     t.string   "url_path"
     t.string   "avatar_file_name"
@@ -51,7 +77,35 @@ ActiveRecord::Schema.define(:version => 20130921201824) do
     t.string   "category_one_class"
     t.string   "category_two_class"
     t.string   "category_three_class"
+    t.integer  "user_id",              :default => 1
   end
+
+  create_table "oauth_nonces", :force => true do |t|
+    t.string   "nonce"
+    t.integer  "timestamp"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "oauth_nonces", ["nonce", "timestamp"], :name => "index_oauth_nonces_on_nonce_and_timestamp", :unique => true
+
+  create_table "oauth_tokens", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "type",                  :limit => 20
+    t.integer  "client_application_id"
+    t.string   "token",                 :limit => 40
+    t.string   "secret",                :limit => 40
+    t.string   "callback_url"
+    t.string   "verifier",              :limit => 20
+    t.string   "scope"
+    t.datetime "authorized_at"
+    t.datetime "invalidated_at"
+    t.datetime "expires_at"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "oauth_tokens", ["token"], :name => "index_oauth_tokens_on_token", :unique => true
 
   create_table "payouts", :force => true do |t|
     t.integer  "year"
@@ -77,6 +131,11 @@ ActiveRecord::Schema.define(:version => 20130921201824) do
     t.boolean  "is_admin"
     t.string   "display_name"
     t.boolean  "is_current"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "yahoo_guid"
   end
 
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"

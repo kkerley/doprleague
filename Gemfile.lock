@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    RedCloth (4.2.7)
+    RedCloth (4.2.3)
     actionmailer (3.2.11)
       actionpack (= 3.2.11)
       mail (~> 2.4.4)
@@ -135,7 +135,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  RedCloth (~> 4.2.7)
+  RedCloth (~> 4.2.3)
   best_in_place
   coffee-rails (~> 3.2.1)
   jquery-rails
