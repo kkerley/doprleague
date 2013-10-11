@@ -2,9 +2,17 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
+Version 1.1.1 [2013/10/10]
+--------------------------------------------------
+- Changed top nav to include a login link if not logged in
+- Updated newrelic.yml
+- Added admin control bar to the FB poll page
+
+
 Version 1.1 [2013/10/06]
 --------------------------------------------------
 - Fixed Members page layout to show avatars without breaking the page layout
+
 
 Version 1.1 [2013/10/06]
 --------------------------------------------------

@@ -60,7 +60,11 @@
 						</ul>
 					</li>
 				<li><a href="/faqs"><span class="glyphicon glyphicon-question-sign" style="vertical-align: top;"></span> FAQs</a></li>
-				<% if current_user %><li><a href="/admin"><span class="glyphicon glyphicon-cog" style="vertical-align: top;"></span> Admin</a></li><% end %>
+				<% if current_user %>
+					<li><a href="/admin"><span class="glyphicon glyphicon-cog" style="vertical-align: top;"></span> Admin</a></li>
+				<% else %>
+					<li><a href="/login"><span class="glyphicon glyphicon-cog" style="vertical-align: top;"></span> Admin login</a></li>
+				<% end %>
 	          </ul>
 	        </div><!--/.nav-collapse -->
 	      </div>

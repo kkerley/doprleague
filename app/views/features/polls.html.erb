@@ -6,6 +6,10 @@
 		<p class="lead">An archive of all polls posted to Facebook that resulted in league rule/constitution changes.</p>
 		<hr />
 		
+		<% if current_user %>
+		<%= render 'admin_control_panel' %>
+		<% end %>
+		
 		<div class="row">
 			<div class="col-md-8">
 			
