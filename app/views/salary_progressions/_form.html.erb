@@ -1,0 +1,42 @@
+<%= form_for @salary_progression, :html => { :class => "form-horizontal" } do |f| %>
+  <% if @salary_progression.errors.any? %>
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Oh snap!</strong> Change the <%= pluralize(@salary_progression.errors.count, "error") %> things wrong below and try submitting again.
+	  <ul>
+      <% @salary_progression.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+		<div class="panel panel-default margin-bottom-4em">
+			<div class="panel-heading">
+        		<p class="panel-title bold">Salary progression</p>
+      		</div>
+      		<table cellspacing="0" cellpadding="0" border="0" class="table">
+				<tr>
+					<th></th>
+					<th>Auction value</th>
+					<th>Year 2</th>
+					<th>Year 3</th>
+					<th>Year 4</th>
+					<th>Year 5</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td><%= f.text_field :auction_value, :style => 'width: 80px' %></td>
+					<td><%= f.text_field :year2, :style => 'width: 80px' %></td>
+					<td><%= f.text_field :year3, :style => 'width: 80px' %></td>
+					<td><%= f.text_field :year4, :style => 'width: 80px' %></td>
+					<td><%= f.text_field :year5, :style => 'width: 80px' %></td>
+				</tr>
+	
+		  		<tr>
+					<td></td>
+		   	 		<td colspan="5"><%= f.submit :class => "btn btn-success btn-large" %></td>
+				</tr>
+			</table>
+		</div>
+<% end %>

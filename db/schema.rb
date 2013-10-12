@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008052746) do
+ActiveRecord::Schema.define(:version => 20131011151026) do
 
   create_table "awards", :force => true do |t|
     t.text     "name"
@@ -111,6 +111,16 @@ ActiveRecord::Schema.define(:version => 20131008052746) do
     t.integer  "year"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "salary_progressions", :force => true do |t|
+    t.integer  "auction_value"
+    t.integer  "year2"
+    t.integer  "year3"
+    t.integer  "year4"
+    t.integer  "year5"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "teams", :force => true do |t|

@@ -1,5 +1,8 @@
 KkerleyCom::Application.routes.draw do
 
+  resources :salary_progressions
+
+
   resources :teams
   resources :awards
   resources :payouts

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  auction_value: 1
+  year2: 1
+  year3: 1
+  year4: 1
+  year5: 1
+
+two:
+  auction_value: 1
+  year2: 1
+  year3: 1
+  year4: 1
+  year5: 1

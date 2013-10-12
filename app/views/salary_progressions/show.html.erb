@@ -1,0 +1,42 @@
+<% content_for :title, "Salary progression for players with auction value #{@salary_progression.auction_value }" %>
+<div class="row margin-top-2em">
+	<div class="col-md-12">
+		<h1>Salary progression: auction value <%= @salary_progression.auction_value %></h1>
+		<hr />
+	</div>
+</div>		
+
+<div class="panel panel-default margin-bottom-4em">
+	<div class="panel-heading">
+		<p class="panel-title bold">Salary progression</p>
+	</div>
+	<table cellspacing="0" cellpadding="0" border="0" class="table">
+		<tr>
+			<th></th>
+			<th>Auction value</th>
+			<th>Year 2</th>
+			<th>Year 3</th>
+			<th>Year 4</th>
+			<th>Year 5</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td><%= @salary_progression.auction_value %></td>
+			<td><%= @salary_progression.year2 %></td>
+			<td><%= @salary_progression.year3 %></td>
+			<td><%= @salary_progression.year4 %></td>
+			<td><%= @salary_progression.year5 %></td>
+			<% if current_user %>
+				<td><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit this salary progression", edit_salary_progression_path(@salary_progression) %></td>
+			<% end %>
+			
+		</tr>
+		
+		<% if current_user %>
+		<tr>
+			<td></td>
+			<td colspan="6"><span class="glyphicon glyphicon-plus-sign"></span> <%= link_to 'New salary progression', new_salary_progression_path %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>

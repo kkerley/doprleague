@@ -2,6 +2,14 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
+Version 1.2 [2013/10/11]
+--------------------------------------------------
+- Added Salary Progressions data model to keep track of player salary values up through year 5 of a contract
+- Changed the global nav to have the salary progressions link under "Bylaws"
+- Changed "Bylaws" icon
+- Changed "Constitution" icon
+
+
 Version 1.1.1 [2013/10/10]
 --------------------------------------------------
 - Changed top nav to include a login link if not logged in

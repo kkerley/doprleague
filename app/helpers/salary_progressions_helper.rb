@@ -1,0 +1,2 @@
+module SalaryProgressionsHelper
+end

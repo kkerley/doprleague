@@ -1,0 +1,63 @@
+<% content_for :title, "Salary progressions"%>
+
+
+<div class="row margin-top-2em">
+	<div class="col-md-12">
+		<h2>Salary progressions</h2>
+		<p class="lead">The chart of contract prices for five years out based on auction value.</p>
+		<hr />
+		<% if current_user %>
+			<%= render "/features/admin_control_panel" %>
+		<% end %>
+
+
+<div class="row">
+	<div class="col-md-8"><br />
+
+	
+		<div class="panel panel-default margin-bottom-4em">
+			<div class="panel-heading">
+          		<p class="panel-title bold">Salaries</p>
+        	</div>
+        	<table cellspacing="0" cellpadding="0" border="0" class="table">
+				<tr>
+					<th></th>
+					<th>Auction value</th>
+					<th>Year 2</th>
+					<th>Year 3</th>
+					<th>Year 4</th>
+					<th>Year 5</th>
+					<% if current_user %>
+						<td></td>
+					<% end %>
+				</tr>
+				
+				<% @salary_progressions.each do |salary| %>
+				<tr>
+					<td></td>
+					<td><%= best_in_place_if current_user, salary, :auction_value, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year2, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year3, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year4, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year5, :html_attrs => { :style => 'width: 80px' } %></td>
+					<% if current_user %>
+						<td><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit this salary progression", edit_salary_progression_path(salary) %></td>
+					<% end %>
+					
+				</tr>
+				<% end %>
+				
+				<% if current_user %>
+				<tr>
+					<td></td>
+					<td colspan="6"><span class="glyphicon glyphicon-plus-sign"></span> <%= link_to 'New salary progression', new_salary_progression_path %></td>
+				</tr>
+				<% end %>
+			</table>
+			
+      	</div><!-- end of panel -->
+		<%= render 'layouts/back_to_top_link' %>
+
+	</div><!-- end of col-md-8 -->
+	
+</div>
