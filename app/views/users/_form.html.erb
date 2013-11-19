@@ -11,34 +11,38 @@
   <% end %>
   
   <div class="form-group">
-    <%= f.label :email, :class => 'col-lg-2 control-label' %>
-	<div class="col-lg-10">
+    <%= f.label :email, :class => 'col-lg-3 control-label' %>
+	<div class="col-lg-9">
     	<%= f.text_field :email, :class => 'form-control' %>
 	</div>
   </div>
   <div class="form-group">
-	<%= f.label :display_name,  "Full name", :class => 'col-lg-2 control-label' %>
-	<div class="col-lg-10">
+	<%= f.label :display_name,  "Full name", :class => 'col-lg-3 control-label' %>
+	<div class="col-lg-9">
 		<%= f.text_field :display_name, :class => 'form-control' %>
 	</div>
   </div>
   <div class="form-group">
-    <%= f.label :password, :class => 'col-lg-2 control-label' %>
-    <div class="col-lg-10">
+    <%= f.label :password, :class => 'col-lg-3 control-label' %>
+    <div class="col-lg-9">
 		<%= f.password_field :password, :class => 'form-control' %>
 	</div>
   </div>
   <div class="form-group">
-    <%= f.label :password_confirmation, "Confirm", :class => 'col-lg-2 control-label' %>
-    <div class="col-lg-10">
+    <%= f.label :password_confirmation, "Confirm", :class => 'col-lg-3 control-label' %>
+    <div class="col-lg-9">
 		<%= f.password_field :password_confirmation, :class => 'form-control' %>
 	</div>
   </div>
 
+	<%= f.fields_for :team do |builder| %>
+  		<%= render 'team_fields', f: builder %>
+ 	<%end %>
+
 	<div class="form-group">
 		
-	    <%= f.label :avatar, "Avatar", :class => 'col-lg-2 control-label' %>
-	    <div class="col-lg-10">
+	    <%= f.label :avatar, "Avatar", :class => 'col-lg-3 control-label' %>
+	    <div class="col-lg-9">
 		<br />Current avatar:<br />
 		
 		<%= image_tag @user.avatar.url(:thumb) %><br /><br />
@@ -48,7 +52,7 @@
 	  </div>
 
 	<div class="form-group">
-		<div class="col-lg-offset-2 col-lg-10">
+		<div class="col-lg-offset-3 col-lg-9">
 			<label class="checkbox">
 				<%= f.check_box :is_current %> Currently in the league?
 			</label>
@@ -56,7 +60,7 @@
 	  </div>
   	<% if current_user %>
 	<div class="form-group">
-		<div class="col-lg-offset-2 col-lg-10">
+		<div class="col-lg-offset-3 col-lg-9">
 			<label class="checkbox">
 				<%= f.check_box :is_admin %> Admin?
 			</label>
@@ -64,7 +68,7 @@
 	  </div>
 	<% end %>
   	<div class="form-group">
-		<div class="col-lg-offset-2 col-lg-10">
+		<div class="col-lg-offset-3 col-lg-9">
 	   	 <%= f.submit :class => "btn btn-success btn-large" %>
 		</div>
 	</div>

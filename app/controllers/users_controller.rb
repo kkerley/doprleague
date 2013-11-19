@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    @team = @user.build_team
   end
   
   def edit

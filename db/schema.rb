@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131011151026) do
+ActiveRecord::Schema.define(:version => 20131013001004) do
 
   create_table "awards", :force => true do |t|
     t.text     "name"
@@ -111,6 +111,24 @@ ActiveRecord::Schema.define(:version => 20131011151026) do
     t.integer  "year"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "players", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "nfl_team"
+    t.string   "position"
+    t.integer  "team_id"
+    t.integer  "auction_value"
+    t.boolean  "is_drafted"
+    t.integer  "contract_id"
+    t.boolean  "is_bought_out"
+    t.integer  "bought_out_by_team_id"
+    t.boolean  "is_extended"
+    t.boolean  "is_franchised"
+    t.boolean  "is_dead_money"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "salary_progressions", :force => true do |t|

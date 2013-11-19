@@ -5,10 +5,7 @@
 		<h1>League members</h1>
 		<p class="lead">All members&mdash;both past and present&mdash;of the Disciples of Philip Rivers Fantasy Football League.</p>
 		<hr />
-		<% if current_user %>
-		<%= render '/features/admin_control_panel' %>
-		<% end %>
-		
+
 		
 		<div class="row">
 			
@@ -24,7 +21,7 @@
 							<div class="col-xs-3 bold">Team name:</div>
 							<div class="col-xs-6">
 									<% if user.team %>
-										<%= user.team.team_name %>
+										<%= link_to user.team.team_name, user.team %>
 									<% else %>
 										No team.
 									<% end %>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">id</Data></Cell>
+        <Cell><Data ss:Type="String">first_name</Data></Cell>
+        <Cell><Data ss:Type="String">last_name</Data></Cell>
+		<Cell><Data ss:Type="String">nfl_team</Data></Cell>
+		<Cell><Data ss:Type="String">position</Data></Cell>
+		<Cell><Data ss:Type="String">auction_value</Data></Cell>
+		<Cell><Data ss:Type="String">is_drafted</Data></Cell>
+		<Cell><Data ss:Type="String">is_bought_out</Data></Cell>
+		<Cell><Data ss:Type="String">is_extended</Data></Cell>
+        <Cell><Data ss:Type="String">is_franchised</Data></Cell>
+      </Row>
+    <% @players.each do |player| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= player.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= player.first_name %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= player.last_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= player.nfl_team %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= player.position %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= player.auction_value %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= player.is_drafted %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= player.is_bought_out %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= player.is_extended %></Data></Cell>
+		<Cell><Data ss:Type="String"><%= player.is_franchised %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

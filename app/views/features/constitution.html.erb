@@ -5,10 +5,7 @@
 		<h2>Articles of the Constitution</h2>
 		<p class="lead">The entire document defining the rules, regulations and every other aspect of the league. This is kept as up-to-date as possible with all amendments and adjustments from Facebook polls being added as soon as they're ratified by vote.</p>
 		<hr />
-		<% if current_user %>
-		<%= render 'admin_control_panel' %>
-		<% end %>
-		
+
 		<div class="row">
 			<div class="col-md-8"><br />
 			<% @constitution_features.each do |article| %>
