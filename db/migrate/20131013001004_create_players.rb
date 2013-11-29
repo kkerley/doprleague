@@ -5,8 +5,9 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :last_name
       t.string :nfl_team
       t.string :position
-      t.integer :team_id
       t.integer :auction_value
+      t.string :bye_week
+      t.integer :team_id
       t.boolean :is_drafted
       t.integer :contract_id
       t.boolean :is_bought_out

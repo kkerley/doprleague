@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Disciples of Philip Rivers | <%= yield(:title) %></title>
 
@@ -51,19 +51,21 @@
 						<% end %>
 					</ul>
 				</li>
-	            <li><a href="/payouts"><span class="glyphicon glyphicon-stats" style="vertical-align: top;"></span> Payouts</a></li>
-				<li><a href="/players"><span class="glyphicon glyphicon-bullhorn" style="vertical-align: top;"></span> NFL Players</a></li>
 				<li class="dropdownn">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-info-sign" style="vertical-align: top;"></span> Bylaws <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-info-sign" style="vertical-align: top;"></span> Documentation <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="/constitution"><span class="glyphicon glyphicon-book" style="vertical-align: top;"></span> Constitution</a></li>
 							<li><a href="/polls"><span class="glyphicon glyphicon-tasks" style="vertical-align: top;"></span> Facebook polls</a></li>
 							<li><a href="/salary_progressions"><span class="glyphicon glyphicon-usd" style="vertical-align: top;"></span> Salary progressions</a></li>
 						</ul>
-					</li>
+				</li>
+	            <li><a href="/payouts"><span class="glyphicon glyphicon-stats" style="vertical-align: top;"></span> Payouts</a></li>
+				<li><a href="/players"><span class="glyphicon glyphicon-bullhorn" style="vertical-align: top;"></span> NFL Players</a></li>
+				
 				<li><a href="/faqs"><span class="glyphicon glyphicon-question-sign" style="vertical-align: top;"></span> FAQs</a></li>
 				<% if current_user %>
 					<li><a href="/admin"><span class="glyphicon glyphicon-cog" style="vertical-align: top;"></span> Admin</a></li>
+					<li><a href="<%= logout_path %>"><span class="glyphicon glyphicon-remove-circle"></span> Log out</a></li>
 				<% else %>
 					<li><a href="/login"><span class="glyphicon glyphicon-cog" style="vertical-align: top;"></span> Admin login</a></li>
 				<% end %>

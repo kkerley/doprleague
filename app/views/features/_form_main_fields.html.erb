@@ -47,10 +47,11 @@
   </div>
 -->
   <div class="form-group">
-	<%= f.label "Add a picture", :class => 'col-lg-2 control-label' %>
+	<%= f.label "Image", :class => 'col-lg-2 control-label' %>
 
 	<div class="col-lg-10">
-		<%= f.file_field :avatar, :style => 'width: 500px' %>
+		<%= f.file_field :avatar, :style => 'width: 500px' %><br />
+		<small>Currently, images are only being show when attached to posts in the Facebook Polls section.</small>
 	</div>
   </div>
 

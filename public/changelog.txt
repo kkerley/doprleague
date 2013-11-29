@@ -7,6 +7,13 @@ Version 1.3 [2013/10/12]
 - Added Player data model
 - Added ability to import/export CSV and XLS files (players only at the moment)
 - Numerous admin-only updates
+- Added logic to auto-fill award names/values 
+- Redid the Constitution page's styling/layout moderately
+- Redid the Homepage's styling/layout moderately
+- Fixed issue with Admin show/hide Javascript not working by renaming classes from "hidden" to "hidden-content" and setting display: none; as the default
+- LOTS of little verbiage updates throughout
+- Prettied up a NFL player form
+
 
 Version 1.2 [2013/10/12]
 --------------------------------------------------

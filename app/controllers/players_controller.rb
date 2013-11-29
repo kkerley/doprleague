@@ -2,7 +2,8 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.order(:last_name)
+    # @players = Player.order(:last_name)
+    @players = Player.text_search(params[:query])
 
     respond_to do |format|
       format.html # index.html.erb

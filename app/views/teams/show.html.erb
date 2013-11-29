@@ -43,13 +43,13 @@
 					<div class="panel-heading">
 		          		<p class="panel-title bold">The league</p>
 		        	</div>
-		        	<div class="panel-body">
-						<ul>
+		        	
+						<table cellspacing="0" cellpadding="0" border="0" class="table"
 							<% @current_members.each do |user|%>
 								<%= render '/users/member_list_nav', :user => user %>
 							<% end %>
-						</ul>
-					</div>
+						</table>
+					
 				</div><!-- end of panel -->
 			</div><!-- end of col-md-4-->
 			

@@ -10,86 +10,114 @@
 
 <div class="row">
 	<div class="col-md-12"><br />
-		<% if current_user %>
 		<div class="row">
 			<div class="col-md-6">
-		
+
 				<div class="panel panel-success margin-bottom-4em">
 					<div class="panel-heading">
-		          		<p class="panel-title bold">Import players <small>only .csv accepted at this time.</small></p>
-						<small class="muted">Download full list in <%= link_to ".csv", players_path(format: "csv") %> or <%= link_to ".xsl", players_path(format: "xls") %></small>
+		          		<p class="panel-title bold">Search players</p>
+						<small class="muted">Some kind of additional text here</small>
 		        	</div>
 						<div class="panel-body">
-								<%= form_tag import_players_path, :style=> "width: 500px", multipart: true do %>
-								  <%= file_field_tag :file, :class => "form-control"%><br />
-								  <%= submit_tag "Import", :class => "btn btn-success btn-large" %>
+								<%= form_tag players_path, :style=> "width: 500px", method: :get do %>
+								
+								    <%= text_field_tag :query, params[:query], :class => "form-control" %><br />
+								    <%= submit_tag "Search", name: nil, :class => "btn btn-success btn-large" %>
+							
 								<% end %>
 						</div>
 				</div>
 			</div>
-		</div>
-		<% end %>
+			
+			
+			<% if current_user %>
+				<div class="col-md-6">
 		
-	
+					<div class="panel panel-warning margin-bottom-4em">
+						<div class="panel-heading">
+			          		<p class="panel-title bold">Import players <small>only .csv accepted at this time.</small></p>
+							<small class="muted">Download full list in <%= link_to ".csv", players_path(format: "csv") %> or <%= link_to ".xsl", players_path(format: "xls") %></small>
+			        	</div>
+							<div class="panel-body">
+									<%= form_tag import_players_path, :style=> "width: 500px", multipart: true do %>
+									  <%= file_field_tag :file, :class => "form-control" %><br />
+									  <%= submit_tag "Import", :class => "btn btn-warning btn-large" %>
+									<% end %>
+							</div>
+					</div>
+				</div>		
+			<% end %>
+		
+		
+		
+		</div><!-- end of row -->
+			
+				
+			
+			
 		<div class="panel panel-default margin-bottom-4em">
 			<div class="panel-heading">
           		<p class="panel-title bold">NFL personnel</p>
 				<small class="muted">Download full list in <%= link_to ".csv", players_path(format: "csv") %> or <%= link_to ".xsl", players_path(format: "xls") %></small>
         	</div>
-        	<table cellspacing="0" cellpadding="0" border="0" class="table">
-				<tr>
-					<th></th>
-					<th>First name</th>
-					<th>Last name</th>
-					<!-- <th>NFL team</th> -->
-					<th>Position</th>
-					<th>Salary</th>
-					<th>DoPR team</th>
-					<th>Bought out?</th>
-					<th>Bought out by</th>
-					<th>Dead money?</th>
-					<!-- <th>Extended?</th>
-					<th>Franchised?</th> -->
-					<% if current_user %>
-					<th></th>
-					<% end %>
-				</tr>
-				
-				<% @players.each do |player| %>
-				<tr>
-					<td></td>
-					<td><%= player.first_name %></td>
-					<td><%= player.last_name %></td>
-					<!-- <td><%= player.nfl_team %></td> -->
-					<td><%= player.position %></td>
-					<td>$<%= best_in_place_if current_user, player, :auction_value, :html_attrs => { :style => 'width: 30px' } %></td>
-					<td>
-						<% if player.team %>
-							<%if current_user%>
-								<%= best_in_place_if current_user, player, :team_id, :type => :select, :collection => Team::list_team_options %>
-							<% else %>
-								<%= link_to player.team.team_name, "/members##{player.team.user.display_name}" %>
-							<% end %>
-						<% else %>
+        	<table cellspacing="0" cellpadding="0" border="0" class="table table-striped">
+				<thead>
+					<tr>
+						<th></th>
+						<th>First name</th>
+						<th>Last name</th>
+						<th>Position</th>
+						<th>NFL team</th>
+						<th>Bye</th>
+						<th>Salary</th>
+						<th>DoPR team</th>
+						<th>Bought out?</th>
+						<th>Bought out by</th>
+						<!-- <th>Dead money?</th>
+						<th>Extended?</th>
+						<th>Franchised?</th> -->
+						<% if current_user %>
+						<th></th>
+						<% end %>
+					</tr>
+				</thead>
+				<tbody>
+					<% @players.each do |player| %>
+					<tr>
+						<td></td>
+						<td><%= player.first_name %></td>
+						<td><%= player.last_name %></td>
+						<td><%= player.position %></td>
+						<td><%= player.nfl_team %></td>
+						<td><%= player.bye_week %></td>
+						<td>$<%= best_in_place_if current_user, player, :auction_value, :html_attrs => { :style => 'width: 30px' } %></td>
+						<td>
+							<% if player.team %>
 								<%if current_user%>
 									<%= best_in_place_if current_user, player, :team_id, :type => :select, :collection => Team::list_team_options %>
 								<% else %>
-									FA
+									<%= link_to player.team.team_name, "/members##{player.team.user.display_name}" %>
 								<% end %>
-						<% end %>
-					</td>
-					<td><%= player.is_bought_out %></td>
-					<td><%= player.bought_out_by_team_id %></td>
-					<td><%= player.is_dead_money %></td>
-					<!-- <td><%= player.is_extended %></td>
-					<td><%= player.is_franchised %></td> -->
+							<% else %>
+									<%if current_user%>
+										<%= best_in_place_if current_user, player, :team_id, :type => :select, :collection => Team::list_team_options %>
+									<% else %>
+										FA
+									<% end %>
+							<% end %>
+						</td>
+						<td><%= player.is_bought_out %></td>
+						<td><%= player.bought_out_by_team_id %></td>
+						<!-- <td><% player.is_dead_money %></td>
+						<td><% player.is_extended %></td>
+						<td><% player.is_franchised %></td> -->
 					
-					<% if current_user %>
-						<td><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit", edit_player_path(player) %></td>
+						<% if current_user %>
+							<td><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit", edit_player_path(player) %></td>
+						<% end %>
+					</tr>
 					<% end %>
-				</tr>
-				<% end %>
-				
+				</tbody>
 			</table>	
       	</div><!-- end of panel -->
 		

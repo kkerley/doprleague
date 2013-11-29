@@ -13,7 +13,13 @@
 <div class="row padding-horizontal-20">
 	<div class="span5 row-text-large"><%= award.name %></div>
 	<div class="span2 row-text-large"><%= award.amount %></div>
-	<div class="span4 row-text-large"><%= award.user.display_name %></div>
+	<div class="span4 row-text-large">
+	<%unless award.user.blank? %>
+		<%= award.user.display_name %>
+	<% else %>
+		-
+	<%end %>
+			</div>
 </div>
 <% end %>
 <% if current_user %>

@@ -14,9 +14,9 @@
 	       		<% if announce.avatar? %>
 					<%= image_tag(announce.avatar.url(:max200), :border => 0, :class => 'img-rounded') %>
 				<% end %>
-	        	<p class="headline uppercase homepage-headline"><%= best_in_place_if current_user, announce, :title, :html_attrs => { :style => 'width: 600px' } %></p>
+	        	<p class="h3 homepage-headline"><%= best_in_place_if current_user, announce, :title, :html_attrs => { :style => 'width: 740px' } %></p>
           		<p class="margin-bottom-1em"><small class="muted"><%= l announce.created_at, format: :short %> by <img src="<%= announce.user.avatar(:tiny) %>" border="0" style="vertical-align: text-top;" /> <%= link_to announce.user.display_name, "/members/#" + announce.user.display_name %></small></p>
-				<%= best_in_place_if current_user, announce, :content, :type => :textarea, :html_attrs => { :style => 'width: 600px' }, :display_with => lambda { |v| textilize(v).html_safe } %>
+				<%= best_in_place_if current_user, announce, :content, :type => :textarea, :html_attrs => { :style => 'width: 740px' }, :display_with => lambda { |v| textilize(v).html_safe } %>
 			
 				<% if current_user %>
 					<p><span class="glyphicon glyphicon-pencil"></span>  <%= link_to 'Edit announcement', edit_feature_path(announce) %></p>
@@ -33,20 +33,14 @@
 			<div class="panel-heading">
           		<p class="panel-title bold">Current league members</p>
         	</div>
-        	<div class="panel-body">
-				<ul>
+        	
+				<table class="table table-striped" cellpadding="0" cellspacing="0" border="0">
+
 					<% @users.each do |user|%>
-						<li><%= link_to user.display_name, "/members/#" + user.display_name %> <%= image_tag user.avatar(:tiny) %>
-							<% if user.team %>
-								(<%=  user.team.team_name %>)
-							<% else %>
-								No team.
-							<% end %>
-							
-						</li>
+						<%= render '/users/member_list_nav', :user => user %>
 					<% end %>
-				</ul>
-			</div>
+				</table>
+			
 			
 		</div><!-- end of panel -->
 	</div><!-- end of col-md-4-->

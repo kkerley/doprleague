@@ -26,8 +26,9 @@ class PayoutsController < ApplicationController
   # GET /payouts/new
   # GET /payouts/new.json
   def new
-    @payout = Payout.new
-
+      @payout = Payout.new
+      @payout.initialize_form(24)
+     
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @payout }
@@ -46,7 +47,7 @@ class PayoutsController < ApplicationController
 
     respond_to do |format|
       if @payout.save
-        format.html { redirect_to @payout, notice: 'Payout was successfully created.' }
+        format.html { redirect_to payouts_url, notice: 'Payout was successfully created.' }
         format.json { render json: @payout, status: :created, location: @payout }
       else
         format.html { render action: "new" }
@@ -62,7 +63,7 @@ class PayoutsController < ApplicationController
 
     respond_to do |format|
       if @payout.update_attributes(params[:payout])
-        format.html { redirect_to @payout, notice: 'Payout was successfully updated.' }
+        format.html { redirect_to payouts_url, notice: 'Payout was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

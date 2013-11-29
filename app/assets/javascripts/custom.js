@@ -8,7 +8,7 @@ $(document).ready(function(){
 	//functions for showing/hiding content expanders
 	$("a.expand").click(function(){
 		var location = $(this).parent().parent();
-		$('.hidden', location).toggle('fast', function() {
+		$('.hidden-content', location).toggle('fast', function() {
 			
 		    // Animation complete.
 		  });

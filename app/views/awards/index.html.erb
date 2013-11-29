@@ -15,7 +15,7 @@
   <tr>
     <td><%= award.name %></td>
     <td><%= award.amount %></td>
-    <td><%= award.user.display_name %></td>
+    <td><% unless award.user.display_name.blank? %><%= award.user.display_name %><% else %>-<% end %></td>
 	<td><% if award.payout %><%= award.payout.year %><% end %>
     <td><%= link_to 'Show', award %></td>
     <td><%= link_to 'Edit', edit_award_path(award) %></td>

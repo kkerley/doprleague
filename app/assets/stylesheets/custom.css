@@ -82,8 +82,9 @@ ul.list-no-display{
 	padding: .8em .5em;
 }
 
-.hidden{
+.hidden-content{
 	visibility: visible;
+	display: none;
 }
 
 .muted{

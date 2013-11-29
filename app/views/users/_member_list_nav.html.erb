@@ -1,1 +1,10 @@
-<li><%= link_to user.display_name, "#" + user.display_name %> <%= image_tag user.avatar(:tiny) %> | Lifetime winnings: $<%= user.total_winnings %></li>
+<tr>
+	<td><%= link_to user.display_name, "/members/#" + user.display_name %></td>
+	<td><%= image_tag user.avatar(:tiny) %></td>
+	<td><% if user.team %>
+		<%= link_to user.team.team_name, user.team %>
+	<% else %>
+		No team.
+	<% end %>
+	</td>
+</tr>

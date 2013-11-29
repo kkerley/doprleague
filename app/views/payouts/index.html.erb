@@ -29,7 +29,10 @@
 				<tr>
 					<td></td>
 					<td><%= award.payout.year %> <%= award.name %></td>
-					<td><a href="/members/#<%= award.user.display_name %>"><%= image_tag award.user.avatar(:tiny), :border => "0" %></a> <a href="/members/#<%= award.user.display_name %>"><%= award.user.display_name %></a></td>
+					<td><%unless award.user.blank? %><a href="/members/#<%= award.user.display_name %>"><%= image_tag award.user.avatar(:tiny), :border => "0" %></a> <a href="/members/#<%= award.user.display_name %>"><%= award.user.display_name %></a>
+						<% else %>
+						-
+						<%end %></td>
 					<td>$<%= award.amount %></td>
 					<td><%= award.notes %></td>
 				</tr>

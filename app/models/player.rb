@@ -1,5 +1,5 @@
 class Player < ActiveRecord::Base
-  attr_accessible :auction_value, :first_name, :last_name, :nfl_team, :position, :team_id, :contract_id, :is_drafted, :is_bought_out, :is_extended, :is_franchised
+  attr_accessible :auction_value, :first_name, :last_name, :nfl_team, :position, :team_id, :contract_id, :is_drafted, :is_bought_out, :is_extended, :is_franchised, :bye_week
   
   belongs_to :team
   
@@ -21,6 +21,18 @@ class Player < ActiveRecord::Base
     self.first_name + " " + self.last_name
   end
   
+  
+  def self.text_search(query)
+    if query.present?
+      rank = <<-RANK
+          ts_rank(to_tsvector(first_name), plainto_tsquery(#{sanitize(query)})) +
+          ts_rank(to_tsvector(last_name), plainto_tsquery(#{sanitize(query)}))
+        RANK
+      where("first_name @@ :q or last_name @@ :q", q: "%#{query}%").order("#{rank} desc")
+    else
+      scoped
+    end
+  end
 
   
   def self.to_csv(options = {})

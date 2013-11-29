@@ -13,32 +13,7 @@
 			<% @current_members.each do |user| %>
 			
 				<div class="panel panel-success">
-					<div class="panel-heading">
-		          		<p class="panel-title bold"><a id="<%= user.display_name %>"></a><%= user.display_name %>'s information</p>
-		        	</div>
-		        	<div class="panel-body">
-		          		<div class="row">
-							<div class="col-xs-3 bold">Team name:</div>
-							<div class="col-xs-6">
-									<% if user.team %>
-										<%= link_to user.team.team_name, user.team %>
-									<% else %>
-										No team.
-									<% end %>
-							</div>
-							<div class="col-xs-3 bold"><%= image_tag user.avatar(:thumb), :border => 0 %></div>
-							<hr />
-						</div>
-					
-						<%= render 'payout_awards_table', :user => user %>
-						
-						<% if current_user %>
-						<div class="row margin-top-1em">
-							<div class="col-md-11">
-								<p><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit this member", edit_user_path(user) %></p>
-							</div>
-						</div>
-						<% end %>
+					<%= render 'member_information', user: user %>
 						
 		        	</div>
 		      	</div><!-- end of panel -->
@@ -51,57 +26,26 @@
 			<% @past_members.each do |user| %>
 			
 				<div class="panel panel-default">
-					<div class="panel-heading">
-		          		<p class="panel-title bold"><a id="<%= user.display_name %>"></a><%= user.display_name %>'s information</p>
-		        	</div>
-		        	<div class="panel-body">
-		          		<div class="row">
-							<div class="col-xs-3 bold">Team name:</div>
-							<div class="col-xs-6">
-									<% if user.team %>
-										<%= user.team.team_name %>
-									<% else %>
-										No team.
-									<% end %>
-							</div>
-							<div class="col-xs-3 bold"><%= image_tag user.avatar(:thumb), :border => 0 %></div>
-							<hr />
-						</div>
-						
-						<%= render 'payout_awards_table', :user => user %>
-						
-						<% if current_user %>
-						<div class="row margin-top-1em">
-							<div class="col-md-11">
-								<p><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit this member", edit_user_path(user) %></p>
-							</div>
-						</div>
-						<% end %>
-						
+					<%= render 'member_information', user: user %>		
 		        	</div>
 		      	</div><!-- end of panel -->
 			<%= render 'layouts/back_to_top_link' %>
 			<% end %>
-			
-			
-			
-			
-			
 			 
-			</div><!-- end of col-md-6-->
+			</div><!-- end of col-md-7-->
 			
 			<div class="col-lg-offset-1 col-md-4"><br />
 				<div class="panel panel-success">
 					<div class="panel-heading">
 		          		<p class="panel-title bold">Current league members</p>
 		        	</div>
-		        	<div class="panel-body">
-						<ul>
+		        	
+						<table class="table table-striped" cellpadding="0" cellspacing="0" border="0">
 							<% @current_members.each do |user|%>
 								<%= render 'member_list_nav', :user => user %>
 							<% end %>
-						</ul>
-					</div>
+						</table>
+					
 				</div><!-- end of panel -->
 			</div><!-- end of col-md-4-->
 			
@@ -111,13 +55,13 @@
 					<div class="panel-heading">
 		          		<p class="panel-title bold">Past league members</p>
 		        	</div>
-		        	<div class="panel-body">
-						<ul>
+		        	
+						<table class="table table-hover" cellpadding="0" cellspacing="0" border="0">
 							<% @past_members.each do |user|%>
 								<%= render 'member_list_nav', :user => user %>
 							<% end %>
-						</ul>
-					</div>
+						</table>
+					
 				</div><!-- end of panel -->
 			</div><!-- end of col-md-4-->
 		</div><!-- end of row -->
