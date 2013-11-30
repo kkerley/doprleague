@@ -22,7 +22,6 @@ KkerleyCom::Application.routes.draw do
   get "polls" => "features#polls", :as => "polls"
   get "admin" => "features#admin", :as => "admin"
   get "members" => "users#index", :as => "members"
-
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

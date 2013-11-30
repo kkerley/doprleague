@@ -4,5 +4,6 @@ class Award < ActiveRecord::Base
   belongs_to :user
   belongs_to :payout
   
+  default_scope order("created_at asc")
   
 end

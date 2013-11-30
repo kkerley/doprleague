@@ -1,0 +1,43 @@
+<table cellspacing="0" cellpadding="0" border="0" class="table table-striped table-condensed">
+	<tr>
+		<th></th>
+		<th>Award</th>
+		<th>Winner</th>
+		<th>Amount</th>
+		<th>Notes</th>
+	</tr>
+	
+	<% payout.awards.each do |award| %>
+	<tr>
+		<td></td>
+		<td><%= award.payout.year %> <%= award.name %></td>
+		<td>
+			<% if award.user %>
+				<%if current_user%>
+					<%= image_tag award.user.avatar(:tiny), :border => "0" %> <%= best_in_place_if current_user, award, :user_id, :type => :select, :collection => User::list_user_options %>
+				<% else %>
+					<a href="/members/#<%= award.user.display_name %>"><%= image_tag award.user.avatar(:tiny), :border => "0" %></a> <a href="/members/#<%= award.user.display_name %>"><%= award.user.display_name %></a>
+				<% end %>
+			<% else %>
+					<%if current_user%>
+						<%= best_in_place_if current_user, award, :user_id, :type => :select, :collection => User::list_user_options %>
+					<% else %>
+						Unclaimed
+					<% end %>
+			<% end %>
+		
+		</td>
+		<td>$<%= best_in_place_if current_user, award, :amount, :html_attrs => { :style => 'width: 30px' } %></td>
+		<td><%= best_in_place_if current_user, award, :notes, :html_attrs => { :style => 'width: 100px' } %></td>
+	</tr>
+	<% end %>
+
+	<% if current_user %>
+	<tr>
+		<td></td>
+		<td colspan="4"><br />
+			<p class="bold"><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit these payouts", edit_payout_path(payout) %></p>	
+		</td>
+	</tr>
+	<% end %>
+</table>

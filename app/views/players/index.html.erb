@@ -11,19 +11,20 @@
 <div class="row">
 	<div class="col-md-12"><br />
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-4">
 
-				<div class="panel panel-success margin-bottom-4em">
+				<div class="panel panel-warning margin-bottom-4em">
 					<div class="panel-heading">
 		          		<p class="panel-title bold">Search players</p>
 						<small class="muted">Some kind of additional text here</small>
 		        	</div>
 						<div class="panel-body">
-								<%= form_tag players_path, :style=> "width: 500px", method: :get do %>
+								<%= form_tag players_path, :class => "form-inline", method: :get do %>
+								<div class="form-group"> 
+								    <%= text_field_tag :query, params[:query], :class => "form-control", :style => "width: 250px;" %>
+								</div>
+								<%= submit_tag "Search", name: nil, :class => "btn btn-warning btn-large" %>
 								
-								    <%= text_field_tag :query, params[:query], :class => "form-control" %><br />
-								    <%= submit_tag "Search", name: nil, :class => "btn btn-success btn-large" %>
-							
 								<% end %>
 						</div>
 				</div>
@@ -31,17 +32,20 @@
 			
 			
 			<% if current_user %>
-				<div class="col-md-6">
+				<div class="col-md-5 col-md-offset-3">
 		
-					<div class="panel panel-warning margin-bottom-4em">
+					<div class="panel panel-success margin-bottom-4em">
 						<div class="panel-heading">
 			          		<p class="panel-title bold">Import players <small>only .csv accepted at this time.</small></p>
 							<small class="muted">Download full list in <%= link_to ".csv", players_path(format: "csv") %> or <%= link_to ".xsl", players_path(format: "xls") %></small>
 			        	</div>
 							<div class="panel-body">
-									<%= form_tag import_players_path, :style=> "width: 500px", multipart: true do %>
-									  <%= file_field_tag :file, :class => "form-control" %><br />
-									  <%= submit_tag "Import", :class => "btn btn-warning btn-large" %>
+									<%= form_tag import_players_path, :class => "form-inline", multipart: true do %>
+									 <div class="form-group"> 
+										<%= file_field_tag :file, :class => "form-control", :style => "width: 350px" %><br />
+									</div>
+									  	<%= submit_tag "Import", :class => "btn btn-success btn-large" %>
+								
 									<% end %>
 							</div>
 					</div>
@@ -60,7 +64,7 @@
           		<p class="panel-title bold">NFL personnel</p>
 				<small class="muted">Download full list in <%= link_to ".csv", players_path(format: "csv") %> or <%= link_to ".xsl", players_path(format: "xls") %></small>
         	</div>
-        	<table cellspacing="0" cellpadding="0" border="0" class="table table-striped">
+        	<table cellspacing="0" cellpadding="0" border="0" class="table table-striped table-condensed">
 				<thead>
 					<tr>
 						<th></th>
@@ -90,7 +94,7 @@
 						<td><%= player.position %></td>
 						<td><%= player.nfl_team %></td>
 						<td><%= player.bye_week %></td>
-						<td>$<%= best_in_place_if current_user, player, :auction_value, :html_attrs => { :style => 'width: 30px' } %></td>
+						<td><strong>$<%= best_in_place_if current_user, player, :auction_value, :html_attrs => { :style => 'width: 30px' } %></strong></td>
 						<td>
 							<% if player.team %>
 								<%if current_user%>

@@ -114,7 +114,7 @@ before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new,
   def admin
     @announcements = Feature.for_announcements
     @faqs = Feature.for_faqs
-    # @projects_features = Feature.for_projects
+    @facebook_polls = Feature.polls_list
     @constitution_features = Feature.for_constitution
     @users = User.all
   end

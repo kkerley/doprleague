@@ -21,7 +21,7 @@
 </div>
 
 <div class="row ">
-	<div class="col-md-12"><p class="headline"><a href="/constitution" style="color: #333;">Articles of the Constitution</a></p></div>
+	<div class="col-md-12"><p class="headline"><a href="/constitution" style="color: #333;">Articles of the constitution</a></p></div>
   	<div class="col-md-12">               
     	<%= render 'admin_feature_listing_header' %>
        	<% @constitution_features.each do |feature| %>
@@ -43,6 +43,20 @@
 		<hr />
 	</div>
 </div>
+
+
+<div class="row ">
+	<div class="col-md-12"><p class="headline"><a href="/faqs" style="color: #333;">Facebook polls</a></p></div>
+  	<div class="col-md-12">               
+    	<%= render 'admin_feature_listing_header' %>
+       	<% @facebook_polls.each do |feature| %>
+ 			<%= render 'admin_feature_listing', :feature => feature %>
+		<% end %>
+		<br />
+		<hr />
+	</div>
+</div>
+
 
 <div class="row ">
 	<div class="col-md-12"><p class="headline"><a href="/members" style="color: #333;">Members</a></p></div>
