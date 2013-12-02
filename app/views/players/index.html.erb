@@ -70,13 +70,13 @@
 						<th></th>
 						<th>First name</th>
 						<th>Last name</th>
-						<th>Position</th>
-						<th>NFL team</th>
-						<th>Bye</th>
+						<th class="hidden-sm hidden-xs">Position</th>
+						<th class="hidden-sm hidden-xs">NFL team</th>		
 						<th>Salary</th>
-						<th>DoPR team</th>
-						<th>Bought out?</th>
-						<th>Bought out by</th>
+						<th>Bye</th>
+						<th class="hidden-sm hidden-xs">DoPR team</th>
+						<th class="hidden-sm hidden-xs">Bought out?</th>
+						<th class="hidden-sm hidden-xs">Bought out by</th>
 						<!-- <th>Dead money?</th>
 						<th>Extended?</th>
 						<th>Franchised?</th> -->
@@ -91,11 +91,11 @@
 						<td></td>
 						<td><%= player.first_name %></td>
 						<td><%= player.last_name %></td>
-						<td><%= player.position %></td>
-						<td><%= player.nfl_team %></td>
-						<td><%= player.bye_week %></td>
+						<td class="hidden-sm hidden-xs"><%= player.position %></td>
+						<td class="hidden-sm hidden-xs"><%= player.nfl_team %></td>
 						<td><strong>$<%= best_in_place_if current_user, player, :auction_value, :html_attrs => { :style => 'width: 30px' } %></strong></td>
-						<td>
+						<td><%= player.bye_week %></td>
+						<td class="hidden-sm hidden-xs">
 							<% if player.team %>
 								<%if current_user%>
 									<%= best_in_place_if current_user, player, :team_id, :type => :select, :collection => Team::list_team_options %>
@@ -110,8 +110,8 @@
 									<% end %>
 							<% end %>
 						</td>
-						<td><%= player.is_bought_out %></td>
-						<td><%= player.bought_out_by_team_id %></td>
+						<td class="hidden-sm hidden-xs"><%= player.is_bought_out %></td>
+						<td class="hidden-sm hidden-xs"><%= player.bought_out_by_team_id %></td>
 						<!-- <td><% player.is_dead_money %></td>
 						<td><% player.is_extended %></td>
 						<td><% player.is_franchised %></td> -->

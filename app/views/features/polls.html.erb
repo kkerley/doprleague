@@ -8,41 +8,44 @@
 
 		
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-4 col-md-push-8"><br /><br />
+
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+	              		<h3 class="panel-title">Facebook Poll Amendments</h3>
+	            	</div>
+	            	<div class="panel-body">
+	              		<ol>
+						<% @polls_features.each do |poll| %>
+							<li><%= link_to poll.title, "#" + poll.title %></li>
+						<% end %>
+						</ol>
+	            	</div>
+				</div><!-- end of panel -->
+			</div>
 			
-			<% @polls_features.each do |poll| %>
-				<p><a id="<%= poll.title %>">&nbsp;</a></p>
-				<p class="headline"><a id="<%= poll.title %>"></a><%= poll.homepage_order %>. <%= best_in_place_if current_user, poll, :title, :html_attrs => { :style => 'width: 600px' } %></p>
-				<% if poll.avatar? %>
-					<%= image_tag(poll.avatar.url(:max720), :border => 0, :class => "img-polaroid margin-bottom-1em") %>
-				<% end %>
+			
+			<div class="col-md-8 col-md-pull-4">
+			
+				<% @polls_features.each do |poll| %>
+					<p><a id="<%= poll.title %>">&nbsp;</a></p>
+					<p class="headline"><a id="<%= poll.title %>"></a><%= poll.homepage_order %>. <%= best_in_place_if current_user, poll, :title, :html_attrs => { :style => 'width: 600px' } %></p>
+					<% if poll.avatar? %>
+						<%= image_tag(poll.avatar.url(:max720), :border => 0, :class => "img-polaroid margin-bottom-1em img-responsive") %>
+					<% end %>
 
-				<%= best_in_place_if current_user, poll, :content, :type => :textarea, :html_attrs => { :style => 'width: 580px' }, :display_with => lambda { |v| textilize(v).html_safe } %>	      
+					<%= best_in_place_if current_user, poll, :content, :type => :textarea, :html_attrs => { :style => 'width: 580px' }, :display_with => lambda { |v| textilize(v).html_safe } %>	      
 
-				<% if current_user %>
-					<br />
-					<p><span class="glyphicon glyphicon-pencil"></span> <%= link_to 'Edit this poll', edit_feature_path(poll) %></p>
+					<% if current_user %>
+						<br />
+						<p><span class="glyphicon glyphicon-pencil"></span> <%= link_to 'Edit this poll', edit_feature_path(poll) %></p>
+					<% end %>
+			      	<%= render 'layouts/back_to_top_link' %>
 				<% end %>
-		      	<%= render 'layouts/back_to_top_link' %>
-			<% end %>
 			
 		</div><!-- end of col-md-8 -->
 		
-		<div class="col-md-4"><br /><br />
-			
-			<div class="panel panel-danger">
-				<div class="panel-heading">
-              		<h3 class="panel-title">Facebook Poll Amendments</h3>
-            	</div>
-            	<div class="panel-body">
-              		<ol>
-					<% @polls_features.each do |poll| %>
-						<li><%= link_to poll.title, "#" + poll.title %></li>
-					<% end %>
-					</ol>
-            	</div>
-			</div><!-- end of panel -->
-		</div>
+		
      	</div>
 
 	</div><!-- end of col-md-4-->

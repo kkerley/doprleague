@@ -36,7 +36,7 @@
 			
 	
 			
-			<div class="col-lg-offset-1 col-md-4"><br />
+			<div class="col-lg-offset-1 col-md-4 hidden-md hidden-sm hidden-xs"><br />
 				<div class="panel panel-default">
 					<div class="panel-heading">
 		          		<p class="panel-title bold">The league</p>
@@ -67,8 +67,8 @@
 							<th>First name</th>
 							<th>Last name</th>
 							<th>Salary</th>
-							<th>Position</th>
-							<th>NFL team</th>
+							<th class="hidden-sm hidden-xs">Position</th>
+							<th class="hidden-sm hidden-xs">NFL team</th>
 							<th>Bye</th>
 					
 						</thead>
@@ -82,8 +82,8 @@
 									<td><%= player.first_name %></td>
 									<td><%= player.last_name %></td>
 									<td><strong>$<%= player.auction_value %></strong></td>
-									<td><%= player.position %></td>
-									<td><%= player.nfl_team %></td>
+									<td class="hidden-sm hidden-xs"><%= player.position %></td>
+									<td class="hidden-sm hidden-xs"><%= player.nfl_team %></td>
 									<td><%= player.bye_week %></td>
 								</tr>	
 							<% end %>
