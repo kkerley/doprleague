@@ -13,7 +13,7 @@
 
 <% @subcontracts.each do |subcontract| %>
   <tr>
-    <td><%= subcontract.team_id %></td>
+    <td><%= subcontract.team.team_name %></td>
     <td><%= subcontract.contract_id %></td>
     <td><%= subcontract.salary_amount %></td>
 	<td><%= subcontract.contract_year %></td>

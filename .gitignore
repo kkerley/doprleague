@@ -13,4 +13,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/config/database.yml
+/config/database.yml/db/*.bak
+/db/live_backups
+.gitignore
+config/database.yml

@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Player</b>
+  <%= @subcontract.contract.player.full_name %>
+</p>
+
+<p>
   <b>Team</b>
-  <%= @subcontract.team_id %>
+  <%= @subcontract.team.team_name %>
 </p>
 
 <p>

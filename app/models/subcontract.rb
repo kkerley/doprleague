@@ -4,4 +4,6 @@ class Subcontract < ActiveRecord::Base
   belongs_to :contract
   belongs_to :team
   
+  has_one :player, through: :contract
+  
 end

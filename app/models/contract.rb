@@ -1,5 +1,5 @@
 class Contract < ActiveRecord::Base
-  attr_accessible :contract_length, :is_bought_out, :bought_out_by_team_id, :is_extended, :is_franchised, :contract_start_year, :contracted_team
+  attr_accessible :contract_length, :is_bought_out, :bought_out_by_team_id, :is_extended, :is_franchised, :contract_start_year, :contracted_team, :player_id, :subcontracts_attributes
   attr_accessor :contracted_team
   
   belongs_to :player
@@ -9,7 +9,6 @@ class Contract < ActiveRecord::Base
   accepts_nested_attributes_for :subcontracts
   
   after_create :create_subcontracts
-
 
 
   def create_subcontracts

@@ -2,11 +2,13 @@ class SalaryProgressionsController < ApplicationController
   # GET /salary_progressions
   # GET /salary_progressions.json
   def index
-    @salary_progressions = SalaryProgression.all
+    # @salary_progressions = SalaryProgression.all
+    @salary_progressions = SalaryProgression.order(:auction_value) # necessary for to_csv to work properly for some reason
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @salary_progressions }
+      format.csv { send_data @salary_progressions.to_csv }
     end
   end
 

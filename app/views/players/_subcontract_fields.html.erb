@@ -1,0 +1,24 @@
+<fieldset class="contract-fields">
+	<legend>Contract details</legend>
+	<div class="form-group">
+		<%= f.label :team_id, :class => 'col-lg-3 control-label' %>
+		<div class="col-lg-9">
+		
+			<%= f.select(:team_id, Team.all.map {|c| [c.team_name, c.id]}, { :include_blank => true })%>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :contract_year, :class => 'col-lg-3 control-label' %>
+		<div class="col-lg-9">
+			<%= f.text_field :contract_year, :class => 'form-control' %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :salary_amount, :class => 'col-lg-3 control-label' %>
+		<div class="col-lg-9">
+			<%= f.text_field :salary_amount, :class => 'form-control' %>
+		</div>
+	</div>
+</fieldset>

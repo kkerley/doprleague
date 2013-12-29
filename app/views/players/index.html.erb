@@ -74,7 +74,7 @@
 						<th class="hidden-sm hidden-xs">NFL team</th>		
 						<th>Salary</th>
 						<th>Bye</th>
-						<th class="hidden-sm hidden-xs">DoPR team</th>
+						<th class="hidden-sm hidden-xs">Contracted?</th>
 						<th class="hidden-sm hidden-xs">Bought out?</th>
 						<th class="hidden-sm hidden-xs">Bought out by</th>
 						<!-- <th>Dead money?</th>
@@ -96,7 +96,11 @@
 						<td><strong>$<%= best_in_place_if current_user, player, :auction_value, :html_attrs => { :style => 'width: 30px' } %></strong></td>
 						<td><%= player.bye_week %></td>
 						<td class="hidden-sm hidden-xs">
-						
+							<% if player.contract %>
+								<span class="label label-danger">*</span>
+							<% else %>
+								<span class="label label-success">FA</span>
+							<% end %>
 						</td>
 						<td class="hidden-sm hidden-xs"><!-- buyout boolean --></td>
 						<td class="hidden-sm hidden-xs"><!-- bought out by --></td>
