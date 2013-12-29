@@ -3,6 +3,7 @@ class Team < ActiveRecord::Base
   
   belongs_to :user
   has_many :players
+  has_many :subcontracts
   
   def self.list_team_options
     Team.select("id, team_name").map {|x| [x.id, x.team_name] }

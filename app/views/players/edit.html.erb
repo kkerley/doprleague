@@ -1,6 +1,14 @@
-<h1>Editing player</h1>
+<% content_for :title, "Editing #{@player.full_name}"%>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @player %> |
-<%= link_to 'Back', players_path %>
+<div class="row margin-top-2em">
+	<div class="col-md-12">
+		<h1>Edit <%= @player.full_name %></h1>
+		<hr />
+	</div>
+</div>
+                 
+  <div class="row">
+	<div class="col-md-10">
+		<%= render "form" %>
+	</div>
+  </div>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Team</b>
+  <%= @subcontract.team_id %>
+</p>
+
+<p>
+  <b>Contract:</b>
+  <%= @subcontract.contract_id %>
+</p>
+
+<p>
+  <b>Salary amount:</b>
+  <%= @subcontract.salary_amount %>
+</p>
+
+<p>
+  <b>Contract year</b>
+  <%= @subcontract.contract_year %>
+</p>
+
+<%= link_to 'Edit', edit_subcontract_path(@subcontract) %> |
+<%= link_to 'Back', subcontracts_path %>

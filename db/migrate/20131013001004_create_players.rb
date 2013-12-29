@@ -7,15 +7,9 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :position
       t.integer :auction_value
       t.string :bye_week
-      t.integer :team_id
       t.boolean :is_drafted
-      t.integer :contract_id
-      t.boolean :is_bought_out
-      t.integer :bought_out_by_team_id
-      t.boolean :is_extended
-      t.boolean :is_franchised
       t.boolean :is_dead_money
-
+      
       t.timestamps
     end
   end

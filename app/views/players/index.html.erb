@@ -16,7 +16,7 @@
 				<div class="panel panel-warning margin-bottom-4em">
 					<div class="panel-heading">
 		          		<p class="panel-title bold">Search players</p>
-						<small class="muted">Some kind of additional text here</small>
+						<!--<small class="muted">Some kind of additional text here</small>-->
 		        	</div>
 						<div class="panel-body">
 								<%= form_tag players_path, :class => "form-inline", method: :get do %>
@@ -68,8 +68,8 @@
 				<thead>
 					<tr>
 						<th></th>
-						<th>First name</th>
-						<th>Last name</th>
+						<th>Name</th>
+						
 						<th class="hidden-sm hidden-xs">Position</th>
 						<th class="hidden-sm hidden-xs">NFL team</th>		
 						<th>Salary</th>
@@ -89,32 +89,20 @@
 					<% @players.each do |player| %>
 					<tr>
 						<td></td>
-						<td><%= player.first_name %></td>
-						<td><%= player.last_name %></td>
+						<td><%= link_to player.full_name, player %></td>
+						
 						<td class="hidden-sm hidden-xs"><%= player.position %></td>
 						<td class="hidden-sm hidden-xs"><%= player.nfl_team %></td>
 						<td><strong>$<%= best_in_place_if current_user, player, :auction_value, :html_attrs => { :style => 'width: 30px' } %></strong></td>
 						<td><%= player.bye_week %></td>
 						<td class="hidden-sm hidden-xs">
-							<% if player.team %>
-								<%if current_user%>
-									<%= best_in_place_if current_user, player, :team_id, :type => :select, :collection => Team::list_team_options %>
-								<% else %>
-									<%= link_to player.team.team_name, "/members##{player.team.user.display_name}" %>
-								<% end %>
-							<% else %>
-									<%if current_user%>
-										<%= best_in_place_if current_user, player, :team_id, :type => :select, :collection => Team::list_team_options %>
-									<% else %>
-										FA
-									<% end %>
-							<% end %>
+						
 						</td>
-						<td class="hidden-sm hidden-xs"><%= player.is_bought_out %></td>
-						<td class="hidden-sm hidden-xs"><%= player.bought_out_by_team_id %></td>
+						<td class="hidden-sm hidden-xs"><!-- buyout boolean --></td>
+						<td class="hidden-sm hidden-xs"><!-- bought out by --></td>
 						<!-- <td><% player.is_dead_money %></td>
-						<td><% player.is_extended %></td>
-						<td><% player.is_franchised %></td> -->
+						<td> player.is_extended </td>
+						<td>player.is_franchised</td> -->
 					
 						<% if current_user %>
 							<td><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit", edit_player_path(player) %></td>

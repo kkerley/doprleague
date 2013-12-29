@@ -80,4 +80,9 @@ class SalaryProgressionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def import
+    SalaryProgression.import(params[:file])
+    redirect_to salary_progressions_url, notice: "Salary chart imported."
+  end
 end

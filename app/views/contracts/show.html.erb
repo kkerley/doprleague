@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<p>
+  <b>Contract length:</b>
+  <%= @contract.contract_length %>
+</p>
+<p><%= @contract.player.auction_value %></p>
+
+
+<p><%= @salary_progession = SalaryProgression.find(@contract.player.auction_value).attributes.to_a %></p>
+
+<p><%= @salary_progession[1][1] %></p>
+
+
+
+<%= link_to 'Edit', edit_contract_path(@contract) %> |
+<%= link_to 'Back', contracts_path %>

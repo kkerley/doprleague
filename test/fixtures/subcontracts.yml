@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  contract_id: 1
+  salary_amount: 1
+
+two:
+  user_id: 1
+  contract_id: 1
+  salary_amount: 1

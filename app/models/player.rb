@@ -1,9 +1,11 @@
 class Player < ActiveRecord::Base
-  attr_accessible :auction_value, :first_name, :last_name, :nfl_team, :position, :team_id, :contract_id, :is_drafted, :is_bought_out, :is_extended, :is_franchised, :bye_week
+  attr_accessible :auction_value, :first_name, :last_name, :nfl_team, :position, :team_id, :contract_id, :is_drafted, :is_bought_out, :is_extended, :is_franchised, :bye_week, :full_name, :contract_attributes
   
-  belongs_to :team
+  has_one :contract
   
   default_scope order("auction_value desc")
+  
+  accepts_nested_attributes_for :contract
   
   scope :all_quarterbacks, lambda { where("position = ?", "QB").order("auction_value desc") }
   scope :all_receivers, lambda { where("position = ?", "WR").order("auction_value desc") }
@@ -18,9 +20,17 @@ class Player < ActiveRecord::Base
   end
   
   def full_name
-    self.first_name + " " + self.last_name
+   [first_name, last_name].join(' ')
   end
   
+  def full_name=(name)
+    split = name.split(' ', 2)
+    self.first_name = split.first
+    self.last_name = split.last
+  end
+  
+
+ 
   
   def self.text_search(query)
     if query.present?

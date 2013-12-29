@@ -1,35 +1,30 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, "#{@player.full_name}"%>
 
-<p>
-  <b>First name:</b>
-  <%= @player.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @player.last_name %>
-</p>
-
-<p>
-  <b>Nfl team:</b>
-  <%= @player.nfl_team %>
-</p>
-
-<p>
-  <b>Position:</b>
-  <%= @player.position %>
-</p>
-
-<p>
-  <b>Team:</b>
-  <%= @player.team_id %>
-</p>
-
-<p>
-  <b>Auction value:</b>
-  <%= @player.auction_value %>
-</p>
+<div class="row margin-top-2em">
+	<div class="col-md-12">
+		<h1><%= @player.full_name %> (<%= @player.position %>) for <%= @player.nfl_team %></h1>
+		<p class="lead">
+			Auction value: <span class="label label-danger">$<%= @player.auction_value %></span>
+		</p>
+	
+		<hr />
+	</div>
+</div>
 
 
-<%= link_to 'Edit', edit_player_path(@player) %> |
-<%= link_to 'Back', players_path %>
+<div class="row">
+	<div class="col-md-12">
+		
+		<% if @player.contract %>
+	
+			<p class="h2">Contract details</p>
+			<p><%= link_to "Contract", @player.contract %> started in <%= @player.contract.contract_start_year %> for <%= @player.contract.contract_length%> years</p>
+			
+			
+		
+		<% else %>
+			<p>Free agent</p>
+		<% end %>
+		<%= link_to "Edit #{@player.full_name}", edit_player_path(@player)%>
+	</div>
+</div>

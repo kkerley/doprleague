@@ -1,16 +1,19 @@
 KkerleyCom::Application.routes.draw do
-
   resources :players do 
     collection { post :import }
   end
 
-  resources :salary_progressions
+  resources :salary_progressions do 
+    collection { post :import }
+  end
   resources :teams
   resources :awards
   resources :payouts
   resources :users
   resources :sessions  
   resources :features
+  resources :contracts
+  resources :subcontracts
   
   root :to => "features#index"
   get "logout" => "sessions#destroy", :as => "logout"
