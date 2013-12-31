@@ -48,8 +48,8 @@
 		<%= f.fields_for :subcontracts do |builder| %>
 			<%= render 'subcontract_fields', f: builder %>
 		<% end %>
-	
-		<%= f.fields_for :contract do |builder| %>
+		<br /><br /><br /><br />
+		<%= f.fields_for :contracts do |builder| %>
 	  		<%= render 'contract_fields', f: builder %>
 	 	<% end %>
   	

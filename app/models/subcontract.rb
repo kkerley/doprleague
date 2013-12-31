@@ -6,4 +6,12 @@ class Subcontract < ActiveRecord::Base
   
   has_one :player, through: :contract
   
+  
+  scope :current_year_or_later, lambda { where("contract_year >= ?", self.current_year).order("contract_year ASC") }
+  
+  
+  def self.current_year
+    Time.now.year
+  end
+  
 end

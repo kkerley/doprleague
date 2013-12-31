@@ -10,15 +10,15 @@
 
 	<div class="form-group">
 		<%= f.label :contract_year, :class => 'col-lg-3 control-label' %>
-		<div class="col-lg-9">
+		<div class="col-lg-3">
 			<%= f.text_field :contract_year, :class => 'form-control' %>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<%= f.label :salary_amount, :class => 'col-lg-3 control-label' %>
-		<div class="col-lg-9">
-			<%= f.text_field :salary_amount, :class => 'form-control' %>
+		<%= f.label :salary_amount, "Salary amount $", :class => 'col-lg-3 control-label' %>
+		<div class="col-lg-3">
+			<%= f.text_field :salary_amount, :class => 'form-control', :style => "display: inline;" %>
 		</div>
 	</div>
 </fieldset>

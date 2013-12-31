@@ -1,10 +1,12 @@
 <fieldset class="contract-fields">
-	<legend>Add a contract</legend>
+	<legend>Add a contract<br />
+		<span class="label label-danger">!</span> <small>only if no existing contract or contract has expired<br /><br /></small>
+	</legend>
 	<div class="form-group">
 		<%= f.label :contracted_team, :class => 'col-lg-3 control-label' %>
 		<div class="col-lg-9">
 		
-			<%= f.select(:contracted_team, Team.all.map {|c| [c.team_name, c.id]}, { :include_blank => true })%>
+			<%= f.select(:contracted_team, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true })%>
 		</div>
 	</div>
 

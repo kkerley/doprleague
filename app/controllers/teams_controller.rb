@@ -16,6 +16,7 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
+    @players = @team.players.uniq
     @current_members = User.current_members
     respond_to do |format|
       format.html # show.html.erb

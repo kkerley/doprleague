@@ -1,11 +1,12 @@
 <h1>Listing subcontracts</h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Team</th>
     <th>Contract</th>
-    <th>Salary amount</th>
 	<th>Contract year</th>
+    <th>Salary amount</th>
+	
     <th></th>
     <th></th>
     <th></th>
@@ -14,11 +15,12 @@
 <% @subcontracts.each do |subcontract| %>
   <tr>
     <td><%= subcontract.team.team_name %></td>
-    <td><%= subcontract.contract_id %></td>
-    <td><%= subcontract.salary_amount %></td>
+    <td><%= subcontract.contract.player.full_name %></td>
 	<td><%= subcontract.contract_year %></td>
+    <td><%= subcontract.salary_amount %></td>
+	
     <td><%= link_to 'Show', subcontract %></td>
-    <td><%= link_to 'Edit', edit_subcontract_path(subcontract) %></td>
+    <td><%= link_to 'Edit', edit_player_path(subcontract.contract.player_id) %></td>
     <td><%= link_to 'Destroy', subcontract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

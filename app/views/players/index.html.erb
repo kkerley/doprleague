@@ -96,7 +96,7 @@
 						<td><strong>$<%= best_in_place_if current_user, player, :auction_value, :html_attrs => { :style => 'width: 30px' } %></strong></td>
 						<td><%= player.bye_week %></td>
 						<td class="hidden-sm hidden-xs">
-							<% if player.contract %>
+							<% if player.is_contracted? %>
 								<span class="label label-danger">*</span>
 							<% else %>
 								<span class="label label-success">FA</span>

@@ -9,11 +9,6 @@
 <p><%= @contract.player.auction_value %></p>
 <p><%= @contract.player.full_name%>
 
-
-<p><%= @salary_progession = SalaryProgression.find(@contract.player.auction_value).attributes.to_a %></p>
-
-<p><%= @salary_progession[1][1] %></p>
-
 <ul>
 <% @subcontracts.each do |sub| %>
 	<li><%= link_to sub.team.team_name, sub %></i>
