@@ -1,67 +1,55 @@
-<% content_for :title, "League members"%>
+<% content_for :title, "League members" %>
+<% content_for :section_subtitle, "All members (both past and present) of the Disciples of Philip Rivers Fantasy Football League." %>
 
-<div class="row margin-top-2em">
-	<div class="col-md-12">
-		<h1>League members</h1>
-		<p class="lead">All members&mdash;both past and present&mdash;of the Disciples of Philip Rivers Fantasy Football League.</p>
-		<hr />
 
 		
-		<div class="row">
-			
-			<div class="col-md-7"><br />
-			<% @current_members.each do |user| %>
-			
-				<div class="panel panel-success">
-					<%= render 'member_information', user: user %>
-						
-		        	</div>
-		      	</div><!-- end of panel -->
+<div class="row">
+	
+	<div class="col-md-7"><br />
+		<% @current_members.each do |user| %>
+			<div class="panel panel-success">
+				<%= render 'member_information', user: user %>	
+	      	</div><!-- end of panel -->
 			<%= render 'layouts/back_to_top_link' %>
-			<% end %>
-			
-			<h4 class="margin-top-2em">Past league members</h4>
-			<hr />
-			
-			<% @past_members.each do |user| %>
-			
-				<div class="panel panel-default">
-					<%= render 'member_information', user: user %>		
-		        	</div>
-		      	</div><!-- end of panel -->
+		<% end %>
+	
+		<h4 class="margin-top-2em">Past league members</h4>
+		<hr />
+	
+		<% @past_members.each do |user| %>
+			<div class="panel panel-default">
+				<%= render 'member_information', user: user %>		       	
+	      	</div><!-- end of panel -->
 			<%= render 'layouts/back_to_top_link' %>
-			<% end %>
-			 
-			</div><!-- end of col-md-7-->
+		<% end %>
+	 
+	</div><!-- end of col-md-7-->
+	
+	<div class="col-md-offset-1 col-md-4 hidden-sm hidden-xs"><br />
+		<div class="panel panel-success">
+			<div class="panel-heading">
+          		<p class="panel-title bold">Current league members</p>
+        	</div>
+        	
+			<table class="table table-striped" cellpadding="0" cellspacing="0" border="0">
+				<% @current_members.each do |user|%>
+					<%= render 'member_list_nav', :user => user %>
+				<% end %>
+			</table>
 			
-			<div class="col-lg-offset-1 col-md-4 hidden-sm hidden-xs"><br />
-				<div class="panel panel-success">
-					<div class="panel-heading">
-		          		<p class="panel-title bold">Current league members</p>
-		        	</div>
-		        	
-						<table class="table table-striped" cellpadding="0" cellspacing="0" border="0">
-							<% @current_members.each do |user|%>
-								<%= render 'member_list_nav', :user => user %>
-							<% end %>
-						</table>
-					
-				</div><!-- end of panel -->
-			</div><!-- end of col-md-4-->
+		</div><!-- end of panel -->
+		<br />
+		<div class="panel panel-default">
+			<div class="panel-heading">
+          		<p class="panel-title bold">Past league members</p>
+        	</div>
+        	
+			<table class="table table-hover" cellpadding="0" cellspacing="0" border="0">
+				<% @past_members.each do |user|%>
+					<%= render 'member_list_nav', :user => user %>
+				<% end %>
+			</table>
 			
-			
-			<div class="col-lg-offset-1 col-md-4 hidden-sm hidden-xs"><br />
-				<div class="panel panel-default">
-					<div class="panel-heading">
-		          		<p class="panel-title bold">Past league members</p>
-		        	</div>
-		        	
-						<table class="table table-hover" cellpadding="0" cellspacing="0" border="0">
-							<% @past_members.each do |user|%>
-								<%= render 'member_list_nav', :user => user %>
-							<% end %>
-						</table>
-					
-				</div><!-- end of panel -->
-			</div><!-- end of col-md-4-->
-		</div><!-- end of row -->
+		</div><!-- end of panel -->
+	</div><!-- end of col-md-4-->
+</div><!-- end of row -->

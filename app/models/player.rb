@@ -3,6 +3,7 @@ class Player < ActiveRecord::Base
   
   has_many :contracts
   has_many :subcontracts, through: :contracts
+  has_many :teams, through: :subcontracts
   
   default_scope order("auction_value desc")
   

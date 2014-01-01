@@ -40,7 +40,7 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
     
     if @player.is_contracted?
-      @player.contracts.subcontracts.build
+      @player.subcontracts
     else
       @player.contracts.build
     end

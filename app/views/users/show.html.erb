@@ -1,6 +1,7 @@
-<% content_for :title, "League members: " + @user.display_name %>
+<% content_for :title, "League member " + @user.display_name %>
+<% content_for :section_subtitle, "Roster, contract information and winnings tally" %>
 
-<div class="row margin-top-2em">
+<div class="row">
 	<div class="col-md-8">
 		<h1><%= @user.display_name %></h1>
 		<hr />

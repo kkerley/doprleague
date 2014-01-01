@@ -1,27 +1,3 @@
 <% content_for :title, "Payouts for " + @payout.year.to_s %>
-<div class="jumbotron margin-bottom-50">
-   <h1 class="green"><%= @payout.year %> league payouts.</h1>
-   <p class="lead">All historical data and payout/award information for the season starting in <%= @payout.year %>.</p>
-</div>
+<% content_for :section_subtitle, "You shouldn't be here" %>
 
-<div class="row padding-horizontal-20">
-	<div class="span5 header-row-text">Award</div>
-	<div class="span2 header-row-text">Amount</div>
-	<div class="span4 header-row-text">Winner</div>
-</div>
-<% @payout.awards.each do |award| %>
-<div class="row padding-horizontal-20">
-	<div class="span5 row-text-large"><%= award.name %></div>
-	<div class="span2 row-text-large"><%= award.amount %></div>
-	<div class="span4 row-text-large">
-	<%unless award.user.blank? %>
-		<%= award.user.display_name %>
-	<% else %>
-		-
-	<%end %>
-			</div>
-</div>
-<% end %>
-<% if current_user %>
-<%= link_to 'Edit', edit_payout_path(@payout) %>
-<% end %>

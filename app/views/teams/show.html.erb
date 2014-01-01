@@ -1,63 +1,16 @@
-<% content_for :title, "#{@team.team_name} | #{@team.user.display_name}"%>
-
-<div class="row margin-top-2em">
-	<div class="col-md-12">
-		<h1><%= @team.team_name %></h1>
-		<p class="lead">Managed by <%= @team.user.display_name %> <%= image_tag @team.user.avatar(:mini), :border => 0 %></p>
-		<p>Roster, contracts, budgetary information, awards won to date and other pertinent information.</p>
-		<hr />
-	</div>
-</div>		
+<% content_for :title, "#{@team.team_name} managed by #{@team.user.display_name}" %>
+<% content_for :section_subtitle, "Roster, contracts, budgetary information, awards won to date and other pertinent information" %>
+	
 		
 <div class="row">
-			<div class="col-md-7"><br />
-			
-				<div class="panel panel-success">
+			<div class="col-md-8"><br />
+				<div class="panel panel-danger margin-bottom-4em">
 					<div class="panel-heading">
-		          		<p class="panel-title bold"><%= @team.team_name%>'s Payouts</p>
-		        	</div>
-		        	<div class="panel-body">
-					
-						<%= render '/users/payout_awards_table', :user => @team.user %>
-						
-						<% if current_user %>
-						<div class="row margin-top-1em">
-							<div class="col-md-11">
-								<p><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit this member", edit_user_path(@team.user) %></p>
-							</div>
-						</div>
-						<% end %>
-						
-		        	</div>
-		      	</div><!-- end of panel -->
-			<%= render 'layouts/back_to_top_link' %>
-			</div><!-- end of col-md-7 -->
-			
-			
-	
-			
-			<div class="col-lg-offset-1 col-md-4 hidden-md hidden-sm hidden-xs"><br />
-				<div class="panel panel-default">
-					<div class="panel-heading">
-		          		<p class="panel-title bold">The league</p>
-		        	</div>
-		        	
-						<table cellspacing="0" cellpadding="0" border="0" class="table table-striped"
-							<% @current_members.each do |user|%>
-								<%= render '/users/member_list_nav', :user => user %>
-							<% end %>
-						</table>
-					
-				</div><!-- end of panel -->
-			</div><!-- end of col-md-4-->	
-		</div><!-- end of row -->
-
-<div class="row">
-			<div class="col-md-12"><br />
-				<div class="panel panel-default margin-bottom-4em">
-					<div class="panel-heading">
-		          		<p class="panel-title bold">Roster</p>
-						<small class="muted">Includes active roster spots, dead money, and contract buyouts.</small>
+		          		
+						<p class="panel-title bold"><%= image_tag @team.user.avatar(:mini), :border => 0, :style => "display: inline;", :align => "right" %>
+							<strong>Roster</strong><br />
+							<small>Includes active roster spots, dead money, and contract buyouts.</small>
+						</p>
 		        	</div>
 
 					
@@ -76,20 +29,20 @@
 						
 						
 						<tbody>
-						<% if @players.count > 0 %>
-							<% @players.each do |player| %>
-								<tr>
-									<td></td>
-									<td><%= link_to player.full_name, player %> (<%= player.nfl_team %>)</td>
-									<td class="hidden-sm hidden-xs"><%= player.position %></td>
-								<% player.subcontracts.current_year_or_later.each do |sub|%>
-									<td>$<%= sub.salary_amount %></td>
-									
-								<% end %>	
-							</tr>
-							<% end %>
-						
-						<% else %>
+							<% if @players.count > 0 %>
+								<% @players.each do |player| %>
+									<tr>
+										<td></td>
+										<td><%= link_to player.full_name, player %> (<%= player.nfl_team %>)</td>
+										<td class="hidden-sm hidden-xs"><%= player.position %></td>
+									<% player.subcontracts.current_year_or_later.each do |sub|%>
+										<td>$<%= sub.salary_amount %></td>
+
+									<% end %>	
+								</tr>
+								<% end %>
+
+							<% else %>
 							<tr>
 								<td></td>
 								<td colspan="6">No players on this team.</td>
@@ -98,18 +51,60 @@
 							<tr>
 								<td></td>
 								
-								<td><h3><span class="label label-danger">TOTAL:</span></h3></td>
+								<td><h4><span class="label label-danger">TOTAL:</span></h4></td>
 								<td></td>
-								<td><h3>$<%= @team.calculate_yearly_salary(current_year) %></h3></td>
-								<td><h3>$<%= @team.calculate_yearly_salary(current_year.to_i + 1) %></h3></td>
-								<td><h3>$<%= @team.calculate_yearly_salary(current_year.to_i + 2) %></h3></td>
-								<td><h3>$<%= @team.calculate_yearly_salary(current_year.to_i + 3) %></h3></td>
-								<td><h3>$<%= @team.calculate_yearly_salary(current_year.to_i + 4) %></h3></td>
-								<td><h3>$<%= @team.calculate_yearly_salary(current_year.to_i + 5) %></h3></td>
+								<td><h4>$<%= @team.calculate_yearly_salary(current_year) %></h4></td>
+								<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 1) %></h4></td>
+								<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 2) %></h4></td>
+								<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 3) %></h4></td>
+								<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 4) %></h4></td>
+								<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 5) %></h4></td>
 							</tr>
 						</tbody>
 					</table>		
 				</div>
-				<%= render 'layouts/back_to_top_link' %>
+				
+			<%= render 'layouts/back_to_top_link' %>
+			
+			
+			<div class="panel panel-success">
+				<div class="panel-heading">
+	          		<p class="panel-title bold"><%= @team.team_name%>'s Payouts</p>
+	        	</div>
+	        	<div class="panel-body">
+				
+					<%= render '/users/payout_awards_table', :user => @team.user %>
+					
+					<% if current_user %>
+					<div class="row margin-top-1em">
+						<div class="col-md-11">
+							<p><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit this member", edit_user_path(@team.user) %></p>
+						</div>
+					</div>
+					<% end %>
+					
+	        	</div>
+	      	</div><!-- end of panel -->
+			<%= render 'layouts/back_to_top_link' %>
+			
+			
 			</div><!-- end of col-md-7 -->
-		</div>
+			
+			
+	
+			
+			<div class="col-md-4 hidden-md hidden-sm hidden-xs"><br />
+				<div class="panel panel-default">
+					<div class="panel-heading">
+		          		<p class="panel-title bold">The league</p>
+		        	</div>
+		        	
+						<table cellspacing="0" cellpadding="0" border="0" class="table table-striped"
+							<% @current_members.each do |user|%>
+								<%= render '/users/member_list_nav', :user => user %>
+							<% end %>
+						</table>
+					
+				</div><!-- end of panel -->
+			</div><!-- end of col-md-4-->	
+		</div><!-- end of row -->

@@ -1,31 +1,25 @@
-<% content_for :title, "Announcements"%>
+<% content_for :title, "Latest updates" %>
+<% content_for :section_subtitle, "League/site announcements and other random information." %>
 
-<div class="row margin-top-2em">
-	<div class="col-md-12">
-		<h1>Latest gossip</h1>
-		<p class="lead">League/site announcements and other random information.</p>
-		<hr />
-		
-		<div class="row">
-			<div class="col-md-8"><br />
-			
-	   		<% @announcements.each do |announce| %>
-	      	<div class="margin-bottom-2em">
+<div class="row">
+	<div class="col-md-8"><br />
+  			<% @announcements.each do |announce| %>
+      		<div class="margin-bottom-2em">
 	       		<% if announce.avatar? %>
 					<%= image_tag(announce.avatar.url(:max200), :border => 0, :class => 'img-rounded') %>
 				<% end %>
-	        	<p class="h3 homepage-headline"><%= best_in_place_if current_user, announce, :title, :html_attrs => { :style => 'width: 740px' } %></p>
+	        	<p class="h1 homepage-headline"><%= best_in_place_if current_user, announce, :title, :html_attrs => { :style => 'width: 740px' } %></p>
           		<p class="margin-bottom-1em"><small class="muted"><%= l announce.created_at, format: :short %> by <img src="<%= announce.user.avatar(:tiny) %>" border="0" style="vertical-align: text-top;" /> <%= link_to announce.user.display_name, "/members/#" + announce.user.display_name %></small></p>
 				<%= best_in_place_if current_user, announce, :content, :type => :textarea, :html_attrs => { :style => 'width: 740px' }, :display_with => lambda { |v| textilize(v).html_safe } %>
-			
+	
 				<% if current_user %>
 					<p><span class="glyphicon glyphicon-pencil"></span>  <%= link_to 'Edit announcement', edit_feature_path(announce) %></p>
 				<% end %>
 
 	        </div>
 			<hr />
-			<% end %>
-		
+		<% end %>
+
 	</div><!-- end of col-md-8 -->
 	
 	<div class="col-md-4 hidden-sm hidden-xs"><br />

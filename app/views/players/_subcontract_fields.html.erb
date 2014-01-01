@@ -4,7 +4,7 @@
 		<%= f.label :team_id, :class => 'col-lg-3 control-label' %>
 		<div class="col-lg-9">
 		
-			<%= f.select(:team_id, Team.all.map {|c| [c.team_name, c.id]}, { :include_blank => true })%>
+			<%= f.select(:team_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true })%>
 		</div>
 	</div>
 

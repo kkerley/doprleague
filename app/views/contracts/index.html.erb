@@ -1,5 +1,29 @@
-<h1>Listing contracts</h1>
+<% content_for :title, "All contracts current and expired" %>
+<% content_for :section_subtitle, "A historical record of all historical contractual agreements and information" %>
 
-<% @contracts.each do |contract| %>
-	<p><%=link_to contract.player.full_name, contract %> contracted for <%= contract.contract_length %> years | <%= link_to "Delete", contract, :confirm => 'Are you sure?', :method => :delete, :class => 'label label-danger' %></p>
-<% end %>
+<div class="row">
+	<div class="col-md-12">
+		<div class="table-responsive"><br />	
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Player</th>
+						<th>Term</th>
+						<th></th>	
+					</tr>
+				</thead>
+				<tbody>
+					<% @contracts.each do |contract| %>	
+						<tr>
+							<td></td>
+							<td><%=link_to contract.player.full_name, contract %> </td>
+							<td>contracted for <%= contract.contract_length %> years beyond the <%= contract.subcontracts.map(&:contract_year).first %> season</td>
+							<td><%= link_to "Delete", contract, :confirm => 'Are you sure?', :method => :delete, :class => 'label label-danger' %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

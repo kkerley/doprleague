@@ -14,4 +14,8 @@ class Subcontract < ActiveRecord::Base
     Time.now.year
   end
   
+  def check_team(team_id)
+    return true if self.team_id == team_id
+  end
+  
 end

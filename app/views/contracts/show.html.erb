@@ -11,7 +11,7 @@
 
 <ul>
 <% @subcontracts.each do |sub| %>
-	<li><%= link_to sub.team.team_name, sub %></i>
+	<li><%= link_to sub.team.team_name, sub.team %></i>
 <% end %>
 </ul>
 <%= link_to 'Edit', edit_contract_path(@contract) %> |

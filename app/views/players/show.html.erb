@@ -1,23 +1,12 @@
-<% content_for :title, "#{@player.full_name}"%>
-
-<div class="row margin-top-2em">
-	<div class="col-md-12">
-		<h1><%= @player.full_name %> (<%= @player.position %>) for <%= @player.nfl_team %></h1>
-		<p class="lead">
-			Auction value: <span class="label label-danger">$<%= @player.auction_value %></span>
-		</p>
-	
-		<hr />
-	</div>
-</div>
-
+<% content_for :title, "#{@player.full_name} (#{@player.position}) for #{@player.nfl_team}" %>
+<% content_for :section_subtitle, "Player and contract information" %>
 
 <div class="row">
 	<div class="col-md-12">
 		
 		<% if @player.contracts %>
 			<% @player.contracts.each do |contract|%>
-			<p class="h2">Contract details</p>
+			<p class="h1">Contract details</p>
 			<p><%= link_to "Contract", contract %> started in <%= contract.contract_start_year %> for <%= contract.contract_length%> years</p>
 			
 			<% end %>

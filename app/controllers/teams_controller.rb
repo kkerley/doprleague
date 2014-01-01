@@ -18,6 +18,9 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @players = @team.players.uniq
     @current_members = User.current_members
+    @subcontracts = @team.subcontracts
+    
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @team }

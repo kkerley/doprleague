@@ -1,11 +1,5 @@
-<% content_for :title, "Payouts"%>
-
-
-<div class="row margin-top-2em">
-	<div class="col-md-12">
-		<h2>League payouts</h2>
-		<p class="lead">A historical archive of awards and their winners for past seasons.</p>
-		<hr />
+<% content_for :title, "Season payouts"%>
+<% content_for :section_subtitle, "A historical archive of awards and their winners for past seasons" %>
 
 
 <div class="row">
@@ -28,7 +22,7 @@
 	<div class="col-md-9 col-md-pull-3"><br />
 	<% @payouts.each do |payout| %>
 	
-		<div class="panel panel-default margin-bottom-4em">
+		<div class="panel panel-success margin-bottom-4em">
 			<div class="panel-heading">
           		<p class="panel-title bold"><a id="<%= payout.year %>"></a><%= payout.year %> Awards and Payouts</p>
         	</div>
@@ -80,8 +74,5 @@
 		<%= render 'layouts/back_to_top_link' %>
 	<% end %>
 	</div><!-- end of col-md-9 -->
-	
-	
-		
 	
 </div><!-- end of row -->
