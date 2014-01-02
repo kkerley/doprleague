@@ -2,6 +2,11 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
+Version 1.3.4 [2013/01/01]
+--------------------------------------------------
+- Added necessary security for all controllers
+
+
 Version 1.3.3 [2013/12/01]
 --------------------------------------------------
 - Incrased width of the homepage_order number field on the Feature form

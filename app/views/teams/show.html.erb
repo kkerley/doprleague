@@ -35,10 +35,13 @@
 										<td></td>
 										<td><%= link_to player.full_name, player %> (<%= player.nfl_team %>)</td>
 										<td class="hidden-sm hidden-xs"><%= player.position %></td>
-									<% player.subcontracts.current_year_or_later.each do |sub|%>
-										<td>$<%= sub.salary_amount %></td>
-
-									<% end %>	
+										<% player.subcontracts.current_year_or_later.each do |sub| %>
+											<% if sub.team_id == @team.id %>
+												<td>$<%= sub.salary_amount %></td>
+											<% else %>
+												<td></td>
+											<% end %>
+										<% end %>
 								</tr>
 								<% end %>
 

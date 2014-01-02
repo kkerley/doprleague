@@ -1,4 +1,6 @@
 class ContractsController < ApplicationController
+before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new, :admin]
+
   # GET /contracts
   # GET /contracts.json
   def index

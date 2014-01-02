@@ -1,4 +1,5 @@
 class SalaryProgressionsController < ApplicationController
+  before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new, :admin]
   # GET /salary_progressions
   # GET /salary_progressions.json
   def index

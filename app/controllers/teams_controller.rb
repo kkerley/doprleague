@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new, :admin]
   # GET /teams
   # GET /teams.json
   def index
@@ -16,9 +17,10 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
-    @players = @team.players.uniq
+    @players = @team.get_subcontract_players.uniq
+    
     @current_members = User.current_members
-    @subcontracts = @team.subcontracts
+    #@subcontracts = @team.subcontracts.current_year_or_later
     
     
     respond_to do |format|

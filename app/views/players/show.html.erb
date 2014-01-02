@@ -2,18 +2,45 @@
 <% content_for :section_subtitle, "Player and contract information" %>
 
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-6">
 		
 		<% if @player.contracts %>
-			<% @player.contracts.each do |contract|%>
-			<p class="h1">Contract details</p>
-			<p><%= link_to "Contract", contract %> started in <%= contract.contract_start_year %> for <%= contract.contract_length%> years</p>
+			<% @player.contracts.each do |contract| %>
+				<p class="h1">Contracts</p>
 			
-			<% end %>
+				
+				<div class="panel panel-info margin-bottom-4em">
+					<div class="panel-heading">
+		          		
+						<p class="panel-title bold">Contract started in <%= contract.contract_start_year %> for <%= contract.contract_length%> years</p>
+					</div>
+					
+					<table class="table table-striped table-condensed">
+						<thead>
+							<tr>
+								<th>Year</th>
+								<th>Team</th>
+								<th>Amount</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% contract.subcontracts.each do |sub| %>
+								<tr>
+									<td><%= sub.contract_year %></td>
+									<td><%= link_to sub.team.team_name, sub.team %> (<%= sub.team.user.display_name %>)</td>
+									<td>$<%= sub.salary_amount %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				<% end %>
+			</div>
 		
 		<% else %>
 			<p>Free agent</p>
 		<% end %>
-		<%= link_to "Edit #{@player.full_name}", edit_player_path(@player)%>
+		<% if current_user %>
+			<p><%= link_to "Edit #{@player.full_name}", edit_player_path(@player) %></p>
+		<% end %>
 	</div>
 </div>

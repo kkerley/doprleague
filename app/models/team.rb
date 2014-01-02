@@ -12,6 +12,10 @@ class Team < ActiveRecord::Base
     "#{self.id}-#{self.team_name}".parameterize
   end
   
+  def current_year
+    Time.now.year
+  end
+  
   def self.list_team_options
     Team.select("id, team_name").map {|x| [x.id, x.team_name] }
   end
@@ -28,6 +32,19 @@ class Team < ActiveRecord::Base
   end
   
   
+  def get_subcontract_players
+    subcontracts = self.subcontracts
+    valid_subs = []
+    
+    subcontracts.each do |sub|
+      if sub.contract_year >= current_year
+        valid_subs << sub.player
+      end
+    end
+    valid_subs
+  end
+  
+  
   def calculate_yearly_salary(year)
     subcontracts = self.subcontracts.where("contract_year = ?", year) #finds all subcontracts for this team and filters out only the ones for the year passed in
     total_salary = 0
@@ -35,8 +52,10 @@ class Team < ActiveRecord::Base
     subcontracts.each do |sub|
       total_salary += sub.salary_amount 
     end
-    return total_salary
+    total_salary
   end
+  
+  
   
   
 end

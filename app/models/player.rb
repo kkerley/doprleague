@@ -17,10 +17,13 @@ class Player < ActiveRecord::Base
   scope :all_kickers, lambda { where("position = ?", "K").order("auction_value desc") }
   scope :all_defenses, lambda { where("position = ?", "DEF").order("auction_value desc") }
   
+  scope :current_year_or_later, lambda { where("contract_year >= ?", self.current_year).order("contract_year ASC") }
+  
   
   def to_param
     "#{self.id}-#{self.first_name}-#{self.last_name}".parameterize
   end
+  
   
   def full_name
    [first_name, last_name].join(' ')
@@ -35,6 +38,9 @@ class Player < ActiveRecord::Base
   def is_contracted?
     return true if self.contracts.count > 0
   end
+  
+  
+  
    
   
   def self.text_search(query)
