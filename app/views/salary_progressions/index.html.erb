@@ -56,7 +56,7 @@
 					<td><%= best_in_place_if current_user, salary, :year4, :html_attrs => { :style => 'width: 80px' } %></td>
 					<td><%= best_in_place_if current_user, salary, :year5, :html_attrs => { :style => 'width: 80px' } %></td>
 					<% if current_user %>
-						<td><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit this salary progression", edit_salary_progression_path(salary) %></td>
+						<td><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this salary progression", edit_salary_progression_path(salary) %></td>
 					<% end %>
 					
 				</tr>

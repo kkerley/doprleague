@@ -17,18 +17,22 @@ class Player < ActiveRecord::Base
   scope :all_kickers, lambda { where("position = ?", "K").order("auction_value desc") }
   scope :all_defenses, lambda { where("position = ?", "DEF").order("auction_value desc") }
   
-  scope :current_year_or_later, lambda { where("contract_year >= ?", self.current_year).order("contract_year ASC") }
+  
   
   
   def to_param
     "#{self.id}-#{self.first_name}-#{self.last_name}".parameterize
   end
   
+  def current_year
+    Time.now.year
+  end
+
   
   def full_name
    [first_name, last_name].join(' ')
   end
-  
+
   def full_name=(name)
     split = name.split(' ', 2)
     self.first_name = split.first
@@ -36,20 +40,34 @@ class Player < ActiveRecord::Base
   end
   
   def is_contracted?
-    return true if self.contracts.count > 0
+    current_year = Time.now.year
+    if self.contracts.count > 0
+
+      self.subcontracts.each do |sub|
+        if sub.contract_year >= current_year
+          return true
+        end
+      end
+      return false
+    end
+  end
+
+  def this_year
+    current_year = Time.now.year
+    self.subcontracts.each do |sub|
+      return sub if sub.contract_year == current_year
+    end
   end
   
-  
-  
-   
   
   def self.text_search(query)
     if query.present?
       rank = <<-RANK
           ts_rank(to_tsvector(first_name), plainto_tsquery(#{sanitize(query)})) +
-          ts_rank(to_tsvector(last_name), plainto_tsquery(#{sanitize(query)}))
+          ts_rank(to_tsvector(last_name), plainto_tsquery(#{sanitize(query)})) + 
+          ts_rank(to_tsvector(position), plainto_tsquery(#{sanitize(query)}))
         RANK
-      where("first_name @@ :q or last_name @@ :q", q: "%#{query}%").order("#{rank} desc")
+      where("first_name @@ :q or last_name @@ :q or position @@ :q", q: "%#{query}%").order("#{rank} desc")
     else
       scoped
     end

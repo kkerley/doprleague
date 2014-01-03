@@ -22,7 +22,7 @@
 			<td><%= @salary_progression.year4 %></td>
 			<td><%= @salary_progression.year5 %></td>
 			<% if current_user %>
-				<td><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Edit this salary progression", edit_salary_progression_path(@salary_progression) %></td>
+				<td><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this salary progression", edit_salary_progression_path(@salary_progression) %></td>
 			<% end %>
 			
 		</tr>
