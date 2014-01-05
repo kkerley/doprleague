@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131225175320) do
+ActiveRecord::Schema.define(:version => 20140104214500) do
 
   create_table "awards", :force => true do |t|
     t.text     "name"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20131225175320) do
     t.boolean  "is_franchised"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.boolean  "is_dead_money"
+    t.boolean  "is_drafted"
   end
 
   create_table "features", :force => true do |t|
@@ -80,13 +82,11 @@ ActiveRecord::Schema.define(:version => 20131225175320) do
     t.integer  "auction_value"
     t.string   "bye_week"
     t.integer  "team_id"
-    t.boolean  "is_drafted"
     t.integer  "contract_id"
     t.boolean  "is_bought_out"
     t.integer  "bought_out_by_team_id"
     t.boolean  "is_extended"
     t.boolean  "is_franchised"
-    t.boolean  "is_dead_money"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end

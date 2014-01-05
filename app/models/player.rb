@@ -19,11 +19,12 @@ class Player < ActiveRecord::Base
   
   
   
-  
   def to_param
     "#{self.id}-#{self.first_name}-#{self.last_name}".parameterize
   end
   
+
+  # used for a number of methods for determining contract validity
   def current_year
     Time.now.year
   end
@@ -39,10 +40,8 @@ class Player < ActiveRecord::Base
     self.last_name = split.last
   end
   
-  def is_contracted?
-    current_year = Time.now.year
+  def is_contracted? # used for the players#index action to display whether or not a player has a current/active contract or not
     if self.contracts.count > 0
-
       self.subcontracts.each do |sub|
         if sub.contract_year >= current_year
           return true
@@ -52,15 +51,16 @@ class Player < ActiveRecord::Base
     end
   end
 
-  def this_year
-    current_year = Time.now.year
+  def this_year # used for getting the subcontract for the current year to display the correct team name on the players#index action
     self.subcontracts.each do |sub|
       return sub if sub.contract_year == current_year
     end
   end
   
   
-  def self.text_search(query)
+
+  
+  def self.text_search(query) # search by first_name, last_name or position
     if query.present?
       rank = <<-RANK
           ts_rank(to_tsvector(first_name), plainto_tsquery(#{sanitize(query)})) +

@@ -29,7 +29,7 @@
 					<div class="panel panel-success">
 						<div class="panel-heading">
 			          		<p class="panel-title bold">Import players <small>only .csv accepted at this time.</small></p>
-							<small class="muted">Download full list in <%= link_to ".csv", players_path(format: "csv") %> or <%= link_to ".xsl", players_path(format: "xls") %></small>
+							<small class="muted">Download full list in <%= link_to ".csv", players_path(format: "csv") %> <!-- or <% link_to ".xsl", players_path(format: "xls") %> --></small>
 			        	</div>
 							<div class="panel-body">
 									<%= form_tag import_players_path, :class => "form-inline", multipart: true do %>
@@ -55,19 +55,19 @@
 			<div class="panel-heading">
           		<p class="panel-title bold">NFL personnel</p>
 				<small class="muted">
-					Download full list in <%= link_to ".csv", players_path(format: "csv") %> or <%= link_to ".xsl", players_path(format: "xls") %>
+					Download full list in <%= link_to ".csv", players_path(format: "csv") %> <!-- or <% link_to ".xsl", players_path(format: "xls") %> -->
 				</small>
 				
         	</div>
         	<div class="search-filters">
         		
-				<a href="/players" class="btn btn-primary">All players</a> 
-				<a href="/players?utf8=✓&query=QB" class="btn btn-default">Quarterbacks</a> 
-				<a href="/players?utf8=✓&query=WR" class="btn btn-default">Wide Receivers</a> 
-				<a href="/players?utf8=✓&query=RB" class="btn btn-default">Running Backs</a> 
-				<a href="/players?utf8=✓&query=TE" class="btn btn-default">Tight Ends</a> 
-				<a href="/players?utf8=✓&query=K" class="btn btn-default">Kickers</a> 
-				<a href="/players?utf8=✓&query=DEF" class="btn btn-default">Defenses</a>
+				<a href="/players" class="btn btn-primary">All</a> 
+				<a href="/players?utf8=✓&query=QB" class="btn btn-default">QB</a> 
+				<a href="/players?utf8=✓&query=WR" class="btn btn-default">WR</a> 
+				<a href="/players?utf8=✓&query=RB" class="btn btn-default">RB</a> 
+				<a href="/players?utf8=✓&query=TE" class="btn btn-default">TE</a> 
+				<a href="/players?utf8=✓&query=K" class="btn btn-default">K</a> 
+				<a href="/players?utf8=✓&query=DEF" class="btn btn-default">DEF</a>
         	</div>
         	<table cellspacing="0" cellpadding="0" border="0" class="table table-striped table-condensed">
 				<thead>
@@ -79,7 +79,7 @@
 						<th class="hidden-sm hidden-xs">NFL team</th>		
 						<th>Salary</th>
 						<th>Bye</th>
-						<th class="hidden-sm hidden-xs">Contracted?</th>
+						<th class="hidden-sm hidden-xs">Owned by</th>
 						<th class="hidden-sm hidden-xs">Bought out?</th>
 						<th class="hidden-sm hidden-xs">Bought out by</th>
 						<!-- <th>Dead money?</th>
@@ -102,14 +102,14 @@
 						<td><%= player.bye_week %></td>
 						<td class="hidden-sm hidden-xs">
 							<% if player.is_contracted? %>
-								<span class="label label-danger">*</span> <%= link_to player.this_year.team.team_name, player.this_year.team %>
+								<span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>
 							<% else %>
 								<span class="label label-success">FA</span>
 							<% end %>
 						</td>
 						<td class="hidden-sm hidden-xs"><!-- buyout boolean --></td>
 						<td class="hidden-sm hidden-xs"><!-- bought out by --></td>
-						<!-- <td><% player.is_dead_money %></td>
+						<!-- <td> player.is_dead_money </td>
 						<td> player.is_extended </td>
 						<td>player.is_franchised</td> -->
 					

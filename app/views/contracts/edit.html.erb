@@ -1,4 +1,8 @@
-<% content_for :title, "Editing contract" %>
-<% content_for :section_subtitle, "Be very careful here. Maybe you should go to the player's edit page to make adjustments instead." %>
+<% content_for :title, "Editing #{@contract.player.full_name}'s contract" %>
+<% content_for :section_subtitle, "Contract started in #{@contract.contract_start_year} for #{@contract.contract_length} years" %>
 
-<%= render 'form' %>
+<div class="row">
+	<div class="col-md-10">
+		<%= render "form" %>
+	</div>
+</div>

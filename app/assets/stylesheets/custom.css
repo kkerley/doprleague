@@ -107,3 +107,7 @@ fieldset.contract-fields{
 .search-filters{
 	margin: 1.5em 0 2em 1.5em;
 }
+
+.form-group small{
+	font-weight: normal;
+}

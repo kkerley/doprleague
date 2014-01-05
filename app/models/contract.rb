@@ -1,5 +1,5 @@
 class Contract < ActiveRecord::Base
-  attr_accessible :contract_length, :is_bought_out, :bought_out_by_team_id, :is_extended, :is_franchised, :contract_start_year, :contracted_team, :player_id, :subcontracts_attributes
+  attr_accessible :contract_length, :is_bought_out, :bought_out_by_team_id, :is_extended, :is_franchised, :contract_start_year, :contracted_team, :player_id, :subcontracts_attributes, :is_drafted, :is_dead_money
   attr_accessor :contracted_team
   
   belongs_to :player
@@ -10,6 +10,8 @@ class Contract < ActiveRecord::Base
   
   after_create :create_subcontracts
 
+  after_update :check_for_buyout, :if => Proc.new { |a| a.is_bought_out_changed? }
+  # after_update :check_for_extension, :if => Proc.new { |a| a.is_extended_changed? }
 
   def create_subcontracts
     contracted_team_id = self.contracted_team
@@ -31,6 +33,16 @@ class Contract < ActiveRecord::Base
      
   end
   
-  
+  def check_for_buyout
+    if self.is_bought_out
+      self.subcontracts.current_year_or_later.each do |sub|
+        sub.salary_amount *= 0.6
+        sub.save!
+      end
+    end
+  end
 
+  def check_for_extension
+
+  end
 end

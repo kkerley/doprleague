@@ -42,10 +42,10 @@ class PlayersController < ApplicationController
     
     if @player.is_contracted?
       @player.subcontracts
-    else
-      @player.contracts.build
     end
-   
+    
+    @player.contracts.build
+       
   end
 
   # POST /players
