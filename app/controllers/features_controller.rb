@@ -6,7 +6,6 @@ before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new,
   def index
     @announcements = Feature.announcements_list.others.published
     @jumbotron = Feature.announcements_list.jumbotron
-    @users = User.current_members
     
     # @all_features = Feature.homepage_list
 

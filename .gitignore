@@ -8,12 +8,14 @@
 /.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
+db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
-/config/database.yml/db/*.bak
-/db/live_backups
+log/*.log
+tmp
+config/database.yml/db/*.bak
 .gitignore
 config/database.yml
+* copy.*
+db/live_backups
+.DS_store

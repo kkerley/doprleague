@@ -3,7 +3,7 @@ class Contract < ActiveRecord::Base
   attr_accessor :contracted_team
   
   belongs_to :player
-  has_many :subcontracts
+  has_many :subcontracts, dependent: :destroy
   has_many :teams, through: :subcontracts
   
   accepts_nested_attributes_for :subcontracts

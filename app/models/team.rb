@@ -4,7 +4,8 @@ class Team < ActiveRecord::Base
   belongs_to :user
   has_many :subcontracts
   has_many :players, through: :subcontracts
-  
+  has_many :contracts, through: :subcontracts
+
   default_scope order('team_name ASC')
   
   

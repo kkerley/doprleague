@@ -17,12 +17,19 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
-    @players = @team.get_subcontract_players.uniq
-    
-    @current_members = User.current_members
-    #@subcontracts = @team.subcontracts.current_year_or_later
-    
-    
+    @players = @team.get_subcontract_players.uniq # original way of getting only relevant subcontract information onto the pages
+    # @players = @team.players.uniq
+    # @all_contracts = @team.contracts.current_year_or_later
+    # @current_contracts = @all_contracts.subcontracts
+
+    # @players = @current_contracts.players.uniq
+
+
+##############################################
+# Redo all team#show view logic to incorporate the fact I can call @team.players
+
+##############################################
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @team }
