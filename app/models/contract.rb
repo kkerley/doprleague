@@ -8,6 +8,7 @@ class Contract < ActiveRecord::Base
   
   accepts_nested_attributes_for :subcontracts
   
+
   after_create :create_subcontracts
 
   after_update :check_for_buyout, :if => Proc.new { |a| a.is_bought_out_changed? }
@@ -43,6 +44,8 @@ class Contract < ActiveRecord::Base
   end
 
   def check_for_extension
+    if self.is_extended
 
+    end
   end
 end

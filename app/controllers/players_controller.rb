@@ -18,6 +18,7 @@ class PlayersController < ApplicationController
   # GET /players/1.json
   def show
     @player = Player.find(params[:id])
+    @contracts = @player.contracts.order("contract_start_year desc")
 
     respond_to do |format|
       format.html # show.html.erb

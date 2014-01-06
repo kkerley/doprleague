@@ -80,11 +80,8 @@
 						<th>Salary</th>
 						<th>Bye</th>
 						<th class="hidden-sm hidden-xs">Owned by</th>
-						<th class="hidden-sm hidden-xs">Bought out?</th>
-						<th class="hidden-sm hidden-xs">Bought out by</th>
-						<!-- <th>Dead money?</th>
-						<th>Extended?</th>
-						<th>Franchised?</th> -->
+						
+						
 						<% if current_user %>
 						<th></th>
 						<% end %>
@@ -98,7 +95,13 @@
 						
 						<td class="hidden-sm hidden-xs"><%= player.position %></td>
 						<td class="hidden-sm hidden-xs"><%= player.nfl_team %></td>
-						<td><strong>$<%= best_in_place_if current_user, player, :auction_value, :html_attrs => { :style => 'width: 30px' } %></strong></td>
+						<td><strong>
+							<% if player.is_contracted? %>
+								$<%= player.this_year.salary_amount %>
+							<% else %>
+								$<%= player.auction_value %>
+							<% end %>
+						</strong></td>
 						<td><%= player.bye_week %></td>
 						<td class="hidden-sm hidden-xs">
 							<% if player.is_contracted? %>
@@ -107,11 +110,7 @@
 								<span class="label label-success">FA</span>
 							<% end %>
 						</td>
-						<td class="hidden-sm hidden-xs"><!-- buyout boolean --></td>
-						<td class="hidden-sm hidden-xs"><!-- bought out by --></td>
-						<!-- <td> player.is_dead_money </td>
-						<td> player.is_extended </td>
-						<td>player.is_franchised</td> -->
+						
 					
 						<% if current_user %>
 							<td><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit", edit_player_path(player) %></td>

@@ -16,7 +16,8 @@ class Player < ActiveRecord::Base
   scope :all_tight_ends, lambda { where("position = ?", "TE").order("auction_value desc") }
   scope :all_kickers, lambda { where("position = ?", "K").order("auction_value desc") }
   scope :all_defenses, lambda { where("position = ?", "DEF").order("auction_value desc") }
-  
+
+
   
   
   def to_param
@@ -40,25 +41,52 @@ class Player < ActiveRecord::Base
     self.last_name = split.last
   end
   
+
+
   def is_contracted? # used for the players#index action to display whether or not a player has a current/active contract or not
-    if self.contracts.count > 0
-      self.subcontracts.each do |sub|
-        if sub.contract_year >= current_year
-          return true
-        end
-      end
+    if self.contracts.count == 0
       return false
+    else 
+      these_contracts = [] # empty array to hold non-bought out contracts
+      self.contracts.each do |contract|
+        unless contract.is_bought_out
+          these_contracts << contract
+        end
+      end # end of |contract| block
+
+      if these_contracts.size > 0
+        these_contracts.each do |con|
+          if (con.contract_start_year + con.contract_length) > current_year
+            return true
+          else
+            return false
+          end
+        end
+
+      else
+        return false
+      end
     end
+    return false
   end
 
   def this_year # used for getting the subcontract for the current year to display the correct team name on the players#index action
     self.subcontracts.each do |sub|
-      return sub if sub.contract_year == current_year
+      if sub.contract_year == current_year && !sub.contract.is_bought_out
+        return sub
+      end
     end
   end
   
-  
-
+  def this_team_contract(team) # needed to pull in only the non-bought-out contract for subcontracts on the team#show page
+    self.contracts.each do |contract|
+      contract.subcontracts.each do |sub|
+        if sub.team_id == team.id
+          return contract
+        end
+      end
+    end
+  end
   
   def self.text_search(query) # search by first_name, last_name or position
     if query.present?
