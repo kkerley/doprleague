@@ -45,29 +45,29 @@ class Player < ActiveRecord::Base
 
   def is_contracted? # used for the players#index action to display whether or not a player has a current/active contract or not
     if self.contracts.count == 0
-      return false
+      return false # no contracts
     else 
       these_contracts = [] # empty array to hold non-bought out contracts
       self.contracts.each do |contract|
         unless contract.is_bought_out
-          these_contracts << contract
+          these_contracts << contract # adding non-bought out contract to array
         end
       end # end of |contract| block
 
       if these_contracts.size > 0
         these_contracts.each do |con|
-          if (con.contract_start_year + con.contract_length) > current_year
-            return true
+          if (con.contract_start_year + con.contract_length) > current_year # checking to see if contracts in these_contracts are current
+            return true # current contract
           else
-            return false
+            return false #contracts have all expired
           end
         end
 
       else
-        return false
+        return false # these_contracts was 0
       end
     end
-    return false
+    # return false # not sure why this is here. 99% sure it's a hold-over from testing that's no longer needed
   end
 
   def this_year # used for getting the subcontract for the current year to display the correct team name on the players#index action

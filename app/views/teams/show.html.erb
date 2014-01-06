@@ -4,7 +4,7 @@
 		
 <div class="row">
 			<div class="col-md-8"><br />
-				<div class="panel panel-danger margin-bottom-4em">
+				<div class="panel panel-danger">
 					<div class="panel-heading">
 		          		
 						<p class="panel-title bold"><%= image_tag @team.user.avatar(:mini), :border => 0, :style => "display: inline;", :align => "right" %>
@@ -33,11 +33,17 @@
 								<% @players.each do |player| %>
 									<tr>
 										<td></td>
-										<td><%= link_to player.full_name, player %> (<%= player.nfl_team %>)</td>
+										<td><%= link_to player.full_name, player %> (<%= player.nfl_team %>)
+											
+										</td>
 										<td class="hidden-sm hidden-xs"><%= player.position %></td>
 										<% player.this_team_contract(@team).subcontracts.current_year_or_later.each do |sub| %>
 											<% if sub.team_id == @team.id %>
-												<td>$<%= sub.salary_amount %></td>
+												<% if sub.contract.is_bought_out %>
+													<td class="bought-out">
+												<% else %> 
+													<td>
+												<% end %>$<%= sub.salary_amount %></td>
 											<% else %>
 												<td></td>
 											<% end %>
@@ -64,9 +70,14 @@
 								<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 5) %></h4></td>
 							</tr>
 						</tbody>
-					</table>		
+					</table>
+
 				</div>
-				
+				<small class="bought-out">Bought out contract</small><br />
+				<small>
+					<i class="fa fa-tag fa-lg"></i> Franchised player<br />
+					<i class="fa fa-plus-circle fa-lg"></i> Extended player
+				</small>
 			<%= render 'layouts/back_to_top_link' %>
 			
 			

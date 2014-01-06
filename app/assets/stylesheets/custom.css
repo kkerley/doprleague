@@ -111,3 +111,8 @@ fieldset.contract-fields{
 .form-group small{
 	font-weight: normal;
 }
+
+.bought-out{
+	background-color: #fff1a6 !important;
+	color: #c37c00;
+}
