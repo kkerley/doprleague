@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new, :admin]
+  before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
   # GET /players
   # GET /players.json
   def index

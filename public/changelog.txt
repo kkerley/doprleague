@@ -2,9 +2,31 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 1.3.4 [2013/01/01]
+
+Version 2.0 [2014/xx/xx]
 --------------------------------------------------
-- Added necessary security for all controllers
+Insane number of changes; as many that can be remembered have been listed below
+- Added Contracts/Subcontracts for roster management
+- Built necessary logic to create long-term player contracts using Players, Salary Progressions, Contracts and Subcontracts
+- Built necessary logic to only show current (Sub)Contracts on Team#show 
+- Built necessary logic to successfully buyout active (Sub)Contracts while allowing another team to pick up said player and sign them to a deal
+- Built necessary logic to extend a contract
+- Built necessary logic to franchise a contract
+- Expanded SalaryProgressions using the formula for calculating them
+- Expanded SalaryProgessions to go out to 7 years
+- Changed the players#index view to show less, but the most important information
+- Changed players#show view to contain all Contract/Subcontract information
+- Changed players#edit view to contain all Contract/Subcontract information for editing
+- Made views more DRY by moving the page headline/sub-headline into the application.html.erb layout and pass the values via content_for statements
+- Added necessary current_user security for all controllers
+- Changed out all icons to be Font Awesome rather than the extremely limited selections of Glyphicons included in Twitter Bootstrap
+- Enabled Twitter Bootstrap theme to give the site some more visual weight
+- Reorganized the top nav
+- Condensed the Admin Control Bar
+- Made numerous adjustments to make the mobile version of the site cleaner/more user-friendly
+- Made numerous adjustments to text styles throughout the site to be more consistent
+- Added "division" field to Team
+- Added Standings and TeamRecords to keep tracking of all-time league standings
 
 
 Version 1.3.3 [2013/12/01]

@@ -1,0 +1,41 @@
+<h1>Listing team_records</h1>
+
+<table>
+  <tr>
+    <th>Team</th>
+    <th>Standing</th>
+    <th>Rank</th>
+    <th>Wlt</th>
+    <th>Pct</th>
+    <th>Division record</th>
+    <th>Pts for</th>
+    <th>Pts against</th>
+    <th>Streak</th>
+    <th>Moves</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @team_records.each do |team_record| %>
+  <tr>
+    <td><%= team_record.team_id %></td>
+    <td><%= team_record.standing_id %></td>
+    <td><%= team_record.rank %></td>
+    <td><%= team_record.wlt %></td>
+    <td><%= team_record.pct %></td>
+    <td><%= team_record.division_record %></td>
+    <td><%= team_record.pts_for %></td>
+    <td><%= team_record.pts_against %></td>
+    <td><%= team_record.streak %></td>
+    <td><%= team_record.moves %></td>
+    <td><%= link_to 'Show', team_record %></td>
+    <td><%= link_to 'Edit', edit_team_record_path(team_record) %></td>
+    <td><%= link_to 'Destroy', team_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Team record', new_team_record_path %>

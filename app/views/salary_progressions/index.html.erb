@@ -27,14 +27,14 @@
 
 
 <div class="row">
-	<div class="col-md-5"><br />
+	<div class="col-md-7"><br />
 		
 	
 		<div class="panel panel-default">
 			<div class="panel-heading">
           		<p class="panel-title bold">Salaries</p>
         	</div>
-        	<table cellspacing="0" cellpadding="0" border="0" class="table">
+        	<table cellspacing="0" cellpadding="0" border="0" class="table table-condensed table-striped">
 				<tr>
 					<th></th>
 					<th>Auction value</th>
@@ -42,6 +42,8 @@
 					<th>Year 3</th>
 					<th>Year 4</th>
 					<th>Year 5</th>
+					<th>Year 6</th>
+					<th>Year 7</th>
 					<% if current_user %>
 						<td></td>
 					<% end %>
@@ -55,6 +57,8 @@
 					<td><%= best_in_place_if current_user, salary, :year3, :html_attrs => { :style => 'width: 80px' } %></td>
 					<td><%= best_in_place_if current_user, salary, :year4, :html_attrs => { :style => 'width: 80px' } %></td>
 					<td><%= best_in_place_if current_user, salary, :year5, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year6, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year7, :html_attrs => { :style => 'width: 80px' } %></td>
 					<% if current_user %>
 						<td><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit", edit_salary_progression_path(salary) %></td>
 					<% end %>

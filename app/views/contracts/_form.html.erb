@@ -76,7 +76,7 @@
     <%= f.label :bought_out_by_team_id, "Bought out by", :class => 'col-lg-3 col-lg-offset-2 control-label' %>
     <div class="col-lg-6">
     
-      <%= f.select(:bought_out_by_team_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true })%><br />
+      <%= f.select(:bought_out_by_team_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
       <small>Only necessary if a player is bought out. Player may NOT be picked up again by the team buying him out until all contracts have expired.</small>
     </div>
   </div>

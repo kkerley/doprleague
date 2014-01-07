@@ -1,18 +1,32 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, "Contract infromation for #{@contract.player.full_name}" %>
+<% content_for :section_subtitle, "Specific information about this contract; other contracts for this player may be available" %>
+<div class="row">
+	<div class="col-md-7">
+		<p class="h1">
+		 	Contract signed in  <%= @contract.contract_start_year %> for <%= @contract.contract_length %> 
+		 	<% if @contract.contract_length == 1 %>year<% else %>years<% end %>.
+		</p>
+		<p class="h2">Auction value: $<%= @contract.player.auction_value %></p>
 
 
+		<table class="table table-condensed table-striped">
+			<thead>
+				<th></th>
+				<th>Contract year</th>
+				<th>Contracted to</th>
+				<th>Salary</th>
 
-<p>
-  <b>Contract length:</b>
-  <%= @contract.contract_length %>
-</p>
-<p><%= @contract.player.auction_value %></p>
-<p><%= @contract.player.full_name%>
-
-<ul>
-<% @subcontracts.each do |sub| %>
-	<li><%= link_to sub.team.team_name, sub.team %></i>
-<% end %>
-</ul>
-<%= link_to 'Edit', edit_contract_path(@contract) %> |
-<%= link_to 'Back', contracts_path %>
+			</thead>
+			<tbody>
+				<% @contract.subcontracts.each do |sub| %>
+					<tr>
+						<td></td>
+						<td><%= sub.contract_year %></td>
+						<td><%= link_to sub.team.team_name, sub.team %></td>
+						<td>$<%= sub.salary_amount %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

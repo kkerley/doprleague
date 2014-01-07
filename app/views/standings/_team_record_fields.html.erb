@@ -1,0 +1,45 @@
+<tr>
+	<td></td>
+	<td>
+		<%= f.text_field :rank, :class => "form-control", :style => "width: 80px;" %>
+	</td>
+
+	<td>
+		<%= f.select(:team_id, Team.all.map {|c| [c.team_name, c.id]}, { :include_blank => true, :prompt => "Select" }, {:class => "form-control"}) %>
+	</td>
+
+	<td>
+		<%= f.text_field :wlt, :class => "form-control", :style => "width: 80px;" %>
+	</td>
+	
+	<td>
+		<%= f.text_field :pct, :class => "form-control", :style => "width: 80px;" %>
+	</td>
+
+	<td>
+		<%= f.text_field :division_record, :class => "form-control", :style => "width: 80px;" %>
+	</td>
+
+
+	<td>
+		<%= f.text_field :pts_for, :class => "form-control", :style => "width: 80px;" %>
+	</td>
+
+	<td>
+		<%= f.text_field :pts_against, :class => "form-control", :style => "width: 80px;" %>
+	</td>
+
+	<td>
+		<%= f.text_field :streak, :class => "form-control", :style => "width: 80px;" %>
+	</td>
+
+	<td>
+		<%= f.text_field :moves, :class => "form-control", :style => "width: 80px;" %>
+	</td>
+
+	<td>
+		<%= f.check_box :_destroy %>	
+	</td>
+
+
+</tr>

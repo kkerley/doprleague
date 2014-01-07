@@ -1,0 +1,56 @@
+<%= form_for @standing, :class => "form-horizontal" do |f| %>
+  <% if @standing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@standing.errors.count, "error") %> prohibited this standing from being saved:</h2>
+
+      <ul>
+      <% @standing.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <p class="h2">Year</p>
+    <%= f.number_field :year, :class => 'form-control', :style => "width: 100px;" %>
+  </div>
+
+
+<div class="form-group">
+    <p class="h2">Standings</p>
+  
+    <table class="table table-condensed table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Rank</th>
+          <th>Team</th>
+          <th>W-L-T</th>
+          <th>Pct</th>
+          <th>Div</th>
+          <th>Pts for</th>
+          <th>Pts against</th>
+          <th>Streak</th>
+          <th>Moves</th>
+          <th><i class="fa fa-minus-circle"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= f.fields_for :team_records do |builder| %>
+          <%= render 'team_record_fields', f: builder %>
+        <%end %>
+         <tr>
+          <td></td>
+          <td colspan="10"><%= link_to_add_fields "Add team record", f, :team_records %></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+  <div class="form-group">
+    <div class="col-md-12">
+       <%= f.submit :class => "btn btn-success btn-large" %>
+    </div>
+  </div>
+<% end %>

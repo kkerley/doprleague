@@ -1,5 +1,5 @@
 <div class="col-md-12">
-	<%= form_for @payout, :html => { :class => "form-horizontal" } do |f| %>
+	<%= form_for @payout, :class => "form-horizontal" do |f| %>
 	  <% if @payout.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@payout.errors.count, "error") %> prohibited this payout from being saved:</h2>
@@ -14,7 +14,7 @@
 
 	
 	 <div class="form-group">
-		<h2>Year</h2>
+		<p class="h2">Year</p>
 		<div class="controls">
 			<%= f.number_field :year, :style => "width: 200px;", :class => "form-control" %>
 		</div>
@@ -22,7 +22,7 @@
 	
 	
 	 <div class="form-group">
-		<p class="headline bold">Awards</p>
+		<p class="h2">Awards</p>
 		<hr />
 		<div class="row">
 			<div class="col-md-3"><strong>Award</strong></div>

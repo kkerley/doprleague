@@ -16,6 +16,10 @@
     <%= f.text_field :team_name %>
   </div>
   <div class="field">
+    <%= f.label :division %><br />
+    <%= f.text_field :division %>
+  </div>
+  <div class="field">
     <%= f.label :user_id, "User" %><br />
     <%= collection_select(:team, :user_id, User.all, :id, :display_name) %>
   </div>

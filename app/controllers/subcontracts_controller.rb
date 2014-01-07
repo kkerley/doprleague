@@ -1,5 +1,5 @@
 class SubcontractsController < ApplicationController
-  before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new, :admin]
+  before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
   # GET /subcontracts
   # GET /subcontracts.json
   def index

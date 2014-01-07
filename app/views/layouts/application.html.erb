@@ -49,7 +49,7 @@
 				<li class="dropdownn">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users fa-lg"></i> Members <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="/members"><i class="fa fa-list-alt fa-lg"></i> Directory</a></li>
+						<li><a href="/members"><i class="fa fa-list-alt"></i> Directory</a></li>
 						<% User.current_members.each do |user|%>
 							<li>
 								<%= link_to(user.team) do %>
@@ -64,12 +64,13 @@
 				<li class="dropdownn">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-info-circle fa-lg"></i> League info <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="/constitution"><i class="fa fa-book fa-lg"></i> Constitution</a></li>
-							<li><a href="/polls"><i class="fa fa-tasks fa-lg"></i> Facebook polls</a></li>
-							<li><a href="/salary_progressions"><i class="fa fa-money fa-lg"></i> Salary progressions</a></li>
-							<li><a href="/contracts"><i class="fa fa-file-text fa-lg"></i> Contracts</a></li>
-							<li><a href="/payouts"><i class="fa fa-trophy fa-lg"></i> Payouts &amp; awards</a></li>
-							<li><a href="/faqs"><i class="fa fa-question-circle fa-lg"></i> FAQs</a></li>
+							<li><a href="/constitution"><i class="fa fa-book"></i> Constitution</a></li>
+							<li><a href="/polls"><i class="fa fa-tasks"></i> Facebook polls</a></li>
+							<li><a href="/salary_progressions"><i class="fa fa-money"></i> Salary progressions</a></li>
+							<li><a href="/contracts"><i class="fa fa-file-text"></i> Contracts</a></li>
+							<li><a href="/payouts"><i class="fa fa-trophy"></i> Payouts &amp; awards</a></li>
+							<li><a href="/standings"><i class="fa fa-list-ol"></i> All-time standings</a></li>
+							<li><a href="/faqs"><i class="fa fa-question-circle"></i> FAQs</a></li>
 						</ul>
 				</li>
 				

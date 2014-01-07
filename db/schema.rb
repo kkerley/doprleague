@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140104214500) do
+ActiveRecord::Schema.define(:version => 20140107015614) do
 
   create_table "awards", :force => true do |t|
     t.text     "name"
@@ -99,6 +99,14 @@ ActiveRecord::Schema.define(:version => 20140104214500) do
     t.integer  "year5"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "year6"
+    t.integer  "year7"
+  end
+
+  create_table "standings", :force => true do |t|
+    t.integer  "year"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "subcontracts", :force => true do |t|
@@ -110,11 +118,27 @@ ActiveRecord::Schema.define(:version => 20140104214500) do
     t.datetime "updated_at",    :null => false
   end
 
+  create_table "team_records", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "standing_id"
+    t.string   "rank"
+    t.string   "wlt"
+    t.float    "pct"
+    t.string   "division_record"
+    t.float    "pts_for"
+    t.float    "pts_against"
+    t.string   "streak"
+    t.integer  "moves"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "teams", :force => true do |t|
     t.string   "team_name"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "division"
   end
 
   create_table "users", :force => true do |t|

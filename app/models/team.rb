@@ -1,10 +1,11 @@
 class Team < ActiveRecord::Base
-  attr_accessible :team_name, :user_id
+  attr_accessible :team_name, :user_id, :division
   
   belongs_to :user
   has_many :subcontracts
   has_many :players, through: :subcontracts
   has_many :contracts, through: :subcontracts
+  has_many :team_records
 
   default_scope order('team_name ASC')
   

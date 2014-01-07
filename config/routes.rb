@@ -1,4 +1,10 @@
 KkerleyCom::Application.routes.draw do
+  resources :team_records
+
+
+  resources :standings
+
+
   resources :players do 
     collection { post :import }
   end

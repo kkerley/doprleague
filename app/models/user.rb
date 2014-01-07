@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   default_scope order('display_name ASC')
   
   scope :current_members, lambda { where(is_current: true) }
-  scope :past_members, lambda { where(is_current: nil) || where(is_current: false) }
+  scope :past_members, lambda { where(is_current: false) || where(is_current: false) }
   
   def to_param
     "#{self.id}-#{self.display_name}".parameterize

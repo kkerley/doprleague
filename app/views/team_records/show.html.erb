@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Team:</b>
+  <%= @team_record.team_id %>
+</p>
+
+<p>
+  <b>Standing:</b>
+  <%= @team_record.standing_id %>
+</p>
+
+<p>
+  <b>Rank:</b>
+  <%= @team_record.rank %>
+</p>
+
+<p>
+  <b>Wlt:</b>
+  <%= @team_record.wlt %>
+</p>
+
+<p>
+  <b>Pct:</b>
+  <%= @team_record.pct %>
+</p>
+
+<p>
+  <b>Division record:</b>
+  <%= @team_record.division_record %>
+</p>
+
+<p>
+  <b>Pts for:</b>
+  <%= @team_record.pts_for %>
+</p>
+
+<p>
+  <b>Pts against:</b>
+  <%= @team_record.pts_against %>
+</p>
+
+<p>
+  <b>Streak:</b>
+  <%= @team_record.streak %>
+</p>
+
+<p>
+  <b>Moves:</b>
+  <%= @team_record.moves %>
+</p>
+
+
+<%= link_to 'Edit', edit_team_record_path(@team_record) %> |
+<%= link_to 'Back', team_records_path %>

@@ -1,5 +1,5 @@
 class ContractsController < ApplicationController
-before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new, :admin]
+before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
 
   # GET /contracts
   # GET /contracts.json
@@ -16,7 +16,7 @@ before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new,
   # GET /contracts/1.json
   def show
     @contract = Contract.find(params[:id])
-    @subcontracts = @contract.subcontracts
+  
 
     respond_to do |format|
       format.html # show.html.erb

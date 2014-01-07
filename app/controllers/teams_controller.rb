@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new, :admin]
+  before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
   # GET /teams
   # GET /teams.json
   def index

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  team_id: 1
+  standing_id: 1
+  rank: MyString
+  wlt: MyString
+  pct: 1.5
+  division_record: MyString
+  pts_for: 1.5
+  pts_against: 1.5
+  streak: MyString
+  moves: 1
+
+two:
+  team_id: 1
+  standing_id: 1
+  rank: MyString
+  wlt: MyString
+  pct: 1.5
+  division_record: MyString
+  pts_for: 1.5
+  pts_against: 1.5
+  streak: MyString
+  moves: 1

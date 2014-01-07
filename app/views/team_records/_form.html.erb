@@ -1,0 +1,57 @@
+<%= form_for(@team_record) do |f| %>
+  <% if @team_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@team_record.errors.count, "error") %> prohibited this team_record from being saved:</h2>
+
+      <ul>
+      <% @team_record.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :team_id %><br />
+    <%= f.number_field :team_id %>
+  </div>
+  <div class="field">
+    <%= f.label :standing_id %><br />
+    <%= f.number_field :standing_id %>
+  </div>
+  <div class="field">
+    <%= f.label :rank %><br />
+    <%= f.text_field :rank %>
+  </div>
+  <div class="field">
+    <%= f.label :wlt %><br />
+    <%= f.text_field :wlt %>
+  </div>
+  <div class="field">
+    <%= f.label :pct %><br />
+    <%= f.text_field :pct %>
+  </div>
+  <div class="field">
+    <%= f.label :division_record %><br />
+    <%= f.text_field :division_record %>
+  </div>
+  <div class="field">
+    <%= f.label :pts_for %><br />
+    <%= f.text_field :pts_for %>
+  </div>
+  <div class="field">
+    <%= f.label :pts_against %><br />
+    <%= f.text_field :pts_against %>
+  </div>
+  <div class="field">
+    <%= f.label :streak %><br />
+    <%= f.text_field :streak %>
+  </div>
+  <div class="field">
+    <%= f.label :moves %><br />
+    <%= f.number_field :moves %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
