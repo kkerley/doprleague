@@ -61,19 +61,20 @@ class Player < ActiveRecord::Base
         these_contracts.each do |con|
           adjusted_contract_length = con.contract_length
           if con.is_extended
-            adjusted_contract_length += 1
+            adjusted_contract_length += 1 # adjusting for the extra year for an extension
           end
 
           if con.is_franchised
-            adjusted_contract_length += 1
+            adjusted_contract_length += 1 # adjusting for the extra year for a franchise
           end
+
+
           if (con.contract_start_year + adjusted_contract_length) > current_year # checking to see if contracts in these_contracts are current
             return true # current contract
-          else
-            return false #contracts have all expired
           end
-        end
 
+        end
+        return false # moved from the if statement checking for length + contract year as it was reporting false falses
       else
         return false # these_contracts was 0
       end
