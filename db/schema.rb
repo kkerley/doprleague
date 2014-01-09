@@ -81,14 +81,8 @@ ActiveRecord::Schema.define(:version => 20140107015614) do
     t.string   "position"
     t.integer  "auction_value"
     t.string   "bye_week"
-    t.integer  "team_id"
-    t.integer  "contract_id"
-    t.boolean  "is_bought_out"
-    t.integer  "bought_out_by_team_id"
-    t.boolean  "is_extended"
-    t.boolean  "is_franchised"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "salary_progressions", :force => true do |t|
@@ -97,10 +91,10 @@ ActiveRecord::Schema.define(:version => 20140107015614) do
     t.integer  "year3"
     t.integer  "year4"
     t.integer  "year5"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
     t.integer  "year6"
     t.integer  "year7"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "standings", :force => true do |t|

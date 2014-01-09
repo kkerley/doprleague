@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-md-7">
 		<p class="h1">
-		 	Contract signed in  <%= @contract.contract_start_year %> for <%= @contract.contract_length %> 
+		 	Signed in  <%= @contract.contract_start_year %> for <%= @contract.contract_length %> 
 		 	<% if @contract.contract_length == 1 %>year<% else %>years<% end %>.
 		</p>
 		<p class="h2">Auction value: $<%= @contract.player.auction_value %></p>
@@ -26,7 +26,12 @@
 						<td>$<%= sub.salary_amount %></td>
 					</tr>
 				<% end %>
+				<tr>
+					<td></td>
+					<td colspan="3"><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit", edit_contract_path(@contract) %></td>
+				</tr>
 			</tbody>
 		</table>
+		<p><%= link_to @contract.player.full_name, @contract.player %>
 	</div>
 </div>

@@ -44,6 +44,9 @@ class Player < ActiveRecord::Base
 
 
   def is_contracted? # used for the players#index action to display whether or not a player has a current/active contract or not
+    
+    adjusted_contract_length = 0
+
     if self.contracts.count == 0
       return false # no contracts
     else 
@@ -56,7 +59,15 @@ class Player < ActiveRecord::Base
 
       if these_contracts.size > 0
         these_contracts.each do |con|
-          if (con.contract_start_year + con.contract_length) > current_year # checking to see if contracts in these_contracts are current
+          adjusted_contract_length = con.contract_length
+          if con.is_extended
+            adjusted_contract_length += 1
+          end
+
+          if con.is_franchised
+            adjusted_contract_length += 1
+          end
+          if (con.contract_start_year + adjusted_contract_length) > current_year # checking to see if contracts in these_contracts are current
             return true # current contract
           else
             return false #contracts have all expired

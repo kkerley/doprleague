@@ -6,6 +6,8 @@ class CreateSalaryProgressions < ActiveRecord::Migration
       t.integer :year3
       t.integer :year4
       t.integer :year5
+      t.integer :year6
+      t.integer :year7
 
       t.timestamps
     end
