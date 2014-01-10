@@ -78,8 +78,8 @@
 						<th class="hidden-sm hidden-xs">Position</th>
 						<th class="hidden-sm hidden-xs">NFL team</th>		
 						<th>Salary</th>
-						<th>Bye</th>
-						<th class="hidden-sm hidden-xs">Owned by</th>
+						<th class="hidden-sm hidden-xs">Bye</th>
+						<th>Owned by</th>
 						
 						
 						<% if current_user %>
@@ -102,8 +102,8 @@
 								$<%= player.auction_value %>
 							<% end %>
 						</strong></td>
-						<td><%= player.bye_week %></td>
-						<td class="hidden-sm hidden-xs">
+						<td class="hidden-sm hidden-xs"><%= player.bye_week %></td>
+						<td>
 							<% if player.is_contracted? %>
 								<span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>
 							<% else %>

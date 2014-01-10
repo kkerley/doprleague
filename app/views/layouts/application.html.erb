@@ -31,10 +31,10 @@
 <body>
 	<a id="top"></a>
  <!-- Fixed navbar -->
-	    <div class="navbar navbar-inverse navbar-fixed-top">
+	    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	      <div class="container">
 	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse">
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
@@ -46,32 +46,42 @@
 	            <li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
 				
 				
-				<li class="dropdownn">
+				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users fa-lg"></i> Members <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="/members"><i class="fa fa-list-alt"></i> Directory</a></li>
-						<% User.current_members.each do |user|%>
+						<li><a href="#" style="cursor:default"><strong>Philip Division</strong></a></li>
+						<% current_philip_members.each do |user|%>
 							<li>
 								<%= link_to(user.team) do %>
 								<%= image_tag user.avatar.url(:tiny) %> <%= user.display_name  %> | <%= user.team.team_name unless user.team.blank? %>
 								<% end %>
-								</li>
+							</li>
+						<% end %>
+						<li><a href="#" style="cursor:default"><strong>Russell Division</strong></a></li>
+						<% current_russell_members.each do |user|%>
+							
+							<li>
+								<%= link_to(user.team) do %>
+								<%= image_tag user.avatar.url(:tiny) %> <%= user.display_name  %> | <%= user.team.team_name unless user.team.blank? %>
+								<% end %>
+							</li>
 						<% end %>
 					</ul>
 				</li>
 				<li><a href="/players"><i class="fa fa-bullhorn fa-lg"></i> NFL Players</a></li>
 	            
-				<li class="dropdownn">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-info-circle fa-lg"></i> League info <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="/constitution"><i class="fa fa-book"></i> Constitution</a></li>
-							<li><a href="/polls"><i class="fa fa-tasks"></i> Facebook polls</a></li>
-							<li><a href="/salary_progressions"><i class="fa fa-money"></i> Salary progressions</a></li>
-							<li><a href="/contracts"><i class="fa fa-file-text"></i> Contracts</a></li>
-							<li><a href="/payouts"><i class="fa fa-trophy"></i> Payouts &amp; awards</a></li>
-							<li><a href="/standings"><i class="fa fa-list-ol"></i> All-time standings</a></li>
-							<li><a href="/faqs"><i class="fa fa-question-circle"></i> FAQs</a></li>
-						</ul>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-info-circle fa-lg"></i> League info <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="/constitution"><i class="fa fa-book"></i> Constitution</a></li>
+						<li><a href="/polls"><i class="fa fa-tasks"></i> Facebook polls</a></li>
+						<li><a href="/salary_progressions"><i class="fa fa-money"></i> Salary progressions</a></li>
+						<li><a href="/contracts"><i class="fa fa-file-text"></i> Contracts</a></li>
+						<li><a href="/payouts"><i class="fa fa-trophy"></i> Payouts &amp; awards</a></li>
+						<li><a href="/standings"><i class="fa fa-list-ol"></i> All-time standings</a></li>
+						<li><a href="/faqs"><i class="fa fa-question-circle"></i> FAQs</a></li>
+					</ul>
 				</li>
 				
 				
@@ -122,15 +132,15 @@
 
 	        <div id="footer">
 	        	<div class="container">
-					<p class="muted credit">This site is built on a custom Rails 3.2.11 content management system structured by <a href="http://twitter.github.io/bootstrap/">Twitter Bootstrap</a> and served up on nginx through Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/">Digital Ocean</a>.</p>
+					<p class="muted credit">This site is built on a custom Rails 3.2.11 content management system structured by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and served up on nginx through Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a>.</p>
 	            	<p class="muted credit">&copy; 2011-<%= current_year %> Kyle Kerley. All rights reserved.</p>
 	                <p class="muted credit">
 						<% if current_user %>Logged in as: <%= current_user.display_name %> (<%= current_user.email %>) | <a href="/admin"><i class="fa fa-cogs"></i> Admin control panel</a> | <a href="<%=logout_path %>"><i class="fa fa-sign-out fa-lg"></i> Log out</a>
-						<% else %><a href="/login"><i class="fa fa-sign-in"></i> Admin login</a><% end %> | v.1.3.4 see the <a href="/changelog.txt"><i class="fa fa-puzzle-piece"></i> changelog</a> for details. 
+						<% else %><a href="/login"><i class="fa fa-sign-in"></i> Admin login</a><% end %> | v.2.0 see the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details. 
 					</p>
 	            </div>
 	        </div>
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<%= javascript_include_tag "application" %>
 </body>
 </html>
