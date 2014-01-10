@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   # GET /players.json
   def index
     # @players = Player.order(:last_name)
-    @players = Player.text_search(params[:query])
+    @players = Player.text_search(params[:query]).includes(:subcontracts)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +18,7 @@ class PlayersController < ApplicationController
   # GET /players/1.json
   def show
     @player = Player.find(params[:id])
-    @contracts = @player.contracts.order("contract_start_year desc")
+    @contracts = @player.contracts.order("contract_start_year desc").includes(:subcontracts)
 
     respond_to do |format|
       format.html # show.html.erb

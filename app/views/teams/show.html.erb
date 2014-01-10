@@ -82,14 +82,14 @@
 				<small class="bought-out">Bought out contract (60% of original contracted salary)</small><br />
 				<small>
 					<i class="fa fa-tag"></i> Franchised player<br />
-					<i class="fa fa-plus-circle"></i> Extended player
+					<i class="fa fa-plus-circle"></i> Extended contract
 				</small>
 			<%= render 'layouts/back_to_top_link' %>
 			
 			
 			<div class="panel panel-success">
 				<div class="panel-heading">
-	          		<p class="panel-title bold"><%= @team.team_name%>'s Payouts</p>
+	          		<p class="panel-title bold">Payouts/awards won to date</p>
 	        	</div>
 	        	<div class="panel-body">
 				
@@ -114,13 +114,24 @@
 	
 			
 			<div class="col-md-4 hidden-md hidden-sm hidden-xs"><br />
+
 				<div class="panel panel-default">
 					<div class="panel-heading">
 		          		<p class="panel-title bold">The league</p>
 		        	</div>
 		        	
 						<table cellspacing="0" cellpadding="0" border="0" class="table table-striped"
-							<% current_members.each do |user|%>
+							<tr>
+								<td colspan="3"><strong>Philip Division</strong></td>
+							</tr>
+							<% current_philip_members.each do |user|%>
+								<%= render '/users/member_list_nav', :user => user %>
+							<% end %>
+							<tr>
+								<td colspan="3"><strong>Russell Division</strong></td>
+							</tr>
+
+							<% current_russell_members.each do |user|%>
 								<%= render '/users/member_list_nav', :user => user %>
 							<% end %>
 						</table>

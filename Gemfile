@@ -14,6 +14,7 @@ gem "pg"
 gem "best_in_place"
 gem "newrelic_rpm"
 # gem "roo"
+gem 'bullet', group: :development
 
 # Gems used only for assets and not required
 # in production environments by default.

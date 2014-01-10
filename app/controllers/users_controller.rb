@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   
   def index
     # @users = User.all
-    @current_members = User.current_members
-    @past_members = User.past_members
+    # @current_members = User.current_members
+    # @past_members = User.past_members
   end
   
   def new

@@ -8,6 +8,9 @@ class Team < ActiveRecord::Base
   has_many :team_records
 
   default_scope order('team_name ASC')
+
+  scope :philip_division, lambda { where(division: "Philip") }
+  scope :russell_division, lambda { where(division: "Russell") }
   
   
   def to_param

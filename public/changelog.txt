@@ -26,6 +26,7 @@ Insane number of changes; as many that can be remembered have been listed below
 - Made numerous adjustments to make the mobile version of the site cleaner/more user-friendly
 - Made numerous adjustments to text styles throughout the site to be more consistent
 - Added "division" field to Team
+- Split up master list of users on a few pages into division groups
 - Added Standings and TeamRecords to keep tracking of all-time league standings
 
 

@@ -4,8 +4,8 @@ before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new,
   # GET /features
   # GET /features.json
   def index
-    @announcements = Feature.announcements_list.others.published
-    @jumbotron = Feature.announcements_list.jumbotron
+    @announcements = Feature.announcements_list.others.published.includes(:user)
+    
     
     # @all_features = Feature.homepage_list
 

@@ -54,6 +54,7 @@
 <div class="row ">
 	<div class="col-md-12"><p class="headline"><a href="/members" style="color: #333;">Members</a></p></div>
   	<div class="col-md-12">               
+       	<%= render 'admin_user_management_header' %>
        	<% @users.each do |user| %>
  			<%= render 'admin_user_management', :user => user %>
 		<% end %>
