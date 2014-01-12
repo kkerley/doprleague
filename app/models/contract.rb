@@ -78,9 +78,9 @@ class Contract < ActiveRecord::Base
       final_salary = 0
       this_salary = 0
       contracted_team_id = self.subcontracts.last.team_id
-      all_players_of_position = Player.where("position = ?", player.position).first(5)
+      top_5_players_of_position = Player.where("position = ?", player.position).sort_by { |player| player.this_year_salary }.reverse.first(5)
 
-      all_players_of_position.each do |top_player|
+      top_5_players_of_position.each do |top_player|
         if top_player.is_contracted?
           this_salary = top_player.this_year.salary_amount
         else
@@ -90,8 +90,8 @@ class Contract < ActiveRecord::Base
       end
       averaged_player_salary /= 5
 
-
       salary_progression = SalaryProgression.find_by_auction_value(player.auction_value).attributes.to_a
+
 
       if player.this_year.contract.is_extended
         salary = salary_progression[(length + 2)][1]

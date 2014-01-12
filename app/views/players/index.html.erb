@@ -61,7 +61,7 @@
         	</div>
         	<div class="search-filters">
         		
-				<a href="/players" class="btn btn-primary">All</a> 
+				<a href="/players" class="btn btn-default">All</a> 
 				<a href="/players?utf8=✓&query=QB" class="btn btn-default">QB</a> 
 				<a href="/players?utf8=✓&query=WR" class="btn btn-default">WR</a> 
 				<a href="/players?utf8=✓&query=RB" class="btn btn-default">RB</a> 
@@ -76,13 +76,14 @@
 						<th>Name</th>
 						
 						<th class="hidden-sm hidden-xs">Position</th>
-						<th class="hidden-sm hidden-xs">NFL team</th>		
+						
 						<th>Salary</th>
 						<th class="hidden-sm hidden-xs">Bye</th>
 						<th>Owned by</th>
 						
 						
 						<% if current_user %>
+						<th></th>
 						<th></th>
 						<% end %>
 					</tr>
@@ -94,7 +95,7 @@
 						<td><%= link_to player.full_name, player %></td>
 						
 						<td class="hidden-sm hidden-xs"><%= player.position %></td>
-						<td class="hidden-sm hidden-xs"><%= player.nfl_team %></td>
+						
 						<td><strong>
 							<% if player.is_contracted? %>
 								$<%= player.this_year.salary_amount %>
@@ -114,6 +115,7 @@
 					
 						<% if current_user %>
 							<td><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit", edit_player_path(player) %></td>
+							<td><i class="fa fa-minus-circle"></i> <%= link_to 'Delete', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 						<% end %>
 					</tr>
 					<% end %>

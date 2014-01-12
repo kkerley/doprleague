@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   # GET /players.json
   def index
     # @players = Player.order(:last_name)
-    @players = Player.text_search(params[:query]).includes(:subcontracts)
+    @players = Player.text_search(params[:query]).includes(:subcontracts).sort_by { |player| player.this_year_salary }.reverse
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,6 +19,9 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @contracts = @player.contracts.order("contract_start_year desc").includes(:subcontracts)
+
+    @top_5_players_of_position = Player.where("position = ?", @player.position).sort_by { |player| player.this_year_salary }.reverse.first(5)
+    
 
     respond_to do |format|
       format.html # show.html.erb

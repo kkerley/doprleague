@@ -10,7 +10,7 @@
 						<th></th>
 						<th>Player</th>
 						<th>Term</th>
-						<th></th>	
+						<% if current_user %><th></th><% end %>
 					</tr>
 				</thead>
 				<tbody>
@@ -18,8 +18,10 @@
 						<tr>
 							<td></td>
 							<td><%=link_to contract.player.full_name, contract %> </td>
-							<td>contracted for <%= contract.contract_length %> years beyond the <%= contract.subcontracts.map(&:contract_year).first %> season</td>
-							<td><%= link_to "Delete", contract, :confirm => 'Are you sure?', :method => :delete, :class => 'label label-danger' %></td>
+							<td>contracted for <%= contract.contract_length %> years including the <%= contract.subcontracts.map(&:contract_year).first %> season</td>
+							<% if current_user %>
+								<td><%= link_to "Delete", contract, :confirm => 'Are you sure?', :method => :delete, :class => 'label label-danger' %></td>
+							<% end %>
 						</tr>
 					<% end %>
 				</tbody>

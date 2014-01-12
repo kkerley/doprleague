@@ -5,7 +5,7 @@ class Player < ActiveRecord::Base
   has_many :subcontracts, through: :contracts
   has_many :teams, through: :subcontracts
   
-  default_scope order("auction_value desc")
+  # default_scope order("auction_value desc")
   
   accepts_nested_attributes_for :contracts, :reject_if => lambda { |a| a[:contracted_team].blank? }   
   accepts_nested_attributes_for :subcontracts, :reject_if => lambda { |a| a[:team_id].blank? }
@@ -112,6 +112,35 @@ class Player < ActiveRecord::Base
       scoped
     end
   end
+
+
+  def this_year_salary
+    if self.is_contracted?
+      self.this_year.salary_amount
+    else
+      self.auction_value
+    end
+  end
+
+  def average_salaries(top_5_players_of_position)
+    total_salary = 0
+    top_5_players_of_position.each do |player|
+      total_salary += player.this_year_salary
+    end 
+    total_salary /= 5
+  end
+
+  #def to_extend_now
+    #length = self.this_year.contract.contract_length
+    #current_contract = Contract.find(self.this_year.contract.id)
+    #auction_value = current_contract.subcontracts.first.salary_amount
+
+    #this_progression = SalaryProgression.find_by_auction_value(auction_value)
+
+    #next_salary = this_progression[(length + 1)][1]
+
+    #return next_salary
+  #end
 
   
   def self.to_csv(options = {})

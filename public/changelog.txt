@@ -2,8 +2,31 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
+Version 2.0.3 [2014/01/11]
+--------------------------------------------------
+- Wrote a new method for sorting the players#index action by checking to see if a player is contracted and, if so, returning this year's amount; otherwise, it goes by the player's auction value
+- Used same logic for determining franchise value
+- Added Top 5 Players information to the players#show action to always have the top 5 players of a position + averaged salary so users can see what franchising would cost currently
+- Removed blue class from the "All" search button for the time being; working with a plugin to make the active filter blue
 
-Version 2.0 [2014/xx/xx]
+Version 2.0.2 [2014/01/11]
+--------------------------------------------------
+- Changed verbiage on the contrats#index page
+
+
+Version 2.0.1 [2014/01/11]
+--------------------------------------------------
+- Added logic to not show the "delete" option on the contracts#index page to non-admin users
+
+
+Version 2.0.1 [2014/01/10]
+--------------------------------------------------
+- Fixed Salary Progression table bottom row (admin only)
+- Added "Delete" action to players#index to remove dupes
+- Added link to add new Standing on standings#index
+
+
+Version 2.0 [2014/01/10]
 --------------------------------------------------
 Insane number of changes; as many that can be remembered have been listed below
 - Added Contracts/Subcontracts for roster management
