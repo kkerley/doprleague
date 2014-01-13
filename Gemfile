@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+# gem 'rails', '3.2.11'
+
+# upgrading to the latest version of 3.2.x for security
+gem 'rails', '3.2.16'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -13,6 +16,7 @@ gem "paperclip", "~> 3.0"
 gem "pg"
 gem "best_in_place"
 gem "newrelic_rpm"
+
 # gem "roo"
 gem 'bullet', group: :development
 

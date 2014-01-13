@@ -132,8 +132,8 @@
 
 	        <div id="footer">
 	        	<div class="container">
-					<p class="muted credit">This site is built on a custom Rails 3.2.11 content management system structured by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and served up on nginx through Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a>.</p>
-	            	<p class="muted credit">&copy; 2011-<%= current_year %> Kyle Kerley. All rights reserved.</p>
+					<p class="muted credit">This site is built on a custom Rails 3.2.16 content management system structured by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and served up on nginx through Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a>.</p>
+	            	<p class="muted credit">&copy; 2011-<%= current_year_footer %> Kyle Kerley. All rights reserved.</p>
 	                <p class="muted credit">
 						<% if current_user %>Logged in as: <%= current_user.display_name %> (<%= current_user.email %>) | <a href="/admin"><i class="fa fa-cogs"></i> Admin control panel</a> | <a href="<%=logout_path %>"><i class="fa fa-sign-out fa-lg"></i> Log out</a>
 						<% else %><a href="/login"><i class="fa fa-sign-in"></i> Admin login</a><% end %> | v.2.0.3 see the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details. 

@@ -43,7 +43,7 @@
 											
 										</td>
 										<td class="hidden-sm hidden-xs"><%= player.position %></td>
-										<% player.this_team_contract(@team).subcontracts.current_year_or_later.each do |sub| %>
+										<% player.this_team_contract(@team).subcontracts.current_year_or_later.limit(6).each do |sub| %>
 											<% if sub.team_id == @team.id %>
 												<% if sub.contract.is_bought_out %>
 													<td class="bought-out">

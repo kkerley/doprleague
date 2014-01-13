@@ -2,6 +2,16 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
+Version 2.0.4 [2014/01/11]
+--------------------------------------------------
+- Upgraded to Rails 3.2.16 for security purposes
+- Modified a lot of code to function properly after testing for unlikely scenarios and discovering holes in the existing logic
+- Updated current_year to reflect the league's "fiscal" year from 8/1-7/31 every year
+- Created migration to wipe SalaryProgression table and recreate it to go out to 20 years. Necessary due to logic for pulling salaries when subcontracts are created.
+- Changed bought-out contracts to appear in the same yellow styling on the players#show page as their row on the teams#show page
+- Created current_contract method on Player to make it easier to get the live contract
+
+
 Version 2.0.3 [2014/01/11]
 --------------------------------------------------
 - Wrote a new method for sorting the players#index action by checking to see if a player is contracted and, if so, returning this year's amount; otherwise, it goes by the player's auction value
@@ -9,13 +19,10 @@ Version 2.0.3 [2014/01/11]
 - Added Top 5 Players information to the players#show action to always have the top 5 players of a position + averaged salary so users can see what franchising would cost currently
 - Removed blue class from the "All" search button for the time being; working with a plugin to make the active filter blue
 
+
 Version 2.0.2 [2014/01/11]
 --------------------------------------------------
 - Changed verbiage on the contrats#index page
-
-
-Version 2.0.1 [2014/01/11]
---------------------------------------------------
 - Added logic to not show the "delete" option on the contracts#index page to non-admin users
 
 

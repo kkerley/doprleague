@@ -27,7 +27,7 @@
 
 
 <div class="row">
-	<div class="col-md-7"><br />
+	<div class="col-md-12"><br />
 		
 	
 		<div class="panel panel-default">
@@ -44,6 +44,19 @@
 					<th>Year 5</th>
 					<th>Year 6</th>
 					<th>Year 7</th>
+					<th>Year 8</th>
+					<th>Year 9</th>
+					<th>Year 10</th>
+					<th>Year 11</th>
+					<th>Year 12</th>
+					<th>Year 13</th>
+					<th>Year 14</th>
+					<th>Year 15</th>
+					<!--<th>Year 16</th>
+					<th>Year 17</th>
+					<th>Year 18</th>
+					<th>Year 19</th>
+					<th>Year 20</th>-->
 					<% if current_user %>
 						<td></td>
 					<% end %>
@@ -59,6 +72,19 @@
 					<td><%= best_in_place_if current_user, salary, :year5, :html_attrs => { :style => 'width: 80px' } %></td>
 					<td><%= best_in_place_if current_user, salary, :year6, :html_attrs => { :style => 'width: 80px' } %></td>
 					<td><%= best_in_place_if current_user, salary, :year7, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year8, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year9, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year10, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year11, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year12, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year13, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year14, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><%= best_in_place_if current_user, salary, :year15, :html_attrs => { :style => 'width: 80px' } %></td>
+					<!--<td><% best_in_place_if current_user, salary, :year16, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><% best_in_place_if current_user, salary, :year17, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><% best_in_place_if current_user, salary, :year18, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><% best_in_place_if current_user, salary, :year19, :html_attrs => { :style => 'width: 80px' } %></td>
+					<td><% best_in_place_if current_user, salary, :year20, :html_attrs => { :style => 'width: 80px' } %></td>-->
 					<% if current_user %>
 						<td><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit", edit_salary_progression_path(salary) %></td>
 					<% end %>
@@ -69,7 +95,7 @@
 				<% if current_user %>
 				<tr>
 					<td></td>
-					<td colspan="9"><span class="glyphicon glyphicon-plus-sign"></span> <%= link_to 'New salary progression', new_salary_progression_path %></td>
+					<td colspan="21"><span class="glyphicon glyphicon-plus-sign"></span> <%= link_to 'New salary progression', new_salary_progression_path %></td>
 				</tr>
 				<% end %>
 			</table>

@@ -16,8 +16,6 @@ class Player < ActiveRecord::Base
   scope :all_tight_ends, lambda { where("position = ?", "TE").order("auction_value desc") }
   scope :all_kickers, lambda { where("position = ?", "K").order("auction_value desc") }
   scope :all_defenses, lambda { where("position = ?", "DEF").order("auction_value desc") }
-
-
   
   
   def to_param
@@ -27,7 +25,13 @@ class Player < ActiveRecord::Base
 
   # used for a number of methods for determining contract validity
   def current_year
-    Time.now.year
+    # The new seasons starts on 8/1 so technically, it's the previous year through 7/31
+    current_date = Time.now
+    if current_date.month < 8
+      current_date.year - 1
+    else
+      current_date.year
+    end
   end
 
   
@@ -43,7 +47,7 @@ class Player < ActiveRecord::Base
   
 
 
-  def is_contracted? # used for the players#index action to display whether or not a player has a current/active contract or not
+  def is_contracted? # used for the players#index action to display whether or not a player has a current/active contract or not. ONLY RETURNS TRUE OR FALSE
     
     adjusted_contract_length = 0
 
@@ -70,17 +74,23 @@ class Player < ActiveRecord::Base
 
 
           if (con.contract_start_year + adjusted_contract_length) > current_year # checking to see if contracts in these_contracts are current
-            return true # current contract
+            return true # there is a current contract
           end
 
         end
-        return false # moved from the if statement checking for length + contract year as it was reporting false falses
+        return false # no contract meets the necessary criteria
       else
         return false # these_contracts was 0
       end
     end
-    # return false # not sure why this is here. 99% sure it's a hold-over from testing that's no longer needed
+    
   end
+
+  # used in conjection with is_contracted? to return the actual contract if is_contracted? == true
+  def current_contract
+    self.this_year.contract
+  end
+
 
   def this_year # used for getting the subcontract for the current year to display the correct team name on the players#index action
     self.subcontracts.each do |sub|
@@ -91,11 +101,13 @@ class Player < ActiveRecord::Base
   end
   
   def this_team_contract(team) # needed to pull in only the non-bought-out contract for subcontracts on the team#show page
-    self.contracts.each do |contract|
-      contract.subcontracts.each do |sub|
-        if sub.team_id == team.id
-          return contract
-        end
+    if self.is_contracted?
+      self.subcontracts.current_year_or_later.each do |sub|
+        return sub.contract if sub.team_id == team.id
+      end
+    else
+      self.subcontracts.each do |sub|
+        return sub.contract if sub.team_id == team.id
       end
     end
   end
