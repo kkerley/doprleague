@@ -142,6 +142,10 @@ class Player < ActiveRecord::Base
     total_salary /= 5
   end
 
+
+
+
+  # checking to see how much it would cost to extent this player now
   #def to_extend_now
     #length = self.this_year.contract.contract_length
     #current_contract = Contract.find(self.this_year.contract.id)

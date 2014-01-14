@@ -3,13 +3,17 @@
 <div class="row">
 	<div class="col-md-7">
 		<p class="h1">
-		 	Signed in  <%= @contract.contract_start_year %> for <%= @contract.contract_length %> 
+		 	Signed in  <%= @contract.contract_start_year %> for <%= @contract.full_contract_length %> 
 		 	<% if @contract.contract_length == 1 %>year<% else %>years<% end %>.
 		</p>
 		<p class="h2">Auction value: $<%= @contract.player.auction_value %></p>
 
 
+		<% if @contract.is_bought_out %>
+		<table class="table table-condensed bought-out">
+		<% else %>
 		<table class="table table-condensed table-striped">
+		<% end %>
 			<thead>
 				<th></th>
 				<th>Contract year</th>
@@ -18,12 +22,20 @@
 
 			</thead>
 			<tbody>
-				<% @contract.subcontracts.each do |sub| %>
+				<% @contract.subcontracts.order(:contract_year).each do |sub| %>
 					<tr>
 						<td></td>
 						<td><%= sub.contract_year %></td>
 						<td><%= link_to sub.team.team_name, sub.team %></td>
-						<td>$<%= sub.salary_amount %></td>
+						<td>$<%= sub.salary_amount %>
+							<% if sub.this_is_an_extension %>
+								<i class="fa fa-plus-circle"></i> 
+							<% end %>
+
+							<% if sub.this_is_a_franchise_tag %>
+								<i class="fa fa-tag"></i>
+							<% end %>
+						</td>
 					</tr>
 				<% end %>
 				<tr>
@@ -32,6 +44,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<p><%= link_to @contract.player.full_name, @contract.player %>
+		<%= render "/contracts/contract_clauses_key" %>
+		<p><%= link_to "View " + @contract.player.full_name + "'s information", @contract.player %>
 	</div>
 </div>

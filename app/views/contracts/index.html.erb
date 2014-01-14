@@ -3,6 +3,7 @@
 
 <div class="row">
 	<div class="col-md-12">
+		<%= render "/contracts/contract_clauses_key" %>
 		<div class="table-responsive"><br />	
 			<table class="table table-condensed table-striped">
 				<thead>
@@ -15,12 +16,23 @@
 				</thead>
 				<tbody>
 					<% @contracts.each do |contract| %>	
+					
 						<tr>
-							<td></td>
-							<td><%=link_to contract.player.full_name, contract %> </td>
-							<td>contracted for <%= contract.contract_length %> years including the <%= contract.subcontracts.map(&:contract_year).first %> season</td>
+							<td class="<%= contract.is_bought_out ? 'bought-out' : '' %>"></td>
+							<td class="<%= contract.is_bought_out ? 'bought-out' : '' %>"><%=link_to contract.player.full_name, contract %> 
+							<% if contract.is_extended %>
+									<i class="fa fa-plus-circle"></i> 
+								<% end %>
+
+								<% if contract.is_franchised %>
+									<i class="fa fa-tag"></i>
+								<% end %>
+							</td>
+							<td class="<%= contract.is_bought_out ? 'bought-out' : '' %>">contracted for <strong><%= contract.full_contract_length %></strong> years starting with the <%= contract.subcontracts.map(&:contract_year).first %> season
+								
+							</td>
 							<% if current_user %>
-								<td><%= link_to "Delete", contract, :confirm => 'Are you sure?', :method => :delete, :class => 'label label-danger' %></td>
+								<td class="<%= contract.is_bought_out ? 'bought-out' : '' %>"><%= link_to "Delete", contract, :confirm => 'Are you sure?', :method => :delete, :class => 'label label-danger' %></td>
 							<% end %>
 						</tr>
 					<% end %>

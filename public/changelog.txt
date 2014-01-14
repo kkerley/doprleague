@@ -2,7 +2,7 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.0.4 [2014/01/11]
+Version 2.1 [2014/01/11]
 --------------------------------------------------
 - Upgraded to Rails 3.2.16 for security purposes
 - Modified a lot of code to function properly after testing for unlikely scenarios and discovering holes in the existing logic
@@ -10,6 +10,10 @@ Version 2.0.4 [2014/01/11]
 - Created migration to wipe SalaryProgression table and recreate it to go out to 20 years. Necessary due to logic for pulling salaries when subcontracts are created.
 - Changed bought-out contracts to appear in the same yellow styling on the players#show page as their row on the teams#show page
 - Created current_contract method on Player to make it easier to get the live contract
+- Added full_contract_length to calculate total contract length incorporating extensions and franchise tags
+- Added this_is_an_extension and this_is_a_franchise_tag to Subcontracts to allow for styling them on rosters and to keep better track of them
+- Added visual cues to contracts#index and contracts#show
+- Added breakdown table to teams#show outlining which and how many players of each position are on each team
 
 
 Version 2.0.3 [2014/01/11]

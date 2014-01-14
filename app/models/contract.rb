@@ -63,6 +63,7 @@ class Contract < ActiveRecord::Base
       sub.salary_amount = salary_progression[(length + 1)][1]
       sub.contract_id = self.id
       sub.team_id = contracted_team_id
+      sub.this_is_an_extension = true
       sub.save!
     end
   end
@@ -114,7 +115,22 @@ class Contract < ActiveRecord::Base
       sub.salary_amount = final_salary
       sub.contract_id = self.id
       sub.team_id = contracted_team_id
+      sub.this_is_a_franchise_tag = true
       sub.save!  
     end
   end
+
+  # used in views to show correct contract length for contracts that have been extended and franchised
+  def full_contract_length
+    full_length = self.contract_length
+    if self.is_extended
+      full_length += 1
+    end
+
+    if self.is_franchised
+      full_length += 1
+    end 
+    full_length
+  end
+
 end

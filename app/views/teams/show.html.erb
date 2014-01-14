@@ -14,7 +14,7 @@
 		        	</div>
 
 					
-					<table cellspacing="0" cellpadding="0" border="0" class="table table-striped table-condensed">
+					<table cellspacing="0" cellpadding="0" border="0" class="table table-condensed table-bordered table-striped table-responsive">
 						<thead>
 							<th></th>
 							<th>Name</th>
@@ -79,11 +79,70 @@
 					</table>
 
 				</div>
-				<small class="bought-out">Bought out contract (60% of original contracted salary)</small><br />
-				<small>
-					<i class="fa fa-tag"></i> Franchised player<br />
-					<i class="fa fa-plus-circle"></i> Extended contract
-				</small>
+			<%= render "/contracts/contract_clauses_key" %>
+
+			<table class="table table-condensed table-bordered table-striped table-responsive" cellpadding="0" cellspacing="0" border="0">
+	      		<thead>
+	      			<tr>
+	      				<th></th>
+	      				<th>Position</th>
+	      				<th>Count</th>
+	      				<th>Players</th>
+	      			</tr>
+	      		</thead>
+	      		<tbody>
+	      			
+	      			<tr>
+	      				<td></td>
+	      				<td>Quarterbacks</td>
+	      				<td><%= @qbs.count %></td>
+	      				<% @qbs.each do |qb| %>
+	      					<td><%= qb.full_name %></td>
+	      				<% end %>
+	      			</tr>
+	      			<tr>
+	      				<td></td>
+	      				<td>Running Backs</td>
+	      				<td><%= @rbs.count %></td>
+	      				<% @rbs.each do |rb| %>
+	      					<td><%= rb.full_name %></td>
+	      				<% end %>
+	      			</tr>
+	      			<tr>
+	      				<td></td>
+	      				<td>Wide Receivers</td>
+	      				<td><%= @wrs.count %></td>
+	      				<% @wrs.each do |wr| %>
+	      					<td><%= wr.full_name %></td>
+	      				<% end %>
+	      			</tr>
+	      			<tr>
+	      				<td></td>
+	      				<td>Tight Ends</td>
+	      				<td><%= @tes.count %></td>
+	      				<% @tes.each do |te| %>
+	      					<td><%= te.full_name %></td>
+	      				<% end %>
+	      			</tr>
+	      			<tr>
+	      				<td></td>
+	      				<td>Kickers</td>
+	      				<td><%= @kickers.count %></td>
+	      				<% @kickers.each do |k| %>
+	      					<td><%= k.full_name %></td>
+	      				<% end %>
+	      			</tr>
+	      			<tr>
+	      				<td></td>
+	      				<td>Defenses</td>
+	      				<td><%= @defs.count %></td>
+	      				<% @defs.each do |d| %>
+	      					<td><%= d.full_name %></td>
+	      				<% end %>
+	      			</tr>
+	      		</tbody>
+	      	</table>
+
 			<%= render 'layouts/back_to_top_link' %>
 			
 			
@@ -105,6 +164,11 @@
 					
 	        	</div>
 	      	</div><!-- end of panel -->
+
+
+	      	
+
+
 			<%= render 'layouts/back_to_top_link' %>
 			
 			

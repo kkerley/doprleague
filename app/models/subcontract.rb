@@ -1,5 +1,5 @@
 class Subcontract < ActiveRecord::Base
-  attr_accessible :contract_id, :salary_amount, :team_id, :contract_year
+  attr_accessible :contract_id, :salary_amount, :team_id, :contract_year, :this_is_an_extension, :this_is_a_franchise_tag
   
   belongs_to :contract
   belongs_to :team

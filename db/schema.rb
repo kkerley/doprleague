@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140112235125) do
+ActiveRecord::Schema.define(:version => 20140113160631) do
 
   create_table "awards", :force => true do |t|
     t.text     "name"
@@ -121,8 +121,10 @@ ActiveRecord::Schema.define(:version => 20140112235125) do
     t.integer  "contract_id"
     t.integer  "salary_amount"
     t.integer  "contract_year"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.boolean  "this_is_an_extension"
+    t.boolean  "this_is_a_franchise_tag"
   end
 
   create_table "team_records", :force => true do |t|
