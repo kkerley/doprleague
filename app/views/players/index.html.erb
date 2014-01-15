@@ -104,13 +104,20 @@
 							<% end %>
 						</strong></td>
 						<td class="hidden-sm hidden-xs"><%= player.bye_week %></td>
-						<td>
-							<% if player.is_contracted? %>
-								<span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>
+						<% if player.is_contracted? %>
+							<td>
+								<span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>	
+							</td>
+							<td>
+								<%= link_to "Contract", player.current_contract, :class => "btn btn-primary btn-xs" %>
+							</td>  
 							<% else %>
+							<td>
 								<span class="label label-success">FA</span>
+							</td>
+							<td></td>
 							<% end %>
-						</td>
+						
 						
 					
 						<% if current_user %>

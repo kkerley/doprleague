@@ -13,136 +13,136 @@
 						</p>
 		        	</div>
 
-					
-					<table cellspacing="0" cellpadding="0" border="0" class="table table-condensed table-bordered table-striped table-responsive">
-						<thead>
-							<th></th>
-							<th>Name</th>
-							<th class="hidden-sm hidden-xs">Position</th>
-							<th><%= current_year %></th>
-							<th><%= current_year.to_i + 1 %></th>
-							<th><%= current_year.to_i + 2 %></th>
-							<th><%= current_year.to_i + 3 %></th>
-							<th><%= current_year.to_i + 4 %></th>
-							<th><%= current_year.to_i + 5 %></th>
-						</thead>
-						
-						
-						<tbody>
-							<% if @players.count > 0 %>
-								<% @players.each do |player| %>
-									<tr>
-										<td></td>
-										<td><%= link_to player.full_name, player %> (<%= player.nfl_team %>)
-											<% if player.this_team_contract(@team).is_extended %>
-												<i class="fa fa-plus-circle"></i>
+					<div class="table-responsive">
+						<table cellspacing="0" cellpadding="0" border="0" class="table table-condensed table-bordered table-striped">
+							<thead>
+								<th></th>
+								<th>Name</th>
+								<th class="hidden-sm hidden-xs">Position</th>
+								<th><%= current_year %></th>
+								<th><%= current_year.to_i + 1 %></th>
+								<th><%= current_year.to_i + 2 %></th>
+								<th><%= current_year.to_i + 3 %></th>
+								<th><%= current_year.to_i + 4 %></th>
+								<th><%= current_year.to_i + 5 %></th>
+							</thead>
+							
+							
+							<tbody>
+								<% if @players.count > 0 %>
+									<% @players.each do |player| %>
+										<tr>
+											<td></td>
+											<td><%= link_to player.full_name, player %> (<%= player.nfl_team %>)
+												<% if player.this_team_contract(@team).is_extended %>
+													<i class="fa fa-plus-circle"></i>
+												<% end %>
+												<% if player.this_team_contract(@team).is_franchised %>
+													<i class="fa fa-tag"></i>
+												<% end %>
+												
+											</td>
+											<td class="hidden-sm hidden-xs"><%= player.position %></td>
+											<% player.this_team_contract(@team).subcontracts.current_year_or_later.limit(6).each do |sub| %>
+												<% if sub.team_id == @team.id %>
+													
+													<td class="<%=sub.contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>">
+													$<%= sub.salary_amount %></td>
+												<% else %>
+													<td></td>
+												<% end %>
 											<% end %>
-											<% if player.this_team_contract(@team).is_franchised %>
-												<i class="fa fa-tag"></i>
-											<% end %>
-											
-										</td>
-										<td class="hidden-sm hidden-xs"><%= player.position %></td>
-										<% player.this_team_contract(@team).subcontracts.current_year_or_later.limit(6).each do |sub| %>
-											<% if sub.team_id == @team.id %>
-												<% if sub.contract.is_bought_out %>
-													<td class="bought-out">
-												<% else %> 
-													<td>
-												<% end %>$<%= sub.salary_amount %></td>
-											<% else %>
-												<td></td>
-											<% end %>
-										<% end %>
+									</tr>
+									<% end %>
+
+								<% else %>
+								<tr>
+									<td></td>
+									<td colspan="6">No players on this team.</td>
 								</tr>
-								<% end %>
-
-							<% else %>
-							<tr>
-								<td></td>
-								<td colspan="6">No players on this team.</td>
-							</tr>
-						<% end %>
-							<tr>
-								<td></td>
-								
-								<td><h4><span class="label label-danger">TOTAL:</span></h4></td>
-								<td></td>
-								<td><h4>$<%= @team.calculate_yearly_salary(current_year) %></h4></td>
-								<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 1) %></h4></td>
-								<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 2) %></h4></td>
-								<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 3) %></h4></td>
-								<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 4) %></h4></td>
-								<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 5) %></h4></td>
-							</tr>
-						</tbody>
-					</table>
-
+							<% end %>
+								<tr>
+									<td></td>
+									
+									<td><h4><span class="label label-danger">TOTAL:</span></h4></td>
+									<td></td>
+									<td><h4>$<%= @team.calculate_yearly_salary(current_year) %></h4></td>
+									<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 1) %></h4></td>
+									<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 2) %></h4></td>
+									<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 3) %></h4></td>
+									<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 4) %></h4></td>
+									<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 5) %></h4></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			<%= render "/contracts/contract_clauses_key" %>
 
-			<table class="table table-condensed table-bordered table-striped table-responsive" cellpadding="0" cellspacing="0" border="0">
-	      		<thead>
-	      			<tr>
-	      				<th></th>
-	      				<th>Position</th>
-	      				<th>Count</th>
-	      				<th>Players</th>
-	      			</tr>
-	      		</thead>
-	      		<tbody>
-	      			
-	      			<tr>
-	      				<td></td>
-	      				<td>Quarterbacks</td>
-	      				<td><%= @qbs.count %></td>
-	      				<% @qbs.each do |qb| %>
-	      					<td><%= qb.full_name %></td>
-	      				<% end %>
-	      			</tr>
-	      			<tr>
-	      				<td></td>
-	      				<td>Running Backs</td>
-	      				<td><%= @rbs.count %></td>
-	      				<% @rbs.each do |rb| %>
-	      					<td><%= rb.full_name %></td>
-	      				<% end %>
-	      			</tr>
-	      			<tr>
-	      				<td></td>
-	      				<td>Wide Receivers</td>
-	      				<td><%= @wrs.count %></td>
-	      				<% @wrs.each do |wr| %>
-	      					<td><%= wr.full_name %></td>
-	      				<% end %>
-	      			</tr>
-	      			<tr>
-	      				<td></td>
-	      				<td>Tight Ends</td>
-	      				<td><%= @tes.count %></td>
-	      				<% @tes.each do |te| %>
-	      					<td><%= te.full_name %></td>
-	      				<% end %>
-	      			</tr>
-	      			<tr>
-	      				<td></td>
-	      				<td>Kickers</td>
-	      				<td><%= @kickers.count %></td>
-	      				<% @kickers.each do |k| %>
-	      					<td><%= k.full_name %></td>
-	      				<% end %>
-	      			</tr>
-	      			<tr>
-	      				<td></td>
-	      				<td>Defenses</td>
-	      				<td><%= @defs.count %></td>
-	      				<% @defs.each do |d| %>
-	      					<td><%= d.full_name %></td>
-	      				<% end %>
-	      			</tr>
-	      		</tbody>
-	      	</table>
-
+			<p class="h4 margin-top-1em">Roster breakdown by position</p>
+			<div class="table-responsive">
+				<table class="table table-condensed table-bordered table-striped" cellpadding="0" cellspacing="0" border="0">
+		      		<thead>
+		      			<tr>
+		      				<th></th>
+		      				<th>Position</th>
+		      				<th>Count</th>
+		      				<th>Players</th>
+		      			</tr>
+		      		</thead>
+		      		<tbody>
+		      			
+		      			<tr>
+		      				<td></td>
+		      				<td>QB</td>
+		      				<td><%= @qbs.count %></td>
+		      				<% @qbs.each do |qb| %>
+		      					<td><%= qb.full_name %></td>
+		      				<% end %>
+		      			</tr>
+		      			<tr>
+		      				<td></td>
+		      				<td>RB</td>
+		      				<td><%= @rbs.count %></td>
+		      				<% @rbs.each do |rb| %>
+		      					<td><%= rb.full_name %></td>
+		      				<% end %>
+		      			</tr>
+		      			<tr>
+		      				<td></td>
+		      				<td>WR</td>
+		      				<td><%= @wrs.count %></td>
+		      				<% @wrs.each do |wr| %>
+		      					<td><%= wr.full_name %></td>
+		      				<% end %>
+		      			</tr>
+		      			<tr>
+		      				<td></td>
+		      				<td>TE</td>
+		      				<td><%= @tes.count %></td>
+		      				<% @tes.each do |te| %>
+		      					<td><%= te.full_name %></td>
+		      				<% end %>
+		      			</tr>
+		      			<tr>
+		      				<td></td>
+		      				<td>K</td>
+		      				<td><%= @kickers.count %></td>
+		      				<% @kickers.each do |k| %>
+		      					<td><%= k.full_name %></td>
+		      				<% end %>
+		      			</tr>
+		      			<tr>
+		      				<td></td>
+		      				<td>D</td>
+		      				<td><%= @defs.count %></td>
+		      				<% @defs.each do |d| %>
+		      					<td><%= d.full_name %></td>
+		      				<% end %>
+		      			</tr>
+		      		</tbody>
+		      	</table>
+		      </div>
 			<%= render 'layouts/back_to_top_link' %>
 			
 			

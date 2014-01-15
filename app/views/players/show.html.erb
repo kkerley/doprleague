@@ -26,11 +26,11 @@
 		          		
 						<p class="panel-title bold">Contract started in <%= contract.contract_start_year %> for <%= contract.full_contract_length%> years
 						<% if contract.is_extended %>
-							<i class="fa fa-plus-circle white"></i> 
+							<i class="fa fa-plus-circle"></i> 
 						<% end %>
 
 						<% if contract.is_franchised %>
-							<i class="fa fa-tag white"></i>
+							<i class="fa fa-tag"></i>
 						<% end %>
 						</p>
 					</div>
@@ -47,12 +47,12 @@
 						<tbody>
 							<% contract.subcontracts.order(:contract_year).each do |sub| %>
 								<tr>
-									<td></td>
-									<td><%= sub.contract_year %>
+									<td class="<%= contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"></td>
+									<td class="<%= contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"><%= sub.contract_year %>
 
 									</td>
-									<td><%= link_to sub.team.team_name, sub.team %> (<%= sub.team.user.display_name %>)</td>
-									<td>$<%= sub.salary_amount %>
+									<td class="<%= contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"><%= link_to sub.team.team_name, sub.team %> (<%= sub.team.user.display_name %>)</td>
+									<td class="<%= contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>">$<%= sub.salary_amount %>
 										<% if sub.this_is_an_extension %>
 											<i class="fa fa-plus-circle"></i> 
 										<% end %>
@@ -89,13 +89,7 @@
 					
 				</div>	
 			<% end %>
-			<p>
-				<small class="bought-out">Bought out contract (60% of original contracted salary)</small><br />
-				<small>
-					<i class="fa fa-tag"></i> Franchised player<br />
-					<i class="fa fa-plus-circle"></i> Extended contract
-				</small>
-			</p>
+			<%= render "/contracts/contract_clauses_key" %>
 		
 		<% end %>
 

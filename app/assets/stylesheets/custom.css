@@ -117,6 +117,16 @@ fieldset.contract-fields{
 	color: #c37c00;
 }
 
+.extended{
+	background-color: #c2ffbf !important;
+	color: #079500;
+}
+
+.franchised{
+	background-color: #f0deff !important;
+	color: #5800a3;
+}
+
 .white{
 	color: #fff;
 }

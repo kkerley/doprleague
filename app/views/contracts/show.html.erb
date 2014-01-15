@@ -2,11 +2,29 @@
 <% content_for :section_subtitle, "Specific information about this contract; other contracts for this player may be available" %>
 <div class="row">
 	<div class="col-md-7">
-		<p class="h1">
-		 	Signed in  <%= @contract.contract_start_year %> for <%= @contract.full_contract_length %> 
-		 	<% if @contract.contract_length == 1 %>year<% else %>years<% end %>.
-		</p>
-		<p class="h2">Auction value: $<%= @contract.player.auction_value %></p>
+		
+
+		<% if @contract.is_bought_out %>
+					<div class="panel panel-warning margin-bottom-2em">
+				<% else %>
+					<div class="panel panel-default margin-bottom-2em">
+				<% end %>
+					<div class="panel-heading">
+		          		
+						<p class="panel-title bold">Contract started in <%= @contract.contract_start_year %> for <%= @contract.full_contract_length%> <% if @contract.contract_length == 1 %>year<% else %>years<% end %>
+						<% if @contract.is_extended %>
+							<i class="fa fa-plus-circle"></i> 
+						<% end %>
+
+						<% if @contract.is_franchised %>
+							<i class="fa fa-tag"></i>
+						<% end %>
+						<br />
+						<small>Auction value: $<%= @contract.player.auction_value %></small>
+						</p>
+					</div>
+		
+		
 
 
 		<% if @contract.is_bought_out %>
@@ -24,10 +42,10 @@
 			<tbody>
 				<% @contract.subcontracts.order(:contract_year).each do |sub| %>
 					<tr>
-						<td></td>
-						<td><%= sub.contract_year %></td>
-						<td><%= link_to sub.team.team_name, sub.team %></td>
-						<td>$<%= sub.salary_amount %>
+						<td class="<%= @contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"></td>
+						<td  class="<%= @contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"><%= sub.contract_year %></td>
+						<td  class="<%= @contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"><%= link_to sub.team.team_name, sub.team %></td>
+						<td  class="<%= @contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>">$<%= sub.salary_amount %>
 							<% if sub.this_is_an_extension %>
 								<i class="fa fa-plus-circle"></i> 
 							<% end %>
@@ -38,13 +56,16 @@
 						</td>
 					</tr>
 				<% end %>
-				<tr>
-					<td></td>
-					<td colspan="3"><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit", edit_contract_path(@contract) %></td>
-				</tr>
+				<% if current_user %>
+					<tr>
+						<td></td>
+						<td colspan="3"><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit", edit_contract_path(@contract) %></td>
+					</tr>
+				<% end %>
 			</tbody>
 		</table>
+	</div>
 		<%= render "/contracts/contract_clauses_key" %>
-		<p><%= link_to "View " + @contract.player.full_name + "'s information", @contract.player %>
+		<p><%= link_to "View " + @contract.player.full_name + "'s information", @contract.player %> | <%= link_to "View all contracts", contracts_path %></p>
 	</div>
 </div>

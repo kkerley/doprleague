@@ -13,7 +13,9 @@ Version 2.1 [2014/01/11]
 - Added full_contract_length to calculate total contract length incorporating extensions and franchise tags
 - Added this_is_an_extension and this_is_a_franchise_tag to Subcontracts to allow for styling them on rosters and to keep better track of them
 - Added visual cues to contracts#index and contracts#show
+- Added clearer verbiage to contracts#index
 - Added breakdown table to teams#show outlining which and how many players of each position are on each team
+- Added button link to the contract for signed players on players#index
 
 
 Version 2.0.3 [2014/01/11]
