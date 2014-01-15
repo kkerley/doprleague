@@ -18,7 +18,7 @@
 			
 			<% @contracts.each do |contract| %>
 				<% if contract.is_bought_out %>
-					<div class="panel panel-warning margin-bottom-2em">
+					<div class="panel panel-default margin-bottom-2em">
 				<% else %>
 					<div class="panel panel-info margin-bottom-2em">
 				<% end %>
@@ -92,20 +92,20 @@
 			<%= render "/contracts/contract_clauses_key" %>
 		
 		<% end %>
-
+		<!--
 		<% #if @player.is_contracted? && !@player.this_year.contract.is_extended && !@player.this_year.contract.is_franchised %>
-			<!--<p class="h4">If <%#= @player.full_name %> was extended right now, it would cost $<%#= @player.to_extend_now %>-->
+			<p class="h4">If <%#= @player.full_name %> was extended right now, it would cost $<%#= @player.to_extend_now %>
 		<% #end %>
 
-		<% if @player.is_contracted? %>
-			<%= link_to "#{@player.full_name}'s current contract", @player.current_contract %>
+		<% #if @player.is_contracted? %>
+			<% #=link_to "#{@player.full_name}'s current contract", @player.current_contract %>
 			<ul>
-				<% @player.current_contract.subcontracts.each do |sub| %>
-					<li><%= sub.contract_year %> for <%= sub.salary_amount %> to <%= sub.team.team_name %></li>
-				<% end %>
+				<% #@player.current_contract.subcontracts.each do |sub| %>
+					<li><%#= sub.contract_year %> for <%#= sub.salary_amount %> to <%#= sub.team.team_name %></li>
+				<% #end %>
 			</ul>
-		<% end %>
-
+		<% #end %>
+		-->
 		<% if @player.is_contracted? && !@player.this_year.contract.is_franchised %> 
 			<p class="h4">If <%= @player.full_name %> was franchised right now...<br />
 				<small>Top 5 <%= @player.position %>s based on current salary</small></p>

@@ -2,10 +2,10 @@
 <% content_for :section_subtitle, "Specific information about this contract; other contracts for this player may be available" %>
 <div class="row">
 	<div class="col-md-7">
-		
+		<p><%= link_to "View " + @contract.player.full_name + "'s information", @contract.player %> | <%= link_to "View all contracts", contracts_path %></p>
 
 		<% if @contract.is_bought_out %>
-					<div class="panel panel-warning margin-bottom-2em">
+					<div class="panel panel-default margin-bottom-2em">
 				<% else %>
 					<div class="panel panel-default margin-bottom-2em">
 				<% end %>
@@ -28,7 +28,7 @@
 
 
 		<% if @contract.is_bought_out %>
-		<table class="table table-condensed bought-out">
+		<table class="table table-condensed">
 		<% else %>
 		<table class="table table-condensed table-striped">
 		<% end %>
@@ -66,6 +66,6 @@
 		</table>
 	</div>
 		<%= render "/contracts/contract_clauses_key" %>
-		<p><%= link_to "View " + @contract.player.full_name + "'s information", @contract.player %> | <%= link_to "View all contracts", contracts_path %></p>
+		
 	</div>
 </div>

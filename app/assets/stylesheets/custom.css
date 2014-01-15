@@ -112,25 +112,25 @@ fieldset.contract-fields{
 	font-weight: normal;
 }
 
+
 .bought-out{
-	background-color: #fff1a6 !important;
-	color: #c37c00;
-}
-
-.extended{
-	background-color: #c2ffbf !important;
-	color: #079500;
-}
-
-.franchised{
+	/*background-color: #f0dada !important;
+	color: #b94a48;*/
 	background-color: #f0deff !important;
 	color: #5800a3;
 }
 
-.white{
-	color: #fff;
+.extended{
+	background-color: #d6ffd4 !important;
+	color: #056e00;
 }
 
-.blue-bg{
-	background-color: #000 !important;
+.franchised{
+	
+	background-color: #fff1a6 !important;
+	color: #a76a00;
+}
+
+.white{
+	color: #fff;
 }
