@@ -17,6 +17,7 @@ Version 2.1 [2014/01/11]
 - Added breakdown table to teams#show outlining which and how many players of each position are on each team
 - Added button link to the contract for signed players on players#index
 - Added nav_link helper file for (hopefully) future use
+- Moved current_year to a module (still has to be in subcontract.rb due to self)
 
 
 Version 2.0.3 [2014/01/11]

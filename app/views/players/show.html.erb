@@ -92,6 +92,9 @@
 			<%= render "/contracts/contract_clauses_key" %>
 		
 		<% end %>
+		
+	</div>
+	<div class="col-md-5 col-md-offset-1"><br />
 		<!--
 		<% #if @player.is_contracted? && !@player.this_year.contract.is_extended && !@player.this_year.contract.is_franchised %>
 			<p class="h4">If <%#= @player.full_name %> was extended right now, it would cost $<%#= @player.to_extend_now %>
@@ -115,6 +118,6 @@
 			<% end %>
 			</ul>
 			<p>Averages to <strong>$<%= @player.average_salaries(@top_5_players_of_position) %></strong> for <%= @player.full_name %>'s franchise year if the next salary progression value isn't more</p>
-			<% end %>
+		<% end %>
 	</div>
 </div>

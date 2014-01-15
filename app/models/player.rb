@@ -1,4 +1,6 @@
 class Player < ActiveRecord::Base
+  include ModifiedCurrentYear
+
   attr_accessible :auction_value, :first_name, :last_name, :nfl_team, :position, :is_drafted, :is_bought_out, :is_extended, :is_franchised, :bye_week, :full_name, :contracts_attributes, :subcontracts_attributes
   
   has_many :contracts
@@ -22,17 +24,6 @@ class Player < ActiveRecord::Base
     "#{self.id}-#{self.first_name}-#{self.last_name}".parameterize
   end
   
-
-  # used for a number of methods for determining contract validity
-  def current_year
-    # The new seasons starts on 8/1 so technically, it's the previous year through 7/31
-    current_date = Time.now
-    if current_date.month < 8
-      current_date.year - 1
-    else
-      current_date.year
-    end
-  end
 
   
   def full_name

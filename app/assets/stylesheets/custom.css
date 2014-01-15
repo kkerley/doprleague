@@ -29,6 +29,9 @@
 	margin-top: 2em;
 }
 
+.margin-bottom-0{
+	margin-bottom: 0 !important;
+}
 .margin-bottom-1em{
 	margin-bottom: 1em;
 }
