@@ -130,3 +130,7 @@ fieldset.contract-fields{
 .white{
 	color: #fff;
 }
+
+.blue-bg{
+	background-color: #000 !important;
+}
