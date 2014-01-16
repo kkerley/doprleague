@@ -137,3 +137,7 @@ fieldset.contract-fields{
 .white{
 	color: #fff;
 }
+
+.table{
+	margin-bottom: 0 !important;
+}

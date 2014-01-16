@@ -2,10 +2,19 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
+Version 2.1.3 [2014/01/16]
+--------------------------------------------------
+- Changed colors of sidebars on the Constitution, Polls and FAQs pages
+- Removed the "Home" link from the nav as it was redundant
+- Applied some formatting to the "The League" breakout box
+- Various minor CSS adjustmeents
+- Added links to the players in the players-per-position breakout table on teams#show
+
+
 Version 2.1.2 [2014/01/16]
 --------------------------------------------------
 - Made a number of UX updates throughout
-- Added icon for bought-out contracts
+- Added icon for bought-out contracts on players#show, teams#show and contracts#index
 - Added bootstrap-extras.css to the site to gain access to some additional styles they use 
 - Cleaned up some old, outdated code with the payouts tables; made that more DRY
 

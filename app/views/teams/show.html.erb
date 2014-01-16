@@ -83,7 +83,7 @@
 				</div>
 			<%= render "/contracts/contract_clauses_key" %>
 
-			<p class="h4 margin-top-1em">Roster breakdown by position for the <%= current_year %> season</p>
+			<p class="h4 margin-top-2em">Roster breakdown by position for the <%= current_year %> season</p>
 			<div class="table-responsive">
 				<table class="table table-condensed table-bordered table-striped" cellpadding="0" cellspacing="0" border="0">
 		      		<thead>
@@ -101,7 +101,7 @@
 		      				<td>QB</td>
 		      				<td><%= @qbs.count %></td>
 		      				<% @qbs.each do |qb| %>
-		      					<td><%= qb.full_name %></td>
+		      					<td><%= link_to qb.full_name, qb %></td>
 		      				<% end %>
 		      			</tr>
 		      			<tr>
@@ -109,7 +109,7 @@
 		      				<td>RB</td>
 		      				<td><%= @rbs.count %></td>
 		      				<% @rbs.each do |rb| %>
-		      					<td><%= rb.full_name %></td>
+		      					<td><%= link_to rb.full_name, rb %></td>
 		      				<% end %>
 		      			</tr>
 		      			<tr>
@@ -117,7 +117,7 @@
 		      				<td>WR</td>
 		      				<td><%= @wrs.count %></td>
 		      				<% @wrs.each do |wr| %>
-		      					<td><%= wr.full_name %></td>
+		      					<td><%= link_to wr.full_name, wr %></td>
 		      				<% end %>
 		      			</tr>
 		      			<tr>
@@ -125,7 +125,7 @@
 		      				<td>TE</td>
 		      				<td><%= @tes.count %></td>
 		      				<% @tes.each do |te| %>
-		      					<td><%= te.full_name %></td>
+		      					<td><%= link_to te.full_name, te %></td>
 		      				<% end %>
 		      			</tr>
 		      			<tr>
@@ -133,7 +133,7 @@
 		      				<td>K</td>
 		      				<td><%= @kickers.count %></td>
 		      				<% @kickers.each do |k| %>
-		      					<td><%= k.full_name %></td>
+		      					<td><%= link_to k.full_name, k %></td>
 		      				<% end %>
 		      			</tr>
 		      			<tr>
@@ -141,7 +141,7 @@
 		      				<td>D</td>
 		      				<td><%= @defs.count %></td>
 		      				<% @defs.each do |d| %>
-		      					<td><%= d.full_name %></td>
+		      					<td><%= link_to d.full_name, d %></td>
 		      				<% end %>
 		      			</tr>
 		      		</tbody>
@@ -183,13 +183,13 @@
 		        	
 						<table cellspacing="0" cellpadding="0" border="0" class="table table-striped"
 							<tr>
-								<td colspan="3"><strong>Philip Division</strong></td>
+								<td colspan="4"><strong>&nbsp;&nbsp;Philip Division</strong></td>
 							</tr>
 							<% current_philip_members.each do |user|%>
 								<%= render '/users/member_list_nav', :user => user %>
 							<% end %>
 							<tr>
-								<td colspan="3"><strong>Russell Division</strong></td>
+								<td colspan="4"><strong>&nbsp;&nbsp;Russell Division</strong></td>
 							</tr>
 
 							<% current_russell_members.each do |user|%>

@@ -29,6 +29,10 @@
 									<% if contract.is_franchised %>
 										<i class="fa fa-tag"></i>
 									<% end %>
+
+									<% if contract.is_bought_out %>
+										<i class="fa fa-usd"></i> 
+									<% end %>
 								</td>
 								<td class="<%=contract.is_bought_out ? 'bought-out' : contract.is_extended ? 'extended' : contract.is_franchised ? 'franchised' : '' %>"><%=link_to "contracted", contract -%><% if contract.is_extended && contract.is_franchised %>, extended, and franchised 
 									<% elsif contract.is_extended %> and extended 
