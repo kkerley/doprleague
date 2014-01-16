@@ -2,7 +2,13 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.1 [2014/01/11]
+Version 2.1 [2014/01/15]
+--------------------------------------------------
+- Fixed code in teams#show to properly display bought-out contracts and not through a 500 error
+- Added "for the xxxx season" to the sentence above the roster breakdown by position on the teams#show page
+
+
+Version 2.1 [2014/01/15]
 --------------------------------------------------
 - Upgraded to Rails 3.2.16 for security purposes
 - Modified a lot of code to function properly after testing for unlikely scenarios and discovering holes in the existing logic

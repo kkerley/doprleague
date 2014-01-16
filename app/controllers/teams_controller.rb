@@ -20,12 +20,12 @@ class TeamsController < ApplicationController
     @players = @team.get_subcontract_players.uniq 
 
     # Need to adjust this to only pull in players for the current year
-    @qbs = @players.find_all { |player| player.position == "QB" if player.this_year.team_id == @team.id }
-    @rbs = @players.find_all { |player| player.position == "RB" if player.this_year.team_id == @team.id }
-    @wrs = @players.find_all { |player| player.position == "WR" if player.this_year.team_id == @team.id }
-    @tes = @players.find_all { |player| player.position == "TE" if player.this_year.team_id == @team.id }
-    @kickers = @players.find_all { |player| player.position == "K" if player.this_year.team_id == @team.id }
-    @defs = @players.find_all { |player| player.position == "DEF" if player.this_year.team_id == @team.id }
+    @qbs = @players.find_all { |player| player.position == "QB" if player.is_contracted? && player.this_year.team_id == @team.id }
+    @rbs = @players.find_all { |player| player.position == "RB" if player.is_contracted? && player.this_year.team_id == @team.id }
+    @wrs = @players.find_all { |player| player.position == "WR" if player.is_contracted? && player.this_year.team_id == @team.id }
+    @tes = @players.find_all { |player| player.position == "TE" if player.is_contracted? && player.this_year.team_id == @team.id }
+    @kickers = @players.find_all { |player| player.position == "K" if player.is_contracted? && player.this_year.team_id == @team.id }
+    @defs = @players.find_all { |player| player.position == "DEF" if player.is_contracted? && player.this_year.team_id == @team.id }
 
 
     respond_to do |format|
