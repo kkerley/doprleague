@@ -2,7 +2,15 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.1 [2014/01/15]
+Version 2.1.2 [2014/01/16]
+--------------------------------------------------
+- Made a number of UX updates throughout
+- Added icon for bought-out contracts
+- Added bootstrap-extras.css to the site to gain access to some additional styles they use 
+- Cleaned up some old, outdated code with the payouts tables; made that more DRY
+
+
+Version 2.1.1 [2014/01/15]
 --------------------------------------------------
 - Fixed code in teams#show to properly display bought-out contracts and not through a 500 error
 - Added "for the xxxx season" to the sentence above the roster breakdown by position on the teams#show page

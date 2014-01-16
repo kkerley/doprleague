@@ -4,17 +4,17 @@
 		
 <div class="row">
 			<div class="col-md-8"><br />
-				<div class="table-responsive">
-					<div class="panel panel-danger">
-						<div class="panel-heading">
-			          		
-							<p class="panel-title bold"><%= image_tag @team.user.avatar(:mini), :border => 0, :style => "display: inline;", :align => "right" %>
-								<strong>Roster</strong><br />
-								<small>Includes active roster spots, dead money, and contract buyouts.</small>
-							</p>
-			        	</div>
+				
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+		          		
+						<p class="panel-title bold"><%= image_tag @team.user.avatar(:mini), :border => 0, :style => "display: inline;", :align => "right" %>
+							<strong>Roster</strong><br />
+							<small>Includes active roster spots, dead money, and contract buyouts.</small>
+						</p>
+		        	</div>
 
-					
+					<div class="table-responsive">
 						<table cellspacing="0" cellpadding="0" border="0" class="table table-condensed table-bordered table-striped">
 							<thead>
 								<th></th>
@@ -40,6 +40,9 @@
 												<% end %>
 												<% if player.this_team_contract(@team).is_franchised %>
 													<i class="fa fa-tag"></i>
+												<% end %>
+												<% if player.this_team_contract(@team).is_bought_out %>
+													<i class="fa fa-usd"></i> 
 												<% end %>
 												
 											</td>
@@ -151,19 +154,12 @@
 				<div class="panel-heading">
 	          		<p class="panel-title bold">Payouts/awards won to date</p>
 	        	</div>
-	        	<div class="panel-body">
+	        	
 				
-					<%= render '/users/payout_awards_table', :user => @team.user %>
+				<%= render '/users/payout_awards_table', :user => @team.user %>
 					
-					<% if current_user %>
-					<div class="row margin-top-1em">
-						<div class="col-md-11">
-							<p><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this member", edit_user_path(@team.user) %></p>
-						</div>
-					</div>
-					<% end %>
 					
-	        	</div>
+				
 	      	</div><!-- end of panel -->
 
 
@@ -182,7 +178,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
-		          		<p class="panel-title bold">The league</p>
+		          		<p class="panel-title bold"><a href="/members">The league</a></p>
 		        	</div>
 		        	
 						<table cellspacing="0" cellpadding="0" border="0" class="table table-striped"

@@ -1,31 +1,43 @@
-<div class="row">
+
 <% if user.awards.empty? %>
-	
+	<div class="panel-body">
 		<div class="col-xs-4"><p>No awards to date.</p></div>
 	</div>
 <% else %>
-<div class="col-md-12"><p><em>All awards won to date.</em></p></div>
+
 <table cellspacing="0" cellpadding="0" border="0" class="table">
-	<tr>
-		<th></th>
-		<th>Award</th>
-		<th>Amount</th>
-		<th>Notes</th>
-	</tr>
-	<% user.awards.each do |award| %>
-	<tr>
-		<td></td>
-		<td><%= award.payout.year %> <%= award.name %></td>
-		<td>$<%= award.amount %></td>
-		<td><%= award.notes %></td>
-	</tr>
-	<% end %>
-	<tr>
-		<td></td>
-		<td><strong>Lifetime total winnings:</strong></td>
-		<td class="headline"><span class="label label-success">$<%= user.total_winnings %></span></td>
-		<td></td>
-	</tr>
+	<thead>
+		<tr>
+			<th></th>
+			<th>Award</th>
+			<th>Amount</th>
+			<th>Notes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% user.awards.each do |award| %>
+		<tr>
+			<td></td>
+			<td><%= award.payout.year %> <%= award.name %></td>
+			<td>$<%= award.amount %></td>
+			<td><%= award.notes %></td>
+		</tr>
+		<% end %>
+
+		<tr>
+			<td></td>
+			<td><strong>Lifetime total winnings:</strong></td>
+			<td class="headline"><span class="label label-success">$<%= user.total_winnings %></span></td>
+			<td></td>
+		</tr>
+		<% if current_user %>
+			<tr>
+				<td></td>
+				<td colspan="3"><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this member", edit_user_path(user) %></td>
+			</tr>
+		<% end %>
+
+		</tbody>
 	</table>
-	</div>
+
 <% end %>
