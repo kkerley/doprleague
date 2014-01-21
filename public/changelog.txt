@@ -2,6 +2,16 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
+Version 2.1.4 [2014/01/xx]
+--------------------------------------------------
+- Adjusted the users#index (/members) payouts tables to be condensed
+- Overrode as_json for User to dump out display_name and total_winnings for use with amCharts
+- Moved NFL Players to the end of the navigation, before Admin Login 
+- Added counts of buyouts, extensions, franchises and extensions & franchises to Contract views as helpers
+- Added views for buyouts, extensions, franchises and extensions & franchises
+- Added Free Agent view for Player model but need to figure out how to only search FAs from that page
+
+
 Version 2.1.3 [2014/01/16]
 --------------------------------------------------
 - Changed colors of sidebars on the Constitution, Polls and FAQs pages

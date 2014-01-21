@@ -42,4 +42,10 @@ class User < ActiveRecord::Base
     end
     return total_amount
   end
+
+  # customizing JSON output for amCharts
+  def as_json(options = {})
+    { :display_name => self.display_name, :total_winnings => self.total_winnings }
+  end
+
 end

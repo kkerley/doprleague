@@ -1,11 +1,11 @@
 
 <% if user.awards.empty? %>
 	<div class="panel-body">
-		<div class="col-xs-4"><p>No awards to date.</p></div>
+		<div class="col-md-4"><p>No awards to date.</p></div>
 	</div>
 <% else %>
 
-<table cellspacing="0" cellpadding="0" border="0" class="table">
+<table cellspacing="0" cellpadding="0" border="0" class="table table-condensed">
 	<thead>
 		<tr>
 			<th></th>
@@ -23,7 +23,7 @@
 			<td><%= award.notes %></td>
 		</tr>
 		<% end %>
-
+		
 		<tr>
 			<td></td>
 			<td><strong>Lifetime total winnings:</strong></td>
@@ -36,8 +36,8 @@
 				<td colspan="3"><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this member", edit_user_path(user) %></td>
 			</tr>
 		<% end %>
-
-		</tbody>
-	</table>
+	</tbody>
+</table>
+		
 
 <% end %>

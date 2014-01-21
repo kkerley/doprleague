@@ -5,6 +5,15 @@ class UsersController < ApplicationController
     # @users = User.all
     # @current_members = User.current_members
     # @past_members = User.past_members
+
+    # Nothing needed here due to helper methods for getting current and past members
+
+    @all_users_and_awards = User.order(:id).includes(:awards)
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @all_users_and_awards.as_json }
+    end
   end
   
   def new
@@ -58,6 +67,6 @@ class UsersController < ApplicationController
     else
       render :new
     end
-  end
+  end 
   
 end

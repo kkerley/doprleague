@@ -37,7 +37,6 @@ class Player < ActiveRecord::Base
   end
   
 
-
   def is_contracted? # used for the players#index action to display whether or not a player has a current/active contract or not. ONLY RETURNS TRUE OR FALSE
     
     adjusted_contract_length = 0
@@ -116,6 +115,17 @@ class Player < ActiveRecord::Base
     end
   end
 
+  def self.free_agents
+    players = []
+
+    self.order('auction_value desc').each do |player|
+      unless player.is_contracted?
+        players << player
+      end
+    end
+
+    players
+  end
 
   def this_year_salary
     if self.is_contracted?

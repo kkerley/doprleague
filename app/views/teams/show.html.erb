@@ -15,6 +15,8 @@
 		        	</div>
 
 					<div class="table-responsive">
+						
+						
 						<table cellspacing="0" cellpadding="0" border="0" class="table table-condensed table-bordered table-striped">
 							<thead>
 								<th></th>
@@ -30,19 +32,22 @@
 							
 							
 							<tbody>
+
 								<% if @players.count > 0 %>
 									<% @players.each do |player| %>
 										<tr>
 											<td></td>
 											<td><%= link_to player.full_name, player %> (<%= player.nfl_team %>)
-												<% if player.this_team_contract(@team).is_extended %>
-													<i class="fa fa-plus-circle"></i>
-												<% end %>
-												<% if player.this_team_contract(@team).is_franchised %>
-													<i class="fa fa-tag"></i>
-												<% end %>
+												
 												<% if player.this_team_contract(@team).is_bought_out %>
 													<i class="fa fa-usd"></i> 
+												<% else %>
+													<% if player.this_team_contract(@team).is_extended %>
+														<i class="fa fa-plus-circle"></i>
+													<% end %>
+													<% if player.this_team_contract(@team).is_franchised %>
+														<i class="fa fa-tag"></i>
+													<% end %>
 												<% end %>
 												
 											</td>

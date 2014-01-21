@@ -1,4 +1,5 @@
 <p><small><strong>Key</strong><br />
-<i class="fa fa-plus-circle"></i> <span class="extended">Extended contract</span><br />
-<i class="fa fa-tag"></i> <span class="franchised">Franchised player</span><br />
-<i class="fa fa-usd"></i> <span class="bought-out">Bought out contract (60% of original contracted salary)</span></small></p>
+<i class="fa fa-plus-circle"></i> <span class="extended">Extended</span><br />
+<i class="fa fa-tag"></i> <span class="franchised">Franchised</span><br />
+<% if controller.class == ContractsController %><i class="fa fa-plus-circle"></i> <i class="fa fa-tag"></i> <span class="extended_and_franchised">Extended and franchised</span><br /><% end %>
+<i class="fa fa-usd"></i> <span class="bought-out">Bought out (60% of original salary)</span></small></p>

@@ -6,7 +6,10 @@ KkerleyCom::Application.routes.draw do
 
 
   resources :players do 
-    collection { post :import }
+    collection do
+      post :import
+      get 'free_agents'
+    end
   end
 
   resources :salary_progressions do 
@@ -18,20 +21,31 @@ KkerleyCom::Application.routes.draw do
   resources :users
   resources :sessions  
   resources :features
-  resources :contracts
+  resources :contracts do
+    collection do
+      get 'buyouts'
+      get 'extensions'
+      get 'franchises'
+      get 'extended_and_franchised'
+    end
+  end
+
   resources :subcontracts
+
   
   root :to => "features#index"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
-  # get "projects" => "features#projects", :as => "projects"
   get "faqs" => "features#faqs", :as => "faqs"
   get "constitution" => "features#constitution", :as => "constitution"
   get "polls" => "features#polls", :as => "polls"
   get "admin" => "features#admin", :as => "admin"
   get "members" => "users#index", :as => "members"
   
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -5,11 +5,12 @@ class PlayersController < ApplicationController
   def index
     # @players = Player.order(:last_name)
     @players = Player.text_search(params[:query]).includes(:subcontracts).sort_by { |player| player.this_year_salary }.reverse
+    @players_download = Player.order(:last_name)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @players }
-      format.csv { send_data @players.to_csv }
+      format.csv { send_data @players_download.to_csv }
       format.xls
     end
   end
@@ -99,5 +100,9 @@ class PlayersController < ApplicationController
   def import
     Player.import(params[:file])
     redirect_to players_url, notice: "Players imported."
+  end
+
+  def free_agents
+    @players = Player.free_agents
   end
 end

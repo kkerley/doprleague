@@ -4,8 +4,9 @@
 <div class="panel-body">
 	<div class="row">
 		<div class="col-md-9">
-			<p class="headline"><% if user.team %>
-				<%= link_to user.team.team_name, user.team %>
+			<p class="h1" style="line-height: .5em; margin-top: .5em"><% if user.team %>
+				<%= link_to user.team.team_name, user.team %><br />
+				<small class="h5">View roster/contracts and other team information</small>
 			<% else %>
 				No team.
 			<% end %></p>

@@ -5,6 +5,7 @@ before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
   # GET /contracts.json
   def index
     @contracts = Contract.all
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -83,4 +84,23 @@ before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
       format.json { head :no_content }
     end
   end
+
+
+  def buyouts
+    # uses helper methods
+  end
+
+  def extensions
+    # uses helper methods
+  end
+
+  def franchises
+    # uses helper methods
+  end
+
+  def extended_and_franchised
+    # uses helper methods
+  end
+
+
 end

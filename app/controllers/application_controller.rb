@@ -25,6 +25,8 @@ class ApplicationController < ActionController::Base
   	  end
   	end
   	philip_teams
+
+    
   end
 
   def current_russell_members
