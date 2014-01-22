@@ -6,11 +6,7 @@
 <div class="row">
 	
 	<div class="col-md-8"><br />
-		<p class="h1">Breakdown of the $<%= @total_payout_amount_to_date %> paid out to date</p>
-		<div id="members-chartdiv" style="width: 750px; height: 500px;"></div>
-
 		
-
 		<% current_philip_members.each do |user| %>
 			<div class="panel panel-success">
 				<%= render 'member_information', user: user %>	
@@ -35,7 +31,7 @@
 			<%= render 'layouts/back_to_top_link' %>
 		<% end %>
 	 
-	</div><!-- end of col-md-8-->
+	</div><!-- end of col-md-7-->
 	
 	<div class="col-md-4 hidden-sm hidden-xs"><br />
 		<div class="panel panel-success">

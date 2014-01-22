@@ -1,5 +1,5 @@
 <div class="row margin-bottom-1em">
-  <div class="col-md-6"><a name="feature" class="expand" style="cursor: pointer;"><%= feature.title %> <i class="icon-chevron-down only-this"></i></a>
+  <div class="col-md-6"><a name="feature" class="expand" style="cursor: pointer;"><%= feature.title %> <i class="fa fa-angle-down only-this"></i></a>
 	<div class="hidden-content admin-hidden">
 		<strong>CONTENT</strong><br />
 		<%= best_in_place_if current_user, feature, :content, :type => :textarea, :html_attrs => { :style => 'width: 540px' }, :display_with => lambda { |v| textilize(v).html_safe } %><br /><br />

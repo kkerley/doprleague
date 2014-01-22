@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140113160631) do
+ActiveRecord::Schema.define(:version => 20140121151520) do
 
   create_table "awards", :force => true do |t|
     t.text     "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20140113160631) do
     t.datetime "updated_at",            :null => false
     t.boolean  "is_dead_money"
     t.boolean  "is_drafted"
+    t.boolean  "this_is_a_buyout"
   end
 
   create_table "features", :force => true do |t|

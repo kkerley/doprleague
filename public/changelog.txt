@@ -7,9 +7,12 @@ Version 2.1.4 [2014/01/xx]
 - Adjusted the users#index (/members) payouts tables to be condensed
 - Overrode as_json for User to dump out display_name and total_winnings for use with amCharts
 - Moved NFL Players to the end of the navigation, before Admin Login 
+- Added this_is_a_buyout boolean to Contract to better manage the buyout subcontracts (just like with extensions and buyouts)
 - Added counts of buyouts, extensions, franchises and extensions & franchises to Contract views as helpers
 - Added views for buyouts, extensions, franchises and extensions & franchises
 - Added Free Agent view for Player model but need to figure out how to only search FAs from that page
+- Added donut chart to members page showing breakdown of payouts
+- Added JS to hide awards won to date on the members page, showable via button click (same script as on the Admin page)
 
 
 Version 2.1.3 [2014/01/16]
