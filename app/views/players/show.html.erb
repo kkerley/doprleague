@@ -17,11 +17,9 @@
 			<p class="h1">Contracts</p>
 			
 			<% @contracts.each do |contract| %>
-				<% if contract.is_bought_out %>
+				
 					<div class="panel panel-default margin-bottom-2em">
-				<% else %>
-					<div class="panel panel-default margin-bottom-2em">
-				<% end %>
+				
 					<div class="panel-heading">
 		          		
 						<p class="panel-title bold">Contract started in <%= contract.contract_start_year %> for <%= contract.full_contract_length%> years
@@ -47,12 +45,12 @@
 						<tbody>
 							<% contract.subcontracts.order(:contract_year).each do |sub| %>
 								<tr>
-									<td class="<%= contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"></td>
-									<td class="<%= contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"><%= sub.contract_year %>
+									<td class="<%= sub.this_is_a_buyout ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"></td>
+									<td class="<%= sub.this_is_a_buyout ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"><%= sub.contract_year %>
 
 									</td>
-									<td class="<%= contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"><%= link_to sub.team.team_name, sub.team %> (<%= sub.team.user.display_name %>)</td>
-									<td class="<%= contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>">$<%= sub.salary_amount %>
+									<td class="<%= sub.this_is_a_buyout ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"><%= link_to sub.team.team_name, sub.team %> (<%= sub.team.user.display_name %>)</td>
+									<td class="<%= sub.this_is_a_buyout ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>">$<%= sub.salary_amount %>
 										<% if sub.this_is_an_extension %>
 											<i class="fa fa-plus-circle"></i> 
 										<% end %>
@@ -60,7 +58,7 @@
 										<% if sub.this_is_a_franchise_tag %>
 											<i class="fa fa-tag"></i>
 										<% end %>
-										<% if contract.is_bought_out %>
+										<% if sub.this_is_a_buyout %>
 											<i class="fa fa-usd"></i>
 										<% end %>
 									</td>

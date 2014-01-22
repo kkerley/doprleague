@@ -42,6 +42,7 @@ class Contract < ActiveRecord::Base
     if self.is_bought_out
       self.subcontracts.current_year_or_later.each do |sub|
         sub.salary_amount *= 0.6
+        sub.this_is_a_buyout = true
         sub.save!
       end
     end

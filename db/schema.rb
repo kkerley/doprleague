@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(:version => 20140121151520) do
     t.datetime "updated_at",            :null => false
     t.boolean  "is_dead_money"
     t.boolean  "is_drafted"
-    t.boolean  "this_is_a_buyout"
   end
 
   create_table "features", :force => true do |t|
@@ -126,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20140121151520) do
     t.datetime "updated_at",              :null => false
     t.boolean  "this_is_an_extension"
     t.boolean  "this_is_a_franchise_tag"
+    t.boolean  "this_is_a_buyout"
   end
 
   create_table "team_records", :force => true do |t|
