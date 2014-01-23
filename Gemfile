@@ -16,6 +16,7 @@ gem "paperclip", "~> 3.0"
 gem "pg"
 gem "best_in_place"
 gem "newrelic_rpm"
+gem "gon"
 
 # gem "roo"
 gem 'bullet', group: :development
