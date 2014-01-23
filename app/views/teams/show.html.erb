@@ -55,7 +55,7 @@
 											<% player.this_team_contract(@team).subcontracts.current_year_or_later.limit(6).each do |sub| %>
 												<% if sub.team_id == @team.id %>
 													
-													<td class="<%=sub.contract.is_bought_out ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>">
+													<td class="<%=sub.this_is_a_buyout ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>">
 													$<%= sub.salary_amount %></td>
 												<% else %>
 													<td></td>
