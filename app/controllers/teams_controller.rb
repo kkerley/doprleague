@@ -27,6 +27,8 @@ class TeamsController < ApplicationController
     @kickers = @players.find_all { |player| player.position == "K" if player.is_contracted? && player.this_year.team_id == @team.id }
     @defs = @players.find_all { |player| player.position == "DEF" if player.is_contracted? && player.this_year.team_id == @team.id }
 
+    @total_payout_amount_to_date = Payout.all.count * 1200
+    gon.all_users_and_awards = User.order(:id).includes(:awards)
 
     respond_to do |format|
       format.html # show.html.erb

@@ -44,11 +44,6 @@ class PlayersController < ApplicationController
   # GET /players/1/edit
   def edit
     @player = Player.find(params[:id])
-    
-    if @player.is_contracted?
-      @player.subcontracts
-    end
-    
     @player.contracts.build
        
   end

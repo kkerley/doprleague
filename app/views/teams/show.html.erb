@@ -166,22 +166,20 @@
 					
 				
 	      	</div><!-- end of panel -->
+	      	<%= render 'layouts/back_to_top_link' %>
 
-
-	      	
-
-
+	      	<!-- fancy chart showing payout breakdown -->
+	      	<p class="h1">Breakdown of the $<%= @total_payout_amount_to_date %> paid out to date</p>
+	      	<div id="members-chartdiv" style="width: 750px; height: 500px;"></div>
 			<%= render 'layouts/back_to_top_link' %>
-			
-			
-			</div><!-- end of col-md-7 -->
+			</div><!-- end of col-md-8 -->
 			
 			
 	
 			
-			<div class="col-md-4 hidden-md hidden-sm hidden-xs"><br />
+			<div class="col-md-4 hidden-xs"><br />
 
-				<div class="panel panel-default">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 		          		<p class="panel-title bold"><a href="/members">The league</a></p>
 		        	</div>

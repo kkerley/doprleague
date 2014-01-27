@@ -6,7 +6,7 @@ class Contract < ActiveRecord::Base
   has_many :subcontracts, dependent: :destroy
   has_many :teams, through: :subcontracts
   
-  accepts_nested_attributes_for :subcontracts
+  accepts_nested_attributes_for :subcontracts, :reject_if => lambda { |a| a[:team_id].blank? }
   
 
   after_create :create_subcontracts
@@ -31,7 +31,7 @@ class Contract < ActiveRecord::Base
       sub.salary_amount = salary_progression[i][1]
       sub.contract_id = self.id
       sub.team_id = contracted_team_id
-      sub.save!
+      sub.save! 
     end
      
   end

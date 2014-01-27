@@ -3,14 +3,11 @@ class Player < ActiveRecord::Base
 
   attr_accessible :auction_value, :first_name, :last_name, :nfl_team, :position, :is_drafted, :is_bought_out, :is_extended, :is_franchised, :bye_week, :full_name, :contracts_attributes, :subcontracts_attributes
   
-  has_many :contracts
+  has_many :contracts, dependent: :destroy
   has_many :subcontracts, through: :contracts
   has_many :teams, through: :subcontracts
   
-  # default_scope order("auction_value desc")
-  
   accepts_nested_attributes_for :contracts, :reject_if => lambda { |a| a[:contracted_team].blank? }   
-  accepts_nested_attributes_for :subcontracts, :reject_if => lambda { |a| a[:team_id].blank? }
   
   scope :all_quarterbacks, lambda { where("position = ?", "QB").order("auction_value desc") }
   scope :all_receivers, lambda { where("position = ?", "WR").order("auction_value desc") }
@@ -23,8 +20,6 @@ class Player < ActiveRecord::Base
   def to_param
     "#{self.id}-#{self.first_name}-#{self.last_name}".parameterize
   end
-  
-
   
   def full_name
    [first_name, last_name].join(' ')

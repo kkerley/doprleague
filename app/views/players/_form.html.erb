@@ -19,7 +19,7 @@
 		</div>
   	</div>
   	<div class="form-group">
-		<%= f.label :nfl_team,  "NFL team (3 letter shorthand)", :class => 'col-lg-3 control-label' %>
+		<%= f.label :nfl_team,  "NFL team (shorthand)", :class => 'col-lg-3 control-label' %>
 		<div class="col-lg-9">
 			<%= f.text_field :nfl_team, :class => 'form-control' %>
 		</div>
@@ -39,13 +39,9 @@
 
 	
 		
-		<%= f.fields_for :subcontracts do |builder| %>
-			<%= render 'subcontract_fields', f: builder %>
-		<% end %>
-		<br /><br /><br /><br />
-		<%= f.fields_for :contracts do |builder| %>
-	  		<%= render 'contract_fields', f: builder %>
-	 	<% end %>
+	<%= f.fields_for :contracts do |builder| %>
+  		<%= render 'contract_fields', f: builder %>
+ 	<% end %>
   	
   	<div class="form-group">
 		<div class="col-lg-offset-3 col-lg-9">

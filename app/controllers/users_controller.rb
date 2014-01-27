@@ -7,8 +7,8 @@ class UsersController < ApplicationController
     # @past_members = User.past_members
 
     # Nothing needed here due to helper methods for getting current and past members
-    @total_payout_amount_to_date = Payout.all.count * 1200
-    gon.all_users_and_awards = User.order(:id).includes(:awards)
+    
+    
 
     respond_to do |format|
       format.html
