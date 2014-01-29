@@ -8,7 +8,7 @@ gem 'rails', '3.2.16'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+# gem 'sqlite3'
 gem 'sorcery'
 # gem 'kramdown'
 gem 'RedCloth', "~> 4.2.3", :require => 'redcloth'
@@ -17,6 +17,7 @@ gem "pg"
 gem "best_in_place"
 gem "newrelic_rpm"
 gem "gon"
+gem 'thin'
 
 # gem "roo"
 gem 'bullet', group: :development
