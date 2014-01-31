@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140121151520) do
+ActiveRecord::Schema.define(:version => 20140131035244) do
 
   create_table "awards", :force => true do |t|
     t.text     "name"
@@ -152,11 +152,11 @@ ActiveRecord::Schema.define(:version => 20140121151520) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                        :null => false
+    t.string   "email",                                               :null => false
     t.string   "crypted_password"
     t.string   "salt"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.boolean  "is_admin"
@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(:version => 20140121151520) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "role",                         :default => "regular"
   end
 
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"

@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
+
+  ROLES = %w[admin regular former]
   
-  attr_accessible :email, :password, :is_current, :password_confirmation, :is_admin, :display_name, :awards_attributes, :teams_attributes, :team_attributes, :avatar
+  attr_accessible :email, :password, :is_current, :password_confirmation, :is_admin, :display_name, :awards_attributes, :teams_attributes, :team_attributes, :avatar, :role
    
   has_many :awards
   has_many :features

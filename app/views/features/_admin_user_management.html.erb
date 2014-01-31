@@ -16,7 +16,7 @@
 
 	<div class="col-md-1">
 		
-			<%if user.is_admin? %>
+			<%if user.role == "admin" %>
 				<span class="label label-success">Yes</span>
 			<% else %>
 				<span class="label label-danger">No</span>

@@ -8,12 +8,14 @@
 	       		<% if announce.avatar? %>
 					<%= image_tag(announce.avatar.url(:max200), :border => 0, :class => 'img-rounded') %>
 				<% end %>
-	        	<p class="h1 homepage-headline"><%= best_in_place_if current_user, announce, :title, :html_attrs => { :style => 'width: 740px' } %></p>
+	        	<p class="h1 homepage-headline"><%= announce.title %></p>
           		<p class="margin-bottom-1em"><small class="muted"><%= l announce.created_at, format: :short %> by <img src="<%= announce.user.avatar(:tiny) %>" border="0" style="vertical-align: text-top;" /> <%= link_to announce.user.display_name, "/members/#" + announce.user.display_name %></small></p>
-				<%= best_in_place_if current_user, announce, :content, :type => :textarea, :html_attrs => { :style => 'width: 740px' }, :display_with => lambda { |v| textilize(v).html_safe } %>
+				<%= RedCloth.new(announce.content).to_html.html_safe %>
 	
 				<% if current_user %>
-					<p><i class="fa fa-pencil-square-o fa-lg"></i>  <%= link_to 'Edit announcement', edit_feature_path(announce) %></p>
+					<% if can? :manage, announce %>
+						<p><i class="fa fa-pencil-square-o"></i>  <%= link_to 'Edit announcement', edit_feature_path(announce) %></p>
+					<% end %>
 				<% end %>
 
 	        </div>

@@ -17,7 +17,8 @@ gem "pg"
 gem "best_in_place"
 gem "newrelic_rpm"
 gem "gon"
-gem 'thin'
+gem 'thin' # Webrick's annoying messages in the console got to be too much
+gem "cancan" # user roles management
 
 # gem "roo"
 gem 'bullet', group: :development

@@ -42,31 +42,51 @@
 					<td>
 						<% if award.user %>
 							<%if current_user%>
-								<%= image_tag award.user.avatar(:tiny), :border => "0" %> <%= best_in_place_if current_user, award, :user_id, :type => :select, :collection => User::list_user_options %>
+								<% if can? :manage, award %>
+ 									<%= image_tag award.user.avatar(:tiny), :border => "0" %> <%= best_in_place_if current_user, award, :user_id, :type => :select, :collection => User::list_user_options %>
+ 								<% else %>
+ 									<a href="/members/#<%= award.user.display_name %>"><%= image_tag award.user.avatar(:tiny), :border => "0" %></a> <a href="/members/#<%= award.user.display_name %>"><%= award.user.display_name %></a>
+ 								<% end %>
 							<% else %>
 								<a href="/members/#<%= award.user.display_name %>"><%= image_tag award.user.avatar(:tiny), :border => "0" %></a> <a href="/members/#<%= award.user.display_name %>"><%= award.user.display_name %></a>
 							<% end %>
 						<% else %>
 								<%if current_user%>
-									<%= best_in_place_if current_user, award, :user_id, :type => :select, :collection => User::list_user_options %>
+									<% if can? :manage, award %>
+										<%= best_in_place_if current_user, award, :user_id, :type => :select, :collection => User::list_user_options %>
+									<% end %>
 								<% else %>
 									Unclaimed
 								<% end %>
 						<% end %>
 
 					</td>
-					<td>$<%= best_in_place_if current_user, award, :amount, :html_attrs => { :style => 'width: 30px' } %></td>
-					<td><%= best_in_place_if current_user, award, :notes, :html_attrs => { :style => 'width: 100px' } %></td>
+					
+					<%if current_user%>
+						<% if can? :manage, award %>
+							<td>$<%= best_in_place_if current_user, award, :amount, :html_attrs => { :style => 'width: 30px' } %></td>
+							<td><%= best_in_place_if current_user, award, :notes, :html_attrs => { :style => 'width: 100px' } %></td>
+						<% else %>
+							<td>$<%= award.amount %></td>
+							<td><%= award.notes %></td>
+						<% end %>
+
+					<% else %>
+						<td>$<%= award.amount %></td>
+						<td><%= award.notes %></td>
+					<% end %>
 				</tr>
 				<% end %>
 
 				<% if current_user %>
-				<tr>
-					<td></td>
-					<td colspan="4"><br />
-						<p class="bold"><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit these payouts", edit_payout_path(payout) %></p>	
-					</td>
-				</tr>
+					<% if can? :manage, payout %>
+						<tr>
+							<td></td>
+							<td colspan="4"><br />
+								<p class="bold"><i class="fa fa-pencil-square-o"></i> <%= link_to "Edit these payouts", edit_payout_path(payout) %></p>	
+							</td>
+						</tr>
+					<% end %>
 				<% end %>
 			
 			</table>	

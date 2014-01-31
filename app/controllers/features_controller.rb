@@ -1,5 +1,6 @@
 class FeaturesController < ApplicationController
-before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new, :admin]
+# before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new, :admin]
+load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :admin]
 
   # GET /features
   # GET /features.json

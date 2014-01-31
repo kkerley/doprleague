@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_members, :past_members, :current_philip_members, :current_russell_members
+
+  # check_authorization
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
   
   private
   def not_authenticated

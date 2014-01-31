@@ -1,5 +1,8 @@
 class TeamRecordsController < ApplicationController
-  before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
+  # before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
+  load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new]
+
+
   # GET /team_records
   # GET /team_records.json
   def index

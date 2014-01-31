@@ -60,10 +60,9 @@
 	</div>
   	<% if current_user %>
 	<div class="form-group">
-		<div class="col-lg-offset-3 col-lg-9">
-			<label class="checkbox">
-				<%= f.check_box :is_admin %> Admin?
-			</label>
+		<%= f.label :role, :class => 'col-lg-3 control-label' %>
+		<div class="col-lg-9">
+			<%= f.collection_select(:role, User::ROLES, :to_s, :humanize, {}, {:class => "form-control"}) %> 
 		</div>
 	</div>
 	<% end %>

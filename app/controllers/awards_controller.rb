@@ -1,5 +1,8 @@
 class AwardsController < ApplicationController
-  before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new, :index]
+  #before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new, :index]
+  load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new]
+
+
   # GET /awards
   # GET /awards.json
   def index

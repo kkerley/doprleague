@@ -1,5 +1,6 @@
 class ContractsController < ApplicationController
-before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
+  # before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
+  load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new]
 
   # GET /contracts
   # GET /contracts.json

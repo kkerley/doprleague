@@ -25,16 +25,18 @@
 	
 		<% @polls_features.each do |poll| %>
 			<p><a id="<%= poll.title %>">&nbsp;</a><br /><br /></p>
-			<p class="h1"><a id="<%= poll.title %>"></a><%= poll.homepage_order %>. <%= best_in_place_if current_user, poll, :title, :html_attrs => { :style => 'width: 600px' } %></p>
+			<p class="h1"><a id="<%= poll.title %>"></a><%= poll.homepage_order %>. <%= poll.title %></p>
 			<% if poll.avatar? %>
 				<%= image_tag(poll.avatar.url(:max720), :border => 0, :class => "img-polaroid margin-bottom-1em img-responsive") %>
 			<% end %>
 
-			<%= best_in_place_if current_user, poll, :content, :type => :textarea, :html_attrs => { :style => 'width: 580px' }, :display_with => lambda { |v| textilize(v).html_safe } %>	      
+			<%= RedCloth.new(poll.content).to_html.html_safe %>	      
 
 			<% if current_user %>
-				<br />
-				<p><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to 'Edit this poll', edit_feature_path(poll) %></p>
+				<% if can? :manage, poll %>
+					<br />
+					<p><i class="fa fa-pencil-square-o"></i> <%= link_to 'Edit this poll', edit_feature_path(poll) %></p>
+				<% end %>
 			<% end %>
 	      	<%= render 'layouts/back_to_top_link' %>
 		<% end %>
