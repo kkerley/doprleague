@@ -7,7 +7,7 @@
 		<% unless @player.is_contracted? %>
 			<p class="h1">Free agent as of <%= current_year %></p>
 			<% if current_user %>
-				<p class="h4"><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Add a contract for #{@player.full_name}", edit_player_path(@player) %></p>
+				<p class="h4"><i class="fa fa-pencil-square-o"></i> <%= link_to "Add a contract for #{@player.full_name}", edit_player_path(@player) %></p>
 					
 			<% end %>
 			<hr />
@@ -77,12 +77,14 @@
 							<% end %>
 
 							<% if current_user %>
-								<tr>
-									<td></td>
-									<td colspan="3">
-										<i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this contract for #{@player.full_name}", edit_contract_path(contract) %>
-									</td>
-								</tr>
+								<% if can? :manage, @player %>
+									<tr>
+										<td></td>
+										<td colspan="3">
+											<i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this contract for #{@player.full_name}", edit_contract_path(contract) %>
+										</td>
+									</tr>
+								<% end %>
 							<% end %>
 
 						</tbody>

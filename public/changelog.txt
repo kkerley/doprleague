@@ -2,14 +2,14 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.2 [2014/01/xx]
+Version 2.2 [2014/02/xx]
 --------------------------------------------------
 - Added role to User class
 - Added cancan gem for user role authentication
 - Updated all views and controllers to reflect new roles permissions
-
-Version 2.1.4 [2014/01/xx]
---------------------------------------------------
+- Gave users ability to update their own profile (to an extent)
+- Fixed anchor links on Constitution, Facebook polls, FAQs and team directory pages
+- Changed layout of Constitution, Facebook polls, FAQs to use the accordion widget
 - Adjusted the users#index (/members) payouts tables to be condensed
 - Overrode as_json for User to dump out display_name and total_winnings for use with amCharts
 - Moved NFL Players to the end of the navigation, before Admin Login 

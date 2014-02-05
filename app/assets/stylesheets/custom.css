@@ -33,22 +33,22 @@
 	margin-bottom: 0 !important;
 }
 .margin-bottom-1em{
-	margin-bottom: 1em;
+	margin-bottom: 1em !important;
 }
 
 .margin-bottom-2em{
-	margin-bottom: 2em;
+	margin-bottom: 2em !important;
 }
 
 .margin-bottom-4em{
-	margin-bottom: 4em;
+	margin-bottom: 4em !important;
 }
 
 .margin-left-1em{
-	margin-left: 1em;
+	margin-left: 1em !important;
 }
 .margin-right-1em{
-	margin-right: 1em;
+	margin-right: 1em !important;
 }
 
 .bold{
@@ -145,3 +145,7 @@ fieldset.contract-fields{
 	margin-bottom: 0 !important;
 }
 
+.highlighter{
+	background-color: #fffc00;
+	display: inline-block !important;
+}

@@ -3,26 +3,28 @@
 
 
 <% if current_user %>
-	<div class="row">
-		<div class="col-md-5">
+	<% if can? :manage, @salary_progressions %>
+		<div class="row">
+			<div class="col-md-5">
 
-			<div class="panel panel-success margin-bottom-4em">
-				<div class="panel-heading">
-	          		<p class="panel-title bold">Import salary progressions <small class="muted" style="font-weight: normal;">only .csv accepted at this time.</small></p>
-					<small class="muted">Download full list in <%= link_to ".csv", salary_progressions_path(format: "csv") %></small>
-	        	</div>
-					<div class="panel-body">
-							<%= form_tag import_salary_progressions_path, :class => "form-inline", multipart: true do %>
-							 <div class="form-group"> 
-								<%= file_field_tag :file, :class => "form-control", :style => "width: 350px" %><br />
-							</div>
-							  	<%= submit_tag "Import", :class => "btn btn-success btn-large" %>
-					
-							<% end %>
-					</div>
+				<div class="panel panel-success margin-bottom-4em">
+					<div class="panel-heading">
+		          		<p class="panel-title bold">Import salary progressions <small class="muted" style="font-weight: normal;">only .csv accepted at this time.</small></p>
+						<small class="muted">Download full list in <%= link_to ".csv", salary_progressions_path(format: "csv") %></small>
+		        	</div>
+						<div class="panel-body">
+								<%= form_tag import_salary_progressions_path, :class => "form-inline", multipart: true do %>
+								 <div class="form-group"> 
+									<%= file_field_tag :file, :class => "form-control", :style => "width: 350px" %><br />
+								</div>
+								  	<%= submit_tag "Import", :class => "btn btn-success btn-large" %>
+						
+								<% end %>
+						</div>
+				</div>
 			</div>
-		</div>
-	</div>	
+		</div>	
+	<% end %>
 <% end %>
 
 
@@ -37,66 +39,76 @@
         	<table cellspacing="0" cellpadding="0" border="0" class="table table-condensed table-striped">
 				<tr>
 					<th></th>
-					<th>Auction value</th>
-					<th>Year 2</th>
-					<th>Year 3</th>
-					<th>Year 4</th>
-					<th>Year 5</th>
-					<th>Year 6</th>
-					<th>Year 7</th>
-					<th>Year 8</th>
-					<th>Year 9</th>
-					<th>Year 10</th>
-					<th>Year 11</th>
-					<th>Year 12</th>
-					<th>Year 13</th>
-					<th>Year 14</th>
-					<th>Year 15</th>
-					<!--<th>Year 16</th>
-					<th>Year 17</th>
-					<th>Year 18</th>
-					<th>Year 19</th>
-					<th>Year 20</th>-->
+					<th>Auction</th>
+					<th>Y2</th>
+					<th>Y3</th>
+					<th>Y4</th>
+					<th>Y5</th>
+					<th>Y6</th>
+					<th>Y7</th>
+					<th>Y8</th>
+					<th>Y9</th>
+					<th>Y10</th>
+					<th>Y11</th>
+					<th>Y12</th>
+					<th>Y13</th>
+					<th>Y14</th>
+					<th>Y15</th>
+					<th>Y16</th>
+					<th>Y17</th>
+					<th>Y18</th>
+					<th>Y19</th>
+					<th>Y20</th>
 					<% if current_user %>
-						<td></td>
+						<% if can? :manage, @salary_progressions %>
+							<td></td>
+						<% end %>
 					<% end %>
 				</tr>
 				
 				<% @salary_progressions.each do |salary| %>
-				<tr>
-					<td></td>
-					<td><%= best_in_place_if current_user, salary, :auction_value, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year2, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year3, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year4, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year5, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year6, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year7, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year8, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year9, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year10, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year11, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year12, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year13, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year14, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><%= best_in_place_if current_user, salary, :year15, :html_attrs => { :style => 'width: 80px' } %></td>
-					<!--<td><% best_in_place_if current_user, salary, :year16, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><% best_in_place_if current_user, salary, :year17, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><% best_in_place_if current_user, salary, :year18, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><% best_in_place_if current_user, salary, :year19, :html_attrs => { :style => 'width: 80px' } %></td>
-					<td><% best_in_place_if current_user, salary, :year20, :html_attrs => { :style => 'width: 80px' } %></td>-->
 					<% if current_user %>
-						<td><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit", edit_salary_progression_path(salary) %></td>
+						<% if can? :manage, salary %>
+							<tr>
+								<td></td>
+								<td><%= best_in_place_if current_user, salary, :auction_value, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year2, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year3, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year4, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year5, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year6, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year7, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year8, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year9, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year10, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year11, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year12, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year13, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year14, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><%= best_in_place_if current_user, salary, :year15, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><% best_in_place_if current_user, salary, :year16, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><% best_in_place_if current_user, salary, :year17, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><% best_in_place_if current_user, salary, :year18, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><% best_in_place_if current_user, salary, :year19, :html_attrs => { :style => 'width: 80px' } %></td>
+								<td><% best_in_place_if current_user, salary, :year20, :html_attrs => { :style => 'width: 80px' } %></td>							
+								<td><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit", edit_salary_progression_path(salary) %></td>
+							</tr>
+						<% else %>
+							<%= render 'non_admin_table_row', salary: salary %>
+						<% end %>
+
+					<% else %>
+						<%= render 'non_admin_table_row', salary: salary %>
 					<% end %>
-					
-				</tr>
 				<% end %>
 				
 				<% if current_user %>
-				<tr>
-					<td></td>
-					<td colspan="21"><span class="glyphicon glyphicon-plus-sign"></span> <%= link_to 'New salary progression', new_salary_progression_path %></td>
-				</tr>
+					<% if can? :manage, @salary_progressions %>
+						<tr>
+							<td></td>
+							<td colspan="21"><span class="glyphicon glyphicon-plus-sign"></span> <%= link_to 'New salary progression', new_salary_progression_path %></td>
+						</tr>
+					<% end %>
 				<% end %>
 			</table>
 			

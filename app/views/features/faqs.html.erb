@@ -1,41 +1,51 @@
 <% content_for :title, "Frequently asked questions" %>
-<% content_for :section_subtitle, "Before posting on Facebook and likely getting lit up for asking a question that's been asked (probably numerous times) before, check here first." %>
+<% content_for :section_subtitle, "Before posting on Facebook and likely getting lit up for asking a question that's been asked (probably numerous times) in the past, check here first." %>
 
 
 		
 <div class="row">
-	<div class="col-md-4 col-md-push-8"><br />
+	<div class="col-md-4 col-md-push-8">
 		<div class="panel panel-default">
 			<div class="panel-heading">
             	<h3 class="panel-title">FAQs Contents</h3>
           	</div>
           	<div class="panel-body">
-            		<ol>
-						<% @faqs.each do |article| %>
-							<li><%= link_to article.title, "#" + article.title %></li>
-						<% end %>
-					</ol>
+        		<ol>
+					<% @articles.each do |article| %>
+						<li><%= link_to article.title, "#" + article.title.parameterize %></li>
+					<% end %>
+				</ol>
           	</div>
         </div><!-- end of panel -->
 	</div><!-- end of col-md-4-->
 
 	<div class="col-md-8 col-md-pull-4">
-
-		<% @faqs.each do |article| %>
-	      		<p><a id="<%= article.title %>">&nbsp;</a><br /><br /></p>
-				<p class="h1"><a id="<%= article.title %>"></a><%= article.title %></p>
-
-				<%= RedCloth.new(article.content).to_html.html_safe %>
-     
-				<% if current_user %>
-					<% if can? :manage, article %>
-						<br />
-						<p><i class="fa fa-pencil-square-o"></i> <%= link_to 'Edit this article', edit_feature_path(article) %></p>
-					<% end %>
-				<% end %>
-				<hr />
-				<%= render 'layouts/back_to_top_link' %>
-		<% end %>
+		<div class="panel-group" id="accordion">
+		  
+			<% @articles.each do |article| %>
+			 	<div class="panel panel-default margin-bottom-2em">
+			    	<div class="panel-heading">
+			      		<h4 class="panel-title">
+					        <a name="<%= article.title.parameterize %>"></a><a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= article.id %>">
+					           <%= article.homepage_order %>. <%= article.title %>
+					        </a>
+			      		</h4>
+			    	</div>
+			    	<div id="collapse<%= article.id %>" class="panel-collapse collapse">
+			      		<div class="panel-body">
+			        		<%= RedCloth.new(article.content).to_html.html_safe %>
+			        		<% if current_user %>
+								<% if can? :manage, article %>
+									<br />
+									<p><i class="fa fa-pencil-square-o"></i> <%= link_to 'Edit this article', edit_feature_path(article) %></p>
+								<% end %>
+							<% end %>
+			      		</div>
+			    	</div>
+			  	</div>
+				<% render 'layouts/back_to_top_link' %>
+			<% end %>
+		</div><!-- end of panel-group id accordion -->
 
 	</div><!-- end of col-md-8 -->
 

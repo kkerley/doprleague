@@ -99,16 +99,16 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
   # end 
 
   def faqs
-    @faqs = Feature.faqs_list.others.published
-    @jumbotron = Feature.for_faqs.jumbotron
+    @articles = Feature.faqs_list.others.published
+    # @jumbotron = Feature.for_faqs.jumbotron
   end 
   
   def constitution
-    @constitution_features = Feature.for_constitution.others.published
+    @articles = Feature.for_constitution.others.published
   end
   
   def polls
-    @polls_features = Feature.for_polls.others.published
+    @articles = Feature.for_polls.others.published
   end
   
   def admin

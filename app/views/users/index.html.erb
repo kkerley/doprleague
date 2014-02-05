@@ -1,25 +1,17 @@
 <% content_for :title, "League members" %>
 <% content_for :section_subtitle, "All members (both past and present) of the Disciples of Philip Rivers Fantasy Football League." %>
-
-
 		
-<div class="row">
-	
+<div class="row">	
 	<div class="col-md-8"><br />
-		
-		
-
-		
-
 		<% current_philip_members.each do |user| %>
-			<div class="panel panel-primary">
+			<div class="panel panel-default">
 				<%= render 'member_information', user: user %>	
 	      	</div><!-- end of panel -->
 			<%= render 'layouts/back_to_top_link' %>
 		<% end %>
 
 		<% current_russell_members.each do |user| %>
-			<div class="panel panel-primary">
+			<div class="panel panel-default">
 				<%= render 'member_information', user: user %>	
 	      	</div><!-- end of panel -->
 			<%= render 'layouts/back_to_top_link' %>

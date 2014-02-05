@@ -1,0 +1,53 @@
+<div class="row">
+	<div class="col-md-4">
+
+		<div class="bs-callout bs-callout-info">
+			<div class="row">
+				<div class="col-md-3">
+					<%= image_tag current_user.avatar.url(:thumb), :class => "img-polaroid img-responsive" %>
+				</div>
+
+				<div class="col-md-8">
+					<h4>
+						Welcome. 
+					</h4>
+					
+					<p>Signed in as <%= current_user.display_name %><br />
+						<a href="<%= edit_user_path(current_user) %>"><i class="fa fa-pencil-square-o"></i> Edit profile</a> | 
+						<a href="<%=logout_path %>"><i class="fa fa-sign-out"></i> Log out</a>
+						<% if current_user.role == "admin" %>
+							<br /><a href="/admin"><i class="fa fa-cogs"></i> Admin control panel</a>
+						<% end %> 
+					</p>
+				</div>
+
+			</div>
+		</div> <!-- end of bs-callout-info -->
+	</div><!-- end of col-md-4 -->
+
+	<div class="col-md-4">
+
+	</div>
+
+	<div class="col-md-4">
+
+		<div class="bs-callout bs-callout-danger">
+			<div class="row">
+				
+
+				<div class="col-md-12">
+					<h4>
+						<i class="fa fa-exclamation-triangle"></i> Notice
+					</h4>
+					<p>
+						<% if Time.now.month > 1 && Time.now.month < 8 %>
+							The deadline to apply contract extensions and/or franchise tags is <strong>7/31/<%= current_year + 1 %></strong>. Please review <%= link_to "your team", current_user.team %> to ensure you don't miss out.
+						<% end %>
+					</p>
+				</div>
+
+			</div>
+		</div> <!-- end of bs-callout-danger -->
+	</div><!-- end of col-md-4 -->
+
+</div><!-- end of row -->

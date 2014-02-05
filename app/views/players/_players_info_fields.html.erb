@@ -21,24 +21,26 @@
 			
 			
 			<% if current_user %>
-				<div class="col-md-5 col-md-offset-3">
-		
-					<div class="panel panel-success">
-						<div class="panel-heading">
-			          		<p class="panel-title bold">Import players <small>only .csv accepted at this time.</small></p>
-							<small class="muted">Download full list in <%= link_to ".csv", players_path(format: "csv") %> <!-- or <% link_to ".xsl", players_path(format: "xls") %> --></small>
-			        	</div>
-							<div class="panel-body">
-									<%= form_tag import_players_path, :class => "form-inline", multipart: true do %>
-									 <div class="form-group"> 
-										<%= file_field_tag :file, :class => "form-control", :style => "width: 350px" %><br />
-									</div>
-									  	<%= submit_tag "Import", :class => "btn btn-success btn-large" %>
-								
-									<% end %>
-							</div>
-					</div>
-				</div>		
+				<% if can? :manage, @players %>
+					<div class="col-md-5 col-md-offset-3">
+			
+						<div class="panel panel-success">
+							<div class="panel-heading">
+				          		<p class="panel-title bold">Import players <small>only .csv accepted at this time.</small></p>
+								<small class="muted">Download full list in <%= link_to ".csv", players_path(format: "csv") %> <!-- or <% link_to ".xsl", players_path(format: "xls") %> --></small>
+				        	</div>
+								<div class="panel-body">
+										<%= form_tag import_players_path, :class => "form-inline", multipart: true do %>
+										 <div class="form-group"> 
+											<%= file_field_tag :file, :class => "form-control", :style => "width: 350px" %><br />
+										</div>
+										  	<%= submit_tag "Import", :class => "btn btn-success btn-large" %>
+									
+										<% end %>
+								</div>
+						</div>
+					</div>		
+				<% end %>
 			<% end %>
 		
 		
@@ -77,11 +79,13 @@
 						<th>Salary</th>
 						<th class="hidden-sm hidden-xs">Bye</th>
 						<th>Owned by</th>
-						
+						<th><!-- contract link --></th>
 						
 						<% if current_user %>
-						<th></th>
-						<th></th>
+							<% if can? :manage, @players %>
+								<th></th>
+								<th></th>
+							<% end %>
 						<% end %>
 					</tr>
 				</thead>
@@ -118,8 +122,10 @@
 						
 					
 						<% if current_user %>
-							<td><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit", edit_player_path(player) %></td>
-							<td><i class="fa fa-minus-circle"></i> <%= link_to 'Delete', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+							<% if can? :manage, player %>
+								<td><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit", edit_player_path(player) %></td>
+								<td><i class="fa fa-minus-circle"></i> <%= link_to 'Delete', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+							<% end %>
 						<% end %>
 					</tr>
 					<% end %>

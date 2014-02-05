@@ -10,7 +10,11 @@
 							<th></th>
 							<th>Player</th>
 							<th>Term</th>
-							<% if current_user %><th></th><% end %>
+							<% if current_user %>
+								<% if can? :manage, @contracts %>
+									<th></th>
+								<% end %>
+							<% end %>
 						</tr>
 					</thead>
 					<tbody>
@@ -50,7 +54,9 @@
 									
 								</td>
 								<% if current_user %>
-									<td class="<%= contract.is_bought_out ? 'bought-out' : contract.is_extended && contract.is_franchised ? 'extended_and_franchised'  : contract.is_extended ? 'extended' : contract.is_franchised ? 'franchised' :'' %>"><%= link_to "Delete", contract, :confirm => 'Are you sure?', :method => :delete, :class => 'label label-danger' %></td>
+									<% if can? :manage, contract %>
+										<td class="<%= contract.is_bought_out ? 'bought-out' : contract.is_extended && contract.is_franchised ? 'extended_and_franchised'  : contract.is_extended ? 'extended' : contract.is_franchised ? 'franchised' :'' %>"><%= link_to "Delete", contract, :confirm => 'Are you sure?', :method => :delete, :class => 'label label-danger' %></td>
+									<% end %>
 								<% end %>
 							</tr>
 						<% end %>

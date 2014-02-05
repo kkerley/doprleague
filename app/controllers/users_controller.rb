@@ -24,7 +24,11 @@ class UsersController < ApplicationController
   end
   
   def edit
+    if current_user.id == @user.id || current_user.role == "admin"
       @user = User.find(params[:id])
+    else
+      redirect_to root_url, :alert => exception.message
+    end
   end
   
   def show
@@ -41,7 +45,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to({ :controller => :features, :action => :admin }, {notice: 'User was successfully updated.'}) }
+        if current_user.role == "admin" 
+          format.html { redirect_to({ :controller => :features, :action => :admin }, {notice: 'User was successfully updated.'}) }
+        else
+          format.html { redirect_to root_url, notice: 'User was successfully updated.' }
+        end
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,6 +1,6 @@
 <tr>
 	<td></td>
-	<td><%= link_to user.display_name, "/members/#" + user.display_name %></td>
+	<td><%= link_to user.display_name, "/members/#" + user.display_name.parameterize %></td>
 	<td><%= image_tag user.avatar(:tiny) %></td>
 	<td><% if user.team %>
 		<%= link_to user.team.team_name, user.team %>

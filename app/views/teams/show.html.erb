@@ -19,7 +19,7 @@
 						
 						<table cellspacing="0" cellpadding="0" border="0" class="table table-condensed table-bordered table-striped">
 							<thead>
-								<th></th>
+								<th width="5"></th>
 								<th>Name</th>
 								<th class="hidden-sm hidden-xs">Position</th>
 								<th><%= current_year %></th>
@@ -93,9 +93,9 @@
 				<table class="table table-condensed table-bordered table-striped" cellpadding="0" cellspacing="0" border="0">
 		      		<thead>
 		      			<tr>
-		      				<th></th>
-		      				<th>Position</th>
-		      				<th>Count</th>
+		      				<th width="5"></th>
+		      				<th width="20">Pos</th>
+		      				<th width="20">#</th>
 		      				<th>Players</th>
 		      			</tr>
 		      		</thead>
@@ -105,17 +105,29 @@
 		      				<td></td>
 		      				<td>QB</td>
 		      				<td><%= @qbs.count %></td>
-		      				<% @qbs.each do |qb| %>
-		      					<td><%= link_to qb.full_name, qb %></td>
-		      				<% end %>
+		      				<td>
+		      					<table cellspacing="0" cellpadding="0" border="0">
+		      						<tr>
+					      				<% @qbs.each do |qb| %>
+					      					<td style="padding-left: 10px; padding-right: 10px; border-right: 1px solid #ccc;"><%= link_to qb.full_name, qb %></td>
+					      				<% end %>
+					      			</tr>
+					      		</table>
+			      			</td>
 		      			</tr>
 		      			<tr>
 		      				<td></td>
 		      				<td>RB</td>
 		      				<td><%= @rbs.count %></td>
-		      				<% @rbs.each do |rb| %>
-		      					<td><%= link_to rb.full_name, rb %></td>
-		      				<% end %>
+		      				<td>
+		      					<table cellspacing="0" cellpadding="0" border="0">
+		      						<tr>
+					      				<% @rbs.each do |rb| %>
+					      					<td style="padding-left: 10px; padding-right: 10px; border-right: 1px solid #ccc;"><%= link_to rb.full_name, rb %></td>
+					      				<% end %>
+					      			</tr>
+					      		</table>
+			      			</td>
 		      			</tr>
 		      			<tr>
 		      				<td></td>

@@ -32,10 +32,12 @@
 			<td></td>
 		</tr>
 		<% if current_user %>
-			<tr>
-				<td></td>
-				<td colspan="3"><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this member", edit_user_path(user) %></td>
-			</tr>
+			<% if can? :manage, user %>
+				<tr>
+					<td></td>
+					<td colspan="3"><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this member", edit_user_path(user) %></td>
+				</tr>
+			<% end %>
 		<% end %>
 	</tbody>
 </table>

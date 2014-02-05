@@ -68,8 +68,10 @@
         <small>* denotes playoff berth</small>
         <%= render 'layouts/back_to_top_link' %>
     <% end %>
-  <% if current_user %>
-    <p><i class="fa fa-plus"></i> <%= link_to "Add new all-time standings record", new_standing_path %></p>
+    <% if current_user %>
+      <% if can? :manage, @standings %> 
+        <p><i class="fa fa-plus"></i> <%= link_to "Add new all-time standings record", new_standing_path %></p>
+      <% end %>
     <% end %>
   </div><!-- end of col-md-10 -->
 
