@@ -10,7 +10,7 @@
 				<p class="h4"><i class="fa fa-pencil-square-o"></i> <%= link_to "Add a contract for #{@player.full_name}", edit_player_path(@player) %></p>
 					
 			<% end %>
-			<hr />
+			
 		<% end %>
 
 		<% if @contracts.count > 0 %>
@@ -113,16 +113,19 @@
 		<% #end %>
 		-->
 		
-			<% if @player.is_contracted? && !@player.this_year.contract.is_franchised %> 
+			<% if @player.is_contracted? && !@player.current_contract.is_franchised %> 
 				<div class="bs-callout bs-callout-warning">
-					<p class="h4">If <%= @player.full_name %> was franchised right now...<br />
-						<small>Top 5 <%= @player.position %>s based on current salary</small></p>
+					<h4><i class="fa fa-exclamation-triangle"></i> <%= @player.full_name %> is eligible for a franchise tag</h4>
+					
+					<p><small class="muted">Top 5 <%= @player.position %>s based on current salary</small></p>
 					<ul>
 					<% @top_5_players_of_position.each do |player| %>
-						<li><%= link_to player.full_name, player %> for $<%= player.this_year_salary %>
+						<li><%= link_to player.full_name, player %> for $<%= player.auction_value %>
 					<% end %>
 					</ul>
-					<p>Averages to <strong>$<%= @player.average_salaries(@top_5_players_of_position) %></strong> for <%= @player.full_name %>'s franchise year if the next salary progression value isn't more</p>
+					<p>Averaged salaries: <strong>$<%= @top_5_average %></strong></p>
+					<p>Salary progression + 1 year:  <strong>$<%= @next_step %></strong></p>
+					<p>It will cost <strong>$<%= @franchise_cost %></strong> for <%= @player.full_name %>'s franchise year.</p>
 				</div>
 			<% end %>
 		

@@ -27,19 +27,4 @@ class Feature < ActiveRecord::Base
   scope :for_constitution, lambda{ where("feature_type = ?", "Constitution").order("homepage_order asc") }
   scope :for_polls, lambda{ where("feature_type = ?", "Poll").order("homepage_order asc") }
   
-
- 
-  scope :announcements_list, for_announcements.order("homepage_order asc")
-  scope :faqs_list, for_faqs.where("homepage_order > ?", "0")
-  scope :constitution_list, for_constitution.where("homepage_order > ?", "0")
-  scope :polls_list, for_polls.where("homepage_order > ?", "0")
-  
-  
-  scope :evens, lambda { where("homepage_order % 2 = 0")} #modulus = 0 to get the evens
-  scope :odds, lambda { where("homepage_order % 2 = 1")} #modulus = 1 to get the odds
-
-  
-  scope :others, lambda { where("homepage_order > ?", "0") }
-  
- 
 end

@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   
 
-  
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>", :mini => "32x32>", :tiny => "16x16>" }, :default_url => "/images/:style/missing.png"
 
   default_scope order('display_name ASC')

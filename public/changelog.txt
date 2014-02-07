@@ -12,13 +12,15 @@ Version 2.2 [2014/02/xx]
 - Changed layout of Constitution, Facebook polls, FAQs to use the accordion widget
 - Adjusted the users#index (/members) payouts tables to be condensed
 - Overrode as_json for User to dump out display_name and total_winnings for use with amCharts
+- Added gon gem to better manage data in JavaScript
 - Moved NFL Players to the end of the navigation, before Admin Login 
+- Added NFL Players Free Agent view and associated search logic
+- Updated the existing NFL players filters to accomodate both "all" and "Free Agents" without duplicating code
+- Changed logic for franchising (based on auction value regardless of an existing contract)
 - Added this_is_a_buyout boolean to Contract to better manage the buyout subcontracts (just like with extensions and buyouts)
 - Added counts of buyouts, extensions, franchises and extensions & franchises to Contract views as helpers
 - Added views for buyouts, extensions, franchises and extensions & franchises
-- Added Free Agent view for Player model but need to figure out how to only search FAs from that page
 - Added donut chart to teams#show page showing breakdown of payouts
-- Added gon gem to better manage data in JavaScript
 - Brought back "The League" panel to the root page, users#index and teams#show on medium devices
 - Properly nested contracts/subcontracts on players#edit but subcontracts details won't update for some reason. This is fine. Contracts shouldn't be edited from there anyway.
 

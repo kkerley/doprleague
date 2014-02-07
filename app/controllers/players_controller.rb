@@ -24,8 +24,13 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
     @contracts = @player.contracts.order("contract_start_year desc").includes(:subcontracts)
 
-    @top_5_players_of_position = Player.where("position = ?", @player.position).sort_by { |player| player.this_year_salary }.reverse.first(5)
-    
+    if @player.is_contracted?
+      @top_5_players_of_position = Player.where("position = ?", @player.position).sort_by { |player| player.auction_value }.reverse.first(5)
+      @top_5_average = @player.average_salaries(@top_5_players_of_position)
+      @next_step = @player.next_salary_step(@player.this_year_salary)
+      @franchise_cost = @player.which_is_higher_franchise_cost(@top_5_average, @next_step)
+    end
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -101,6 +106,6 @@ class PlayersController < ApplicationController
   end
 
   def free_agents
-    @players = Player.free_agents
+    @players = Player.text_search(params[:query]).free_agents.sort_by { |player| player.this_year_salary }.reverse # chain the text_search here
   end
 end

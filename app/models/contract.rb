@@ -15,6 +15,7 @@ class Contract < ActiveRecord::Base
   after_update :check_for_extension, :if => Proc.new { |a| a.is_extended_changed? }
   after_update :check_for_franchise, :if => Proc.new { |a| a.is_franchised_changed? }
 
+
   def create_subcontracts
     contracted_team_id = self.contracted_team
     player = Player.find(self.player_id)
@@ -80,7 +81,7 @@ class Contract < ActiveRecord::Base
       final_salary = 0
       this_salary = 0
       contracted_team_id = self.subcontracts.last.team_id
-      top_5_players_of_position = Player.where("position = ?", player.position).sort_by { |player| player.this_year_salary }.reverse.first(5)
+      top_5_players_of_position = Player.where("position = ?", player.position).sort_by { |player| player.auction_value }.reverse.first(5)
 
       top_5_players_of_position.each do |top_player|
         if top_player.is_contracted?

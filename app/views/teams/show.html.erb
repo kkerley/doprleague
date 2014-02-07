@@ -96,7 +96,7 @@
 		      				<th width="5"></th>
 		      				<th width="20">Pos</th>
 		      				<th width="20">#</th>
-		      				<th>Players</th>
+		      				<th style="padding-left: 15px;">Players</th>
 		      			</tr>
 		      		</thead>
 		      		<tbody>
@@ -109,7 +109,7 @@
 		      					<table cellspacing="0" cellpadding="0" border="0">
 		      						<tr>
 					      				<% @qbs.each do |qb| %>
-					      					<td style="padding-left: 10px; padding-right: 10px; border-right: 1px solid #ccc;"><%= link_to qb.full_name, qb %></td>
+					      					<td class="roster-breakdown-by-player-row"><%= link_to qb.full_name, qb %></td>
 					      				<% end %>
 					      			</tr>
 					      		</table>
@@ -123,7 +123,7 @@
 		      					<table cellspacing="0" cellpadding="0" border="0">
 		      						<tr>
 					      				<% @rbs.each do |rb| %>
-					      					<td style="padding-left: 10px; padding-right: 10px; border-right: 1px solid #ccc;"><%= link_to rb.full_name, rb %></td>
+					      					<td class="roster-breakdown-by-player-row"><%= link_to rb.full_name, rb %></td>
 					      				<% end %>
 					      			</tr>
 					      		</table>
@@ -133,33 +133,57 @@
 		      				<td></td>
 		      				<td>WR</td>
 		      				<td><%= @wrs.count %></td>
-		      				<% @wrs.each do |wr| %>
-		      					<td><%= link_to wr.full_name, wr %></td>
-		      				<% end %>
+							<td>
+								<table cellspacing="0" cellpadding="0" border="0">
+		      						<tr>
+					      				<% @wrs.each do |wr| %>
+					      					<td class="roster-breakdown-by-player-row"><%= link_to wr.full_name, wr %></td>
+					      				<% end %>
+					      			</tr>
+					      		</table>
+							</td>
 		      			</tr>
 		      			<tr>
 		      				<td></td>
 		      				<td>TE</td>
 		      				<td><%= @tes.count %></td>
-		      				<% @tes.each do |te| %>
-		      					<td><%= link_to te.full_name, te %></td>
-		      				<% end %>
+		      				<td>
+		      					<table cellspacing="0" cellpadding="0" border="0">
+		      						<tr>
+					      				<% @tes.each do |te| %>
+					      					<td class="roster-breakdown-by-player-row"><%= link_to te.full_name, te %></td>
+					      				<% end %>
+					      			</tr>
+					      		</table>
+		      				</td>
 		      			</tr>
 		      			<tr>
 		      				<td></td>
 		      				<td>K</td>
 		      				<td><%= @kickers.count %></td>
-		      				<% @kickers.each do |k| %>
-		      					<td><%= link_to k.full_name, k %></td>
-		      				<% end %>
+		      				<td>
+		      					<table cellspacing="0" cellpadding="0" border="0">
+		      						<tr>
+					      				<% @kickers.each do |k| %>
+					      					<td class="roster-breakdown-by-player-row"><%= link_to k.full_name, k %></td>
+					      				<% end %>
+					      			</tr>
+					      		</table>
+		      				</td>
 		      			</tr>
 		      			<tr>
 		      				<td></td>
 		      				<td>D</td>
 		      				<td><%= @defs.count %></td>
-		      				<% @defs.each do |d| %>
-		      					<td><%= link_to d.full_name, d %></td>
-		      				<% end %>
+		      				<td>
+		      					<table cellspacing="0" cellpadding="0" border="0">
+		      						<tr>
+					      				<% @defs.each do |d| %>
+					      					<td class="roster-breakdown-by-player-row"><%= link_to d.full_name, d %></td>
+					      				<% end %>
+					      			</tr>
+					      		</table>
+		      				</td>
 		      			</tr>
 		      		</tbody>
 		      	</table>

@@ -5,7 +5,7 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
   # GET /features
   # GET /features.json
   def index
-    @announcements = Feature.announcements_list.others.published.includes(:user)
+    @announcements = Feature.for_announcements.published.includes(:user)
     
     
     # @all_features = Feature.homepage_list
@@ -99,22 +99,22 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
   # end 
 
   def faqs
-    @articles = Feature.faqs_list.others.published
+    @articles = Feature.for_faqs.published
     # @jumbotron = Feature.for_faqs.jumbotron
   end 
   
   def constitution
-    @articles = Feature.for_constitution.others.published
+    @articles = Feature.for_constitution.published
   end
   
   def polls
-    @articles = Feature.for_polls.others.published
+    @articles = Feature.for_polls.published
   end
   
   def admin
     @announcements = Feature.for_announcements
     @faqs = Feature.for_faqs
-    @facebook_polls = Feature.polls_list
+    @facebook_polls = Feature.for_polls
     @constitution_features = Feature.for_constitution
     @users = User.all
   end

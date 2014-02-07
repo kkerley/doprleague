@@ -1,23 +1,4 @@
-<div class="row">
-	<div class="col-md-12"><br />
-		<div class="row">
-			<div class="col-md-4">
 
-				<div class="panel panel-warning">
-					<div class="panel-heading">
-		          		<p class="panel-title bold">Search players</p>
-						<!--<small class="muted">Some kind of additional text here</small>-->
-		        	</div>
-						<div class="panel-body">
-								<%= form_tag players_path, :class => "form-inline", method: :get do %>
-								<div class="form-group"> 
-								    <%= text_field_tag :query, params[:query], :class => "form-control", :style => "width: 250px;" %>
-								</div>
-								<%= submit_tag "Search", name: nil, :class => "btn btn-warning btn-large" %>
-								<% end %>
-						</div>
-				</div>
-			</div>
 			
 			
 			<% if current_user %>
@@ -61,12 +42,13 @@
         	<div class="search-filters">
         		
 				<a href="/players" class="btn btn-default">All</a> 
-				<a href="/players?utf8=✓&query=QB" class="btn btn-default">QB</a> 
-				<a href="/players?utf8=✓&query=WR" class="btn btn-default">WR</a> 
-				<a href="/players?utf8=✓&query=RB" class="btn btn-default">RB</a> 
-				<a href="/players?utf8=✓&query=TE" class="btn btn-default">TE</a> 
-				<a href="/players?utf8=✓&query=K" class="btn btn-default">K</a> 
-				<a href="/players?utf8=✓&query=DEF" class="btn btn-default">DEF</a>
+				<a href="/players/free_agents" class="btn btn-default">FA</a>
+				<a href="?utf8=✓&query=QB" class="btn btn-default">QB</a> 
+				<a href="?utf8=✓&query=WR" class="btn btn-default">WR</a> 
+				<a href="?utf8=✓&query=RB" class="btn btn-default">RB</a> 
+				<a href="?utf8=✓&query=TE" class="btn btn-default">TE</a> 
+				<a href="?utf8=✓&query=K" class="btn btn-default">K</a> 
+				<a href="?utf8=✓&query=DEF" class="btn btn-default">DEF</a>
         	</div>
         	<table cellspacing="0" cellpadding="0" border="0" class="table table-striped table-condensed">
 				<thead>
@@ -77,6 +59,7 @@
 						<th class="hidden-sm hidden-xs">Position</th>
 						
 						<th>Salary</th>
+						<th>Auction</th>
 						<th class="hidden-sm hidden-xs">Bye</th>
 						<th>Owned by</th>
 						<th><!-- contract link --></th>
@@ -87,6 +70,7 @@
 								<th></th>
 							<% end %>
 						<% end %>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -100,10 +84,9 @@
 						<td><strong>
 							<% if player.is_contracted? %>
 								$<%= player.this_year.salary_amount %>
-							<% else %>
-								$<%= player.auction_value %>
 							<% end %>
 						</strong></td>
+						<td>$<%= player.auction_value %></td>
 						<td class="hidden-sm hidden-xs"><%= player.bye_week %></td>
 						<% if player.is_contracted? %>
 							<td>
@@ -112,12 +95,15 @@
 							<td>
 								<%= link_to "Contract", player.current_contract, :class => "btn btn-primary btn-xs" %>
 							</td>  
-							<% else %>
+							<td></td>
+						<% else %>
 							<td>
 								<span class="label label-success">FA</span>
 							</td>
 							<td></td>
-							<% end %>
+							<td></td>
+
+						<% end %>
 						
 						
 					

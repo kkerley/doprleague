@@ -122,6 +122,8 @@ class Player < ActiveRecord::Base
     players
   end
 
+
+
   def this_year_salary
     if self.is_contracted?
       self.this_year.salary_amount
@@ -133,12 +135,38 @@ class Player < ActiveRecord::Base
   def average_salaries(top_5_players_of_position)
     total_salary = 0
     top_5_players_of_position.each do |player|
-      total_salary += player.this_year_salary
+      total_salary += player.auction_value
     end 
     total_salary /= 5
   end
 
+  def next_salary_step(current_salary)
+    unless self.is_contracted? 
+      return self.auction_value
+    else
+      length = self.current_contract.full_contract_length
+    
+      salary = 0
 
+      if length == 1
+        salary_progression = SalaryProgression.find_by_auction_value(current_salary).attributes.to_a
+        salary = salary_progression[length + 1][1] 
+      else
+        salary_progression = SalaryProgression.find(self.current_contract.subcontracts.first.salary_amount).attributes.to_a
+        salary = salary_progression[(length + 1)][1]
+      end
+      return salary
+    end
+    end
+
+    def which_is_higher_franchise_cost(top_5, next_step)
+      if top_5 >= next_step
+        top_5
+      else
+        next_step
+      end
+    
+  end
 
 
   # checking to see how much it would cost to extent this player now

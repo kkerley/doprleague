@@ -149,3 +149,9 @@ fieldset.contract-fields{
 	background-color: #fffc00;
 	display: inline-block !important;
 }
+
+.roster-breakdown-by-player-row{
+	padding-left: 10px;
+	padding-right: 10px; 
+	border-right: 1px solid #ccc;
+}
