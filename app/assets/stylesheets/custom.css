@@ -155,3 +155,7 @@ fieldset.contract-fields{
 	padding-right: 10px; 
 	border-right: 1px solid #ccc;
 }
+
+.vert-align-mid{
+	vertical-align: text-bottom;
+}
