@@ -7,7 +7,7 @@
   	<%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
 	<%= stylesheet_link_tag    "bootstrap-theme.min", :media => "all" %>
 	<%= stylesheet_link_tag    "bootstrap-extras", :media => "all" %>
-	<%= stylesheet_link_tag    "docs.min", :media => "all" %>
+	<% stylesheet_link_tag    "docs.min", :media => "all" %>
   	<%= stylesheet_link_tag    "custom", :media => "all" %>
   	<% stylesheet_link_tag 	 "application", :media => "all" %>
   	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -97,6 +97,13 @@
 					<li><a href="/login"><i class="fa fa-sign-in"></i> Login</a></li>
 				<% end %>
 	          </ul>
+
+		        <%= form_tag players_path, :class => "navbar-form navbar-left", method: :get do %>
+					<div class="form-group"> 
+				    	<%= text_field_tag :query, params[:query], :class => "form-control", :placeholder => "Search players" %>
+					</div>
+					<%= submit_tag "Search", name: nil, :class => "btn btn-default" %>
+			  	<% end %>
 	        </div><!--/.nav-collapse -->
 	      </div>
 	    </div>
@@ -158,9 +165,10 @@
 					</h5>
 					
 					
-					<p class="muted credit">Site version: <strong>2.1.3</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details. This site is built on a custom Rails 3.2.16 content management system structured by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and served up on nginx through Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a>.</p>
-
-	            	<p class="muted credit">&copy; 2011-<%= current_year_footer %> Kyle Kerley. All rights reserved.</p>
+					
+					<p class="muted credit">This site is built by Kyle Kerley using a custom Rails 3.2.16-powered content management system structured by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and served up on nginx through Phusion Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a>.</p>
+					<p class="muted credit">Site version: <strong>2.2</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
+	            	<p class="muted credit">&copy; 2013-<%= current_year_footer %> Kyle Kerley. All rights reserved.</p>
 	                
 	            </div>
 	        </div>

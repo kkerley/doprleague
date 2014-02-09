@@ -17,11 +17,12 @@ $(document).ready(function(){
 	});
 	
 	
-	$("div.alert-success").fadeOut(5000);
+	$("div.alert-success").fadeOut(2000);
+	$("div.alert-danger").fadeOut(2000);
 
 
 
-
+	// amCharts script for showing the donut chart on teams#show
 	var members_chart;
 
 	var members_chartData = gon.all_users_and_awards; 

@@ -152,7 +152,7 @@ class Player < ActiveRecord::Base
         salary_progression = SalaryProgression.find_by_auction_value(current_salary).attributes.to_a
         salary = salary_progression[length + 1][1] 
       else
-        salary_progression = SalaryProgression.find(self.current_contract.subcontracts.first.salary_amount).attributes.to_a
+        salary_progression = SalaryProgression.find_by_auction_value(self.current_contract.subcontracts.first.salary_amount).attributes.to_a
         salary = salary_progression[(length + 1)][1]
       end
       return salary

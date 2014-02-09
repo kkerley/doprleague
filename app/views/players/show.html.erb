@@ -78,16 +78,18 @@
 								</tr>
 							<% end %>
 
-							<% if current_user %>
-								<% if can? :manage, @player %>
+							
 									<tr>
 										<td></td>
 										<td colspan="3">
-											<i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this contract for #{@player.full_name}", edit_contract_path(contract) %>
+											<% if current_user %>
+												<% if can? :manage, @player %>
+													<i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this contract for #{@player.full_name}", edit_contract_path(contract) %> | 
+												<% end %>
+											<% end %> <%= link_to "View this contract", contract %>
 										</td>
 									</tr>
-								<% end %>
-							<% end %>
+								
 
 						</tbody>
 					</table>

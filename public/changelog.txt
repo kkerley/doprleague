@@ -2,7 +2,7 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.2 [2014/02/xx]
+Version 2.2 [2014/02/08]
 --------------------------------------------------
 - Added role to User class
 - Added cancan gem for user role authentication
@@ -22,7 +22,8 @@ Version 2.2 [2014/02/xx]
 - Added views for buyouts, extensions, franchises and extensions & franchises
 - Added donut chart to teams#show page showing breakdown of payouts
 - Brought back "The League" panel to the root page, users#index and teams#show on medium devices
-- Properly nested contracts/subcontracts on players#edit but subcontracts details won't update for some reason. This is fine. Contracts shouldn't be edited from there anyway.
+- Properly nested contracts/subcontracts on players#edit but subcontracts details won't update for some reason. This is fine. Contracts shouldn't be edited from there anyway
+- Added search box to the global nav so players can be searched for anywhere
 
 
 Version 2.1.3 [2014/01/16]
