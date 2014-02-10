@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
   def to_param
     "#{self.id}-#{self.display_name}".parameterize
   end
+
+  def first_name
+    self.display_name.split(' ', 2)[0]
+  end
   
   def self.list_user_options
     User.select("id, display_name").map {|x| [x.id, x.display_name] }

@@ -135,4 +135,12 @@ class Contract < ActiveRecord::Base
     full_length
   end
 
+  def total_contract_cost
+    total = 0
+    self.subcontracts.each do |sub|
+      total += sub.salary_amount
+    end
+    total
+  end
+
 end

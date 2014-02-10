@@ -2,7 +2,7 @@
 <% content_for :section_subtitle, "Player and contract information" %>
 
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-7">
 		
 		<% if @player.is_contracted? %>
 			<p class="lead margin-bottom-2em"><span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> Contracted to <%= link_to @player.this_year.team.team_name, @player.this_year.team %> as of <%= current_year %></p>
@@ -39,36 +39,7 @@
 					</div>
 					
 					<table class="table table-striped table-condensed">
-						<thead>
-							<tr>
-								<th></th>
-								<th>Year</th>
-								<th>Team</th>
-								<th>Amount</th>
-							</tr>
-						</thead>
-						<tbody>
-							<% contract.subcontracts.order(:contract_year).each do |sub| %>
-								<tr>
-									<td class="<%= sub.this_is_a_buyout ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"></td>
-									<td class="<%= sub.this_is_a_buyout ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"><%= sub.contract_year %>
-
-									</td>
-									<td class="<%= sub.this_is_a_buyout ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>"><%= link_to sub.team.team_name, sub.team %> (<%= sub.team.user.display_name %>)</td>
-									<td class="<%= sub.this_is_a_buyout ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>">$<%= sub.salary_amount %>
-										<% if sub.this_is_an_extension %>
-											<i class="fa fa-plus-circle"></i> 
-										<% end %>
-
-										<% if sub.this_is_a_franchise_tag %>
-											<i class="fa fa-tag"></i>
-										<% end %>
-										<% if sub.this_is_a_buyout %>
-											<i class="fa fa-usd"></i>
-										<% end %>
-									</td>
-								</tr>
-							<% end %>
+						<%= render "/contracts/contract_info_table", contract: contract %>
 
 							
 
@@ -104,11 +75,11 @@
 		<% end %>
 		
 	</div>
-	<div class="col-md-5 col-md-offset-1"><br />
+	<div class="col-md-5"><br />
 		
 		<% if @player.is_contracted? && !@player.this_year.contract.is_extended && !@player.this_year.contract.is_franchised %>
 			<div class="bs-callout bs-callout-danger">
-				<h4><i class="fa fa-exclamation-triangle"></i> <%= @player.full_name %> is eligible for an extension</h4>
+				<h4><i class="fa fa-plus-circle"></i> <%= @player.full_name %> is eligible for an extension</h4>
 				<p>The next step in his salary progression is  <strong>$<%= @player.to_extend_now %></strong></p>
 			</div>
 		<% end %>
@@ -125,7 +96,7 @@
 		
 			<% if @player.is_contracted? && !@player.current_contract.is_franchised %> 
 				<div class="bs-callout bs-callout-warning">
-					<h4><i class="fa fa-exclamation-triangle"></i> <%= @player.full_name %> is eligible for a franchise tag</h4>
+					<h4><i class="fa fa-tag"></i> <%= @player.full_name %> is eligible for a franchise tag</h4>
 					
 					<p><small class="muted">Top 5 <%= @player.position %>s based on current auction values</small></p>
 					<ul>

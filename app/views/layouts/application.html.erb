@@ -100,13 +100,15 @@
 
 			  	<ul class="nav navbar-nav">
 			  		<% if current_user %>
-					<% if current_user.role == "admin" %>
-						<li><a href="/admin"><i class="fa fa-cogs"></i> Admin</a></li>
+			  			<li><%= link_to (image_tag current_user.avatar.url(:tiny)) + " " + current_user.first_name, current_user.team %>
+						<% if current_user.role == "admin" %>
+							<li><a href="/admin"><i class="fa fa-cogs"></i> Admin</a></li>
+						<% end %>
+
+						<li><a href="<%= logout_path %>"><i class="fa fa-sign-out"></i> Log out</a></li>
+					<% else %>
+						<li><a href="/login"><i class="fa fa-sign-in"></i> Login</a></li>
 					<% end %>
-					<li><a href="<%= logout_path %>"><i class="fa fa-sign-out"></i> Log out</a></li>
-				<% else %>
-					<li><a href="/login"><i class="fa fa-sign-in"></i> Login</a></li>
-				<% end %>
 				</ul>
 	        </div><!--/.nav-collapse -->
 	      </div>

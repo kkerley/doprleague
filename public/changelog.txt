@@ -2,7 +2,14 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.2.2 [2014/02/08]
+Version 2.2.3 [2014/02/xx]
+--------------------------------------------------
+- Added a link to current_user's team page in the top nav
+- Changed the icons of the boxes for franchising and extension boxes to be their respective icons
+- Added total contract cost to both the players#show and contracts#show views
+
+
+Version 2.2.2 [2014/02/09]
 --------------------------------------------------
 - Updated "Worst Record" payout amount in Payout controller for the forms going forward
 - Added "Total" row to the Payouts#index tables to show how much has been paid out
@@ -10,7 +17,7 @@ Version 2.2.2 [2014/02/08]
 - Added logic to make the current contract blue on players#show
 
 
-Version 2.2.1 [2014/02/08]
+Version 2.2.1 [2014/02/09]
 --------------------------------------------------
 - Re-enabled the docs.min.css file
 - Updated verbiage in the franchise box on players#show
