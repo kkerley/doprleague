@@ -1,4 +1,7 @@
 KkerleyCom::Application.routes.draw do
+  resources :budgets
+
+
   resources :team_records
 
 
