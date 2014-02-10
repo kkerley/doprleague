@@ -21,7 +21,8 @@
 							<thead>
 								<th width="5"></th>
 								<th>Name</th>
-								<th class="hidden-sm hidden-xs">Position</th>
+								<th class="hidden-sm hidden-xs">Pos</th>
+								<th>Auc</th>
 								<th><%= current_year %></th>
 								<th><%= current_year.to_i + 1 %></th>
 								<th><%= current_year.to_i + 2 %></th>
@@ -52,6 +53,7 @@
 												
 											</td>
 											<td class="hidden-sm hidden-xs"><%= player.position %></td>
+											<td><span class="badge">$<%= player.auction_value %></span></td>
 											<% player.this_team_contract(@team).subcontracts.current_year_or_later.limit(6).each do |sub| %>
 												<% if sub.team_id == @team.id %>
 													
@@ -74,6 +76,7 @@
 									<td></td>
 									
 									<td><h4><span class="label label-danger">TOTAL:</span></h4></td>
+									<td></td>
 									<td></td>
 									<td><h4>$<%= @team.calculate_yearly_salary(current_year) %></h4></td>
 									<td><h4>$<%= @team.calculate_yearly_salary(current_year.to_i + 1) %></h4></td>

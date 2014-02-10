@@ -19,9 +19,12 @@
 			<p class="h1">Contracts</p>
 			
 			<% @contracts.each do |contract| %>
-				
+					
+					<% if contract == @player.current_contract %>
+					<div class="panel panel-info margin-bottom-2em">
+					<% else %>
 					<div class="panel panel-default margin-bottom-2em">
-				
+					<% end %>
 					<div class="panel-heading">
 		          		
 						<p class="panel-title bold">Contract started in <%= contract.contract_start_year %> for <%= contract.full_contract_length%> years
@@ -102,11 +105,14 @@
 		
 	</div>
 	<div class="col-md-5 col-md-offset-1"><br />
+		
+		<% if @player.is_contracted? && !@player.this_year.contract.is_extended && !@player.this_year.contract.is_franchised %>
+			<div class="bs-callout bs-callout-danger">
+				<h4><i class="fa fa-exclamation-triangle"></i> <%= @player.full_name %> is eligible for an extension</h4>
+				<p>The next step in his salary progression is  <strong>$<%= @player.to_extend_now %></strong></p>
+			</div>
+		<% end %>
 		<!--
-		<% #if @player.is_contracted? && !@player.this_year.contract.is_extended && !@player.this_year.contract.is_franchised %>
-			<p class="h4">If <%#= @player.full_name %> was extended right now, it would cost $<%#= @player.to_extend_now %>
-		<% #end %>
-
 		<% #if @player.is_contracted? %>
 			<% #=link_to "#{@player.full_name}'s current contract", @player.current_contract %>
 			<ul>
@@ -121,7 +127,7 @@
 				<div class="bs-callout bs-callout-warning">
 					<h4><i class="fa fa-exclamation-triangle"></i> <%= @player.full_name %> is eligible for a franchise tag</h4>
 					
-					<p><small class="muted">Top 5 <%= @player.position %>s based on current salary</small></p>
+					<p><small class="muted">Top 5 <%= @player.position %>s based on current auction values</small></p>
 					<ul>
 					<% @top_5_players_of_position.each do |player| %>
 						<li><%= link_to player.full_name, player %> for $<%= player.auction_value %>

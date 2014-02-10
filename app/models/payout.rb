@@ -31,7 +31,7 @@ class Payout < ActiveRecord::Base
                       ["High score - Week 13", 5],
                       ["Highest weekly total/season", 10],
                       ["Smallest margin of defeat", 5],
-                      ["Worst record", 10],
+                      ["Worst record", 5],
                       ["Losing to lowest winning score", 5],
                       ["NFL Super Bowl prediction", 5]]
     
@@ -44,4 +44,13 @@ class Payout < ActiveRecord::Base
     }
   end
   
+  def yearly_total
+    yearly_awards = self.awards
+    total = 0
+
+    yearly_awards.each do |a| 
+      total += a.amount 
+    end
+    total
+  end
 end
