@@ -1,6 +1,7 @@
 class Team < ActiveRecord::Base
   include ModifiedCurrentYear
 
+
   attr_accessible :team_name, :user_id, :division
   
   belongs_to :user
@@ -60,7 +61,12 @@ class Team < ActiveRecord::Base
     total_salary
   end
   
-  
-  
+  def get_budget(year)
+    self.budgets.find_by_year(year)
+  end
+
+  def remainder(salary_total, yearly_budget)
+    yearly_budget - salary_total
+  end
   
 end

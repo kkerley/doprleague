@@ -12,7 +12,7 @@
 
 <% @budgets.each do |budget| %>
   <tr>
-    <td><%= budget.team_id %></td>
+    <td><%= link_to budget.team.team_name, budget.team %></td>
     <td><%= budget.year %></td>
     <td><%= budget.amount %></td>
     <td><%= link_to 'Show', budget %></td>
@@ -24,4 +24,3 @@
 
 <br />
 
-<%= link_to 'New Budget', new_budget_path %>

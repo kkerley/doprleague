@@ -41,10 +41,14 @@ class Contract < ActiveRecord::Base
   # Logic for applying buyout conditions to the remainder of a contract if is_bought_out is checked
   def check_for_buyout
     if self.is_bought_out
-      self.subcontracts.current_year_or_later.each do |sub|
-        sub.salary_amount *= 0.6
-        sub.this_is_a_buyout = true
-        sub.save!
+      if self.bought_out_by_team_id
+        self.subcontracts.current_year_or_later.each do |sub|
+          sub.salary_amount *= 0.6
+          sub.this_is_a_buyout = true
+          sub.save!
+        end
+      else
+
       end
     end
   end

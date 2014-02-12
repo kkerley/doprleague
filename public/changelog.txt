@@ -2,7 +2,15 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.2.3 [2014/02/xx]
+Version 2.3 [2014/02/xx]
+--------------------------------------------------
+- Added Budget model and created 50 years' worth for each team
+- Budgets and remainder have been added to the roster table as rows underneath salary totals
+- Adjusted routes to make budgets nested to teams
+
+
+
+Version 2.2.3 [2014/02/10]
 --------------------------------------------------
 - Added a link to current_user's team page in the top nav
 - Changed the icons of the boxes for franchising and extension boxes to be their respective icons

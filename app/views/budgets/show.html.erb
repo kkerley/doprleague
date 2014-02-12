@@ -2,7 +2,7 @@
 
 <p>
   <b>Team:</b>
-  <%= @budget.team_id %>
+  <%= link_to @budget.team.team_name, @budget.team %>
 </p>
 
 <p>
@@ -16,5 +16,10 @@
 </p>
 
 
-<%= link_to 'Edit', edit_budget_path(@budget) %> |
-<%= link_to 'Back', budgets_path %>
+<%= link_to 'Edit', edit_team_budget_path(@budget) %> |
+<%= link_to 'Back', team_budgets_path %>
+
+<!--
+<%#= link_to 'Edit', edit_budget_path(@budget) %> |
+<%#= link_to 'Back', budgets_path %>
+-->

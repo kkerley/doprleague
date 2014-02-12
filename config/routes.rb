@@ -1,24 +1,20 @@
 KkerleyCom::Application.routes.draw do
-  resources :budgets
-
-
+  
   resources :team_records
-
-
   resources :standings
-
-
   resources :players do 
     collection do
       post :import
       get 'free_agents'
     end
   end
-
   resources :salary_progressions do 
     collection { post :import }
   end
-  resources :teams
+  resources :teams do
+    resources :budgets
+  end
+  # resources :budgets
   resources :awards
   resources :payouts
   resources :users
