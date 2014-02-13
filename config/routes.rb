@@ -1,5 +1,8 @@
 KkerleyCom::Application.routes.draw do
   
+  resources :events
+
+
   resources :team_records
   resources :standings
   resources :players do 

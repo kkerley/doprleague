@@ -4,12 +4,13 @@
   <title>Disciples of Philip Rivers | <%= yield(:title) %></title>
 
   	<%= include_gon %>
-  	<%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
-	<%= stylesheet_link_tag    "bootstrap-theme.min", :media => "all" %>
-	<%= stylesheet_link_tag    "bootstrap-extras", :media => "all" %>
-	<%= stylesheet_link_tag    "docs.min", :media => "all" %>
-  	<%= stylesheet_link_tag    "custom", :media => "all" %>
-  	<% stylesheet_link_tag 	 "application", :media => "all" %>
+  	<%= stylesheet_link_tag 	"application", :media => "all" %>
+  	<%= stylesheet_link_tag		"bootstrap.min", :media => "all" %>
+	<%= stylesheet_link_tag     "bootstrap-theme.min", :media => "all" %>
+	<%= stylesheet_link_tag     "bootstrap-extras", :media => "all" %>
+	<%= stylesheet_link_tag     "docs.min", :media => "all" %>
+  	<%= stylesheet_link_tag     "custom", :media => "all" %>
+
   	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   
  	<%= csrf_meta_tags %>

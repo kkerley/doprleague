@@ -10,6 +10,7 @@ class Team < ActiveRecord::Base
   has_many :contracts, through: :subcontracts
   has_many :team_records
   has_many :budgets
+  has_many :events
 
   default_scope order('team_name ASC')
 

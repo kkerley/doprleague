@@ -11,8 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery_ujs
-//= require_tree .
+//= require jquery.ui.datepicker
 //= require bootstrap
 //= require best_in_place
 //= require JQtextile
 //= require custom
+//= require_self
+//= require_tree .

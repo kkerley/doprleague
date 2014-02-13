@@ -7,7 +7,9 @@ Version 2.3 [2014/02/xx]
 - Added Budget model and created 50 years' worth for each team
 - Budgets and remainder have been added to the roster table as rows underneath salary totals
 - Adjusted routes to make budgets nested to teams
-
+- Added Event model for calendar events
+- Global events (for all people; i.e. draft day, payments due, etc) and personal events (i.e. "check in with Eli on that trade") are implemented
+- 
 
 
 Version 2.2.3 [2014/02/10]
