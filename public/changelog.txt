@@ -9,7 +9,7 @@ Version 2.3 [2014/02/xx]
 - Adjusted routes to make budgets nested to teams
 - Added Event model for calendar events
 - Global events (for all people; i.e. draft day, payments due, etc) and personal events (i.e. "check in with Eli on that trade") are implemented
-- 
+- Moved all CSS calls in the <head> into application.css
 
 
 Version 2.2.3 [2014/02/10]

@@ -13,6 +13,8 @@ class Ability
                 can [:update], User do |u|
                     u == user
                 end
+                can :manage, Event, :team_id => user.team.id
+                
             end
         else
             can :read, :all

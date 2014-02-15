@@ -2,10 +2,15 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.get_personal_and_global_events(current_user)
-    @events_by_date = @events.group_by(&:event_date)
+    
+    if current_user
+      @events = Event.get_personal_and_global_events(current_user)
+      @events_by_date = @events.group_by(&:event_date)
+    else
+      @events = Event.global
+      @events_by_date = @events.group_by(&:event_date)
+    end
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
-
   end
 
   # GET /events/1

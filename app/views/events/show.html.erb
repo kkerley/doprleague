@@ -1,30 +1,13 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, "Events: #{@event.title}" %>
+<% content_for :section_subtitle, "Happening on #{@event.event_date }" %>
 
-<p>
-  <b>Team:</b>
-  <%= @event.team_id %>
+<%= RedCloth.new(@event.description).to_html.html_safe %>
+
+<p class="muted">
+  <small>This <strong><%= @event.event_type %></strong> event was originally created by <%= link_to @event.team.user.display_name, @event.team %>.</small>
 </p>
-
-<p>
-  <b>Title:</b>
-  <%= @event.title %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @event.event_date %>
-</p>
-
-<p>
-  <b>Event type:</b>
-  <%= @event.event_type %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @event.description %>
-</p>
-
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<% if current_user %>
+  <% if can? :manage, @event %>
+    <p><i class="fa fa-pencil-square-o"></i> <%= link_to 'Edit this event', edit_event_path(@event) %></p>
+  <% end %>
+<% end %>

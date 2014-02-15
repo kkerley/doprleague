@@ -34,7 +34,9 @@
     <%= f.text_area :description %>
   </div>
 
-  <%= f.hidden_field :team_id, value: current_user.team.id %>
+  <% if @event.new_record? %>
+    <%= f.hidden_field :team_id, value: current_user.team.id %>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>
