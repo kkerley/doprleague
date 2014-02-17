@@ -1,25 +1,10 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, "#{@team.team_name}'s #{@budget.year} budget" %>
+<% content_for :section_subtitle, "" %>
 
-<p>
-  <b>Team:</b>
-  <%= link_to @budget.team.team_name, @budget.team %>
-</p>
-
-<p>
-  <b>Year:</b>
-  <%= @budget.year %>
-</p>
-
-<p>
-  <b>Amount:</b>
-  <%= @budget.amount %>
+<p class="h1">
+  $<%= @budget.amount %>
 </p>
 
 
-<%= link_to 'Edit', edit_team_budget_path(@budget) %> |
+<%= link_to 'Edit', edit_team_budget_path(@team, @budget) %> |
 <%= link_to 'Back', team_budgets_path %>
-
-<!--
-<%#= link_to 'Edit', edit_budget_path(@budget) %> |
-<%#= link_to 'Back', budgets_path %>
--->

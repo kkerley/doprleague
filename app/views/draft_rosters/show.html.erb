@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @draft_roster.name %>
+</p>
+
+<p>
+  <b>Team:</b>
+  <%= @draft_roster.team_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_draft_roster_path(@draft_roster) %> |
+<%= link_to 'Back', draft_rosters_path %>

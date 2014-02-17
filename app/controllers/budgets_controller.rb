@@ -1,8 +1,12 @@
 class BudgetsController < ApplicationController
+  load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new]
+  before_filter :load_team
+
   # GET /budgets
   # GET /budgets.json
   def index
-    @budgets = Budget.all
+
+    @budgets = @team.budgets.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +48,7 @@ class BudgetsController < ApplicationController
 
     respond_to do |format|
       if @budget.save
-        format.html { redirect_to @budget, notice: 'Budget was successfully created.' }
+        format.html { redirect_to team_budget_path(@team, @budget), notice: 'Budget was successfully created.' }
         format.json { render json: @budget, status: :created, location: @budget }
       else
         format.html { render action: "new" }
@@ -60,7 +64,7 @@ class BudgetsController < ApplicationController
 
     respond_to do |format|
       if @budget.update_attributes(params[:budget])
-        format.html { redirect_to @budget, notice: 'Budget was successfully updated.' }
+        format.html { redirect_to team_budget_path(@team, @budget), notice: 'Budget was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,4 +84,10 @@ class BudgetsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  private
+    def load_team
+      @team = Team.find(params[:team_id])
+    end
 end

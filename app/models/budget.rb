@@ -8,6 +8,8 @@ class Budget < ActiveRecord::Base
 
   belongs_to :team
 
+  default_scope order('year ASC')
+
 
 
   def build_budgets(team)

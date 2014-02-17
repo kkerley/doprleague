@@ -1,26 +1,36 @@
-<h1>Listing budgets</h1>
+<% content_for :title, "#{@team.team_name}'s budgets" %>
+<% content_for :section_subtitle, "View all budgets through 2062 and any modifications to them for #{@team.team_name}" %>
 
-<table>
-  <tr>
-    <th>Team</th>
-    <th>Year</th>
-    <th>Amount</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="row">
+  <div class="col-md-4">
 
-<% @budgets.each do |budget| %>
-  <tr>
-    <td><%= link_to budget.team.team_name, budget.team %></td>
-    <td><%= budget.year %></td>
-    <td><%= budget.amount %></td>
-    <td><%= link_to 'Show', budget %></td>
-    <td><%= link_to 'Edit', edit_budget_path(budget) %></td>
-    <td><%= link_to 'Destroy', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <table class="table table-condensed table-striped">
+      <tr>
+        <th>Team</th>
+        <th>Year</th>
+        <th>Amount</th>
+        <% if current_user %>
+          <% if can? :manage, @budgets %>
+            <th></th>
+            <th></th>
+          <% end %>
+        <% end %>
+      </tr>
 
-<br />
+    <% @budgets.each do |budget| %>
+      <tr>
+        <td><%= link_to @team.team_name, budget.team %></td>
+        <td><%= budget.year %></td>
+        <td><strong>$<%= link_to budget.amount, team_budget_path(@team, budget) %></strong></td>
+        <% if current_user %>
+          <% if can? :manage, budget %>
+            <td><%= link_to 'Edit', edit_team_budget_path(@team, budget) %></td>
+            <td><%= link_to 'Destroy', [@team, budget], confirm: 'Are you sure?', method: :delete %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>
 
