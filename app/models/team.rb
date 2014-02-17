@@ -11,6 +11,7 @@ class Team < ActiveRecord::Base
   has_many :team_records
   has_many :budgets
   has_many :events
+  has_many :draft_rosters
 
   default_scope order('team_name ASC')
 

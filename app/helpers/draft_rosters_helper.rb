@@ -1,2 +1,0 @@
-module DraftRostersHelper
-end

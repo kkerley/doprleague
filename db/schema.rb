@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140212015722) do
+ActiveRecord::Schema.define(:version => 20140215184551) do
 
   create_table "awards", :force => true do |t|
     t.text     "name"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(:version => 20140212015722) do
     t.datetime "updated_at",            :null => false
     t.boolean  "is_dead_money"
     t.boolean  "is_drafted"
+  end
+
+  create_table "draft_rosters", :force => true do |t|
+    t.integer  "team_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -188,5 +195,13 @@ ActiveRecord::Schema.define(:version => 20140212015722) do
   end
 
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
+
+  create_table "watchables", :id => false, :force => true do |t|
+    t.integer  "draft_roster_id"
+    t.integer  "player_id"
+    t.integer  "position"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
 end

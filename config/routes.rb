@@ -1,8 +1,5 @@
 KkerleyCom::Application.routes.draw do
   
-  resources :draft_rosters
-
-
   resources :events
 
 
@@ -19,6 +16,7 @@ KkerleyCom::Application.routes.draw do
   end
   resources :teams do
     resources :budgets
+    resources :draft_rosters
   end
   # resources :budgets
   resources :awards
