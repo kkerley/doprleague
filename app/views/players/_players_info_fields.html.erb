@@ -65,6 +65,7 @@
 							<th class="hidden-sm hidden-xs">Bye</th>
 							<th>Owned by</th>
 							<th><!-- contract link --></th>
+							<th align="center">Watch</th>
 							
 							<% if current_user %>
 								<% if can? :manage, @players %>
@@ -97,15 +98,17 @@
 								<td>
 									<%= link_to "Contract", player.current_contract, :class => "btn btn-primary btn-xs" %>
 								</td>  
-								<td></td>
+								
 							<% else %>
 								<td>
 									<span class="label label-success">FA</span>
 								</td>
 								<td></td>
-								<td></td>
+								
 
 							<% end %>
+
+							<td align="center"><a id="watch<%= player.id %>" class="watchable" data-container="body" data-toggle="popover" data-placement="top" data-title="Add to draft roster: " data-content=""><i class="fa fa-eye"></i></a></td>
 							
 							
 						

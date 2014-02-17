@@ -25,7 +25,9 @@ $(document).ready(function(){
 	// amCharts script for showing the donut chart on teams#show
 	var members_chart;
 
-	var members_chartData = gon.all_users_and_awards; 
+	var members_chartData = gon.all_users_and_awards;
+      
+  
 
 
 	AmCharts.ready(function () {
@@ -47,6 +49,8 @@ $(document).ready(function(){
 	    
 	    // WRITE                                 
 	   members_chart.write("members-chartdiv");
+
+	     
 	});
 
 	

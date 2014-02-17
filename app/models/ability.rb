@@ -14,6 +14,7 @@ class Ability
                     u == user
                 end
                 can :manage, Event, :team_id => user.team.id
+                can :manage, DraftRoster, :team_id => user.team.id
                 
             end
         else
