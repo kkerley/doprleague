@@ -10,6 +10,7 @@ Version 2.3 [2014/02/xx]
 - Added Event model for calendar events
 - Global events (for all people; i.e. draft day, payments due, etc) and personal events (i.e. "check in with Eli on that trade") are implemented
 - Moved all CSS calls in the <head> into application.css
+- Moved amCharts script from custom.js to teams.js.coffee
 
 
 Version 2.2.3 [2014/02/10]

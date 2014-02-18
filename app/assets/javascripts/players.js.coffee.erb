@@ -4,5 +4,14 @@
 
 jQuery ->
 	location = $(this)
-	$('.watchable', location).attr('data-content', gon.current_user_draft_rosters)
+	rosters = gon.current_user_draft_rosters
+	all_rosters = []
+
+	buildLink = (roster) ->
+		@roster_name = "<a href='link" + roster.id + "'>" + roster.name + "</a><br />"
+		all_rosters += @roster_name
+
+	buildLink roster for roster in rosters
+		
+	$('.watchable', location).attr('data-content', all_rosters)
 	$('.watchable', location).popover('hide')
