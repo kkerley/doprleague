@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nfl team1:</b>
+  <%= @super_bowl.nfl_team1_id %>
+</p>
+
+<p>
+  <b>Nfl team2:</b>
+  <%= @super_bowl.nfl_team2_id %>
+</p>
+
+<p>
+  <b>Tie breaker:</b>
+  <%= @super_bowl.tie_breaker %>
+</p>
+
+<p>
+  <b>Nfl team1 final score:</b>
+  <%= @super_bowl.nfl_team1_final_score %>
+</p>
+
+<p>
+  <b>Nfl team2 final score:</b>
+  <%= @super_bowl.nfl_team2_final_score %>
+</p>
+
+<p>
+  <b>Nfl winner:</b>
+  <%= @super_bowl.nfl_winner_id %>
+</p>
+
+<p>
+  <b>Dopr winner:</b>
+  <%= @super_bowl.dopr_winner_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_super_bowl_path(@super_bowl) %> |
+<%= link_to 'Back', super_bowls_path %>

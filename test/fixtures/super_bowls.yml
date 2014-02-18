@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nfl_team1_id: 1
+  nfl_team2_id: 1
+  tie_breaker: false
+  nfl_team1_final_score: 1
+  nfl_team2_final_score: 1
+  nfl_winner_id: 1
+  dopr_winner_id: 1
+
+two:
+  nfl_team1_id: 1
+  nfl_team2_id: 1
+  tie_breaker: false
+  nfl_team1_final_score: 1
+  nfl_team2_final_score: 1
+  nfl_winner_id: 1
+  dopr_winner_id: 1

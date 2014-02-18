@@ -1,5 +1,14 @@
 KkerleyCom::Application.routes.draw do
   
+  resources :super_bowl_picks
+
+
+  resources :nfl_teams
+
+
+  resources :super_bowls
+
+
   resources :events
 
 

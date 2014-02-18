@@ -1,0 +1,33 @@
+<%= form_for(@super_bowl_pick) do |f| %>
+  <% if @super_bowl_pick.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@super_bowl_pick.errors.count, "error") %> prohibited this super_bowl_pick from being saved:</h2>
+
+      <ul>
+      <% @super_bowl_pick.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :team_id %><br />
+    <%= f.number_field :team_id %>
+  </div>
+  <div class="field">
+    <%= f.label :super_bowl_id %><br />
+    <%= f.number_field :super_bowl_id %>
+  </div>
+  <div class="field">
+    <%= f.label :nfl_team_id %><br />
+    <%= f.number_field :nfl_team_id %>
+  </div>
+  <div class="field">
+    <%= f.label :combined_total %><br />
+    <%= f.number_field :combined_total %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

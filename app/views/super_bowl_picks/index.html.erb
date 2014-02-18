@@ -1,0 +1,29 @@
+<h1>Listing super_bowl_picks</h1>
+
+<table>
+  <tr>
+    <th>Team</th>
+    <th>Super bowl</th>
+    <th>Nfl team</th>
+    <th>Combined total</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @super_bowl_picks.each do |super_bowl_pick| %>
+  <tr>
+    <td><%= super_bowl_pick.team_id %></td>
+    <td><%= super_bowl_pick.super_bowl_id %></td>
+    <td><%= super_bowl_pick.nfl_team_id %></td>
+    <td><%= super_bowl_pick.combined_total %></td>
+    <td><%= link_to 'Show', super_bowl_pick %></td>
+    <td><%= link_to 'Edit', edit_super_bowl_pick_path(super_bowl_pick) %></td>
+    <td><%= link_to 'Destroy', super_bowl_pick, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Super bowl pick', new_super_bowl_pick_path %>

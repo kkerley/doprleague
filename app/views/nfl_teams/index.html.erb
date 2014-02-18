@@ -1,0 +1,25 @@
+<h1>Listing nfl_teams</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Conference</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @nfl_teams.each do |nfl_team| %>
+  <tr>
+    <td><%= nfl_team.name %></td>
+    <td><%= nfl_team.conference %></td>
+    <td><%= link_to 'Show', nfl_team %></td>
+    <td><%= link_to 'Edit', edit_nfl_team_path(nfl_team) %></td>
+    <td><%= link_to 'Destroy', nfl_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Nfl team', new_nfl_team_path %>

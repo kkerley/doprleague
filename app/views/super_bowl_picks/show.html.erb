@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Team:</b>
+  <%= @super_bowl_pick.team_id %>
+</p>
+
+<p>
+  <b>Super bowl:</b>
+  <%= @super_bowl_pick.super_bowl_id %>
+</p>
+
+<p>
+  <b>Nfl team:</b>
+  <%= @super_bowl_pick.nfl_team_id %>
+</p>
+
+<p>
+  <b>Combined total:</b>
+  <%= @super_bowl_pick.combined_total %>
+</p>
+
+
+<%= link_to 'Edit', edit_super_bowl_pick_path(@super_bowl_pick) %> |
+<%= link_to 'Back', super_bowl_picks_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  team_id: 1
+  super_bowl_id: 1
+  nfl_team_id: 1
+  combined_total: 1
+
+two:
+  team_id: 1
+  super_bowl_id: 1
+  nfl_team_id: 1
+  combined_total: 1

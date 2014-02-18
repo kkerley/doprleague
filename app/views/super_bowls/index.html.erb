@@ -1,0 +1,35 @@
+<h1>Listing super_bowls</h1>
+
+<table>
+  <tr>
+    <th>Nfl team1</th>
+    <th>Nfl team2</th>
+    <th>Tie breaker</th>
+    <th>Nfl team1 final score</th>
+    <th>Nfl team2 final score</th>
+    <th>Nfl winner</th>
+    <th>Dopr winner</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @super_bowls.each do |super_bowl| %>
+  <tr>
+    <td><%= super_bowl.nfl_team1_id %></td>
+    <td><%= super_bowl.nfl_team2_id %></td>
+    <td><%= super_bowl.tie_breaker %></td>
+    <td><%= super_bowl.nfl_team1_final_score %></td>
+    <td><%= super_bowl.nfl_team2_final_score %></td>
+    <td><%= super_bowl.nfl_winner_id %></td>
+    <td><%= super_bowl.dopr_winner_id %></td>
+    <td><%= link_to 'Show', super_bowl %></td>
+    <td><%= link_to 'Edit', edit_super_bowl_path(super_bowl) %></td>
+    <td><%= link_to 'Destroy', super_bowl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Super bowl', new_super_bowl_path %>

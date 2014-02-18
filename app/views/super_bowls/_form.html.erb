@@ -1,0 +1,45 @@
+<%= form_for(@super_bowl) do |f| %>
+  <% if @super_bowl.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@super_bowl.errors.count, "error") %> prohibited this super_bowl from being saved:</h2>
+
+      <ul>
+      <% @super_bowl.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nfl_team1_id %><br />
+    <%= f.number_field :nfl_team1_id %>
+  </div>
+  <div class="field">
+    <%= f.label :nfl_team2_id %><br />
+    <%= f.number_field :nfl_team2_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tie_breaker %><br />
+    <%= f.check_box :tie_breaker %>
+  </div>
+  <div class="field">
+    <%= f.label :nfl_team1_final_score %><br />
+    <%= f.number_field :nfl_team1_final_score %>
+  </div>
+  <div class="field">
+    <%= f.label :nfl_team2_final_score %><br />
+    <%= f.number_field :nfl_team2_final_score %>
+  </div>
+  <div class="field">
+    <%= f.label :nfl_winner_id %><br />
+    <%= f.number_field :nfl_winner_id %>
+  </div>
+  <div class="field">
+    <%= f.label :dopr_winner_id %><br />
+    <%= f.number_field :dopr_winner_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
