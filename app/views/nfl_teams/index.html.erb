@@ -2,7 +2,8 @@
 
 <table>
   <tr>
-    <th>Name</th>
+    <th>City</th>
+    <th>Mascot</th>
     <th>Conference</th>
     <th></th>
     <th></th>
@@ -11,7 +12,8 @@
 
 <% @nfl_teams.each do |nfl_team| %>
   <tr>
-    <td><%= nfl_team.name %></td>
+    <td><%= nfl_team.city %></td>
+    <td><%= nfl_team.mascot %></td>
     <td><%= nfl_team.conference %></td>
     <td><%= link_to 'Show', nfl_team %></td>
     <td><%= link_to 'Edit', edit_nfl_team_path(nfl_team) %></td>

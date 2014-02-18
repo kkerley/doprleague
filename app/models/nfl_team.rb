@@ -1,3 +1,3 @@
 class NflTeam < ActiveRecord::Base
-  attr_accessible :conference, :name
+  attr_accessible :city, :conference, :mascot
 end
