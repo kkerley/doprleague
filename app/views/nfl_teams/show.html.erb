@@ -1,18 +1,22 @@
 <p>
   <b>Name:</b>
-  <%= @nfl_team.city %>
+  <%= @nfl_team.city %> <%= @nfl_team.mascot %> [<%= @nfl_team.shorthand %>]
 </p>
 
-<p>
-  <b>Name:</b>
-  <%= @nfl_team.mascot %>
-</p>
 
 <p>
   <b>Conference:</b>
   <%= @nfl_team.conference %>
 </p>
 
+<p>
+	<strong>Players</strong>
+</p>
+<ul>
+	<% @team_players.each do |player| %>
+		<li><%= link_to player.full_name, player %></li>
+	<% end %>
+</ul> 
 
 <%= link_to 'Edit', edit_nfl_team_path(@nfl_team) %> |
 <%= link_to 'Back', nfl_teams_path %>

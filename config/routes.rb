@@ -1,17 +1,11 @@
 KkerleyCom::Application.routes.draw do
   
   resources :super_bowl_picks
-
-
-  resources :nfl_teams
-
-
+  resources :nfl_teams do 
+    collection { post :import }
+  end
   resources :super_bowls
-
-
   resources :events
-
-
   resources :team_records
   resources :standings
   resources :players do 

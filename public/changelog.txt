@@ -10,6 +10,10 @@ Version 2.3 [2014/02/xx]
 - Added Event model for calendar events
 - Global events (for all people; i.e. draft day, payments due, etc) and personal events (i.e. "check in with Eli on that trade") are implemented
 - Moved all CSS calls in the <head> into application.css
+- Created SuperBowl model 
+- Created SuperBowlPick model
+- Created NflTeam model mostly for the SuperBowl and SuperBowlPick models and associated logic, but could also be handy for showing players for informational purposes
+- Added a favicon
 
 
 Version 2.2.3 [2014/02/10]

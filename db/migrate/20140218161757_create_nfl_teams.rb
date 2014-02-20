@@ -4,6 +4,7 @@ class CreateNflTeams < ActiveRecord::Migration
       t.string :mascot
       t.string :conference
       t.string :city
+      t.string :shorthand
 
       t.timestamps
     end

@@ -2,7 +2,9 @@ class NflTeamsController < ApplicationController
   # GET /nfl_teams
   # GET /nfl_teams.json
   def index
-    @nfl_teams = NflTeam.all
+    # @nfl_teams = NflTeam.all
+    @afc = NflTeam.afc
+    @nfc = NflTeam.nfc
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +16,7 @@ class NflTeamsController < ApplicationController
   # GET /nfl_teams/1.json
   def show
     @nfl_team = NflTeam.find(params[:id])
+    @team_players = Player.where("nfl_team = ?", @nfl_team.shorthand)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -79,5 +82,10 @@ class NflTeamsController < ApplicationController
       format.html { redirect_to nfl_teams_url }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    NflTeam.import(params[:file])
+    redirect_to nfl_teams_url, notice: "NFL teams imported."
   end
 end
