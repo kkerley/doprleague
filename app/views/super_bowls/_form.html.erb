@@ -12,33 +12,42 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :nfl_team1_id %><br />
-    <%= f.number_field :nfl_team1_id %>
+    <%= f.label :year %><br />
+    <%= f.text_field :year, value: @super_bowl.current_year %>
   </div>
   <div class="field">
-    <%= f.label :nfl_team2_id %><br />
-    <%= f.number_field :nfl_team2_id %>
+    <%= f.label :nfl_team1_id, "AFC team" %><br />
+    <%= f.select(:nfl_team1_id, NflTeam.afc.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
   </div>
+  <div class="field">
+    <%= f.label :nfl_team2_id, "NFC team" %><br />
+    <%= f.select(:nfl_team2_id, NflTeam.nfc.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
+  </div>
+  
   <div class="field">
     <%= f.label :tie_breaker %><br />
     <%= f.check_box :tie_breaker %>
   </div>
+
   <div class="field">
-    <%= f.label :nfl_team1_final_score %><br />
-    <%= f.number_field :nfl_team1_final_score %>
+    <%= f.label :nfl_team1_final_score, "AFC team final score" %><br />
+    <%= f.text_field :nfl_team1_final_score %>
   </div>
   <div class="field">
-    <%= f.label :nfl_team2_final_score %><br />
-    <%= f.number_field :nfl_team2_final_score %>
+    <%= f.label :nfl_team2_final_score, "NFC team final score" %><br />
+    <%= f.text_field :nfl_team2_final_score %>
   </div>
   <div class="field">
     <%= f.label :nfl_winner_id %><br />
-    <%= f.number_field :nfl_winner_id %>
+    <%= f.select(:nfl_winner_id, NflTeam.all.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
   </div>
+
+
   <div class="field">
     <%= f.label :dopr_winner_id %><br />
-    <%= f.number_field :dopr_winner_id %>
+    <%= f.select(:dopr_winner_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

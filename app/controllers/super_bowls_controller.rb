@@ -3,6 +3,7 @@ class SuperBowlsController < ApplicationController
   # GET /super_bowls.json
   def index
     @super_bowls = SuperBowl.all
+    @current_sb = SuperBowl.current_super_bowl
 
     respond_to do |format|
       format.html # index.html.erb

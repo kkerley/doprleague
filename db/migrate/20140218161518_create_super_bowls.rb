@@ -8,6 +8,7 @@ class CreateSuperBowls < ActiveRecord::Migration
       t.integer :nfl_team2_final_score
       t.integer :nfl_winner_id
       t.integer :dopr_winner_id
+      t.integer :year
 
       t.timestamps
     end

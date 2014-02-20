@@ -1,7 +1,12 @@
 <h1>Listing super_bowls</h1>
 
+<p class="h2">Current Super Bowl</p>
+
+<%= @current_sb.year %>
+
 <table>
   <tr>
+    <th>Year</th>
     <th>Nfl team1</th>
     <th>Nfl team2</th>
     <th>Tie breaker</th>
@@ -16,6 +21,7 @@
 
 <% @super_bowls.each do |super_bowl| %>
   <tr>
+    <td><%= super_bowl.year %></td>
     <td><%= super_bowl.nfl_team1_id %></td>
     <td><%= super_bowl.nfl_team2_id %></td>
     <td><%= super_bowl.tie_breaker %></td>

@@ -25,6 +25,7 @@ class SuperBowlPicksController < ApplicationController
   # GET /super_bowl_picks/new.json
   def new
     @super_bowl_pick = SuperBowlPick.new
+    @super_bowl = SuperBowl.current_super_bowl
 
     respond_to do |format|
       format.html # new.html.erb

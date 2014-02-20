@@ -11,13 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :team_id %><br />
-    <%= f.number_field :team_id %>
-  </div>
+  <% if @super_bowl_pick.new_record? %>
+    <%= f.hidden_field :team_id, value: current_user.team.id %>
+  <% end %>
+
   <div class="field">
     <%= f.label :super_bowl_id %><br />
-    <%= f.number_field :super_bowl_id %>
+    <%= f.number_field :super_bowl_id, value: @super_bowl.id %>
   </div>
   <div class="field">
     <%= f.label :nfl_team_id %><br />

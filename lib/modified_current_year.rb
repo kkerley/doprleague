@@ -8,5 +8,4 @@ module ModifiedCurrentYear
       current_date.year
     end
   end
-
 end

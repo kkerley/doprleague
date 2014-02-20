@@ -179,6 +179,7 @@ ActiveRecord::Schema.define(:version => 20140218161835) do
     t.integer  "nfl_team2_final_score"
     t.integer  "nfl_winner_id"
     t.integer  "dopr_winner_id"
+    t.integer  "year"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
