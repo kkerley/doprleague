@@ -15,6 +15,37 @@ class SuperBowlsController < ApplicationController
   # GET /super_bowls/1.json
   def show
     @super_bowl = SuperBowl.find(params[:id])
+    @current_sb = SuperBowl.current_super_bowl
+    @picks = @super_bowl.super_bowl_picks
+
+    if @super_bowl == @current_sb
+      @this_is_current = true 
+    else 
+      @this_is_current = false
+    end
+
+    if current_user
+      unless @picks.empty?
+        @my_pick = @super_bowl.find_my_pick(@super_bowl, current_user.team.id)
+
+        if @my_pick
+          @current_user_submitted = true
+        else
+          @current_user_submitted = false
+        end
+      end
+    end
+    
+    # @picks.each do |p|
+      # if p.team_id == current_user.team.id
+        # @current_user_submitted = true
+        # @your_pick = p
+      # else
+        # @current_user_submitted = false
+      # end
+    # end
+    
+    
 
     respond_to do |format|
       format.html # show.html.erb

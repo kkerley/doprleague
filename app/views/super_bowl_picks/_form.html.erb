@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :nfl_team_id %><br />
-    <%= f.number_field :nfl_team_id %>
+    <%= f.select(:nfl_team_id, NflTeam.all.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%>
   </div>
   <div class="field">
     <%= f.label :combined_total %><br />

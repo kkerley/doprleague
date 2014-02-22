@@ -1,4 +1,6 @@
 class SuperBowlPicksController < ApplicationController
+  load_and_authorize_resource
+  
   # GET /super_bowl_picks
   # GET /super_bowl_picks.json
   def index
@@ -14,6 +16,8 @@ class SuperBowlPicksController < ApplicationController
   # GET /super_bowl_picks/1.json
   def show
     @super_bowl_pick = SuperBowlPick.find(params[:id])
+    @nfl_team = NflTeam.find(@super_bowl_pick.nfl_team_id)
+    @team = Team.find(@super_bowl_pick.team_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,6 +40,7 @@ class SuperBowlPicksController < ApplicationController
   # GET /super_bowl_picks/1/edit
   def edit
     @super_bowl_pick = SuperBowlPick.find(params[:id])
+    @super_bowl = SuperBowl.current_super_bowl
   end
 
   # POST /super_bowl_picks

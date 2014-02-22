@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
   <b>Year</b>
   <%= @super_bowl.year %>
@@ -39,7 +40,25 @@
   <b>Dopr winner:</b>
   <%= @super_bowl.dopr_winner_id %>
 </p>
-
-
+<% if current_user %>
+<p>
+      <% unless @current_user_submitted %>
+        No pick entered yet. <%= link_to "Submit your pick now", new_super_bowl_pick_path %>.
+      <% else %>
+        You picked <%= @my_pick.nfl_team.full_team_name %>
+      <% end %>
+    
+</p>
+<% end %>
+<p class="h2">Current picks</p>
+<% unless @picks.empty? %>
+<ul>
+  <% @picks.each do |p| %>
+    <li><%= link_to p.team.team_name, p.team %> chose <%= link_to p.nfl_team.full_team_name, p.nfl_team %> [<%= link_to "pick", p %>]</li>
+  <% end %>
+</ul>
+<% else %>
+<p>No picks submitted yet</p>
+<% end %>
 <%= link_to 'Edit', edit_super_bowl_path(@super_bowl) %> |
 <%= link_to 'Back', super_bowls_path %>

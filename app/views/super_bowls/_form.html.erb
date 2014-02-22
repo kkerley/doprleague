@@ -11,10 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :year %><br />
-    <%= f.text_field :year, value: @super_bowl.current_year %>
-  </div>
+  <% if @super_bowl.new_record? %>
+    <div class="field">
+      <%= f.label :year %><br />
+      <%= f.text_field :year, value: current_year %>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= f.label :year %><br />
+      <%= f.text_field :year %>
+    </div>
+  <% end %>  
   <div class="field">
     <%= f.label :nfl_team1_id, "AFC team" %><br />
     <%= f.select(:nfl_team1_id, NflTeam.afc.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />

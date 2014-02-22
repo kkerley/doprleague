@@ -72,4 +72,5 @@ class Team < ActiveRecord::Base
     yearly_budget - salary_total
   end
   
+  
 end

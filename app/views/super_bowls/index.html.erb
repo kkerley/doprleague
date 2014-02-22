@@ -1,8 +1,6 @@
 <h1>Listing super_bowls</h1>
 
-<p class="h2">Current Super Bowl</p>
-
-<%= @current_sb.year %>
+<%= @current_sb.id %>
 
 <table>
   <tr>
@@ -22,13 +20,13 @@
 <% @super_bowls.each do |super_bowl| %>
   <tr>
     <td><%= super_bowl.year %></td>
-    <td><%= super_bowl.nfl_team1_id %></td>
-    <td><%= super_bowl.nfl_team2_id %></td>
+    <td><% unless super_bowl.nfl_team1_id.nil? %><%= link_to NflTeam.find(super_bowl.nfl_team1_id).full_team_name, NflTeam.find(super_bowl.nfl_team1_id) %><% end %></td>
+    <td><% unless super_bowl.nfl_team2_id.nil? %><%= link_to NflTeam.find(super_bowl.nfl_team2_id).full_team_name, NflTeam.find(super_bowl.nfl_team2_id) %><% end %></td>
     <td><%= super_bowl.tie_breaker %></td>
     <td><%= super_bowl.nfl_team1_final_score %></td>
     <td><%= super_bowl.nfl_team2_final_score %></td>
-    <td><%= super_bowl.nfl_winner_id %></td>
-    <td><%= super_bowl.dopr_winner_id %></td>
+    <td><% unless super_bowl.nfl_winner_id.nil? %><%= NflTeam.find(super_bowl.nfl_winner_id).full_team_name %><% end %></td>
+    <td><% unless super_bowl.dopr_winner_id.nil? %><%= link_to Team.find(super_bowl.dopr_winner_id).team_name, Team.find(super_bowl.dopr_winner_id) %><% end %></td>
     <td><%= link_to 'Show', super_bowl %></td>
     <td><%= link_to 'Edit', edit_super_bowl_path(super_bowl) %></td>
     <td><%= link_to 'Destroy', super_bowl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
