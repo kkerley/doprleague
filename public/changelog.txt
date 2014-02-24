@@ -14,6 +14,7 @@ Version 2.3 [2014/02/xx]
 - Created SuperBowlPick model
 - Created NflTeam model mostly for the SuperBowl and SuperBowlPick models and associated logic, but could also be handy for showing players for informational purposes
 - Added a favicon
+- Upgraded to Bootstrap 3.1.1
 
 
 Version 2.2.3 [2014/02/10]
