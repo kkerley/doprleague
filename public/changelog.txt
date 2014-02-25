@@ -2,7 +2,7 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.3 [2014/02/xx]
+Version 2.3 [2014/03/xx]
 --------------------------------------------------
 - Added Budget model and created 50 years' worth for each team
 - Budgets and remainder have been added to the roster table as rows underneath salary totals
@@ -13,6 +13,7 @@ Version 2.3 [2014/02/xx]
 - Created SuperBowl model 
 - Created SuperBowlPick model
 - Created NflTeam model mostly for the SuperBowl and SuperBowlPick models and associated logic, but could also be handy for showing players for informational purposes
+- Moved a lot of code from the teams#show view into the controller where it belongs. Still room to DRY that up later.
 - Added a favicon
 - Upgraded to Bootstrap 3.1.1
 - Upgraded to Rails 3.2.17

@@ -33,6 +33,27 @@ class TeamsController < ApplicationController
     @total_payout_amount_to_date = Payout.all.count * 1200
     gon.all_users_and_awards = User.order(:id).includes(:awards)
 
+    @total_cap_current_year = @team.calculate_yearly_salary(current_year)
+    @total_cap_current_year_plus_1 = @team.calculate_yearly_salary(current_year.to_i + 1)
+    @total_cap_current_year_plus_2 = @team.calculate_yearly_salary(current_year.to_i + 2)
+    @total_cap_current_year_plus_3 = @team.calculate_yearly_salary(current_year.to_i + 3)
+    @total_cap_current_year_plus_4 = @team.calculate_yearly_salary(current_year.to_i + 4)
+    @total_cap_current_year_plus_5 = @team.calculate_yearly_salary(current_year.to_i + 5)
+
+    @team_budget_current_year = @team.get_budget(current_year)
+    @team_budget_current_year_plus_1 = @team.get_budget(current_year.to_i + 1)
+    @team_budget_current_year_plus_2 = @team.get_budget(current_year.to_i + 2)
+    @team_budget_current_year_plus_3 = @team.get_budget(current_year.to_i + 3)
+    @team_budget_current_year_plus_4 = @team.get_budget(current_year.to_i + 4)
+    @team_budget_current_year_plus_5 = @team.get_budget(current_year.to_i + 5)
+
+    @team_remainder_current_year = @team.remainder(@total_cap_current_year, @team_budget_current_year.amount)
+    @team_remainder_current_year_plus_1 = @team.remainder(@total_cap_current_year_plus_1, @team_budget_current_year_plus_1.amount)
+    @team_remainder_current_year_plus_2 = @team.remainder(@total_cap_current_year_plus_2, @team_budget_current_year_plus_2.amount)
+    @team_remainder_current_year_plus_3 = @team.remainder(@total_cap_current_year_plus_3, @team_budget_current_year_plus_3.amount)
+    @team_remainder_current_year_plus_4 = @team.remainder(@total_cap_current_year_plus_4, @team_budget_current_year_plus_4.amount)
+    @team_remainder_current_year_plus_5 = @team.remainder(@total_cap_current_year_plus_5, @team_budget_current_year_plus_5.amount)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @team }

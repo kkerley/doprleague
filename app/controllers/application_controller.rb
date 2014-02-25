@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  include ModifiedCurrentYear
   helper_method :current_members, :past_members, :current_philip_members, :current_russell_members
 
   # check_authorization
