@@ -1,6 +1,10 @@
 class SuperBowl < ActiveRecord::Base
   # include ModifiedCurrentYear
+  extend FriendlyId
+
   attr_accessible :dopr_winner_id, :nfl_team1_final_score, :nfl_team1_id, :nfl_team2_final_score, :nfl_team2_id, :nfl_winner_id, :tie_breaker, :year
+  friendly_id :year
+  
   has_many :super_bowl_picks
 
   validates_uniqueness_of :year
@@ -8,6 +12,7 @@ class SuperBowl < ActiveRecord::Base
   accepts_nested_attributes_for :super_bowl_picks
 
   #scope :current_super_bowl, lambda { where("year = ?", current_year) }
+  default_scope order('year desc')
 
   def self.current_year
     # The new seasons starts on 8/1 so technically, it's the previous year through 7/31

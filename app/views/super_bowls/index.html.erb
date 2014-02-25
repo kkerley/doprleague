@@ -1,39 +1,69 @@
-<h1>Listing super_bowls</h1>
+<% content_for :title, "Super Bowls" %>
+<% content_for :section_subtitle, "Information and league member picks for the $5 prize" %>
 
-<%= @current_sb.id %>
 
-<table>
-  <tr>
-    <th>Year</th>
-    <th>Nfl team1</th>
-    <th>Nfl team2</th>
-    <th>Tie breaker</th>
-    <th>Nfl team1 final score</th>
-    <th>Nfl team2 final score</th>
-    <th>Nfl winner</th>
-    <th>Dopr winner</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="row">
+    <div class="col-md-8">
 
-<% @super_bowls.each do |super_bowl| %>
-  <tr>
-    <td><%= super_bowl.year %></td>
-    <td><% unless super_bowl.nfl_team1_id.nil? %><%= link_to NflTeam.find(super_bowl.nfl_team1_id).full_team_name, NflTeam.find(super_bowl.nfl_team1_id) %><% end %></td>
-    <td><% unless super_bowl.nfl_team2_id.nil? %><%= link_to NflTeam.find(super_bowl.nfl_team2_id).full_team_name, NflTeam.find(super_bowl.nfl_team2_id) %><% end %></td>
-    <td><%= super_bowl.tie_breaker %></td>
-    <td><%= super_bowl.nfl_team1_final_score %></td>
-    <td><%= super_bowl.nfl_team2_final_score %></td>
-    <td><% unless super_bowl.nfl_winner_id.nil? %><%= NflTeam.find(super_bowl.nfl_winner_id).full_team_name %><% end %></td>
-    <td><% unless super_bowl.dopr_winner_id.nil? %><%= link_to Team.find(super_bowl.dopr_winner_id).team_name, Team.find(super_bowl.dopr_winner_id) %><% end %></td>
-    <td><%= link_to 'Show', super_bowl %></td>
-    <td><%= link_to 'Edit', edit_super_bowl_path(super_bowl) %></td>
-    <td><%= link_to 'Destroy', super_bowl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+        <% @super_bowls.each do |super_bowl| %>
+        <p class="h1"><%= link_to super_bowl.year, super_bowl %></p>
+        <p class="lead">
+            <% unless super_bowl.nfl_team1_id.nil? %>
+                <%= link_to NflTeam.find(super_bowl.nfl_team1_id).full_team_name, NflTeam.find(super_bowl.nfl_team1_id) %> 
+                <% unless super_bowl.nfl_team1_final_score.nil? %>
+                    (<%= super_bowl.nfl_team1_final_score %>)
+                <% end %>
+            <% end %> 
+            vs. 
+            <% unless super_bowl.nfl_team2_id.nil? %>
+                <%= link_to NflTeam.find(super_bowl.nfl_team2_id).full_team_name, NflTeam.find(super_bowl.nfl_team2_id) %> 
+                <% unless super_bowl.nfl_team2_final_score.nil? %>
+                    (<%= super_bowl.nfl_team2_final_score %>)
+                <% end %>
+            <% end %>
+            </p>
+
+            <p>
+            <% unless super_bowl.nfl_winner_id.nil? %>
+                
+                Super Bowl winner: <%= NflTeam.find(super_bowl.nfl_winner_id).full_team_name %><br />
+                <% unless super_bowl.dopr_winner_id.nil? %>
+                    DoPR $5 prize winner: <%= link_to Team.find(super_bowl.dopr_winner_id).team_name, Team.find(super_bowl.dopr_winner_id) %>
+                <% end %>
+            <% end %>
+        </p>
+
+            <hr />
+        <% end %>
+    </div><!-- end of col-md-8 -->
+
+    <div class="col-md-4">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p class="panel-title bold">Super Bowls</p>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <% @super_bowls.each do |super_bowl| %>
+                        <li>
+                            <%= link_to super_bowl.year, super_bowl %> 
+                            <% unless super_bowl.dopr_winner_id.nil? %>
+                                DoPR winner: <%= link_to Team.find(super_bowl.dopr_winner_id).team_name, Team.find(super_bowl.dopr_winner_id) %>
+                            <% end %> 
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+            
+        </div><!-- end of panel -->
+
+    </div><!-- end of col-md-4 -->
+</div>
+
+
+<% if current_user %>
+    <% if can? :manage, @super_bowls %>
+        <%= link_to 'New Super bowl', new_super_bowl_path %>
+    <% end %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Super bowl', new_super_bowl_path %>

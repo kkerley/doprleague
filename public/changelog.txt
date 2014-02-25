@@ -13,7 +13,10 @@ Version 2.3 [2014/03/xx]
 - Created SuperBowl model 
 - Created SuperBowlPick model
 - Created NflTeam model mostly for the SuperBowl and SuperBowlPick models and associated logic, but could also be handy for showing players for informational purposes
-- Moved a lot of code from the teams#show view into the controller where it belongs. Still room to DRY that up later.
+- Moved a lot of code from the teams#show view into the controller where it belongs. Still room to DRY that up later
+- Added ModifiedCurrentYear module to application_controller.rb and now things seem to be working better
+- Added friendly_id back for use with Super Bowls (friendly_id :year)
+- Cleaned up super_bowls#index
 - Added a favicon
 - Upgraded to Bootstrap 3.1.1
 - Upgraded to Rails 3.2.17

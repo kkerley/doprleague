@@ -1,4 +1,6 @@
 class SuperBowlsController < ApplicationController
+  load_and_authorize_resource
+  
   # GET /super_bowls
   # GET /super_bowls.json
   def index
