@@ -56,7 +56,7 @@
 						<% current_philip_members.each do |user|%>
 							<li>
 								<%= link_to(user.team) do %>
-								<%= image_tag user.avatar.url(:tiny) %> <%= user.display_name  %> | <%= user.team.team_name unless user.team.blank? %>
+								<%= image_tag user.avatar.url(:tiny) %> <%= user.display_name  %> || <%= user.team.team_name unless user.team.blank? %>
 								<% end %>
 							</li>
 						<% end %>
@@ -65,7 +65,7 @@
 							
 							<li>
 								<%= link_to(user.team) do %>
-								<%= image_tag user.avatar.url(:tiny) %> <%= user.display_name  %> | <%= user.team.team_name unless user.team.blank? %>
+								<%= image_tag user.avatar.url(:tiny) %> <%= user.display_name  %> || <%= user.team.team_name unless user.team.blank? %>
 								<% end %>
 							</li>
 						<% end %>

@@ -38,7 +38,7 @@
 									<% @players.each do |player| %>
 										<tr>
 											<td></td>
-											<td><%= link_to player.full_name, player %> (<%= player.nfl_team %>)
+											<td><%= link_to player.full_name, player %> (<%= link_to player.nfl_team, NflTeam.find_by_shorthand(player.nfl_team) %>)
 												
 												<% if player.this_team_contract(@team).is_bought_out %>
 													<i class="fa fa-usd"></i> 
