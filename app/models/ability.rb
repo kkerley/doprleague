@@ -14,12 +14,8 @@ class Ability
                     u == user
                 end
                 can :manage, Event, :team_id => user.team.id
-<<<<<<< HEAD
                 can :create, SuperBowlPick, :team_id => user.team.id
-=======
                 can :manage, DraftRoster, :team_id => user.team.id
-                
->>>>>>> draft_rosters
             end
         else
             can :read, :all

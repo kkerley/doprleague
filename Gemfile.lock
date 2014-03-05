@@ -72,13 +72,10 @@ GEM
       railties (>= 3.0.0)
     faraday (0.8.4)
       multipart-post (~> 1.1)
-
-    friendly_id (4.0.10.1)
-      activerecord (>= 3.0, < 4.0)
-
     ffi (1.9.3)
     formatador (0.2.4)
-
+    friendly_id (4.0.10.1)
+      activerecord (>= 3.0, < 4.0)
     gon (5.0.1)
       actionpack (>= 2.3.0)
       json
@@ -227,8 +224,8 @@ DEPENDENCIES
   cancan
   capybara
   coffee-rails (~> 3.2.1)
-  friendly_id
   factory_girl_rails
+  friendly_id
   gon
   guard-rspec
   jquery-rails
