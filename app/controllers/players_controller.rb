@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
     # @players = Player.order(:last_name)
     @players = Player.text_search(params[:query]).includes(:subcontracts).sort_by { |player| player.this_year_salary }.reverse
     @players_download = Player.order(:last_name)
-    gon.current_user_draft_rosters = DraftRoster.where("team_id = ?", current_user.team.id)
+    gon.current_user_draft_rosters = DraftRoster.where("team_id = ?", current_user.team.id) unless @players.empty?
 
     respond_to do |format|
       format.html # index.html.erb
