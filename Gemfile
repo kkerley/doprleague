@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # gem 'rails', '3.2.11'
 
 # upgrading to the latest version of 3.2.x for security
-gem 'rails', '3.2.16'
+gem 'rails', '3.2.17'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
