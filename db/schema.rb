@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20140218161835) do
+=======
+ActiveRecord::Schema.define(:version => 20140217044130) do
+>>>>>>> draft_rosters
 
   create_table "awards", :force => true do |t|
     t.text     "name"

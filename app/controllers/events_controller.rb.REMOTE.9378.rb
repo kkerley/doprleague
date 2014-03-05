@@ -1,8 +1,5 @@
 class EventsController < ApplicationController
-<<<<<<< HEAD
-=======
   
->>>>>>> draft_rosters
   load_and_authorize_resource
   # GET /events
   # GET /events.json
