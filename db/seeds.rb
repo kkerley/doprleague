@@ -10,12 +10,12 @@ teams = Team.all
 current_year = 2013
 
 teams.each do |team|
-	50.times { 
-		b = Budget.new
-		b.team_id = team.id
-		b.year = current_year
-		current_year += 1
-		b.save!
+  50.times { 
+	  b = Budget.new
+	  b.team_id = team.id
+	  b.year = current_year
+	  current_year += 1
+	  b.save!
 	}
 	current_year = 2013
 end

@@ -85,6 +85,12 @@
 						<li><a href="/faqs"><i class="fa fa-question-circle"></i> FAQs</a></li>
 						<li><a href="/events"><i class="fa fa-calendar"></i> Events</a></li>
 						<li><a href="/super_bowls"><i class="fa fa-ticket"></i> Super Bowls</a></li>
+						<% if current_user %> 
+							<li><%= link_to("/teams/#{current_user.team.to_param}/draft_rosters") do %>
+									<i class="fa fa-eye"></i> Draft Rosters
+								<% end %>
+							</li>
+						<% end %>
 					</ul>
 				</li>
 				<li><a href="/players"><i class="fa fa-bullhorn"></i> NFL Players</a></li>

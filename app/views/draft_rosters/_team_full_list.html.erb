@@ -1,0 +1,3 @@
+<% @draft_rosters.each do |dr| %>
+	<%= link_to dr.name, team_draft_roster_path(dr.team, dr) %>	
+<% end %>
