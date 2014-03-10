@@ -1,3 +1,8 @@
-<% @draft_rosters.each do |dr| %>
-	<%= link_to dr.name, team_draft_roster_path(dr.team, dr) %>	
+<% if @draft_rosters.count == 0 %>
+	<%= link_to "Create a draft roster", new_team_draft_roster_path(@team) %>
+<% else %>
+
+	<% @draft_rosters.each do |dr| %>
+		<%= link_to dr.name, team_draft_roster_path(dr.team, dr) %>	
+	<% end %>
 <% end %>

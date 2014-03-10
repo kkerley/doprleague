@@ -1,57 +1,21 @@
 <fieldset class="contract-fields margin-bottom-2em">
 	
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-8">
 			<div class="row">
-				<div class="form-group">
-					<%= f.label :contract_year, :class => 'col-md-3 control-label' %>
-					<div class="col-md-9">
-						<%= f.text_field :contract_year, :class => 'form-control' %>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<%= f.label :team_id, :class => 'col-md-3 control-label' %>
-					<div class="col-md-9">
+				
+				<%= f.text_field :contract_year, :class => 'form-control' %>
+				<%= f.select(:team_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true, :prompt => "Select" }, {:class => "form-control"}) %>
+				<%= f.text_field :salary_amount, :class => 'form-control', :style => "display: inline;" %>
 					
-						<%= f.select(:team_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true, :prompt => "Select" }, {:class => "form-control"}) %>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<%= f.label :salary_amount, "Salary $", :class => 'col-md-3 control-label' %>
-					<div class="col-md-9">
-						<%= f.text_field :salary_amount, :class => 'form-control', :style => "display: inline;" %>
-					</div>
-				</div>
 			</div>
 		</div>
 
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<div class="row">
-				<div class="form-group">
-					<div class="col-md-offset-3 col-md-9">
-						<label class="checkbox">
-							<%= f.check_box :this_is_a_buyout %> Buyout year?
-						</label>
-					</div>
-				  </div>
-				
-				<div class="form-group">
-					<div class="col-md-offset-3 col-md-9">
-						<label class="checkbox">
-							<%= f.check_box :this_is_an_extension %> Extension year?
-						</label>
-					</div>
-				  </div>
-
-				  <div class="form-group">
-					<div class="col-md-offset-3 col-md-9">
-						<label class="checkbox">
-							<%= f.check_box :this_is_a_franchise_tag %> Franchise year?
-						</label>
-					</div>
-				  </div>
+				<%= f.check_box :this_is_a_buyout, label: 'Buyout year?' %>
+				<%= f.check_box :this_is_an_extension, label: 'Extension year?' %> 
+				<%= f.check_box :this_is_a_franchise_tag, label: 'Franchise year?' %>
 			</div>
 		</div>
 </fieldset>

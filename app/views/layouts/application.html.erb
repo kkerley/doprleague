@@ -171,7 +171,7 @@
 							<% if current_user.role == "admin" %>
 								<a href="/admin"><i class="fa fa-cogs"></i> Admin control panel</a> | 
 							<% end %> 
-							<a href="<%=logout_path %>"><i class="fa fa-sign-out fa-lg"></i> Log out</a>
+							<a href="<%= logout_path %>"><i class="fa fa-sign-out fa-lg"></i> Log out</a>
 						<% else %>
 							<a href="/login"><i class="fa fa-sign-in"></i> Login</a>
 						<% end %> 

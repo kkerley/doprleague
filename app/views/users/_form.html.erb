@@ -1,77 +1,25 @@
-<%= form_for @user, :html => { :multipart => true, :class => "form-horizontal" } do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <div class="form-group">
-    <%= f.label :email, :class => 'col-lg-3 control-label' %>
-	<div class="col-lg-9">
-    	<%= f.text_field :email, :class => 'form-control' %>
-	</div>
-  </div>
-  <div class="form-group">
-	<%= f.label :display_name,  "Full name", :class => 'col-lg-3 control-label' %>
-	<div class="col-lg-9">
-		<%= f.text_field :display_name, :class => 'form-control' %>
-	</div>
-  </div>
-  <div class="form-group">
-    <%= f.label :password, :class => 'col-lg-3 control-label' %>
-    <div class="col-lg-9">
-		<%= f.password_field :password, :class => 'form-control' %>
-	</div>
-  </div>
-  <div class="form-group">
-    <%= f.label :password_confirmation, "Confirm", :class => 'col-lg-3 control-label' %>
-    <div class="col-lg-9">
-		<%= f.password_field :password_confirmation, :class => 'form-control' %>
-	</div>
-  </div>
+<%= labeled_form_for @user, :html => { :multipart => true, :class => "form-horizontal" } do |f| %>
+  <%= f.error_messages %>
 
-	<%= f.fields_for :team do |builder| %>
-  		<%= render 'team_fields', f: builder %>
- 	<%end %>
+  <%= f.text_field :email, class: 'form-control' %>
+  <%= f.text_field :display_name, label: "Full name", class: 'form-control' %>
+  <%= f.password_field :password, class: 'form-control' %>
+  <%= f.password_field :password_confirmation, label: "Confirm", class: 'form-control' %>
+  <%= f.fields_for :team do |builder| %>
+    <%= render 'team_fields', f: builder %>
+   <%end %>
+  <div class="col-lg-9 col-lg-offset-3">
+    Current avatar:<br />
+	<%= image_tag @user.avatar.url(:thumb) %><br /><br />
 
-	<div class="form-group">
-		
-	    <%= f.label :avatar, "Avatar", :class => 'col-lg-3 control-label' %>
-	    <div class="col-lg-9">
-		<br />Current avatar:<br />
-		
-		<%= image_tag @user.avatar.url(:thumb) %><br /><br />
-	
-		<%= f.file_field :avatar, :class => 'form-control' %>
-		</div>
-	</div>
+  </div>
+  <%= f.file_field :avatar, label: "Avatar", class: 'form-control' %>
 
-	<% if current_user %>
-  		<% if current_user.role == "admin" %>
-			<div class="form-group">
-				<div class="col-lg-offset-3 col-lg-9">
-					<label class="checkbox">
-						<%= f.check_box :is_current %> Currently in the league?
-					</label>
-				</div>
-			</div>
-  	
-			<div class="form-group">
-				<%= f.label :role, :class => 'col-lg-3 control-label' %>
-				<div class="col-lg-9">
-					<%= f.collection_select(:role, User::ROLES, :to_s, :humanize, {}, {:class => "form-control"}) %> 
-				</div>
-			</div>
-		<% end %>
+  <% if current_user %>
+    <% if current_user.role == "admin" %>
+	  <%= f.check_box :is_current, label: 'Currently in the league?' %> 
+		<%= f.collection_select(:role, User::ROLES, :to_s, :humanize, {}, {:class => "form-control"}) %> 
+	  <% end %>
 	<% end %>
-  	<div class="form-group">
-		<div class="col-lg-offset-3 col-lg-9">
-	   	 <%= f.submit :class => "btn btn-success btn-large" %>
-		</div>
-	</div>
+  	<%= f.submit class: "btn btn-success btn-large" %>
 <% end %>

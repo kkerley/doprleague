@@ -1,88 +1,33 @@
-<%= form_for @contract, :html => { :multipart => true, :class => "form-horizontal" } do |f| %>
-  <% if @contract.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
-
-      <ul>
-      <% @contract.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= labeled_form_for @contract, :html => { :multipart => true, :class => "form-horizontal" } do |f| %>
+  <%= f.error_messages %>
 
  
-  <div class="form-group">
-    <%= f.label :contract_start_year, :class => 'col-lg-3 control-label' %>
-    <div class="col-lg-9">
-      <%= f.text_field :contract_start_year, :class => 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :contract_length, :class => 'col-lg-3 control-label' %>
-    <div class="col-lg-9">
-      <%= f.text_field :contract_length, :class => 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-lg-offset-3 col-lg-9">
-      <label class="checkbox">
-        <%= f.check_box :is_drafted %> Drafted<br />
-        <small>Only drafted players may be signed to long-term contracts</small>
-      </label>
-    </div>
-  </div> 
-
-  <div class="form-group">
-    <div class="col-lg-offset-3 col-lg-9">
-      <label class="checkbox">
-        <%= f.check_box :is_extended %> Apply extension<br />
-        <small>Adds one more year to the contract using the progression from the contract's creation</small>
-      </label>
-    </div>
-  </div> 
-
-  <div class="form-group">
-    <div class="col-lg-offset-3 col-lg-9">
-      <label class="checkbox">
-        <%= f.check_box :is_franchised %> Apply franchise tag<br />
-        <small>May only be used for players whose contracts expire this year or were picked up mid-season. Salary is average of top 3 players of this player's position</small>
-      </label>
-    </div>
-  </div> 
-<!--
-  <div class="form-group">
-    <div class="col-lg-offset-3 col-lg-9">
-      <label class="checkbox">
-        <% f.check_box :is_dead_money %> Dead money<br />
-        <small>Player is not on the active roster of the contracted team but is still a cap drain</small>
-      </label>
-    </div>
-  </div> 
-
--->
-  <div class="form-group">
-    <div class="col-lg-offset-3 col-lg-9">
-      <label class="checkbox">
-        <%= f.check_box :is_bought_out %> Apply buy out clause<br />
-        <small>Buyout clause applied to remaining contract years for 60% of the contracted amount</small>
-      </label>
-    </div>
-  </div>
   
-  <div class="form-group">
-    <%= f.label :bought_out_by_team_id, "Bought out by", :class => 'col-lg-3 col-lg-offset-2 control-label' %>
-    <div class="col-lg-6">
+  <%= f.text_field :contract_start_year, :class => 'form-control' %>
+  <%= f.text_field :contract_length, :class => 'form-control' %>
+  <%= f.check_box :is_drafted, label: "Drafted?" %>
+    <small class="col-lg-offset-3">Only drafted players may be signed to long-term contracts</small>
+  
+  <%= f.check_box :is_extended, label: "Apply extension" %>
+    <small class="col-lg-offset-3">Adds one more year to the contract using the progression from the contract's creation</small>
+  
+  <%= f.check_box :is_franchised, label: "Apply franchise tag" %>
+    <small class="col-lg-offset-3">Only usable on contracts expiring this year or mid-season pickups. Salary is average of top 5 of this player's position</small>
     
-      <%= f.select(:bought_out_by_team_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
-      <small>Only necessary if a player is bought out. Player may NOT be picked up again by the team buying him out until all contracts have expired.</small>
-    </div>
-  </div>
+<!--
+  <% f.check_box :is_dead_money %> 
+    <small>Player is not on the active roster of the contracted team but is still a cap drain</small>
+-->
+
+  <%= f.check_box :is_bought_out, label: "Apply buy out clause" %>
+    <small class="col-lg-offset-3">Buyout clause applied to remaining contract years for 60% of the contracted amount<br /><br /></small>
+    
+  <%= f.select(:bought_out_by_team_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { include_blank: true }, { class: "form-control", label: "Bought out by" })%>
+    <small class="col-lg-offset-3">Only necessary if player is bought out. Player may NOT be picked up again by buyout team until all contracts have expired.</small>
+   
 
   <div class="row">
-    <div class="col-md-8 col-md-offset-3">
+    <div class="col-md-9 col-md-offset-3 margin-top-1em">
       <%= f.fields_for :subcontracts do |builder| %>
       <br /><br />
       <%= render '/players/subcontract_fields', f: builder %>
@@ -90,9 +35,7 @@
     </div>
   </div>
 
-  <div class="form-group margin-top-2em">
-    <div class="col-lg-offset-3 col-lg-9">
-       <%= f.submit :class => "btn btn-success btn-large" %>
-    </div>
-  </div>
+ 
+  <%= f.submit :class => "btn btn-success btn-large" %>
+ 
 <% end %>

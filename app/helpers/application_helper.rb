@@ -6,10 +6,6 @@ module ApplicationHelper
     Time.now.year
   end
   
-  def kramdown(text)
-    return sanitize Kramdown::Document.new(text).to_html
-  end
-  
   def current_day
     return @current_day = Time.now.strftime("%A")
   end
@@ -22,4 +18,10 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def labeled_form_for(object, options = {}, &block)
+    options[:builder] = LabeledFormBuilder
+    form_for(object, options, &block)
+  end
+
 end

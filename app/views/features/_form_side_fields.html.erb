@@ -1,28 +1,10 @@
-	<div class="form-group">
-	    <%= f.label "Type", :class => 'col-lg-2 control-label' %>
-
-		<div class="col-lg-10">
-			<%= f.select :feature_type, {"Choose..." => "Choose...", "Announcements" => "Announcements", "Constitution" => "Constitution", "FAQ" => "FAQ", "Poll" => "Poll" }, {}, {:class => 'form-control'} %>
-		</div>
-	  </div>
-
-	  <div class="form-group">
-	    <%= f.label "Order", :class => 'col-lg-2 control-label' %>
-
-		<div class="col-lg-10">
-			<%= f.number_field :homepage_order, :style => "width: 80px", :class => 'form-control' %>
-		</div>
-	  </div>
-
-	<% render "form_side_fields_categories", :f => f %> <!-- disabled for now as there's no need for them -->
+<%= f.select :feature_type, {"Choose..." => "Choose...", "Announcements" => "Announcements", "Constitution" => "Constitution", "FAQ" => "FAQ", "Poll" => "Poll" }, {label: "Type"}, {:class => 'form-control'} %>
 	
-	  <div class="form-group">
-		<div class="col-lg-offset-2 col-lg-10">
-			<label class="checkbox">
-				<%= f.check_box :is_published %> Published?
-			</label>
-		</div>
-	  </div>
+<%= f.text_field :homepage_order, label: "Order", :style => "width: 80px", :class => 'form-control' %>
+<% render "form_side_fields_categories", :f => f %> <!-- disabled for now as there's no need for them -->
+
+<%= f.check_box :is_published, label: "Published?" %> 
+	
 	<!-- 
 	  <div class="form-group">
 		<div class="col-lg-10">

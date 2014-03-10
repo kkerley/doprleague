@@ -65,9 +65,9 @@
 							<th class="hidden-sm hidden-xs">Bye</th>
 							<th>Owned by</th>
 							<th><!-- contract link --></th>
-							<th align="center">Watch</th>
-							
 							<% if current_user %>
+								<th align="center">Watch</th>
+							
 								<% if can? :manage, @players %>
 									<th></th>
 									<th></th>
@@ -107,17 +107,19 @@
 								
 
 							<% end %>
-
-							<td align="center"><a id="watch<%= player.id %>" class="watchable" data-container="body" data-toggle="popover" data-placement="top" data-html="true" data-title="<strong>Add to draft roster:</strong>" data-content='<%= render "draft_rosters/team_full_list" %>'><i class="fa fa-eye"></i></a></td>
-							
-							
-						
 							<% if current_user %>
+								<td align="center">
+									<% unless player.is_contracted? %>
+										<a id="watch<%= player.id %>" class="watchable" data-container="body" data-toggle="popover" data-placement="top" data-html="true" data-title="<strong>Add to draft roster:</strong>" data-content='<%= render "draft_rosters/team_full_list" %>'><i class="fa fa-eye"></i></a>
+									<% end %>
+								</td>
+							
 								<% if can? :manage, player %>
 									<td><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit", edit_player_path(player) %></td>
 									<td><i class="fa fa-minus-circle"></i> <%= link_to 'Delete', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 								<% end %>
 							<% end %>
+							<td></td>
 						</tr>
 						<% end %>
 					</tbody>

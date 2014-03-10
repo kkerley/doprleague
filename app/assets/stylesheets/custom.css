@@ -21,6 +21,10 @@
 	text-transform: uppercase;
 }
 
+.margin-top-0{
+	margin-top: 0;
+}
+
 .margin-top-1em{
 	margin-top: 1em;
 }
@@ -158,4 +162,8 @@ fieldset.contract-fields{
 
 .vert-align-mid{
 	vertical-align: text-bottom;
+}
+
+.put-inline{
+	margin-bottom: -1.5em;
 }
