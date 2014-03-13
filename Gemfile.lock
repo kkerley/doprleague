@@ -60,11 +60,13 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     daemons (1.1.9)
+    database_cleaner (1.2.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    fabrication (2.9.8)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.4.1)
@@ -224,6 +226,8 @@ DEPENDENCIES
   cancan
   capybara
   coffee-rails (~> 3.2.1)
+  database_cleaner
+  fabrication
   factory_girl_rails
   friendly_id
   gon

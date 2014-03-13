@@ -18,6 +18,8 @@ class Team < ActiveRecord::Base
 
   scope :philip_division, lambda { where(division: "Philip") }
   scope :russell_division, lambda { where(division: "Russell") }
+
+  after_create :build_budgets
   
   
   def to_param
@@ -73,4 +75,19 @@ class Team < ActiveRecord::Base
   end
   
   
+  def build_budgets
+    if Time.now.month < 8
+      current_year = Time.now.year - 1
+    else
+      current_year = Time.now.year
+    end 
+
+    50.times { 
+      b = Budget.new
+      b.team_id = self.id
+      b.year = current_year
+      current_year += 1
+      b.save!
+    }
+  end
 end
