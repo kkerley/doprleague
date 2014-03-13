@@ -11,12 +11,10 @@ describe User do
 
 
   def log_in
-  	visit '/login'
-  	fill_in "email", :with => user.email
-  	fill_in "password", :with => user.password
-    check 'Remember me'
-  	click_button "Log in"
-    page.should have_content("Email or password was invalid.")
+  	visit '/users/login'
+    fill_in "Email", :with => user.email
+    fill_in "Password", :with => user.password
+    click_button "Sign in"
   end
 
   def visit_standard_urls
@@ -69,8 +67,12 @@ describe User do
     page.should have_content("#{user.display_name}")
     visit_standard_urls
     visit "/teams/#{user.team.to_param}/draft_rosters"
-   
-    click_link "#{user.display_name}" 
+
+    # page.should have_content("Log out")
+    click_link "Admin" 
+    current_path.should == "/admin"
+     
+    page.should have_content "Administrative control" 
   end
 
 end
