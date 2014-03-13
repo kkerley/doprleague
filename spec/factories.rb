@@ -5,17 +5,31 @@ FactoryGirl.define do
 		display_name { |n| "person#{n}" }
 		password "guessthis"
 		is_current true
+		role 'admin'
 	
 
 		after(:create) do |user|
 			team = FactoryGirl.create(:team, user: user)
 		end
 
-		factory :admin do
-			after(:create) {|user| user.role = 'admin'}
+		# trait :admin do
+			# after(:create) {|user| user.role = 'admin'}
 			# role = 'admin'
-    end
+    # end
 		
+  end
+
+
+  factory :admin, class: User do
+    email { |n| "person#{n}@example.com" }
+		display_name { |n| "person#{n}" }
+		password "guessthis"
+		is_current true
+		role 'admin'
+
+		after(:create) do |user|
+			team = FactoryGirl.create(:team, user: user)
+		end
   end
 
   factory :team do

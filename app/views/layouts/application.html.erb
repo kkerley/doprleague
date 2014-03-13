@@ -112,9 +112,11 @@
 							<li><a href="/admin"><i class="fa fa-cogs"></i> Admin</a></li>
 						<% end %>
 
-						<li><a href="<%= logout_path %>"><i class="fa fa-sign-out"></i> Log out</a></li>
+						<li><%= link_to(destroy_user_session_path, method: :delete) do %>
+									<i class="fa fa-sign-out fa-lg"></i> Log out</a>
+								<% end %></li>
 					<% else %>
-						<li><a href="/login"><i class="fa fa-sign-in"></i> Login</a></li>
+						<li><a href="<%= new_user_session_path %>"><i class="fa fa-sign-in"></i> Login</a></li>
 					<% end %>
 				</ul>
 	        </div><!--/.nav-collapse -->
@@ -170,8 +172,12 @@
 							Logged in as: <%= link_to current_user.display_name, current_user.team %> [ <%= current_user.email %> | <%= link_to "Edit profile", edit_user_path(current_user) %> ] | 
 							<% if current_user.role == "admin" %>
 								<a href="/admin"><i class="fa fa-cogs"></i> Admin control panel</a> | 
-							<% end %> 
-							<a href="<%= logout_path %>"><i class="fa fa-sign-out fa-lg"></i> Log out</a>
+							<% end %>
+
+							<%= link_to(destroy_user_session_path, method: :delete) do %>
+									<i class="fa fa-sign-out fa-lg"></i> Log out</a>
+								<% end %> 
+							
 						<% else %>
 							<a href="/login"><i class="fa fa-sign-in"></i> Login</a>
 						<% end %> 

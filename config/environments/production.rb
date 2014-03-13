@@ -66,4 +66,5 @@ KkerleyCom::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
   Paperclip.options[:command_path] = "/usr/bin/convert"
+  config.action_mailer.default_url_options = { host: 'doprleague.info' }
 end

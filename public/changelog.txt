@@ -25,7 +25,7 @@ Version 2.3 [2014/03/xx]
 - Changed login errors to be :alert instead of :notice for proper styling
 - Added formbuilder helper to more easily style forms
 - Moved seed function for creating budgets to the Team model as an after_create function
-
+- Switched to Devise because, unlike Sorcery, it actually works
 
 
 Version 2.2.3 [2014/02/10]

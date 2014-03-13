@@ -9,7 +9,8 @@ gem 'rails', '3.2.17'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # gem 'sqlite3'
-gem 'sorcery'
+# gem 'sorcery'
+gem 'devise'
 # gem 'kramdown'
 gem 'RedCloth', "~> 4.2.3", :require => 'redcloth'
 gem "paperclip", "~> 3.0"

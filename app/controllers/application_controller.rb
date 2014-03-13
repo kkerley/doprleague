@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
   # check_authorization
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to login_url, :alert => exception.message
+    redirect_to new_user_session_url, :alert => exception.message
   end
   
   private
   def not_authenticated
-    redirect_to login_url, :alert => "Log in to view this page."
+    redirect_to new_user_session_url, :alert => "Log in to view this page."
   end
 
   def current_members

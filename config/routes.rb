@@ -1,5 +1,7 @@
 KkerleyCom::Application.routes.draw do
 
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+
   resources :super_bowl_picks
   resources :nfl_teams do 
     collection { post :import }
@@ -26,7 +28,7 @@ KkerleyCom::Application.routes.draw do
   resources :awards
   resources :payouts
   resources :users
-  resources :sessions  
+  
   resources :features
   resources :contracts do
     collection do
@@ -41,8 +43,7 @@ KkerleyCom::Application.routes.draw do
 
   
   root :to => "features#index"
-  get "logout" => "sessions#destroy", :as => "logout"
-  get "login" => "sessions#new", :as => "login"
+ 
   get "signup" => "users#new", :as => "signup"
   get "faqs" => "features#faqs", :as => "faqs"
   get "constitution" => "features#constitution", :as => "constitution"
@@ -50,7 +51,10 @@ KkerleyCom::Application.routes.draw do
   get "admin" => "features#admin", :as => "admin"
   get "members" => "users#index", :as => "members"
   
-
+  devise_scope :user do 
+    root to: 'features#index'
+    match '/sessions/user', to: 'devise/sessions#create', via: :post
+  end
 
 
   # The priority is based upon order of creation:
