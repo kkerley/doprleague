@@ -34,14 +34,21 @@ describe SalaryProgression do
 
 	it "should show the upload form for an admin" do
 		log_in
-		
-		
 		click_link "League info"
 		click_link "Salary progressions"
 		page.should have_content "Import salary progressions"
 	end
 
-	# it "should upload progression chart" do 
+	it "should upload progression chart" do 
+		log_in
+		click_link "League info"
+		click_link "Salary progressions"
+		page.attach_file('file','spec/fixtures/files/dopr_salary_chart.csv')
+		click_button "Import"
+		page.should have_content "Salary chart imported."
+		page.should have_content "328"
+	end
 
-	# end
+
+
 end

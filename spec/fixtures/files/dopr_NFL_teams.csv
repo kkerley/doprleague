@@ -1,0 +1,33 @@
+city,mascot,conference,shorthand
+Buffalo,Bills,AFC,BUF
+Miami,Dolphins,AFC,MIA
+New England,Patriots,AFC,NE
+New York,Jets,AFC,NYJ
+Baltimore,Ravens,AFC,BAL
+Cincinnati,Bengals,AFC,CIN
+Cleveland,Browns,AFC,CLE
+Pittsburgh,Steelers,AFC,PIT
+Houston,Texans,AFC,HOU
+Indianapolis,Colts,AFC,IND
+Jacksonville,Jaguars,AFC,JAC
+Tennessee,Titans,AFC,TEN
+Denver,Broncos,AFC,DEN
+Kansas City,Chiefs,AFC,KC
+Oakland,Raiders,AFC,OAK
+San Diego,Chargers,AFC,SD
+Dallas,Cowboys,NFC,DAL
+New York,Giants,NFC,NYG
+Philadelphia,Eagles,NFC,PHI
+Washington,Redskins,NFC,WAS
+Chicago,Bears,NFC,CHI
+Detroit,Lions,NFC,DET
+Green Bay,Packers,NFC,GB
+Minnesota,Vikings,NFC,MIN
+Atlanta,Falcons,NFC,ATL
+Carolina,Panthers,NFC,CAR
+New Orleans,Saints,NFC,NO
+Tampa Bay,Buccaneers,NFC,TB
+Arizona,Cardinals,NFC,ARI
+St. Louis,Rams,NFC,STL
+San Francisco,49ers,NFC,SF
+Seattle,Seahawks,NFC,SEA
