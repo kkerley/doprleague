@@ -48,52 +48,52 @@
 	            <!--<li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>-->
 				
 				
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i> Members <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="/members"><i class="fa fa-list-alt"></i> Directory</a></li>
-						<li><a href="#" style="cursor:default"><strong>Philip Division</strong></a></li>
-						<% current_philip_members.each do |user|%>
-							<li>
-								<%= link_to(user.team) do %>
-								<%= image_tag user.avatar.url(:tiny) %> <%= user.display_name  %> || <%= user.team.team_name unless user.team.blank? %>
-								<% end %>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i> Members <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="/members"><i class="fa fa-list-alt"></i> Directory</a></li>
+									<li><a href="#" style="cursor:default"><strong>Philip Division</strong></a></li>
+									<% current_philip_members.each do |user|%>
+										<li>
+											<%= link_to(user.team) do %>
+											<%= image_tag user.avatar.url(:tiny) %> <%= user.display_name  %> || <%= user.team.team_name unless user.team.blank? %>
+											<% end %>
+										</li>
+									<% end %>
+									<li><a href="#" style="cursor:default"><strong>Russell Division</strong></a></li>
+									<% current_russell_members.each do |user|%>
+										
+										<li>
+											<%= link_to(user.team) do %>
+											<%= image_tag user.avatar.url(:tiny) %> <%= user.display_name  %> || <%= user.team.team_name unless user.team.blank? %>
+											<% end %>
+										</li>
+									<% end %>
+								</ul>
 							</li>
-						<% end %>
-						<li><a href="#" style="cursor:default"><strong>Russell Division</strong></a></li>
-						<% current_russell_members.each do |user|%>
 							
-							<li>
-								<%= link_to(user.team) do %>
-								<%= image_tag user.avatar.url(:tiny) %> <%= user.display_name  %> || <%= user.team.team_name unless user.team.blank? %>
-								<% end %>
-							</li>
-						<% end %>
-					</ul>
-				</li>
-				
 	            
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-info-circle"></i> League info <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="/constitution"><i class="fa fa-book"></i> Constitution</a></li>
-						<li><a href="/polls"><i class="fa fa-tasks"></i> Facebook polls</a></li>
-						<li><a href="/salary_progressions"><i class="fa fa-money"></i> Salary progressions</a></li>
-						<li><a href="/contracts"><i class="fa fa-file-text"></i> Contracts</a></li>
-						<li><a href="/payouts"><i class="fa fa-trophy"></i> Payouts &amp; awards</a></li>
-						<li><a href="/standings"><i class="fa fa-list-ol"></i> All-time standings</a></li>
-						<li><a href="/faqs"><i class="fa fa-question-circle"></i> FAQs</a></li>
-						<li><a href="/events"><i class="fa fa-calendar"></i> Events</a></li>
-						<li><a href="/super_bowls"><i class="fa fa-ticket"></i> Super Bowls</a></li>
-						<% if current_user %> 
-							<li><%= link_to("/teams/#{current_user.team.to_param}/draft_rosters") do %>
-									<i class="fa fa-eye"></i> Draft rosters
-								<% end %>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-info-circle"></i> League info <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="/constitution"><i class="fa fa-book"></i> Constitution</a></li>
+									<li><a href="/polls"><i class="fa fa-tasks"></i> Facebook polls</a></li>
+									<li><a href="/salary_progressions"><i class="fa fa-money"></i> Salary progressions</a></li>
+									<li><a href="/contracts"><i class="fa fa-file-text"></i> Contracts</a></li>
+									<li><a href="/payouts"><i class="fa fa-trophy"></i> Payouts &amp; awards</a></li>
+									<li><a href="/standings"><i class="fa fa-list-ol"></i> All-time standings</a></li>
+									<li><a href="/faqs"><i class="fa fa-question-circle"></i> FAQs</a></li>
+									<li><a href="/events"><i class="fa fa-calendar"></i> Events</a></li>
+									<li><a href="/super_bowls"><i class="fa fa-ticket"></i> Super Bowls</a></li>
+									<% if current_user %> 
+										<li><%= link_to("/teams/#{current_user.team.to_param}/draft_rosters") do %>
+												<i class="fa fa-eye"></i> Draft rosters
+											<% end %>
+										</li>
+									<% end %>
+								</ul>
 							</li>
-						<% end %>
-					</ul>
-				</li>
-				<li><a href="/players"><i class="fa fa-bullhorn"></i> NFL players</a></li>
+							<li><a href="/players"><i class="fa fa-bullhorn"></i> NFL players</a></li>
 				
 				
 	          </ul>
@@ -107,7 +107,7 @@
 
 			  	<ul class="nav navbar-nav">
 			  		<% if current_user %>
-			  			<li><%= link_to (image_tag current_user.avatar.url(:tiny)) + " " + current_user.first_name, current_user.team %>
+			  			<li id="li-user-first-name"><%= link_to (image_tag current_user.avatar.url(:tiny)) + " " + current_user.first_name, current_user.team %>
 						<% if current_user.role == "admin" %>
 							<li><a href="/admin"><i class="fa fa-cogs"></i> Admin</a></li>
 						<% end %>

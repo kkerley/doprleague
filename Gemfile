@@ -46,7 +46,8 @@ group :test do
   gem "capybara"
   gem "guard-rspec"
   gem "database_cleaner"
-  gem 'fabrication'
+  # gem 'fabrication'
+  gem "launchy"
 end
 
 # gem 'friendly_id', :require => "friendly_id"

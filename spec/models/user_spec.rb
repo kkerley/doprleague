@@ -1,52 +1,8 @@
-require 'spec_helper' 
+require 'spec_helper'
 
 describe User do
- 
   let(:user) { FactoryGirl.create(:user) }
-
-
-  ###################################################
-  # DRY'd up methods                                #
-  ###################################################
-
-
-  def log_in
-  	visit '/users/login'
-    fill_in "Email", :with => user.email
-    fill_in "Password", :with => user.password
-    click_button "Sign in"
-  end
-
-  def visit_standard_urls
-    # "League info" dropdown links
-    visit "/"
-    click_link "League info"
-    click_link "Constitution"
-    click_link "League info"
-    click_link "Facebook polls"
-    click_link "League info"
-    click_link "Salary progressions"
-    click_link "League info"
-    click_link "Contracts"
-    click_link "League info"
-    click_link "Payouts & awards"
-    click_link "League info"
-    click_link "All-time standings"
-    click_link "League info"
-    click_link "FAQs"
-    click_link "League info"
-    click_link "Events"
-    click_link "League info"
-    click_link "Super Bowls"
-
-    click_link "NFL players"
-  end
-
-
-  ###################################################
-  # The tests                                       #
-  ###################################################
-
+  
 
   it "should have 50 budgets for his team" do
     log_in
@@ -55,7 +11,10 @@ describe User do
   
   it "displays the user's team page" do
   	log_in
-  	click_link "Hilarious Team Name"
+  	within('#li-user-first-name') do
+      click_link user.first_name
+    end
+    # current_path should == "/teams/#{user.team.to_param}"
   end
 
   it "should be able to visit all non-protected pages when not logged in" do
@@ -64,15 +23,23 @@ describe User do
 
   it "should be able to visit all pages without an error when logged in" do
     log_in
+  
     page.should have_content("#{user.display_name}")
+    
     visit_standard_urls
-    visit "/teams/#{user.team.to_param}/draft_rosters"
-
-    # page.should have_content("Log out")
+    
+    within('#li-user-first-name') do
+      click_link user.first_name
+    end
+  
+    page.should have_content "#{user.team.team_name} managed by #{user.display_name}"
+    
+   
     click_link "Admin" 
     current_path.should == "/admin"
-     
-    page.should have_content "Administrative control" 
+    page.should have_content "Administrative control"
   end
+
+
 
 end

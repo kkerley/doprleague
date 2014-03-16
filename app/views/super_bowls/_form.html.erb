@@ -44,17 +44,18 @@
     <%= f.label :nfl_team2_final_score, "NFC team final score" %><br />
     <%= f.text_field :nfl_team2_final_score %>
   </div>
+ <!--
   <div class="field">
-    <%= f.label :nfl_winner_id %><br />
-    <%= f.select(:nfl_winner_id, NflTeam.all.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
+    <% f.label :nfl_winner_id %><br />
+    <% f.select(:nfl_winner_id, NflTeam.all.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
   </div>
 
-
+ 
   <div class="field">
-    <%= f.label :dopr_winner_id %><br />
-    <%= f.select(:dopr_winner_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
+    <% f.label :dopr_winner_id %><br />
+    <% f.select(:dopr_winner_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
   </div>
-
+-->
   <div class="actions">
     <%= f.submit %>
   </div>

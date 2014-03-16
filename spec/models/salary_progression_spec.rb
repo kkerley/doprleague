@@ -1,25 +1,10 @@
 require 'spec_helper'
-require "cancan/matchers" 
+require 'cancan/matchers'
 
 describe SalaryProgression do
-	
 	let(:user) { FactoryGirl.create(:user) }
-	let(:admin) { FactoryGirl.create(:admin) }
+  let(:admin) { FactoryGirl.create(:admin) }
 
-
-	def log_in
-  	visit '/users/login'
-  	fill_in "Email", :with => user.email
-  	fill_in "Password", :with => user.password
-  	click_button "Sign in"
-  end
-
-  def admin_log_in
-  	visit '/users/login'
-  	fill_in "Email", :with => admin.email
-  	fill_in "Password", :with => admin.password
-  	click_button "Sign in"
-  end
 
   it "should not show the upload form for a regular user" do
 		log_in
@@ -48,7 +33,6 @@ describe SalaryProgression do
 		page.should have_content "Salary chart imported."
 		page.should have_content "328"
 	end
-
 
 
 end
