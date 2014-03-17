@@ -31,8 +31,7 @@
 
 <% unless @super_bowl.dopr_winner_id.nil? %>
   <p>
-    $5 Super Bowl pick winner:<br />
-    <%= Team.find(@super_bowl.dopr_winner_id).team_name %>
+    $5 Super Bowl pick winner: <%= Team.find(@super_bowl.dopr_winner_id).team_name %>
   </p>
 <% end %>
 <% if current_user %>

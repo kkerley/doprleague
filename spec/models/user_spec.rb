@@ -5,12 +5,12 @@ describe User do
   
 
   it "should have 50 budgets for his team" do
-    log_in
+    log_in user
     user.team.budgets.count.should == 50
   end
   
   it "displays the user's team page" do
-  	log_in
+  	log_in user
   	within('#li-user-first-name') do
       click_link user.first_name
     end
@@ -22,7 +22,7 @@ describe User do
   end
 
   it "should be able to visit all pages without an error when logged in" do
-    log_in
+    log_in user
   
     page.should have_content("#{user.display_name}")
     

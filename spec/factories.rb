@@ -15,7 +15,7 @@ FactoryGirl.define do
 
 		after(:create) do |user|
 			team = FactoryGirl.create(:team, user: user)
-			sb_pick = FactoryGirl.create(:super_bowl_pick, team: team)
+			sb_pick = FactoryGirl.create(:super_bowl_pick, team_id: team.id)
 		end
   end
 
@@ -40,14 +40,9 @@ FactoryGirl.define do
   end
 
   factory :super_bowl do
-  	# SuperBowl attributes
-		# :dopr_winner_id, :nfl_team1_final_score, :nfl_team1_id, :nfl_team2_final_score, :nfl_team2_id, :nfl_winner_id, :tie_breaker, :year
   	year 2014
   	nfl_team1_id 3 # Should be Patriots
   	nfl_team2_id 29 # Should be Cardinals
-  	
-  	# nfl_winner_id 3
-
   end
 
   factory :draft_roster do
@@ -58,6 +53,8 @@ FactoryGirl.define do
   factory :super_bowl_pick do
   	nfl_team_id
   	super_bowl_id 1
+  	# association :user, factory: :user
+   # association :super_bowl, factory: :super_bowl
   end
   
 end
