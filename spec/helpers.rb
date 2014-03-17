@@ -5,14 +5,7 @@ module Helpers
   	fill_in "Password", :with => user.password
   	click_button "Sign in"
     # save_and_open_page
-    current_path.should == "/"
-  end
-
-  def admin_log_in
-  	visit '/users/login'
-  	fill_in "Email", :with => @admin.email
-  	fill_in "Password", :with => @admin.password
-  	click_button "Sign in"
+    # current_path.should == "/"
   end
 
 
@@ -46,5 +39,6 @@ module Helpers
     page.attach_file('file','spec/fixtures/files/dopr_NFL_teams.csv')
     click_button "Import"
     page.should have_content "NFL teams imported."
+    # save_and_open_page
   end
 end

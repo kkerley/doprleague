@@ -51,6 +51,12 @@ class SuperBowl < ActiveRecord::Base
     end
   end
 
+  def total_points_scored
+    if self.nfl_team1_final_score && self.nfl_team2_final_score
+      self.nfl_team1_final_score + self.nfl_team2_final_score
+    end
+  end
+
   def check_for_dopr_winner
     if self.tie_breaker
       # Hard case: tie-breaker necessary

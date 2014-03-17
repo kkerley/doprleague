@@ -22,7 +22,10 @@
 
 <p class="h3">
   <% unless @super_bowl.nfl_winner_id.nil? %>
-    WINNER: <%= link_to NflTeam.find(@super_bowl.nfl_winner_id).full_team_name, NflTeam.find(@super_bowl.nfl_winner_id) %>
+    WINNER: <%= link_to NflTeam.find(@super_bowl.nfl_winner_id).full_team_name, NflTeam.find(@super_bowl.nfl_winner_id) %><br />
+    <% if @super_bowl.tie_breaker? %>
+      Total points scored: <%= @super_bowl.total_points_scored %>
+    <% end %>
   <% end %>
 </p>
 

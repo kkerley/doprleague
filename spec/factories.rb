@@ -21,14 +21,14 @@ FactoryGirl.define do
 
 
   factory :admin, class: User do
-    email { |n| "admin#{n}@example.com" }
-		display_name { |n| "admin#{n}" }
+    email "admin@example.com"
+		display_name "admin"
 		password "guessthis"
 		is_current true
 		role 'admin'
 
-		after(:create) do |user|
-			team = FactoryGirl.create(:team, user: user)
+		after(:create) do |admin|
+			team = FactoryGirl.create(:team, user: admin)
 		end
   end
 

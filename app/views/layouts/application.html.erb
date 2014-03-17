@@ -112,7 +112,7 @@
 							<li><a href="/admin"><i class="fa fa-cogs"></i> Admin</a></li>
 						<% end %>
 
-						<li><%= link_to(destroy_user_session_path, method: :delete) do %>
+						<li id="logout"><%= link_to(destroy_user_session_path, method: :delete) do %>
 									<i class="fa fa-sign-out fa-lg"></i> Log out</a>
 								<% end %></li>
 					<% else %>
