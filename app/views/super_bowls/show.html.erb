@@ -34,25 +34,32 @@
     $5 Super Bowl pick winner: <%= Team.find(@super_bowl.dopr_winner_id).team_name %>
   </p>
 <% end %>
+
 <% if current_user %>
-<p>
   <% unless @current_user_submitted %>
-    No pick entered yet. <%= link_to "Submit your pick now", new_super_bowl_pick_path %>.
-  <% else %>
-    <%= current_user.display_name %>, you picked <strong><%= @my_pick.nfl_team.full_team_name %></strong> to win the Super Bowl.
+    <div class="row">
+      <div id="enter_pick" class="col-xs-6">
+        <%= link_to "No pick entered yet. Submit your pick now", new_super_bowl_pick_path, id: "new_pick", remote: true %>
+      </div>
+    </div>
+    <% else %>
+    <p><%= current_user.display_name %>, you picked <strong><%= @my_pick.nfl_team.full_team_name if @my_pick.nfl_team %></strong> to win the Super Bowl. <%= link_to "Edit", edit_super_bowl_pick_path(@my_pick) %></p>
   <% end %>
-    
-</p>
 <% end %>
+
 <p class="h2">Current picks</p>
-<% unless @picks.empty? %>
-<ul>
-  <% @picks.each do |p| %>
-    <li><%= link_to p.team.team_name, p.team %> chose <%= link_to p.nfl_team.full_team_name, p.nfl_team %> [<%= link_to "pick", p %>]</li>
+
+<div id="current_picks_list">
+  <% unless @picks.empty? %>
+    <%= render @picks %>
+
+  <% else %>
+    No picks submitted yet
   <% end %>
-</ul>
-<% else %>
-<p>No picks submitted yet</p>
+</div>
+<% if current_user %>
+  <% if can? :manage, @super_bowl %>
+    <%= link_to 'Edit', edit_super_bowl_path(@super_bowl) %> |
+    <%= link_to 'Back', super_bowls_path %>
+  <% end %>
 <% end %>
-<%= link_to 'Edit', edit_super_bowl_path(@super_bowl) %> |
-<%= link_to 'Back', super_bowls_path %>

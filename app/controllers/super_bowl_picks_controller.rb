@@ -34,6 +34,7 @@ class SuperBowlPicksController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @super_bowl_pick }
+      format.js
     end
   end
 
@@ -52,9 +53,11 @@ class SuperBowlPicksController < ApplicationController
       if @super_bowl_pick.save
         format.html { redirect_to @super_bowl_pick, notice: 'Super bowl pick was successfully created.' }
         format.json { render json: @super_bowl_pick, status: :created, location: @super_bowl_pick }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @super_bowl_pick.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

@@ -1,33 +1,16 @@
-<%= form_for(@super_bowl_pick) do |f| %>
-  <% if @super_bowl_pick.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@super_bowl_pick.errors.count, "error") %> prohibited this super_bowl_pick from being saved:</h2>
-
-      <ul>
-      <% @super_bowl_pick.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <% if @super_bowl_pick.new_record? %>
-    <%= f.hidden_field :team_id, value: current_user.team.id %>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :super_bowl_id %><br />
-    <%= f.number_field :super_bowl_id, value: @super_bowl.id %>
-  </div>
-  <div class="field">
-    <%= f.label :nfl_team_id %><br />
+<%= labeled_form_for @super_bowl_pick, :html => { :class => "form-horizontal" }, remote: true do |f| %>
+  
+<%= f.error_messages %>
+  
+    <% if @super_bowl_pick.new_record? %>
+      <%= f.hidden_field :team_id, value: current_user.team.id %>
+    <% end %>
+ 
+    <%= f.hidden_field :super_bowl_id, value: @super_bowl.id %>
     <%= f.select(:nfl_team_id, NflTeam.all.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%>
-  </div>
-  <div class="field">
-    <%= f.label :combined_total %><br />
-    <%= f.number_field :combined_total %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <% if @super_bowl.tie_breaker? %>
+      <%= f.text_field :combined_total, label: "Combined total",  class: 'form-control', style: "width: 100px;" %>
+    <% end %>
+    <%= f.submit  class: "btn btn-success btn-large" %>
+
 <% end %>

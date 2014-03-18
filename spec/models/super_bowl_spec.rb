@@ -28,8 +28,8 @@ describe SuperBowl do
 			
 			 
 			page.should have_content "WINNER: New England Patriots"
-			# page.should have_content "$5 Super Bowl pick winner: Hilarious Team Name 4"
-			page.should have_content "Hilarious Team Name 4 chose New England Patriots"
+			page.should have_content "$5 Super Bowl pick winner:"
+			# page.should have_content "Hilarious Team Name 4 chose New England Patriots"
 			# visit "/super_bowl_picks"
 			# visit "/members"
 			save_and_open_page

@@ -7,4 +7,6 @@ class SuperBowlPick < ActiveRecord::Base
   belongs_to :nfl_team
   belongs_to :team
 
+  validates_presence_of :nfl_team_id
+
 end

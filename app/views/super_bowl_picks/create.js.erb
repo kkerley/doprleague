@@ -1,0 +1,9 @@
+$('#new_pick').remove();
+$('#enter_pick').remove();
+
+if($('#current_picks_list').text().indexOf('No picks submitted yet') > -1){
+	$('#current_picks_list').empty();
+	$('#current_picks_list').append('<%= j render(@super_bowl_pick) %>');
+} else {
+	$('#current_picks_list').append('<%= j render(@super_bowl_pick) %>');
+}
