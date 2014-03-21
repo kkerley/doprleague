@@ -48,6 +48,7 @@ group :test do
   gem "database_cleaner"
   # gem 'fabrication'
   gem "launchy"
+  gem 'selenium-webdriver'
 end
 
 # gem 'friendly_id', :require => "friendly_id"

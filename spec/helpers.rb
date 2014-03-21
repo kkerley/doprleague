@@ -1,3 +1,5 @@
+require 'rack/test'
+
 module Helpers
   def log_in(user)
   	visit '/users/login'
@@ -36,8 +38,10 @@ module Helpers
 
   def import_nfl_teams
     visit "/nfl_teams"
-    page.attach_file('file','spec/fixtures/files/dopr_NFL_teams.csv')
+    @file = Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/dopr_NFL_teams.csv'), 'text/csv') 
+    page.attach_file('file', @file)
     click_button "Import"
+    save_and_open_page
     page.should have_content "NFL teams imported."
     # save_and_open_page
   end

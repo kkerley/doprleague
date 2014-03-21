@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SuperBowl do
-	let(:super_bowl) { FactoryGirl.create(:super_bowl) }
+	let(:super_bowl) { FactoryGirl.create(:super_bowl) } 
 
 	before(:each) do
 		DatabaseCleaner.clean
@@ -10,7 +10,7 @@ describe SuperBowl do
 		@users = FactoryGirl.create_list(:user, 5)
 		log_in @admin
 		import_nfl_teams
-		# @super_bowl = FactoryGirl.create(:super_bowl)
+		
 		visit "/super_bowls/#{super_bowl.year}"
 		click_link "Edit"
 		fill_in "AFC team final score", :with => 48
@@ -24,14 +24,10 @@ describe SuperBowl do
 			visit "/super_bowls/#{super_bowl.year}"
 			page.should have_content "2014"
 			page.should have_content "New England Patriots"
-			page.should have_content "Arizona Cardinals"
-			
+			page.should have_content "Arizona Cardinals"	
 			 
 			page.should have_content "WINNER: New England Patriots"
 			page.should have_content "$5 Super Bowl pick winner:"
-			# page.should have_content "Hilarious Team Name 4 chose New England Patriots"
-			# visit "/super_bowl_picks"
-			# visit "/members"
 			save_and_open_page
 		end
 	end # end of context "users have different picks"
@@ -49,7 +45,7 @@ describe SuperBowl do
 		end
 
 		it "makes users put in tiebreaker total" do
-			users = FactoryGirl.create_list(:user, 5)
+			# users = FactoryGirl.create_list(:user, 5)
 			picks = super_bowl.super_bowl_picks
 		end
 	end # end of context "users have the same pick"

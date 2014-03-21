@@ -85,7 +85,11 @@ class NflTeamsController < ApplicationController
   end
 
   def import
-    NflTeam.import(params[:file])
-    redirect_to nfl_teams_url, notice: "NFL teams imported."
+    if params[:file].present?
+      NflTeam.import(params[:file])
+      redirect_to nfl_teams_url, notice: "NFL teams imported."
+    else
+      redirect_to nfl_teams_url, flash: { alert: "Select a file, please." }
+    end
   end
 end

@@ -1,65 +1,72 @@
 <% content_for :title, "#{@super_bowl.year} Super Bowl" %>
-<% content_for :section_subtitle, "Information and league member picks for the $5 prize" %>
+<% content_for :section_subtitle, "Info about and league member picks for this glorious and illustrious annual $5 prize" %>
 
-<p class="h1">
-  <% unless @super_bowl.nfl_team1_id.nil? %>
-    <%= link_to NflTeam.find(@super_bowl.nfl_team1_id).full_team_name, NflTeam.find(@super_bowl.nfl_team1_id) %>: 
-    <%= @super_bowl.nfl_team1_final_score %>
+<div class="row">
+  <div class="col-md-9">
+    <p class="h1">
+      <% unless @super_bowl.nfl_team1_id.nil? %>
+        <%= link_to NflTeam.find(@super_bowl.nfl_team1_id).full_team_name, NflTeam.find(@super_bowl.nfl_team1_id) %>: 
+        <%= @super_bowl.nfl_team1_final_score %>
 
-  <% else %> 
-    No team yet.
-  <% end %>
- vs.
- 
-  <% unless @super_bowl.nfl_team2_id.nil? %>
-    <%= link_to NflTeam.find(@super_bowl.nfl_team2_id).full_team_name, NflTeam.find(@super_bowl.nfl_team2_id) %>:
-    <%= @super_bowl.nfl_team2_final_score %>
-  <% else %> 
-    No team yet.
-  <% end %>
-</p>
+      <% else %> 
+        No team yet.
+      <% end %>
+     vs.
+     
+      <% unless @super_bowl.nfl_team2_id.nil? %>
+        <%= link_to NflTeam.find(@super_bowl.nfl_team2_id).full_team_name, NflTeam.find(@super_bowl.nfl_team2_id) %>:
+        <%= @super_bowl.nfl_team2_final_score %>
+      <% else %> 
+        No team yet.
+      <% end %>
+    </p>
 
 
-<p class="h3">
-  <% unless @super_bowl.nfl_winner_id.nil? %>
-    WINNER: <%= link_to NflTeam.find(@super_bowl.nfl_winner_id).full_team_name, NflTeam.find(@super_bowl.nfl_winner_id) %><br />
-    <% if @super_bowl.tie_breaker? %>
-      Total points scored: <%= @super_bowl.total_points_scored %>
+    <p class="h3">
+      <% unless @super_bowl.nfl_winner_id.nil? %>
+        WINNER: <%= link_to NflTeam.find(@super_bowl.nfl_winner_id).full_team_name, NflTeam.find(@super_bowl.nfl_winner_id) %><br />
+        <% if @super_bowl.tie_breaker? %>
+          Total points scored: <%= @super_bowl.total_points_scored %>
+        <% end %>
+      <% end %>
+    </p>
+
+    <% unless @super_bowl.dopr_winner_id.nil? %>
+      <p>
+        $5 Super Bowl pick winner: <%= Team.find(@super_bowl.dopr_winner_id).team_name %>
+      </p>
     <% end %>
-  <% end %>
-</p>
 
-<% unless @super_bowl.dopr_winner_id.nil? %>
-  <p>
-    $5 Super Bowl pick winner: <%= Team.find(@super_bowl.dopr_winner_id).team_name %>
-  </p>
-<% end %>
+    <% if current_user %>
+      <% unless @current_user_submitted %>
+        <div class="row">
+          <div id="enter_pick" class="col-xs-6">
+            <%= link_to "No pick entered yet. Submit your pick now", new_super_bowl_pick_path, id: "new_pick", remote: true %>
+          </div>
+        </div>
+        <% else %>
+        <p><%= current_user.display_name %>, you picked <strong><%= @my_pick.nfl_team.full_team_name if @my_pick.nfl_team %></strong> to win the Super Bowl. <%= link_to "Edit", edit_super_bowl_pick_path(@my_pick) %></p>
+      <% end %>
+    <% end %>
 
-<% if current_user %>
-  <% unless @current_user_submitted %>
-    <div class="row">
-      <div id="enter_pick" class="col-xs-6">
-        <%= link_to "No pick entered yet. Submit your pick now", new_super_bowl_pick_path, id: "new_pick", remote: true %>
-      </div>
+    <p class="h2">Current picks</p>
+
+    <div id="current_picks_list">
+      <% unless @picks.empty? %>
+        <%= render @picks %>
+
+      <% else %>
+        No picks submitted yet
+      <% end %>
     </div>
-    <% else %>
-    <p><%= current_user.display_name %>, you picked <strong><%= @my_pick.nfl_team.full_team_name if @my_pick.nfl_team %></strong> to win the Super Bowl. <%= link_to "Edit", edit_super_bowl_pick_path(@my_pick) %></p>
-  <% end %>
-<% end %>
-
-<p class="h2">Current picks</p>
-
-<div id="current_picks_list">
-  <% unless @picks.empty? %>
-    <%= render @picks %>
-
-  <% else %>
-    No picks submitted yet
-  <% end %>
-</div>
-<% if current_user %>
-  <% if can? :manage, @super_bowl %>
-    <%= link_to 'Edit', edit_super_bowl_path(@super_bowl) %> |
-    <%= link_to 'Back', super_bowls_path %>
-  <% end %>
-<% end %>
+    <% if current_user %>
+      <% if can? :manage, @super_bowl %>
+        <%= link_to 'Edit', edit_super_bowl_path(@super_bowl) %> |
+        <%= link_to 'Back', super_bowls_path %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <img src="/super_bowl_trophy.png" />
+  </div>
+ </div>

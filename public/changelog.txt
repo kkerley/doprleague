@@ -26,6 +26,7 @@ Version 2.3 [2014/03/xx]
 - Added formbuilder helper to more easily style forms
 - Moved seed function for creating budgets to the Team model as an after_create function
 - Switched to Devise because, unlike Sorcery, it actually works
+- Added checks for file presence on all import actions
 
 
 Version 2.2.3 [2014/02/10]

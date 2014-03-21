@@ -88,7 +88,11 @@ class SalaryProgressionsController < ApplicationController
   end
   
   def import
-    SalaryProgression.import(params[:file])
-    redirect_to salary_progressions_url, notice: "Salary chart imported."
+    if params[:file].present?
+      SalaryProgression.import(params[:file])
+      redirect_to salary_progressions_url, notice: "Salary chart imported."
+    else
+      redirect_to salary_progressions_url, flash: { alert: "Select a file, please." }
+    end
   end
 end

@@ -108,14 +108,17 @@ class PlayersController < ApplicationController
   end
   
   def import
-    Player.import(params[:file])
-    redirect_to players_url, notice: "Players imported."
+    if params[:file].present?
+      Player.import(params[:file])
+      redirect_to players_url, notice: "Players imported."
+    else
+      redirect_to players_url, flash: { alert: "Select a file, please." }
+    end
   end
 
   def free_agents
     @players = Player.text_search(params[:query]).free_agents.sort_by { |player| player.this_year_salary }.reverse # chain the text_search here
-
-#    @players_download = @players.sort_by(:last_name)
+    # @players_download = @players.sort_by(:last_name)
     
     if current_user
       # gon.current_user_draft_rosters = DraftRoster.where("team_id = ?", current_user.team.id) unless @players.empty?
