@@ -17,7 +17,7 @@
             <%= calendar @date do |date| %>
                 <%= date.day %>
                 <% if @events_by_date[date] %>
-                    <ul>
+                    <ul class="ul-events">
                         <% @events_by_date[date].each do |event| %>
                             <li><%= link_to event.title, event %></li>
                         <% end %>

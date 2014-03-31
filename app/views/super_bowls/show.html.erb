@@ -65,6 +65,10 @@
         <%= link_to 'Back', super_bowls_path %>
       <% end %>
     <% end %>
+
+    <% if @super_bowl.tie_breaker? %>
+      <p class="h2">Tie breakers</p>
+    <% end %>
   </div>
   <div class="col-md-3">
     <img src="/super_bowl_trophy.png" />

@@ -41,7 +41,7 @@ module Helpers
     @file = Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/dopr_NFL_teams.csv'), 'text/csv') 
     page.attach_file('file', @file)
     click_button "Import"
-    save_and_open_page
+    # save_and_open_page
     page.should have_content "NFL teams imported."
     # save_and_open_page
   end

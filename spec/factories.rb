@@ -32,6 +32,24 @@ FactoryGirl.define do
 		end
   end
 
+
+  factory :user_tie_breaker, class: User do
+    email
+    display_name
+    password "guessthis123"
+    password_confirmation "guessthis123"
+    is_current true
+    role 'admin'
+  
+
+    after(:create) do |user|
+      team = FactoryGirl.create(:team, user: user)
+      sb_pick = FactoryGirl.create(:super_bowl_pick, team_id: team.id, nfl_team_id: 3)
+    end
+  end
+
+
+
   factory :team do
   	team_name
   	division "Philip"
