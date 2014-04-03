@@ -27,36 +27,28 @@ describe SuperBowl do
 			page.should have_content "Arizona Cardinals"	
 			 
 			page.should have_content "WINNER: New England Patriots"
-			# page.should have_content "$5 Super Bowl pick winner: Hilarious Team Name 4"
-			# expect(page).to have_content('$5 Super Bowl pick winner: Hilarious Team Name 4')
-			# save_and_open_page
 		end
 	end # end of context "users have different picks"
 
-	context "users have the same pick" do
-		
-
-		it "only shows total score if a tiebreaker is necessary" do
-			visit "/super_bowls/#{super_bowl.year}"
-			click_link "Edit"
-			check('Tie breaker')
-			click_button "Update Super bowl"
-			page.should have_content "Total points scored: 67"
-			# save_and_open_page
-		end
+	context "users have the same pick" do	
 
 		it "makes users put in tiebreaker total" do
-			# users = FactoryGirl.create_list(:user, 5)
-			tied_users = FactoryGirl.create_list(:user_tie_breaker, 5)
+		
+			tied_users = FactoryGirl.create_list(:user_tie_breaker, 3)
+			tied_users2 = FactoryGirl.create_list(:user_tie_breaker2, 2)
 			picks = super_bowl.super_bowl_picks
 			visit "/super_bowls/#{super_bowl.year}"
 			click_link "Edit"
-			check('Tie breaker')
+			
 			click_button "Update Super bowl"
+
+			# picks.by_team(super_bowl.nfl_team1_id).size.should == 5
+
 			page.should have_content "Tie breakers"
-			# page.should have_content "Hilarious Team Name 7 chose New England Patriots [view pick]"
-			# expect(page).to have_content('Hilarious Team Name 7 chose New England Patriots [view pick]')
 			save_and_open_page
+			visit "/payouts"
+			save_and_open_page
+
 		end
 	end # end of context "users have the same pick"
 end

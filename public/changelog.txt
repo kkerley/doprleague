@@ -2,7 +2,7 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.3 [2014/03/xx]
+Version 2.3 [2014/04/xx]
 --------------------------------------------------
 - Added Budget model and created 50 years' worth for each team
 - Budgets and remainder have been added to the roster table as rows underneath salary totals

@@ -9,4 +9,9 @@ class SuperBowlPick < ActiveRecord::Base
 
   validates_presence_of :nfl_team_id
 
+  scope :by_team, ->(team) { where nfl_team_id: team }
+
+  def abs_value(super_bowl_total_points_scored)
+  	(super_bowl_total_points_scored - self.combined_total).abs
+  end
 end

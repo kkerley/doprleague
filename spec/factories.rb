@@ -3,6 +3,7 @@ FactoryGirl.define do
 	sequence(:display_name) { |n| "person#{n}" }
 	sequence(:nfl_team_id) { |n| "#{n}" }
 	sequence(:team_name) { |n| "Hilarious Team Name #{n}"  }
+  sequence(:combined_total) { |n| 30 + n }
   
   factory :user do
     email
@@ -49,6 +50,22 @@ FactoryGirl.define do
   end
 
 
+  factory :user_tie_breaker2, class: User do
+    email
+    display_name
+    password "guessthis123"
+    password_confirmation "guessthis123"
+    is_current true
+    role 'admin'
+  
+
+    after(:create) do |user|
+      team = FactoryGirl.create(:team, user: user)
+      sb_pick = FactoryGirl.create(:super_bowl_pick, team_id: team.id, nfl_team_id: 29)
+    end
+  end
+
+
 
   factory :team do
   	team_name
@@ -61,6 +78,10 @@ FactoryGirl.define do
   	year 2014
   	nfl_team1_id 3 # Should be Patriots
   	nfl_team2_id 29 # Should be Cardinals
+
+    after(:create) do
+      payout = FactoryGirl.create(:payout)
+    end
   end
 
   factory :draft_roster do
@@ -71,8 +92,23 @@ FactoryGirl.define do
   factory :super_bowl_pick do
   	nfl_team_id
   	super_bowl_id 1
+    combined_total
   	# association :user, factory: :user
    # association :super_bowl, factory: :super_bowl
+  end
+
+  factory :payout do
+    year 2014
+
+    after(:create) do |payout|
+      award = FactoryGirl.create(:award, payout_id: payout.id)
+    end
+  end
+
+  factory :award do
+    name "NFL Super Bowl prediction"
+    amount 5
+   
   end
   
 end

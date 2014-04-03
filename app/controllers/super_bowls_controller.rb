@@ -20,6 +20,10 @@ class SuperBowlsController < ApplicationController
     @current_sb = SuperBowl.current_super_bowl
     @picks = @super_bowl.super_bowl_picks
 
+    if @super_bowl.tie_breaker?
+      @tied_teams = @super_bowl.tied_teams
+    end
+
     if @super_bowl == @current_sb
       @this_is_current = true 
     else 

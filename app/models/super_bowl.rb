@@ -11,8 +11,12 @@ class SuperBowl < ActiveRecord::Base
   
   default_scope order('year desc')
 
+  before_save :check_for_tie_breaker
   before_save :check_for_nfl_winner
   before_save :check_for_dopr_winner
+
+
+
 
   def self.current_year
     # The new seasons starts on 8/1 so technically, it's the previous year through 7/31
@@ -40,6 +44,15 @@ class SuperBowl < ActiveRecord::Base
     p = picks_arr.find_by_team_id(team_id)
   end
 
+  def check_for_tie_breaker
+    picks_team_1 = self.super_bowl_picks.by_team(self.nfl_team1_id)
+    picks_team_2 = self.super_bowl_picks.by_team(self.nfl_team2_id)
+
+    if picks_team_1.size > 1 || picks_team_1.size > 1
+      self.tie_breaker = true
+    end
+  end
+
   def check_for_nfl_winner
     if self.nfl_team1_final_score && self.nfl_team2_final_score 
       if self.nfl_team1_final_score > self.nfl_team2_final_score
@@ -57,16 +70,51 @@ class SuperBowl < ActiveRecord::Base
     end
   end
 
+  def tied_teams
+    nfl_team1_picks = self.super_bowl_picks.by_team(self.nfl_team1_id)
+    nfl_team2_picks = self.super_bowl_picks.by_team(self.nfl_team2_id)
+    tied_teams = []
+
+
+    if nfl_team1_picks.size > 1
+      tied_teams += nfl_team1_picks
+    end
+
+    if nfl_team2_picks.size > 1
+      tied_teams += nfl_team2_picks
+    end
+    tied_teams.sort! { |x,y| y.combined_total <=> x.combined_total }
+  end
+
   def check_for_dopr_winner
-    if self.tie_breaker
-      # Hard case: tie-breaker necessary
-      # Need to add logic for what happens when tie breaker box is checked (for those people who chose the same team, a text box input for total score should appear on the Super Bowl page)
-    else 
-      if self.nfl_winner_id
+    if self.nfl_winner_id
+      if self.tie_breaker?
+        # Hard case: tie-breaker necessary
+        # Need to add logic for what happens when tie breaker box is checked (for those people 
+        # who chose the same team, a text box input for total score should appear on the Super Bowl page)
+        tied_teams = self.tied_teams
+
+        self.dopr_winner_id = tied_teams.first.team_id
+
+        payout = Payout.find_by_year(self.year)
+        award = payout.awards.find_by_name("NFL Super Bowl prediction")
+        award.user_id = Team.find(self.dopr_winner_id).user.id
+        winning_nfl_team = NflTeam.find(tied_teams.first.nfl_team_id)
+        award.notes = winning_nfl_team.full_team_name
+        award.save!   
+      else 
+        
         # Easy case: no need need for a tie-breaker
         self.super_bowl_picks.each do |pick|
           if pick.nfl_team_id == self.nfl_winner_id
             self.dopr_winner_id = pick.team_id
+
+            payout = Payout.find_by_year(self.year)
+            award = payout.awards.find_by_name("NFL Super Bowl prediction")
+            award.user_id = Team.find(self.dopr_winner_id).user.id
+            winning_nfl_team = NflTeam.find(pick.nfl_team_id)
+            award.notes = winning_nfl_team.full_team_name
+            award.save!
           end
         end
       end
