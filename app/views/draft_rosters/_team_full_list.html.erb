@@ -3,6 +3,12 @@
 <% else %>
 
 	<% @draft_rosters.each do |dr| %>
-		<%= link_to dr.name, team_draft_roster_path(dr.team, dr) %>	
+		<% if dr.already_listed?(player) %>
+			Already on <%= link_to dr.name, team_draft_roster_path(@team, dr) %><br />
+		<% else %>
+			<%= form_tag(roster_spots_path(draft_roster_id: dr.id, player_id: player.id)) do %>	
+				<%= submit_tag "Add to " + dr.name %>
+			<% end %>
+		<% end %>
 	<% end %>
 <% end %>

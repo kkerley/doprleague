@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
   # GET /players.json
   def index
     # @players = Player.order(:last_name)
-    @players = Player.text_search(params[:query]).includes(:subcontracts).sort_by { |player| player.this_year_salary }.reverse
+    @players = Player.text_search(params[:query]).includes(:contracts).includes(:subcontracts).sort_by { |player| player.this_year_salary }.reverse
     @players_download = Player.order(:last_name)
     
     if current_user
@@ -124,7 +124,6 @@ class PlayersController < ApplicationController
       # gon.current_user_draft_rosters = DraftRoster.where("team_id = ?", current_user.team.id) unless @players.empty?
       @draft_rosters = current_user.team.draft_rosters
     end
-
   end
 
   private

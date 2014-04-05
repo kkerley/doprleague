@@ -1,15 +1,14 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, "Draft Roster: #{@draft_roster.name}" %>
+<% content_for :section_subtitle, "Drag and drop listed players below to order them as you like" %>
 
-<p>
-  <b>Name:</b>
-  <%= @draft_roster.name %>
-</p>
-
-<p>
-  <b>Team:</b>
-  <%= @draft_roster.team.team_name %>
-</p>
-
+<ul id="draft-roster-players" data-update-url="<%= sort_roster_spots_url %>">
+	<% @roster_spots.each do |roster_spot| %>
+		<%= content_tag_for :li, roster_spot do %>
+			<span class="handle">[drag]</span>
+			<%= link_to h(roster_spot.player.full_name), roster_spot %>: <strong>$<%= roster_spot.player.auction_value %></strong>
+		<% end %>
+	<% end %>
+</ul>
 
 <%= link_to 'Edit', edit_team_draft_roster_path(@team, @draft_roster) %> |
 <%= link_to 'Back', team_draft_rosters_path(@team) %>

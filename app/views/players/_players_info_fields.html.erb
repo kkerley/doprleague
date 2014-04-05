@@ -110,7 +110,7 @@
 							<% if current_user %>
 								<td align="center">
 									<% unless player.is_contracted? %>
-										<a id="watch<%= player.id %>" class="watchable" data-container="body" data-toggle="popover" data-placement="top" data-html="true" data-title="<strong>Add to draft roster:</strong>" data-content='<%= render "draft_rosters/team_full_list" %>'><i class="fa fa-eye"></i></a>
+										<a id="watch<%= player.id %>" class="watchable" data-container="body" data-toggle="popover" data-placement="top" data-html="true" data-title="<strong>Add to draft roster:</strong>" data-content='<%= render "draft_rosters/team_full_list", player: player %>'><i class="fa fa-eye"></i></a>
 									<% end %>
 								</td>
 							

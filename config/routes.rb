@@ -1,35 +1,41 @@
 KkerleyCom::Application.routes.draw do
-
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
-  resources :super_bowl_picks
   resources :nfl_teams do 
     collection { post :import }
   end
-  resources :super_bowls
 
+  resources :super_bowls
+  resources :super_bowl_picks
+  resources :roster_spots do
+    collection { post :sort }
+  end
   resources :events
   resources :team_records
   resources :standings
+
   resources :players do 
     collection do
-      post :import
       get 'free_agents'
+      post :import
     end
   end
+
   resources :salary_progressions do 
     collection { post :import }
   end
+  
   resources :teams do
     resources :budgets
     resources :draft_rosters
   end
-  # resources :budgets
+  
   resources :awards
   resources :payouts
   resources :users
-  
   resources :features
+  resources :subcontracts
+
   resources :contracts do
     collection do
       get 'buyouts'
@@ -38,9 +44,6 @@ KkerleyCom::Application.routes.draw do
       get 'extended_and_franchised'
     end
   end
-
-  resources :subcontracts
-
   
   root :to => "features#index"
  

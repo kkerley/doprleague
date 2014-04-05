@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140313012456) do
+ActiveRecord::Schema.define(:version => 20140404010240) do
 
   create_table "awards", :force => true do |t|
     t.text     "name"
@@ -117,6 +117,14 @@ ActiveRecord::Schema.define(:version => 20140313012456) do
     t.string   "bye_week"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "roster_spots", :force => true do |t|
+    t.integer  "draft_roster_id"
+    t.integer  "player_id"
+    t.integer  "position"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "salary_progressions", :force => true do |t|

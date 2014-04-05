@@ -89,10 +89,7 @@ class SuperBowl < ActiveRecord::Base
   def check_for_dopr_winner
     if self.nfl_winner_id
       if self.tie_breaker?
-        # Hard case: tie-breaker necessary
-        # Need to add logic for what happens when tie breaker box is checked (for those people 
-        # who chose the same team, a text box input for total score should appear on the Super Bowl page)
-        tied_teams = self.tied_teams
+        tied_teams = self.super_bowl_picks.by_team(self.nfl_winner_id).sort! { |x,y| y.combined_total <=> x.combined_total }
 
         self.dopr_winner_id = tied_teams.first.team_id
 

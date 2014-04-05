@@ -1,0 +1,27 @@
+<h1>Listing roster_spots</h1>
+
+<table>
+  <tr>
+    <th>Draft roster</th>
+    <th>Player</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @roster_spots.each do |roster_spot| %>
+  <tr>
+    <td><%= roster_spot.draft_roster_id %></td>
+    <td><%= roster_spot.player_id %></td>
+    <td><%= roster_spot.position %></td>
+    <td><%= link_to 'Show', roster_spot %></td>
+    <td><%= link_to 'Edit', edit_roster_spot_path(roster_spot) %></td>
+    <td><%= link_to 'Destroy', roster_spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Roster spot', new_roster_spot_path %>

@@ -18,6 +18,9 @@ class DraftRostersController < ApplicationController
   # GET /draft_rosters/1.json
   def show
     @draft_roster = DraftRoster.find(params[:id])
+    @team = @draft_roster.team
+    @players = @draft_roster.players.order("position")
+    @roster_spots = @draft_roster.roster_spots.order("position")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -80,7 +83,7 @@ class DraftRostersController < ApplicationController
     @draft_roster.destroy
 
     respond_to do |format|
-      format.html { redirect_to draft_rosters_url }
+      format.html { redirect_to team_draft_rosters_path(@team) }
       format.json { head :no_content }
     end
   end

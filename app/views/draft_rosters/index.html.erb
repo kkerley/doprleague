@@ -1,28 +1,25 @@
 <% content_for :title, "#{@team.team_name}'s draft rosters" %>
 <% content_for :section_subtitle, "Create watch lists for players for the draft or whenever" %>
 
-<%= render 'team_full_list' %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Team</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<ul>
+  <% @draft_rosters.each do |draft_roster| %>
+    <li>
+      <strong><%= link_to draft_roster.name, team_draft_roster_path(@team, draft_roster) %></strong> [<%= draft_roster.players.count %> players on this list]
+      
+      
+      <% if current_user %>
+        <% if can? :manage, draft_roster %>
+          <%= link_to(edit_team_draft_roster_path(@team, draft_roster)) do -%><i class="fa fa-pencil-square-o"></i><%- end %>&nbsp;
+          <%= link_to([@team, draft_roster], method: :delete, data: { confirm: 'Are you sure?' }) do %>
+            <i class="fa fa-times-circle-o"></i>
+          <% end %> 
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 
-<% @draft_rosters.each do |draft_roster| %>
-  <tr>
-    <td><%= draft_roster.name %></td>
-    <td><%= draft_roster.team_id %></td>
-    <td><%= link_to 'Show', team_draft_roster_path(@team, draft_roster) %></td>
-    <td><%= link_to 'Edit', edit_team_draft_roster_path(@team, draft_roster) %></td>
-    <td><%= link_to 'Destroy', [@team, draft_roster], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
 
 <%= link_to 'New Draft roster', new_team_draft_roster_path %>

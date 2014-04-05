@@ -11,7 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery_ujs
-//= require jquery.ui.datepicker
+//= require jquery-ui
 //= require bootstrap
 //= require best_in_place
 //= require JQtextile

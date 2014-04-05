@@ -21,6 +21,7 @@ gem "gon"
 gem 'thin' # Webrick's annoying messages in the console got to be too much
 gem "cancan" # user roles management
 gem 'friendly_id'
+gem 'acts_as_list'
 
 # gem "roo"
 gem 'bullet', group: :development

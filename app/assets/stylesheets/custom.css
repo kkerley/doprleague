@@ -183,3 +183,9 @@ fieldset.contract-fields{
 .put-inline{
 	margin-bottom: -1.5em;
 }
+
+#draft-roster-players .handle {
+  font-size: 12px;
+  color: #777;
+  cursor: move;
+}

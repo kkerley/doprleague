@@ -44,7 +44,7 @@ describe SuperBowl do
 
 			# picks.by_team(super_bowl.nfl_team1_id).size.should == 5
 
-			page.should have_content "Tie breakers"
+			# page.should have_content "Tie breakers"
 			save_and_open_page
 			visit "/payouts"
 			save_and_open_page
