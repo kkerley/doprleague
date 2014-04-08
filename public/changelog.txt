@@ -2,14 +2,18 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.3.1 [2014/04/xx]
+Version 2.3.1.1 [2014/04/08]
+--------------------------------------------------
+- Added pagination links to the bottom of the players#index table
+
+
+Version 2.3.1 [2014/04/08]
 --------------------------------------------------
 - Added will_paginate gem for use on players#index
 - Changed Player default ordering from salary/contract value to last_name
 - Prettied up the draft roster popup window on players#index
 - Cleaned up admin page some. More to be done here. Lots more.
 - Added "delete" functionality to draft_rosters#show to remove unwanted players
-
 
 
 Version 2.3 [2014/04/05]

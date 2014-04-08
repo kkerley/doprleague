@@ -31,12 +31,12 @@
 				
 			
 			
-		<div class="panel panel-default margin-bottom-4em">
+		<div class="panel panel-default">
 			<div class="panel-heading">
-          		<p class="panel-title bold">NFL personnel</p>
-				<small class="muted">
-					Download full list in <%= link_to ".csv", players_path(format: "csv") %> <!-- or <% link_to ".xsl", players_path(format: "xls") %> -->
-				</small>
+          <p class="panel-title bold">NFL personnel</p>
+					<small class="muted">
+						Download full list in <%= link_to ".csv", players_path(format: "csv") %> <!-- or <% link_to ".xsl", players_path(format: "xls") %> -->
+					</small>
 				
         	</div>
         	<div class="search-filters btn-group">
@@ -127,8 +127,8 @@
 					</tbody>
 				</table>
 			</div>	
-      	</div><!-- end of panel -->
-		
+    </div><!-- end of panel -->
+		<%= will_paginate @players, renderer: BootstrapPagination::Rails %>
 	</div><!-- end of col-md-9 -->
 	
 </div><!-- end of row -->
