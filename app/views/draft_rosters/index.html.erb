@@ -10,9 +10,9 @@
       
       <% if current_user %>
         <% if can? :manage, draft_roster %>
-          <%= link_to(edit_team_draft_roster_path(@team, draft_roster)) do -%><i class="fa fa-pencil-square-o"></i><%- end %>&nbsp;
-          <%= link_to([@team, draft_roster], method: :delete, data: { confirm: 'Are you sure?' }) do %>
-            <i class="fa fa-times-circle-o"></i>
+          <%= link_to(edit_team_draft_roster_path(@team, draft_roster), :class => 'label label-warning') do -%><i class="fa fa-pencil-square-o"></i> Edit<%- end %>&nbsp;
+          <%= link_to([@team, draft_roster], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'label label-danger') do %>
+            <i class="fa fa-times-circle-o"></i> Delete
           <% end %> 
         <% end %>
       <% end %>

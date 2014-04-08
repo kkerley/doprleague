@@ -10,6 +10,8 @@ class Player < ActiveRecord::Base
   has_many :draft_rosters, through: :roster_spots
   
   accepts_nested_attributes_for :contracts, :reject_if => lambda { |a| a[:contracted_team].blank? }   
+
+  default_scope order("last_name ASC")
   
   scope :all_quarterbacks, lambda { where("position = ?", "QB").order("auction_value desc") }
   scope :all_receivers, lambda { where("position = ?", "WR").order("auction_value desc") }

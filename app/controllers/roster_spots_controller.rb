@@ -77,10 +77,12 @@ class RosterSpotsController < ApplicationController
   # DELETE /roster_spots/1.json
   def destroy
     @roster_spot = RosterSpot.find(params[:id])
+    @draft_roster = @roster_spot.draft_roster
+    @team = @draft_roster.team
     @roster_spot.destroy
 
     respond_to do |format|
-      format.html { redirect_to roster_spots_url }
+      format.html { redirect_to team_draft_roster_path(@team, @draft_roster) }
       format.json { head :no_content }
     end
   end

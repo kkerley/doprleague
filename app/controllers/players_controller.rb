@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  require 'will_paginate/array'
   # before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
   load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new]
   
@@ -8,8 +9,8 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    # @players = Player.order(:last_name)
-    @players = Player.text_search(params[:query]).includes(:contracts).includes(:subcontracts).sort_by { |player| player.this_year_salary }.reverse
+    @players = Player.page(params[:page]).per_page(50).text_search(params[:query]).includes(:contracts).includes(:subcontracts)
+    # @players = Player.text_search(params[:query]).includes(:contracts).includes(:subcontracts).sort_by { |player| player.this_year_salary }.reverse
     @players_download = Player.order(:last_name)
     
     if current_user
@@ -117,11 +118,11 @@ class PlayersController < ApplicationController
   end
 
   def free_agents
-    @players = Player.text_search(params[:query]).free_agents.sort_by { |player| player.this_year_salary }.reverse # chain the text_search here
+    # @players = Player.text_search(params[:query]).free_agents.sort_by { |player| player.this_year_salary }.reverse # chain the text_search here
+    @players = Player.text_search(params[:query]).free_agents.paginate(:page => params[:page], :per_page => 50)
     # @players_download = @players.sort_by(:last_name)
     
     if current_user
-      # gon.current_user_draft_rosters = DraftRoster.where("team_id = ?", current_user.team.id) unless @players.empty?
       @draft_rosters = current_user.team.draft_rosters
     end
   end

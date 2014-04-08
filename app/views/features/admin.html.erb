@@ -1,64 +1,92 @@
 <% content_for :title, "Administrative control" %>
 <% content_for :section_subtitle, "All site content is presented below and most of it can be edited inline. Some things must be done by clicking the \"Edit\" button" %>
 
-<div class="row">
-	<div class="col-md-12"><p class="headline"><a href="/" style="color: #333;">Announcements</a></p></div>
-  	<div class="col-md-12">               
-    	<%= render 'admin_feature_listing_header' %>
-        <% @announcements.each do |feature| %>
- 			<%= render 'admin_feature_listing', :feature => feature %>
-		<% end %>
-		<br />
-		<hr />
-	</div>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#announcements" data-toggle="tab">Announcements</a></li>
+  <li><a href="#constitution" data-toggle="tab">Articles of the constitution</a></li>
+  <li><a href="#faqs" data-toggle="tab">FAQs</a></li>
+  <li><a href="#fbpolls" data-toggle="tab">Facebook polls</a></li>
+  <li><a href="#members" data-toggle="tab">Members</a></li>
+</ul>
+
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane fade in active" id="announcements">
+  	<div class="row"><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/" style="color: #333;">Announcements</a></p></div>
+		  	<div class="col-md-12">               
+		    	<%= render 'admin_feature_listing_header' %>
+		        <% @announcements.each do |feature| %>
+		 			<%= render 'admin_feature_listing', :feature => feature %>
+				<% end %>
+				<br />
+				<hr />
+			</div>
+		</div>
+  </div><!-- end of announcements -->
+
+  <div class="tab-pane fade" id="constitution">
+  	<div class="row "><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/constitution" style="color: #333;">Articles of the constitution</a></p></div>
+		  	<div class="col-md-12">               
+		    	<%= render 'admin_feature_listing_header' %>
+		       	<% @constitution_features.each do |feature| %>
+		 			<%= render 'admin_feature_listing', :feature => feature %>
+				<% end %>
+				<br />
+				<hr />
+			</div>
+		</div>
+  </div><!-- end of constitution -->
+
+  <div class="tab-pane fade" id="faqs">
+  	<div class="row "><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/faqs" style="color: #333;">FAQs</a></p></div>
+		  	<div class="col-md-12">               
+		    	<%= render 'admin_feature_listing_header' %>
+		       	<% @faqs.each do |feature| %>
+		 			<%= render 'admin_feature_listing', :feature => feature %>
+				<% end %>
+				<br />
+				<hr />
+			</div>
+		</div>
+  </div><!-- end of faqs -->
+
+  <div class="tab-pane fade" id="fbpolls">
+  	<div class="row "><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/polls" style="color: #333;">Facebook polls</a></p></div>
+		  	<div class="col-md-12">               
+		    	<%= render 'admin_feature_listing_header' %>
+		       	<% @facebook_polls.each do |feature| %>
+		 			<%= render 'admin_feature_listing', :feature => feature %>
+				<% end %>
+				<br />
+				<hr />
+			</div>
+		</div>
+  </div><!-- end of fbpolls -->
+
+  <div class="tab-pane fade" id="members">
+  	<div class="row "><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/members" style="color: #333;">Members</a></p></div>
+		  	<div class="col-md-12">               
+		       	<%= render 'admin_user_management_header' %>
+		       	<% @users.each do |user| %>
+		 			<%= render 'admin_user_management', :user => user %>
+				<% end %>
+				<br />
+				<hr />
+			</div>
+		</div>
+  </div><!-- end of members -->
+
 </div>
 
-<div class="row ">
-	<div class="col-md-12"><p class="headline"><a href="/constitution" style="color: #333;">Articles of the constitution</a></p></div>
-  	<div class="col-md-12">               
-    	<%= render 'admin_feature_listing_header' %>
-       	<% @constitution_features.each do |feature| %>
- 			<%= render 'admin_feature_listing', :feature => feature %>
-		<% end %>
-		<br />
-		<hr />
-	</div>
-</div>
-
-<div class="row ">
-	<div class="col-md-12"><p class="headline"><a href="/faqs" style="color: #333;">FAQs</a></p></div>
-  	<div class="col-md-12">               
-    	<%= render 'admin_feature_listing_header' %>
-       	<% @faqs.each do |feature| %>
- 			<%= render 'admin_feature_listing', :feature => feature %>
-		<% end %>
-		<br />
-		<hr />
-	</div>
-</div>
 
 
-<div class="row ">
-	<div class="col-md-12"><p class="headline"><a href="/polls" style="color: #333;">Facebook polls</a></p></div>
-  	<div class="col-md-12">               
-    	<%= render 'admin_feature_listing_header' %>
-       	<% @facebook_polls.each do |feature| %>
- 			<%= render 'admin_feature_listing', :feature => feature %>
-		<% end %>
-		<br />
-		<hr />
-	</div>
-</div>
 
 
-<div class="row ">
-	<div class="col-md-12"><p class="headline"><a href="/members" style="color: #333;">Members</a></p></div>
-  	<div class="col-md-12">               
-       	<%= render 'admin_user_management_header' %>
-       	<% @users.each do |user| %>
- 			<%= render 'admin_user_management', :user => user %>
-		<% end %>
-		<br />
-		<hr />
-	</div>
-</div>
+

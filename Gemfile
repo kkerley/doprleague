@@ -12,16 +12,20 @@ gem 'rails', '3.2.17'
 # gem 'sorcery'
 gem 'devise'
 # gem 'kramdown'
-gem 'RedCloth', "~> 4.2.3", :require => 'redcloth'
-gem "paperclip", "~> 3.0"
-gem "pg"
-gem "best_in_place"
-gem "newrelic_rpm"
-gem "gon"
+gem 'RedCloth', '~> 4.2.3', :require => 'redcloth'
+gem 'paperclip', '~> 3.0'
+gem 'pg'
+gem 'best_in_place'
+gem 'newrelic_rpm'
+gem 'gon'
 gem 'thin' # Webrick's annoying messages in the console got to be too much
-gem "cancan" # user roles management
+gem 'cancan' # user roles management
 gem 'friendly_id'
 gem 'acts_as_list'
+gem 'jquery-rails', '~> 2.3.0'
+gem 'jquery-ui-rails'
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
 
 # gem "roo"
 gem 'bullet', group: :development
@@ -31,24 +35,19 @@ gem 'bullet', group: :development
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-ui-rails'
+  
 end
 
-gem 'jquery-rails'
 
 gem "rspec-rails", :group => [:test, :development]
 group :test do
-  gem "factory_girl_rails"
-  gem "capybara"
-  gem "guard-rspec"
-  gem "database_cleaner"
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'database_cleaner'
   # gem 'fabrication'
-  gem "launchy"
+  gem 'launchy'
   gem 'selenium-webdriver'
 end
 

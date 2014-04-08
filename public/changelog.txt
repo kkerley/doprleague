@@ -2,7 +2,17 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.3 [2014/04/xx]
+Version 2.3.1 [2014/04/xx]
+--------------------------------------------------
+- Added will_paginate gem for use on players#index
+- Changed Player default ordering from salary/contract value to last_name
+- Prettied up the draft roster popup window on players#index
+- Cleaned up admin page some. More to be done here. Lots more.
+- Added "delete" functionality to draft_rosters#show to remove unwanted players
+
+
+
+Version 2.3 [2014/04/05]
 --------------------------------------------------
 - Added Budget model and created 50 years' worth for each team
 - Budgets and remainder have been added to the roster table as rows underneath salary totals

@@ -40,16 +40,18 @@
 				
         	</div>
         	<div class="search-filters btn-group">
-        		
-				<a href="/players" class="btn btn-default">All</a> 
-				<a href="/players/free_agents" class="btn btn-default">FA</a>
-				<a href="?utf8=✓&query=QB" class="btn btn-default">QB</a> 
-				<a href="?utf8=✓&query=WR" class="btn btn-default">WR</a> 
-				<a href="?utf8=✓&query=RB" class="btn btn-default">RB</a> 
-				<a href="?utf8=✓&query=TE" class="btn btn-default">TE</a> 
-				<a href="?utf8=✓&query=K" class="btn btn-default">K</a> 
-				<a href="?utf8=✓&query=DEF" class="btn btn-default">DEF</a>
+						<a href="/players" class="btn btn-default">All</a> 
+						<a href="/players/free_agents" class="btn btn-default">FA</a>
+						<a href="?utf8=✓&query=QB" class="btn btn-default">QB</a> 
+						<a href="?utf8=✓&query=WR" class="btn btn-default">WR</a> 
+						<a href="?utf8=✓&query=RB" class="btn btn-default">RB</a> 
+						<a href="?utf8=✓&query=TE" class="btn btn-default">TE</a> 
+						<a href="?utf8=✓&query=K" class="btn btn-default">K</a> 
+						<a href="?utf8=✓&query=DEF" class="btn btn-default">DEF</a>
+						<br />
+        	<%= will_paginate @players, renderer: BootstrapPagination::Rails %>
         	</div>
+
 
         	<div class="table-responsive">
 	        	<table cellspacing="0" cellpadding="0" border="0" class="table table-striped table-condensed">

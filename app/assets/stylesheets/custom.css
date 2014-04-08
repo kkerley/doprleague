@@ -52,6 +52,11 @@ ul.ul-events li{
 .margin-bottom-0{
 	margin-bottom: 0 !important;
 }
+
+.margin-bottom-half{
+	margin-bottom: .5em !important;
+}
+
 .margin-bottom-1em{
 	margin-bottom: 1em !important;
 }
