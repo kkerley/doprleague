@@ -1,271 +1,92 @@
 <% content_for :title, "#{@team.team_name} managed by #{@team.user.display_name}" %>
 <% content_for :section_subtitle, "Roster, contracts, budgetary information, awards won to date and other pertinent information" %>
 	
-		
-<div class="row">
-			<div class="col-md-8"><br />
-				
-				<div class="panel panel-danger">
+
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#roster" data-toggle="tab">Roster</a></li>
+  <li><a href="#payouts" data-toggle="tab">Payouts</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane fade in active" id="roster">
+  	<div class="row">
+  		<%= render 'team_roster_info' %>
+
+  		<div class="col-md-4"><br />
+
+  			<div class="panel panel-warning">
 					<div class="panel-heading">
-		          		
-						<p class="panel-title bold"><%= image_tag @team.user.avatar(:mini), :border => 0, :style => "display: inline;", :align => "right" %>
-							<strong>Roster</strong><br />
-							<small>Includes active roster spots, dead money, and contract buyouts.</small>
-						</p>
-		        	</div>
+          	<p class="panel-title bold"><a href="/members">GM actions</a></p>
+        	</div>
+		      <div class="panel-body">  	
+						<p class="h4">Eligible for extension:</p>
+							<ul>
+								<li>Player 1</li>
+								<li>Player 2</li>
+								<li>Player 3</li>
+								<li>Player 4</li>
+							</ul>
+						<p class="h4">Eligible for franchise tags:</p>
+							<ul>
+								<li>Player 5</li>
+								<li>Player 6</li>
+							</ul>
 
-					<div class="table-responsive">
-						
-						
-						<table cellspacing="0" cellpadding="0" border="0" class="table table-condensed table-bordered table-striped">
-							<thead>
-								<th width="5"></th>
-								<th>Name</th>
-								<th class="hidden-sm hidden-xs">Pos</th>
-								<th>Auc</th>
-								<th><%= current_year %></th>
-								<th><%= current_year.to_i + 1 %></th>
-								<th><%= current_year.to_i + 2 %></th>
-								<th><%= current_year.to_i + 3 %></th>
-								<th><%= current_year.to_i + 4 %></th>
-								<th><%= current_year.to_i + 5 %></th>
-							</thead>
-							
-							
-							<tbody>
-
-								<% if @players.count > 0 %>
-									<% @players.each do |player| %>
-										<tr>
-											<td></td>
-											<td><%= link_to player.full_name, player %> (<%= link_to player.nfl_team, NflTeam.find_by_shorthand(player.nfl_team) %>)
-												
-												<% if player.this_team_contract(@team).is_bought_out %>
-													<i class="fa fa-usd"></i> 
-												<% else %>
-													<% if player.this_team_contract(@team).is_extended %>
-														<i class="fa fa-plus-circle"></i>
-													<% end %>
-													<% if player.this_team_contract(@team).is_franchised %>
-														<i class="fa fa-tag"></i>
-													<% end %>
-												<% end %>
-												
-											</td>
-											<td class="hidden-sm hidden-xs"><%= player.position %></td>
-											<td><span class="badge">$<%= player.auction_value %></span></td>
-											<% player.this_team_contract(@team).subcontracts.current_year_or_later.limit(6).each do |sub| %>
-												<% if sub.team_id == @team.id %>
-													
-													<td class="<%=sub.this_is_a_buyout ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>">
-													$<%= sub.salary_amount %></td>
-												<% else %>
-													<td></td>
-												<% end %>
-											<% end %>
-									</tr>
-									<% end %>
-
-								<% else %>
-								<tr>
-									<td></td>
-									<td colspan="8">No players on this team.</td>
-								</tr>
-							<% end %>
-								<tr>
-									<td></td>
-									
-									<td><h4><span class="label label-danger">TOTAL:</span></h4></td>
-									<td></td>
-									<td></td>
-									<td><h4>$<%= @total_cap_current_year %></h4></td>
-									<td><h4>$<%= @total_cap_current_year_plus_1 %></h4></td>
-									<td><h4>$<%= @total_cap_current_year_plus_2 %></h4></td>
-									<td><h4>$<%= @total_cap_current_year_plus_3 %></h4></td>
-									<td><h4>$<%= @total_cap_current_year_plus_4 %></h4></td>
-									<td><h4>$<%= @total_cap_current_year_plus_5 %></h4></td>
-								</tr>
-								<tr>
-									<td></td>
-									
-									<td>Yearly budget amount: </td>
-									<td></td>
-									<td></td>
-									<td><%= link_to "$" + @team_budget_current_year.amount.to_s, team_budget_path(@team, @team_budget_current_year) %></td>
-									<td><%= link_to "$" + @team_budget_current_year_plus_1.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_1) %></td>
-									<td><%= link_to "$" + @team_budget_current_year_plus_2.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_2) %></td>
-									<td><%= link_to "$" + @team_budget_current_year_plus_3.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_3) %></td>
-									<td><%= link_to "$" + @team_budget_current_year_plus_4.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_4) %></td>
-									<td><%= link_to "$" + @team_budget_current_year_plus_5.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_5) %></td>
-								</tr>
-
-								<tr>
-									<td></td>
-									
-									<td>Remainder: </td>
-									<td></td>
-									<td></td>
-									<td>$<%= @team_remainder_current_year %></td>
-									<td>$<%= @team_remainder_current_year_plus_1 %></td>
-									<td>$<%= @team_remainder_current_year_plus_2 %></td>
-									<td>$<%= @team_remainder_current_year_plus_3 %></td>
-									<td>$<%= @team_remainder_current_year_plus_4 %></td>
-									<td>$<%= @team_remainder_current_year_plus_5 %></td>
-								</tr>
-							</tbody>
-						</table>
+						<p class="h4">Trade offers:</p>
 					</div>
-				</div>
-			<%= render "/contracts/contract_clauses_key" %>
+				</div><!-- end of panel -->
 
-			<p class="h4 margin-top-2em">Roster breakdown by position for the <%= current_year %> season</p>
-			<div class="table-responsive">
-				<table class="table table-condensed table-bordered table-striped" cellpadding="0" cellspacing="0" border="0">
-		      		<thead>
-		      			<tr>
-		      				<th width="5"></th>
-		      				<th width="20">Pos</th>
-		      				<th width="20">#</th>
-		      				<th style="padding-left: 15px;">Players</th>
-		      			</tr>
-		      		</thead>
-		      		<tbody>
-		      			
-		      			<tr>
-		      				<td></td>
-		      				<td>QB</td>
-		      				<td><%= @qbs.count %></td>
-		      				<td>
-		      					<table cellspacing="0" cellpadding="0" border="0">
-		      						<tr>
-					      				<% @qbs.each do |qb| %>
-					      					<td class="roster-breakdown-by-player-row"><%= link_to qb.full_name, qb %></td>
-					      				<% end %>
-					      			</tr>
-					      		</table>
-			      			</td>
-		      			</tr>
-		      			<tr>
-		      				<td></td>
-		      				<td>RB</td>
-		      				<td><%= @rbs.count %></td>
-		      				<td>
-		      					<table cellspacing="0" cellpadding="0" border="0">
-		      						<tr>
-					      				<% @rbs.each do |rb| %>
-					      					<td class="roster-breakdown-by-player-row"><%= link_to rb.full_name, rb %></td>
-					      				<% end %>
-					      			</tr>
-					      		</table>
-			      			</td>
-		      			</tr>
-		      			<tr>
-		      				<td></td>
-		      				<td>WR</td>
-		      				<td><%= @wrs.count %></td>
-							<td>
-								<table cellspacing="0" cellpadding="0" border="0">
-		      						<tr>
-					      				<% @wrs.each do |wr| %>
-					      					<td class="roster-breakdown-by-player-row"><%= link_to wr.full_name, wr %></td>
-					      				<% end %>
-					      			</tr>
-					      		</table>
-							</td>
-		      			</tr>
-		      			<tr>
-		      				<td></td>
-		      				<td>TE</td>
-		      				<td><%= @tes.count %></td>
-		      				<td>
-		      					<table cellspacing="0" cellpadding="0" border="0">
-		      						<tr>
-					      				<% @tes.each do |te| %>
-					      					<td class="roster-breakdown-by-player-row"><%= link_to te.full_name, te %></td>
-					      				<% end %>
-					      			</tr>
-					      		</table>
-		      				</td>
-		      			</tr>
-		      			<tr>
-		      				<td></td>
-		      				<td>K</td>
-		      				<td><%= @kickers.count %></td>
-		      				<td>
-		      					<table cellspacing="0" cellpadding="0" border="0">
-		      						<tr>
-					      				<% @kickers.each do |k| %>
-					      					<td class="roster-breakdown-by-player-row"><%= link_to k.full_name, k %></td>
-					      				<% end %>
-					      			</tr>
-					      		</table>
-		      				</td>
-		      			</tr>
-		      			<tr>
-		      				<td></td>
-		      				<td>D</td>
-		      				<td><%= @defs.count %></td>
-		      				<td>
-		      					<table cellspacing="0" cellpadding="0" border="0">
-		      						<tr>
-					      				<% @defs.each do |d| %>
-					      					<td class="roster-breakdown-by-player-row"><%= link_to d.full_name, d %></td>
-					      				<% end %>
-					      			</tr>
-					      		</table>
-		      				</td>
-		      			</tr>
-		      		</tbody>
-		      	</table>
-		      </div>
-			<%= render 'layouts/back_to_top_link' %>
-			
-			
-			<div class="panel panel-success">
-				<div class="panel-heading">
-	          		<p class="panel-title bold">Payouts/awards won to date</p>
-	        	</div>
-	        	
-				
-				<%= render '/users/payout_awards_table', :user => @team.user %>
-					
-					
-				
-	      	</div><!-- end of panel -->
-	      	<%= render 'layouts/back_to_top_link' %>
+  		</div><!-- end of col-md-4-->	
 
-	      	<!-- fancy chart showing payout breakdown -->
-	      	<p class="h1">Breakdown of the $<%= @total_payout_amount_to_date %> paid out to date</p>
-	      	<div id="members-chartdiv" style="width: 750px; height: 500px;"></div>
-			<%= render 'layouts/back_to_top_link' %>
-			</div><!-- end of col-md-8 -->
-			
-			
-	
-			
-			<div class="col-md-4 hidden-xs"><br />
+
+  	</div><!-- end of row -->
+  </div>
+
+
+  <div class="tab-pane fade active" id="payouts"> <!-- have to use class .active in order for amCharts to display properly --> 
+  	<div class="row">
+  		<%= render 'team_payouts_info' %>
+
+  		<div class="col-md-4 hidden-xs"><br />
 
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-		          		<p class="panel-title bold"><a href="/members">The league</a></p>
-		        	</div>
+          	<p class="panel-title bold"><a href="/members">The league</a></p>
+        	</div>
 		        	
-						<table cellspacing="0" cellpadding="0" border="0" class="table table-striped"
-							<tr>
-								<td colspan="4"><strong>&nbsp;&nbsp;Philip Division</strong></td>
-							</tr>
-							<% current_philip_members.each do |user|%>
-								<%= render '/users/member_list_nav', :user => user %>
-							<% end %>
-							<tr>
-								<td colspan="4"><strong>&nbsp;&nbsp;Russell Division</strong></td>
-							</tr>
+					<table cellspacing="0" cellpadding="0" border="0" class="table table-striped">
+						<tr>
+							<td colspan="4"><strong>&nbsp;&nbsp;Philip Division</strong></td>
+						</tr>
+						<% current_philip_members.each do |user|%>
+							<%= render '/users/member_list_nav', :user => user %>
+						<% end %>
+						<tr>
+							<td colspan="4"><strong>&nbsp;&nbsp;Russell Division</strong></td>
+						</tr>
 
-							<% current_russell_members.each do |user|%>
-								<%= render '/users/member_list_nav', :user => user %>
-							<% end %>
-						</table>
+						<% current_russell_members.each do |user|%>
+							<%= render '/users/member_list_nav', :user => user %>
+						<% end %>
+					</table>
 					
 				</div><!-- end of panel -->
 			</div><!-- end of col-md-4-->	
 		</div><!-- end of row -->
+  </div>
+  
+</div>
+		
+
+			
+			
+			
+			
+			
+	
+			
+			
+		

@@ -2,6 +2,12 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
+Version 2.3.2 [2014/04/xx]
+--------------------------------------------------
+- Added tabs to the teams#show view to help clean it up some
+- Added "GM actions" panel to teams#show that will only display for that user when viewing team page (working toward making teams#show a dashboard)
+
+
 Version 2.3.1.1 [2014/04/08]
 --------------------------------------------------
 - Added pagination links to the bottom of the players#index table

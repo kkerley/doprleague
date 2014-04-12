@@ -75,7 +75,7 @@ class Player < ActiveRecord::Base
     
   end
 
-  # used in conjection with is_contracted? to return the actual contract if is_contracted? == true
+  # used in conjunction with is_contracted? to return the actual contract if is_contracted? == true
   def current_contract
     self.this_year.contract
   end
@@ -113,6 +113,7 @@ class Player < ActiveRecord::Base
       scoped
     end
   end
+
 
   def self.free_agents
     players = []
@@ -163,13 +164,12 @@ class Player < ActiveRecord::Base
     end
     end
 
-    def which_is_higher_franchise_cost(top_5, next_step)
-      if top_5 >= next_step
-        top_5
-      else
-        next_step
-      end
-    
+  def which_is_higher_franchise_cost(top_5, next_step)
+    if top_5 >= next_step
+      top_5
+    else
+      next_step
+    end
   end
 
 

@@ -26,6 +26,7 @@ gem 'jquery-rails', '~> 2.3.0'
 gem 'jquery-ui-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
+# gem 'super_module', '1.0.0'
 
 # gem "roo"
 gem 'bullet', group: :development
