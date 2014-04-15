@@ -24,16 +24,17 @@
 		      <div class="panel-body">  	
 						<p class="h4">Eligible for extension:</p>
 							<ul>
-								<li>Player 1</li>
-								<li>Player 2</li>
-								<li>Player 3</li>
-								<li>Player 4</li>
+								<% @players_to_extend.each do |p| %>
+									<li><%= link_to p.full_name, p %>  </li>
+								<% end %>
 							</ul>
 						<p class="h4">Eligible for franchise tags:</p>
 							<ul>
-								<li>Player 5</li>
-								<li>Player 6</li>
+								<% @players_to_franchise.each do |p| %>
+									<li><%= link_to p.full_name, p %> <%= p.subcontracts.future_years.map { |x| x.team_id } %> </li>
+								<% end %>
 							</ul>
+
 
 						<p class="h4">Trade offers:</p>
 					</div>

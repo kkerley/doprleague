@@ -10,6 +10,7 @@ describe SuperBowl do
 		@users = FactoryGirl.create_list(:user, 5)
 		log_in @admin
 		import_nfl_teams
+		# import_salary_progressions
 		
 		visit "/super_bowls/#{super_bowl.year}"
 		click_link "Edit"

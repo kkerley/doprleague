@@ -4,6 +4,8 @@ FactoryGirl.define do
 	sequence(:nfl_team_id) { |n| "#{n}" }
 	sequence(:team_name) { |n| "Hilarious Team Name #{n}"  }
   sequence(:combined_total) { |n| 30 + n }
+  # sequence(:first_name) { |n| "first#{n}" }
+  # sequence(:last_name) { |n| "last#{n}" }
   
   factory :user do
     email
@@ -109,6 +111,28 @@ FactoryGirl.define do
     name "NFL Super Bowl prediction"
     amount 5
    
+  end
+
+  factory :player do 
+    # auction_value 17
+    # first_name 
+    # last_name
+    # nfl_team
+    # position
+    bye_week 9
+  end
+
+  factory :contract do
+    # contract_length
+    is_bought_out false
+    # bought_out_by_team_id
+    is_extended false
+    is_franchised false
+    contract_start_year 2013
+    # contracted_team
+    # player_id
+    is_drafted true
+    is_dead_money false
   end
   
 end

@@ -10,6 +10,7 @@ class Subcontract < ActiveRecord::Base
   
   
   scope :current_year_or_later, lambda { where("contract_year >= ?", self.current_year).order("contract_year ASC") }
+  scope :future_years, lambda { where("contract_year > ?", self.current_year).order("contract_year ASC") }
   # scope :this_year, lambda { where("contract_year == ?", self.current_year) }
 
   def self.current_year

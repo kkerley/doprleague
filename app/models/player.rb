@@ -1,7 +1,7 @@
 class Player < ActiveRecord::Base
   include ModifiedCurrentYear
 
-  attr_accessible :auction_value, :first_name, :last_name, :nfl_team, :position, :is_drafted, :is_bought_out, :is_extended, :is_franchised, :bye_week, :full_name, :contracts_attributes, :subcontracts_attributes
+  attr_accessible :auction_value, :first_name, :last_name, :nfl_team, :position, :bye_week, :full_name, :contracts_attributes, :subcontracts_attributes
   
   has_many :contracts, dependent: :destroy
   has_many :subcontracts, through: :contracts
@@ -162,7 +162,7 @@ class Player < ActiveRecord::Base
       end
       return salary
     end
-    end
+  end
 
   def which_is_higher_franchise_cost(top_5, next_step)
     if top_5 >= next_step

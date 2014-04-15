@@ -36,6 +36,16 @@ module Helpers
     click_link "NFL players"
   end
 
+  def import_salaries
+    visit "/salary_progressions"
+    @file = Rails.root + 'spec/fixtures/files/dopr_salary_chart.csv'
+    page.attach_file('file', @file)
+    click_button "Import"
+    # save_and_open_page
+    page.should have_content "Salary chart imported."
+    # save_and_open_page
+  end
+
   def import_nfl_teams
     visit "/nfl_teams"
     @file = Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/dopr_NFL_teams.csv'), 'text/csv') 
@@ -45,4 +55,5 @@ module Helpers
     page.should have_content "NFL teams imported."
     # save_and_open_page
   end
+ 
 end

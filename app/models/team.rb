@@ -90,4 +90,38 @@ class Team < ActiveRecord::Base
       b.save!
     }
   end
+
+  def available_for_extension(players)
+    players_to_extend = []
+
+    players.each do |player|
+      if player.is_contracted?
+        unless player.current_contract.is_extended? || player.current_contract.is_franchised?
+          team = player.this_year.team
+          if player.current_contract.still_belongs_to?(team)
+            players_to_extend << player
+          end
+        end
+      end
+    end
+    players_to_extend.uniq
+  end
+
+  def available_for_franchise(players)
+    players_to_franchise = []
+
+    players.each do |player|
+      if player.is_contracted?
+        unless player.current_contract.is_franchised?
+          team = player.this_year.team
+          if player.current_contract.still_belongs_to?(team)
+            players_to_franchise << player
+          end
+        end
+      end
+    end
+    players_to_franchise.uniq
+  end
+
+
 end

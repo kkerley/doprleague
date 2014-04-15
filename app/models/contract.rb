@@ -1,4 +1,6 @@
 class Contract < ActiveRecord::Base
+  include ModifiedCurrentYear
+
   attr_accessible :contract_length, :is_bought_out, :bought_out_by_team_id, :is_extended, :is_franchised, :contract_start_year, :contracted_team, :player_id, :subcontracts_attributes, :is_drafted, :is_dead_money
   attr_accessor :contracted_team
   
@@ -137,6 +139,21 @@ class Contract < ActiveRecord::Base
       full_length += 1
     end 
     full_length
+  end
+
+  def contract_length_left
+    (self.contract_start_year + self.full_contract_length) - current_year
+  end
+
+  def still_belongs_to?(team)
+    teams_array = self.subcontracts.future_years.map { |x| x.team_id }
+
+    teams_array.each do |t|
+      if t != team.id
+        return false
+      end
+    end
+    
   end
 
   def total_contract_cost

@@ -21,6 +21,8 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @players = @team.get_subcontract_players.uniq 
+    @players_to_extend = @team.available_for_extension(@players)
+    @players_to_franchise = @team.available_for_franchise(@players)
 
     # Need to adjust this to only pull in players for the current year
     @qbs = @players.find_all { |player| player.position == "QB" if player.is_contracted? && player.this_year.team_id == @team.id }
