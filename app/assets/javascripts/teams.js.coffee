@@ -26,3 +26,7 @@ AmCharts.ready ->
   # WRITE                                 
   members_chart.write "members-chartdiv"
   return
+
+$("#payouts-tab").click ->
+  members_chart.invalidateSize()
+  return

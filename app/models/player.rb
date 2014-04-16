@@ -185,6 +185,17 @@ class Player < ActiveRecord::Base
     return next_salary
   end
 
+  def to_franchise_now
+    length = self.this_year.contract.contract_length   
+    auction_value = self.current_contract.subcontracts.first.salary_amount
+    this_progression = SalaryProgression.find_by_auction_value(auction_value).attributes.to_a
+    next_salary = this_progression[(length + 1)][1]
+    top_5_players_of_position = Player.where("position = ?", self.position).sort_by { |player| player.auction_value }.reverse.first(5)
+    top_5_average = self.average_salaries(top_5_players_of_position)
+    franchise_cost = self.which_is_higher_franchise_cost(top_5_average, next_salary)
+    return franchise_cost
+  end
+
   
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|

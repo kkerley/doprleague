@@ -145,6 +145,7 @@ class Contract < ActiveRecord::Base
     (self.contract_start_year + self.full_contract_length) - current_year
   end
 
+  
   def still_belongs_to?(team)
     teams_array = self.subcontracts.future_years.map { |x| x.team_id }
 
@@ -153,8 +154,17 @@ class Contract < ActiveRecord::Base
         return false
       end
     end
-    
   end
+
+  def will_belong_to?(team)
+    teams_array = self.subcontracts.future_years.map { |x| x.team_id }
+    if teams_array.last == team.id
+      return true
+    else
+      return false
+    end
+  end
+
 
   def total_contract_cost
     total = 0
