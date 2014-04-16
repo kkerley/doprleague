@@ -2,10 +2,11 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.3.2 [2014/04/xx]
+Version 2.3.2 [2014/04/15]
 --------------------------------------------------
 - Added tabs to the teams#show view to help clean it up some
-- Added "GM actions" panel to teams#show that will only display for that user when viewing team page (working toward making teams#show a dashboard)
+- Added "GM actions" panel to teams#show that shows players eligible for extending and franchising (phase 1 of this panel)
+- Fixed amCharts issue with JS-powered tabs
 
 
 Version 2.3.1.1 [2014/04/08]
