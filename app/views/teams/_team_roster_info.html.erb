@@ -1,11 +1,13 @@
 <div class="col-md-8"><br />
 	
-	<div class="panel panel-danger">
+	<div class="panel panel-default">
 		<div class="panel-heading">
         		
 			<p class="panel-title bold"><%= image_tag @team.user.avatar(:mini), :border => 0, :style => "display: inline;", :align => "right" %>
-				<strong>Roster</strong><br />
-				<small>Includes active roster spots, dead money, and contract buyouts.</small>
+				<i class="fa fa-list"></i> <strong>Roster</strong><br />
+				<small>Includes active roster spots, dead money, and contract buyouts.<br />
+
+				<!--<a href="#" style="font-weight: normal;">View entire roster <i class="fa fa-expand"></i></a>--></small>
 			</p>
     </div>
 
@@ -23,7 +25,7 @@
 					<th><%= current_year.to_i + 2 %></th>
 					<th><%= current_year.to_i + 3 %></th>
 					<th><%= current_year.to_i + 4 %></th>
-					<th><%= current_year.to_i + 5 %></th>
+					<!--<th><% current_year.to_i + 5 %></th>-->
 				</thead>
 				
 				
@@ -70,7 +72,7 @@
 					<tr>
 						<td></td>
 						
-						<td><h4><span class="label label-danger">TOTAL:</span></h4></td>
+						<td><h4><span class="label label-danger">TOTAL SPENT:</span></h4></td>
 						<td></td>
 						<td></td>
 						<td><h4>$<%= @total_cap_current_year %></h4></td>
@@ -78,7 +80,7 @@
 						<td><h4>$<%= @total_cap_current_year_plus_2 %></h4></td>
 						<td><h4>$<%= @total_cap_current_year_plus_3 %></h4></td>
 						<td><h4>$<%= @total_cap_current_year_plus_4 %></h4></td>
-						<td><h4>$<%= @total_cap_current_year_plus_5 %></h4></td>
+						<!--<td><h4>$<% @total_cap_current_year_plus_5 %></h4></td>-->
 					</tr>
 					<tr>
 						<td></td>
@@ -91,7 +93,7 @@
 						<td><%= link_to "$" + @team_budget_current_year_plus_2.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_2) %></td>
 						<td><%= link_to "$" + @team_budget_current_year_plus_3.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_3) %></td>
 						<td><%= link_to "$" + @team_budget_current_year_plus_4.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_4) %></td>
-						<td><%= link_to "$" + @team_budget_current_year_plus_5.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_5) %></td>
+						<!--<td><% link_to "$" + @team_budget_current_year_plus_5.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_5) %></td>-->
 					</tr>
 
 					<tr>
@@ -105,7 +107,7 @@
 						<td>$<%= @team_remainder_current_year_plus_2 %></td>
 						<td>$<%= @team_remainder_current_year_plus_3 %></td>
 						<td>$<%= @team_remainder_current_year_plus_4 %></td>
-						<td>$<%= @team_remainder_current_year_plus_5 %></td>
+						<!--<td>$<% @team_remainder_current_year_plus_5 %></td>-->
 					</tr>
 				</tbody>
 			</table>
@@ -114,7 +116,7 @@
 <%= render "/contracts/contract_clauses_key" %>
 
 <div class="hidden-xs">
-	<p class="h4 margin-top-2em">Roster breakdown by position for the <%= current_year %> season</p>
+	<p class="h4 margin-top-2em"><i class="fa fa-tasks"></i> Roster breakdown by position for the <%= current_year %> season</p>
 	<div class="table-responsive">
 		<table class="table table-condensed table-bordered table-striped" cellpadding="0" cellspacing="0" border="0">
 	    		<thead>

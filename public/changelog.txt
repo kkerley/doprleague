@@ -2,6 +2,18 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
+Version 2.3.3 [2014/04/xx]
+--------------------------------------------------
+- Added placeholders for CSS @media queries to fix iPad issues
+- Removed <hr /> under page title/subtitle to make it a little less cluttered
+- Changed look of GM actions panel
+- Added a few icons on the teams#show page
+- Changed almost all panel groups to default (gray) to make it look less cartoony
+- Modified main navigation behavior for various screen sizes
+- Changed the roster to only go out current year + 4 to make it less cluttered
+- Added a link to "View entire roster" for the future (plan to make it extend out 19 years past current year to show full roster)
+
+
 Version 2.3.2 [2014/04/15]
 --------------------------------------------------
 - Added tabs to the teams#show view to help clean it up some
