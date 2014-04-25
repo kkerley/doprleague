@@ -1,0 +1,19 @@
+<% @announcements.each do |announce| %>
+  		<div class="margin-bottom-2em">
+     		<% if announce.avatar? %>
+					<%= image_tag(announce.avatar.url(:max200), :border => 0, :class => 'img-rounded') %>
+				<% end %>
+      	<p class="h1 homepage-headline"><%= announce.title %></p>
+    		<p class="margin-bottom-1em"><small class="muted"><%= l announce.created_at, format: :short %> by <img src="<%= announce.user.avatar(:tiny) %>" border="0" style="vertical-align: text-top;" /> <%= link_to announce.user.display_name, "/members/#" + announce.user.display_name %></small></p>
+				<%= RedCloth.new(announce.content).to_html.html_safe %>
+
+				<% if current_user %>
+					<% if can? :manage, announce %>
+						<p><i class="fa fa-pencil-square-o"></i>  <%= link_to 'Edit announcement', edit_feature_path(announce) %></p>
+					<% end %>
+				<% end %>
+
+      </div>
+	<hr />
+<% end %>
+<%= will_paginate @announcements, renderer: BootstrapPagination::Rails %>

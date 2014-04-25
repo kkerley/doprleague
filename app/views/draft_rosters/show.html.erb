@@ -1,5 +1,6 @@
 <% content_for :title, "Draft Roster: #{@draft_roster.name}" %>
-<% content_for :section_subtitle, "Drag and drop listed players below to order them as you like" %>
+<% content_for :section_subtitle, "Drag and drop listed players below to order them as you like." %>
+
 
 <ul id="draft-roster-players" data-update-url="<%= sort_roster_spots_url %>">
 	<% @roster_spots.each do |roster_spot| %>

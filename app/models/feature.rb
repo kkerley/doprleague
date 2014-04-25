@@ -1,9 +1,10 @@
 class Feature < ActiveRecord::Base
+  include PublicActivity::Common
+
   attr_accessible :content, :feature_type, :on_homepage, :homepage_order, :show_title, :title, :is_published, :url_path, :avatar, :excerpt, :image_classes, :highlighted_post, :subtitle, 
     :category_one_on, :category_one_text, :category_one_class, :category_two_on, :category_two_text, :category_two_class, :category_three_on, :category_three_text, :category_three_class
     
   belongs_to :user
-  
   
   has_attached_file :avatar, :styles => { :max830 => "830x830>", 
                                           :max720 => "720x720>", 

@@ -1,0 +1,6 @@
+<% if activity.trackable %>
+	added <%= link_to "a new contract", activity.trackable %> for <%= link_to activity.trackable.player.full_name, activity.trackable.player %>, now signed to <%= link_to activity.trackable.subcontracts.first.team.team_name, activity.trackable.subcontracts.first.team %><br /><small class="muted"><%= l activity.created_at, format: :feed %></small>
+<% else %>
+	added a new contract which has since been removed from the site.
+<% end %>
+

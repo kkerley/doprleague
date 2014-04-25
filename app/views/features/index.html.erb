@@ -1,52 +1,50 @@
 <% content_for :title, "Latest updates" %>
-<% content_for :section_subtitle, "League/site announcements and other random information." %>
+<% content_for :section_subtitle, "League/site announcements and other extremely important information." %>
 
 <div class="row">
 	<div class="col-md-8"><br />
-  			<% @announcements.each do |announce| %>
-      		<div class="margin-bottom-2em">
-	       		<% if announce.avatar? %>
-					<%= image_tag(announce.avatar.url(:max200), :border => 0, :class => 'img-rounded') %>
-				<% end %>
-	        	<p class="h1 homepage-headline"><%= announce.title %></p>
-          		<p class="margin-bottom-1em"><small class="muted"><%= l announce.created_at, format: :short %> by <img src="<%= announce.user.avatar(:tiny) %>" border="0" style="vertical-align: text-top;" /> <%= link_to announce.user.display_name, "/members/#" + announce.user.display_name %></small></p>
-				<%= RedCloth.new(announce.content).to_html.html_safe %>
-	
-				<% if current_user %>
-					<% if can? :manage, announce %>
-						<p><i class="fa fa-pencil-square-o"></i>  <%= link_to 'Edit announcement', edit_feature_path(announce) %></p>
-					<% end %>
-				<% end %>
 
-	        </div>
-			<hr />
-		<% end %>
+		<ul class="nav nav-tabs">
+		  <li class="active"><a href="#announcements" data-toggle="tab"><i class="fa fa-exclamation-circle"></i> Announcements</a></li>
+		  <li><a href="#activity" data-toggle="tab"><i class="fa fa-bar-chart-o"></i> Site activity</a></li>
+		  
+		</ul>
 
+		<div class="tab-content">
+  		<div class="tab-pane fade in active" id="announcements">
+				<%= render 'announcements' %>
+			</div>
+
+			<div class="tab-pane fade" id="activity">
+				<br />
+				<%= render 'activity' %>
+			</div>
+  	</div>	
 	</div><!-- end of col-md-8 -->
 	
 	<div class="col-md-4 hidden-xs"><br />
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-          		<p class="panel-title bold"><a href="/members/">The league</a></p>
-        	</div>
+      	<p class="panel-title bold"><a href="/members/">The league</a></p>
+    	</div>
         	
-				<table class="table table-striped" cellpadding="0" cellspacing="0" border="0">
-					<tr>
-						
-						<td colspan="4"><strong>&nbsp;&nbsp;Philip Division</strong></td>
-					</tr>
-					<% current_philip_members.each do |user|%>
-						<%= render '/users/member_list_nav', :user => user %>
-					<% end %>
-					<tr>
-						
-						<td colspan="4"><strong>&nbsp;&nbsp;Russell Division</strong></td>
-					</tr>
+			<table class="table table-striped" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					
+					<td colspan="4"><strong>&nbsp;&nbsp;Philip Division</strong></td>
+				</tr>
+				<% current_philip_members.each do |user|%>
+					<%= render '/users/member_list_nav', :user => user %>
+				<% end %>
+				<tr>
+					
+					<td colspan="4"><strong>&nbsp;&nbsp;Russell Division</strong></td>
+				</tr>
 
-					<% current_russell_members.each do |user|%>
-						<%= render '/users/member_list_nav', :user => user %>
-					<% end %>
-				</table>
+				<% current_russell_members.each do |user|%>
+					<%= render '/users/member_list_nav', :user => user %>
+				<% end %>
+			</table>
 			
 			
 		</div><!-- end of panel -->

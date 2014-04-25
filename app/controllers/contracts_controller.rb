@@ -5,8 +5,7 @@ class ContractsController < ApplicationController
   # GET /contracts
   # GET /contracts.json
   def index
-    @contracts = Contract.all
-    
+    @contracts = Contract.all  
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,7 +18,6 @@ class ContractsController < ApplicationController
   def show
     @contract = Contract.find(params[:id])
   
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @contract }
@@ -49,6 +47,7 @@ class ContractsController < ApplicationController
 
     respond_to do |format|
       if @contract.save
+        # @contract.create_activity :create, owner: current_user
         format.html { redirect_to @contract, notice: 'Contract was successfully created.' }
         format.json { render json: @contract, status: :created, location: @contract }
       else
@@ -65,6 +64,7 @@ class ContractsController < ApplicationController
 
     respond_to do |format|
       if @contract.update_attributes(params[:contract])
+        # @contract.create_activity :update, owner: current_user
         format.html { redirect_to @contract, notice: 'Contract was successfully updated.' }
         format.json { head :no_content }
       else
@@ -78,6 +78,7 @@ class ContractsController < ApplicationController
   # DELETE /contracts/1.json
   def destroy
     @contract = Contract.find(params[:id])
+    # @contract.create_activity :destroy, owner: current_user
     @contract.destroy
 
     respond_to do |format|

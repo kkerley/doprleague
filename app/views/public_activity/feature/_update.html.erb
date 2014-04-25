@@ -1,0 +1,7 @@
+updated 
+
+<% if activity.trackable %>
+	<%= activity.trackable.feature_type.singularize.downcase %> <%= link_to activity.trackable.title, "/" %><br /><small class="muted"><%= l activity.created_at, format: :feed %></small>
+<% else %>
+	which has since been removed from the site.
+<% end %>

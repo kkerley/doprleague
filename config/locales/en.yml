@@ -5,4 +5,5 @@ en:
   hello: "Hello world"
   time:
       formats:
-        short: "was posted %Y-%m-%d @ %I:%M %p %Z (%z)"
+        short: "%A %B %d, %Y @ %I:%M %p %Z (%z)"
+        feed: "%A %B %d, %Y @ %I:%M %p %Z (%z)"

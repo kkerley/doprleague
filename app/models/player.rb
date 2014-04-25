@@ -177,11 +177,8 @@ class Player < ActiveRecord::Base
   def to_extend_now
     length = self.this_year.contract.contract_length   
     auction_value = self.current_contract.subcontracts.first.salary_amount
-
     this_progression = SalaryProgression.find_by_auction_value(auction_value).attributes.to_a
-
     next_salary = this_progression[(length + 1)][1]
-
     return next_salary
   end
 

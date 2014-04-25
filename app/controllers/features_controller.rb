@@ -5,8 +5,8 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
   # GET /features
   # GET /features.json
   def index
-    @announcements = Feature.for_announcements.published.includes(:user)
-    
+    @announcements = Feature.for_announcements.published.includes(:user).page(params[:page]).per_page(5)
+    @activities = PublicActivity::Activity.order("created_at desc")
     
     # @all_features = Feature.homepage_list
 
@@ -33,7 +33,6 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
   # GET /features/new.json
   def new
     @feature = Feature.new
-    #@homepage_features = Feature.homepage_list.published
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +43,6 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
   # GET /features/1/edit
   def edit
     @feature = Feature.find(params[:id])
-    # @homepage_features = Feature.homepage_list.published
   end
 
   # POST /features
@@ -55,6 +53,7 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
 
     respond_to do |format|
       if @feature.save
+        @feature.create_activity :create, owner: current_user
         format.html { redirect_to({:action => :admin}, {notice: 'Feature was successfully created.'}) }
         format.json { render json: @feature, status: :created, location: @feature }
       else
@@ -71,6 +70,7 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
 
     respond_to do |format|
       if @feature.update_attributes(params[:feature])
+        @feature.create_activity :update, owner: current_user
         format.html { redirect_to({:action => :admin }, {notice: 'Feature was successfully updated.'}) }
         format.json { head :no_content }
       else
@@ -84,6 +84,7 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
   # DELETE /features/1.json
   def destroy
     @feature = Feature.find(params[:id])
+    @feature.create_activity :destroy, owner: current_user
     @feature.destroy
 
     respond_to do |format|

@@ -1,17 +1,9 @@
 source 'https://rubygems.org'
 
-# gem 'rails', '3.2.11'
-
 # upgrading to the latest version of 3.2.x for security
 gem 'rails', '3.2.17'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-# gem 'sqlite3'
-# gem 'sorcery'
 gem 'devise'
-# gem 'kramdown'
 gem 'RedCloth', '~> 4.2.3', :require => 'redcloth'
 gem 'paperclip', '~> 3.0'
 gem 'pg'
@@ -26,10 +18,8 @@ gem 'jquery-rails', '~> 2.3.0'
 gem 'jquery-ui-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
-# gem 'super_module', '1.0.0'
+gem 'public_activity'
 
-# gem "roo"
-gem 'bullet', group: :development
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -37,16 +27,15 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  
 end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
+  gem 'bullet'
 end
 
-gem "rspec-rails", :group => [:test, :development]
 group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
@@ -56,6 +45,8 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
 end
+
+gem "rspec-rails", :group => [:test, :development]
 
 # gem 'friendly_id', :require => "friendly_id"
 

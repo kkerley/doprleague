@@ -1,5 +1,5 @@
-<% content_for :title, "Contract infromation for #{@contract.player.full_name}" %>
-<% content_for :section_subtitle, "Specific information about this contract; other contracts for this player may be available" %>
+<% content_for :title, "Contract for #{@contract.player.full_name}" %>
+<% content_for :section_subtitle, "Info for this specific contract; past contracts for this player may exist." %>
 <div class="row">
 	<div class="col-md-7">
 		<p><%= link_to "View " + @contract.player.full_name + "'s information", @contract.player %> | <%= link_to "View all contracts", contracts_path %></p>

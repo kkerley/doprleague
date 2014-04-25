@@ -2,7 +2,21 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.3.3 [2014/04/xx]
+Version 2.4 [2014/04/xx]
+--------------------------------------------------
+- Added public_activity gem to track site activity
+- Tracking features (aka Announcements, FAQs, Articles of the Constitution, Facebook Polls) and contracts
+- Added tabs for Announcements and Site Activity on root
+- Added $ to each column on salary_progressions#index
+- Added hover functionality to salary_progressions#index table to make it easier to see where you are
+- Added pagination for site updates on the root page
+- Made date/timestamps more readable for Announcements
+- Changed icon for the roster breakdown by position as it was the same as the one for Facebook polls
+- Changed layout of "The League" panel to better match how it's handled in the dropdown menu
+- Changed the page title/subtitle layout and edited most of the subtitles to be less verbose and annoying
+
+
+Version 2.3.3 [2014/04/21]
 --------------------------------------------------
 - Added placeholders for CSS @media queries to fix iPad issues
 - Removed <hr /> under page title/subtitle to make it a little less cluttered

@@ -1,15 +1,19 @@
 KkerleyCom::Application.routes.draw do
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
+  resources :activities
+  
   resources :nfl_teams do 
     collection { post :import }
   end
 
   resources :super_bowls
   resources :super_bowl_picks
+
   resources :roster_spots do
     collection { post :sort }
   end
+
   resources :events
   resources :team_records
   resources :standings
