@@ -7,7 +7,7 @@
 		<ul class="nav nav-tabs">
 		  <li class="active"><a href="#announcements" data-toggle="tab"><i class="fa fa-exclamation-circle"></i> Announcements</a></li>
 		  <li><a href="#activity" data-toggle="tab"><i class="fa fa-bar-chart-o"></i> Site activity</a></li>
-		  
+		  <li><a href="#mailboxer" data-toggle="tab"><i class="fa fa-envelope-o"></i> Mailbox</a></li>
 		</ul>
 
 		<div class="tab-content">
@@ -18,6 +18,11 @@
 			<div class="tab-pane fade" id="activity">
 				<br />
 				<%= render 'activity' %>
+			</div>
+
+			<div class="tab-pane fade" id="mailboxer">
+				<br />
+				<%= render 'mailboxer' %>
 			</div>
   	</div>	
 	</div><!-- end of col-md-8 -->

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  acts_as_messageable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -57,6 +58,15 @@ class User < ActiveRecord::Base
   # customizing JSON output for amCharts
   def as_json(options = {})
     { :display_name => self.display_name, :total_winnings => self.total_winnings }
+  end
+
+  # Mailboxer methods
+  def name
+    return self.display_name
+  end
+
+  def mailboxer_email(object)
+    return self.email
   end
 
 end

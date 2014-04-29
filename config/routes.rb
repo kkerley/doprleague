@@ -48,6 +48,23 @@ KkerleyCom::Application.routes.draw do
       get 'extended_and_franchised'
     end
   end
+
+  resources :messages do
+    member do
+      post :new
+    end
+  end
+  resources :conversations do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+   collection do
+      get :trashbin
+      post :empty_trash
+   end
+  end
   
   root :to => "features#index"
  
