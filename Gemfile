@@ -20,6 +20,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'public_activity'
 gem 'mailboxer'
+gem 'simple_form'
 
 
 # Gems used only for assets and not required

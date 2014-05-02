@@ -60,10 +60,10 @@ KkerleyCom::Application.routes.draw do
       post :trash
       post :untrash
     end
-   collection do
+    collection do
       get :trashbin
       post :empty_trash
-   end
+    end
   end
   
   root :to => "features#index"

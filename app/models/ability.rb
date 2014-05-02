@@ -16,6 +16,7 @@ class Ability
                 can :manage, Event, :team_id => user.team.id
                 can :manage, SuperBowlPick, :team_id => user.team.id
                 can :manage, DraftRoster, :team_id => user.team.id
+                can :manage, Message
             end
         else
             can :read, :all

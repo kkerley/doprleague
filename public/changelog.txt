@@ -2,7 +2,12 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.4 [2014/04/xx]
+Version 2.4 [2014/04/23]
+--------------------------------------------------
+- Added mailboxer gem to handle User inboxes
+
+
+Version 2.4 [2014/04/23]
 --------------------------------------------------
 - Added public_activity gem to track site activity
 - Tracking features (aka Announcements, FAQs, Articles of the Constitution, Facebook Polls) and contracts

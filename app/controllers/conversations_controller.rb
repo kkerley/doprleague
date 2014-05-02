@@ -1,6 +1,7 @@
 class ConversationsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
   helper_method :mailbox, :conversation
+
   def index
     @conversations ||= current_user.mailbox.inbox.all
   end

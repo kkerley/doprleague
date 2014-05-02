@@ -1,7 +1,7 @@
-<%= simple_form_for :conversation, url: :conversations do |f| %>
-  <%= f.input :recipients %>
+<%= simple_form_for :message, url: :messages do |f| %>
+  <%= f.input :recipient, collection: current_members, prompt: "Select your recipient"  %>
   <%= f.input :subject %>
-  <%= f.input :body %>
+  <%= f.input :body, as: :text %>
   <div class="form-actions">
     <%= f.button :submit, class: 'btn-primary' %>
     <%= submit_tag 'Cancel', type: :reset, class: 'btn btn-danger' %>

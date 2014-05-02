@@ -186,7 +186,7 @@
 	        	<div class="container">
 	        		<h5 class="muted credit">
 						<% if current_user %>
-							Logged in as: <%= link_to current_user.display_name, current_user.team %> [ <%= current_user.email %> | <%= link_to "Edit profile", edit_user_path(current_user) %> ] | 
+							Logged in as: <%= link_to current_user.display_name, current_user.team %> [ <%= current_user.email %> ] <%= link_to "Edit profile", edit_user_path(current_user) %> | 
 							<% if current_user.role == "admin" %>
 								<a href="/admin"><i class="fa fa-cogs"></i> Admin control panel</a> | 
 							<% end %>
