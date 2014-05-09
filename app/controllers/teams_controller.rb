@@ -20,6 +20,8 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
+    @messages_count = current_user.mailbox.inbox.unread(current_user).count if current_user
+    
     @players = @team.get_subcontract_players.uniq 
     @players_to_extend = @team.available_for_extension(@players)
     @players_to_franchise = @team.available_for_franchise(@players, @team)

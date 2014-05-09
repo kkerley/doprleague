@@ -7,9 +7,7 @@
 		<ul class="nav nav-tabs">
 		  <li class="active"><a href="#announcements" data-toggle="tab"><i class="fa fa-exclamation-circle"></i> Announcements</a></li>
 		  <li><a href="#activity" data-toggle="tab"><i class="fa fa-bar-chart-o"></i> Site activity</a></li>
-		  <% if current_user %>
-		  	<li><a href="#mailboxer" data-toggle="tab"><i class="fa fa-inbox"></i> Mailbox <span class="badge"><%= current_user.mailbox.inbox.unread(current_user).count %></a></span></li>
-		  <% end %>
+		  
 		</ul>
 
 		<div class="tab-content">
@@ -21,20 +19,6 @@
 				<br />
 				<%= render 'activity' %>
 			</div>
-
-			<% if current_user %>
-			<div class="tab-pane fade" id="mailboxer">
-				<br />
-				<%= render 'mailboxer' %>
-				<p><%= link_to conversations_path do  %>
-							<i class="fa fa-inbox"></i> View Inbox
-						<% end %></p>
-
-						<p><%= link_to new_message_path do %>
-								<i class="fa fa-envelope-o"></i> New message
-								<% end %>
-			</div>
-			<% end %>
   	</div>	
 	</div><!-- end of col-md-8 -->
 	

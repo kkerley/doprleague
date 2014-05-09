@@ -1,11 +1,11 @@
-Send a message to
+<label>Send a message to</label>
  
  <%= form_tag({controller: "messages", action: "create"}, method: :post) do %>
- 	<%= text_field_tag :recipient %>
+ 	<%= select_tag(:recipient, options_from_collection_for_select(current_members, "id", "display_name"), {class: "form-control"}) %>
   <%= label_tag :subject %>
-  <%= text_field_tag :subject %>
+  <%= text_field_tag :subject, nil, class: "form-control" %>
   <%= label :body, "Message text" %>
-  <%= text_area_tag :body %>
-
+  <%= text_area_tag :body, nil, class: "form-control" %>
+  <br />
   <%= submit_tag 'Send message', class: "btn btn-primary" %>
  <% end %>

@@ -7,7 +7,7 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
   def index
     @announcements = Feature.for_announcements.published.includes(:user).page(params[:page]).per_page(5)
     @activities = PublicActivity::Activity.order("created_at desc")
-    @messages_count = current_user.mailbox.inbox.unread(current_user).count if current_user
+    
     
     # @all_features = Feature.homepage_list
 

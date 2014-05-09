@@ -194,3 +194,9 @@ fieldset.contract-fields{
   color: #777;
   cursor: move;
 }
+div.conversation{
+	background-color: #FAFAFA;
+	border-bottom: 1px dashed #cecece;
+	margin-bottom: 5px;
+	padding: 3px;
+}

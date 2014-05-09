@@ -7,6 +7,12 @@
 <ul class="nav nav-tabs">
   <li class="active"><a href="#roster" data-toggle="tab"><i class="fa fa-list"></i> Roster</a></li>
   <li><a href="#payouts" data-toggle="tab" id="payouts-tab"><i class="fa fa-trophy"></i> Payouts</a></li>
+  <li><a href="#draftrosters" data-toggle="tab" id="payouts-tab"><i class="fa fa-eye"></i> Draft Rosters</a></li>
+  <% if current_user %>
+  	<% if current_user == @team.user %>
+  		<li><a href="#mailboxer" data-toggle="tab"><i class="fa fa-inbox"></i> Mailbox <span class="badge"><%= current_user.mailbox.inbox.unread(current_user).count %></a></span></li>
+  		<% end %>
+  <% end %>
 </ul>
 
 <!-- Tab panes -->
@@ -53,7 +59,22 @@
 			</div><!-- end of col-md-4-->	
 		</div><!-- end of row -->
   </div>
-  
+
+  <div class="tab-pane fade" id="draftrosters">
+  	Draft Rosters here
+  </div>
+
+  <% if current_user %>
+  	<% if current_user == @team.user %>
+			<div class="tab-pane fade" id="mailboxer">
+				<br />
+				<%= render 'mailboxer_toolbar' %>
+				<%= render 'mailboxer' %>
+				
+					
+			</div>
+		<% end %>
+  <% end %>
 </div>
 		
 
