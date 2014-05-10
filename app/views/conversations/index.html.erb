@@ -6,13 +6,26 @@
 	<div class="col-md-7">
 		<%= render '/teams/mailboxer_toolbar' %>
 
-		<p class="h2">Inbox</p>
-		  <%= render mailbox.inbox %>
+		<ul class="nav nav-tabs">
+		  <li class="active"><a href="#inbox" data-toggle="tab">Inbox</a></li>
+		  <li><a href="#sentbox" data-toggle="tab">Sentbox</a></li>
+		  <li><a href="#trash" data-toggle="tab">Trash</a></li>
+		</ul>
 
-		<p class="h2">Sentbox</p>
-		  <%= render mailbox.sentbox %>
-
-		<p class="h2">Trash</p>
-		  <%= render mailbox.trash %>
+		<!-- Tab panes -->
+		<div class="tab-content">
+		  <div class="tab-pane active fade in" id="inbox">
+		  	<p class="h2">Inbox</p>
+		  		<%= render mailbox.inbox %>
+		  </div>
+		  <div class="tab-pane fade" id="sentbox">
+		  	<p class="h2">Sentbox</p>
+		  		<%= render mailbox.sentbox %>
+		  </div>
+		  <div class="tab-pane fade" id="trash">
+		 	 	<p class="h2">Trash</p>
+		  		<%= render mailbox.trash %>
+			</div>
+		</div>
 	</div>
 </div>

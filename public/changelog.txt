@@ -8,6 +8,7 @@ Version 2.5 [2014/05/xx]
 - Added mailboxer gem to handle User inboxes
 - Moved mailbox from the root page to teams#show
 - Added "Draft Rosters" tab to Team#show
+- Changed top nav to show all user-related links as a dropdown list under User avatar
 
 
 Version 2.4 [2014/04/23]

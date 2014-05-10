@@ -102,12 +102,6 @@
 									<li><a href="/faqs"><i class="fa fa-question-circle"></i> FAQs</a></li>
 									<li><a href="/events"><i class="fa fa-calendar"></i> Events</a></li>
 									<li><a href="/super_bowls"><i class="fa fa-ticket"></i> Super Bowls</a></li>
-									<% if current_user %> 
-										<li><%= link_to("/teams/#{current_user.team.to_param}/draft_rosters") do %>
-												<i class="fa fa-eye"></i> Draft rosters
-											<% end %>
-										</li>
-									<% end %>
 								</ul>
 							</li>
 							
@@ -124,14 +118,29 @@
 
 			  		</li>
 			  		<% if current_user %>
-			  			<li id="li-user-first-name"><%= link_to (image_tag current_user.avatar.url(:tiny)) + " " + current_user.first_name, current_user.team %>
+			  			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= image_tag current_user.avatar.url(:tiny) %>&nbsp;<b class="caret"></a></b>
+			  			
+			  					<ul class="dropdown-menu">
+			  						<li id="li-user-first-name"><%= link_to (image_tag current_user.avatar.url(:tiny)) + " " + current_user.team.team_name, current_user.team %></li> 
+			  						<li><%= link_to("/teams/#{current_user.team.to_param}/draft_rosters") do %>
+												<i class="fa fa-eye"></i> Draft rosters
+											<% end %>
+										</li>
+										<li>
+											 <a href="/conversations"><i class="fa fa-inbox"></i> Messages</a>
+										</li>
+
+										<li id="logout">
+											<%= link_to(destroy_user_session_path, method: :delete) do %>
+												<i class="fa fa-sign-out"></i> Log out</a>
+											<% end %>
+										</li>
+			  					</ul>
+			  			</li>
 						<% if current_user.role == "admin" %>
 							<li><a href="/admin"><i class="fa fa-cogs"></i> Admin</a></li>
 						<% end %>
 
-						<li id="logout"><%= link_to(destroy_user_session_path, method: :delete) do %>
-									<i class="fa fa-sign-out"></i> Log out</a>
-								<% end %></li>
 					<% else %>
 						<li><a href="<%= new_user_session_path %>"><i class="fa fa-sign-in"></i> Login</a></li>
 					<% end %>

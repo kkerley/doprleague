@@ -3,7 +3,8 @@
 <small>A conversation with
 <% conversation.participants.each do |participant| %>
  <% unless participant == current_user %>
-  <%= link_to participant.display_name, participant.team %>, last updated on <%= conversation.updated_at.strftime("%a, %m/%e/%Y @ %I:%M %p") %>
+  <%= link_to participant.display_name, participant.team %><br />
+  <span style="font-size: 80%">last updated on <%= conversation.updated_at.strftime("%a, %m/%e/%Y @ %I:%M %p") %></span>
  <% end %>
 <% end %>
 </small>
