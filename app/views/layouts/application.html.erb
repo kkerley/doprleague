@@ -97,7 +97,7 @@
 									<li><a href="/polls"><i class="fa fa-tasks"></i> Facebook polls</a></li>
 									<li><a href="/salary_progressions"><i class="fa fa-money"></i> Salary progressions</a></li>
 									<li><a href="/contracts"><i class="fa fa-file-text"></i> Contracts</a></li>
-									<li><a href="/payouts"><i class="fa fa-trophy"></i> Payouts &amp; awards</a></li>
+									<li><a href="/payouts"><i class="fa fa-trophy"></i> League Payouts &amp; awards</a></li>
 									<li><a href="/standings"><i class="fa fa-list-ol"></i> All-time standings</a></li>
 									<li><a href="/faqs"><i class="fa fa-question-circle"></i> FAQs</a></li>
 									<li><a href="/events"><i class="fa fa-calendar"></i> Events</a></li>
@@ -135,6 +135,10 @@
 										</li>
 			  						<li><%= link_to("/teams/#{current_user.team.to_param}/#draftrosters") do %>
 												<i class="fa fa-eye"></i> Draft rosters
+											<% end %>
+										</li>
+										<li><%= link_to("/teams/#{current_user.team.to_param}/#payouts") do %>
+												<i class="fa fa-trophy"></i> Payouts
 											<% end %>
 										</li>
 										<li id="logout">

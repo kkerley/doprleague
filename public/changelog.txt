@@ -16,7 +16,7 @@ Version 2.5 [2014/05/xx]
 - Added unread conversation count + badge to the dropdown menu
 - Added total # of messages in a conversation to the inbox/sent/trash views
 - Added a tooltip to the global search button to remind that A BLANK SEARCH WILL RETURN THE MASTER LIST OF PLAYERS
-
+- Prettied up the conversations#show view; made it look more conversation-like
 
 
 Version 2.4 [2014/04/23]
