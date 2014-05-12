@@ -12,6 +12,6 @@ class MessagesController < ApplicationController
     @recipient = User.find(params[:recipient])
     current_user.send_message(@recipient, params[:body], params[:subject])
     flash[:notice] = "Message has been sent!"
-    redirect_to :conversations
+    redirect_to "/teams/#{current_user.team.to_param}/#inbox"
   end
 end

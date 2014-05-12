@@ -2,7 +2,12 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.5 [2014/05/xx]
+Version 2.5.1 [2014/05/11]
+--------------------------------------------------
+- Fixed an issue with the mailboxer initializer attemping to send emails to notify message recipients of a new message
+- Changed the redirect after sending a new message to go to the teams#show inbox tab
+
+Version 2.5 [2014/05/11]
 --------------------------------------------------
 - Upgraded to Rails 3.2.18
 - Added mailboxer gem to handle User inboxes
