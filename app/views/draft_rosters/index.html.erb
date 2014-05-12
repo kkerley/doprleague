@@ -1,25 +1,4 @@
 <% content_for :title, "#{@team.team_name}'s draft rosters" %>
 <% content_for :section_subtitle, "Create watch lists for players for the draft or whenever." %>
 
-
-<ul>
-  <% @draft_rosters.each do |draft_roster| %>
-    <li>
-      <strong><%= link_to draft_roster.name, team_draft_roster_path(@team, draft_roster) %></strong> [<%= draft_roster.players.count %> players on this list]
-      
-      
-      <% if current_user %>
-        <% if can? :manage, draft_roster %>
-          <%= link_to(edit_team_draft_roster_path(@team, draft_roster), :class => 'label label-warning') do -%><i class="fa fa-pencil-square-o"></i> Edit<%- end %>&nbsp;
-          <%= link_to([@team, draft_roster], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'label label-danger') do %>
-            <i class="fa fa-times-circle-o"></i> Delete
-          <% end %> 
-        <% end %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-
-
-
-<%= link_to 'New Draft roster', new_team_draft_roster_path %>
+<%= render 'draft_rosters' %>

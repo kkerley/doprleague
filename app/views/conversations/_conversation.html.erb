@@ -1,6 +1,11 @@
 <%= content_tag_for(:div, conversation) do |conversation| %>
-  	<i class="fa fa-comment-o"></i> 
-    <strong><%= link_to conversation.subject, conversation %></strong> <br /><small class="muted">
+  	
+    <% if conversation.is_read?(current_user) %>
+      <i class="fa fa-comments-o"></i>
+    <% else %>
+      <i class="fa fa-comments"></i>
+    <% end %>
+    <strong><%= link_to conversation.subject, conversation %></strong> (<%= conversation.messages.count %>) <br /><small class="muted">
     	<% conversation.participants.each do |participant| %>
 			 <% unless participant == current_user %>
 			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with <%= link_to participant.display_name, participant.team %>, last updated on <%= conversation.updated_at.strftime("%a, %m/%e/%Y @ %I:%M %p") %>

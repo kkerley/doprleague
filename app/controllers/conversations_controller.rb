@@ -6,6 +6,11 @@ class ConversationsController < ApplicationController
     @conversations ||= current_user.mailbox.inbox.all
   end
 
+  def show
+  	@receipts = mailbox.receipts_for(conversation).not_trash
+  	@receipts.mark_as_read
+	end
+
   def reply
 	  current_user.reply_to_conversation(conversation, *message_params(:body, :subject))
 	  redirect_to conversation

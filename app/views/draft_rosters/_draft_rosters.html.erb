@@ -1,0 +1,29 @@
+<div class="row margin-top-2em">
+  <div class="col-md-7">  
+    <table class="table table-striped">
+      <% @draft_rosters.each do |draft_roster| %>
+        <% if current_user %>
+          <% if can? :manage, draft_roster %>
+            <tr>
+              <td><strong><%= link_to draft_roster.name, team_draft_roster_path(@team, draft_roster) %></strong></td>
+              <td>[<%= draft_roster.players.count %> players on this list]</td>
+              <td>
+                <%= link_to(edit_team_draft_roster_path(@team, draft_roster), :class => 'label label-warning') do -%><i class="fa fa-pencil-square-o"></i> Edit<%- end %>
+              </td>
+              <td><%= link_to([@team, draft_roster], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'label label-danger') do %>
+                <i class="fa fa-times-circle-o"></i> Delete
+              <% end %> </td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="col-md-4 col-md-offset-1">
+    <%= link_to(new_team_draft_roster_path(@team), class: "btn btn-success") do %>
+      <i class="fa fa-plus-circle"></i> New Draft roster
+    <% end %>
+  </div>
+
+</div>

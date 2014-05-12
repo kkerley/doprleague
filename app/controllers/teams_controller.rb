@@ -21,6 +21,7 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @messages_count = current_user.mailbox.inbox.unread(current_user).count if current_user
+    @draft_rosters = @team.draft_rosters.all
     
     @players = @team.get_subcontract_players.uniq 
     @players_to_extend = @team.available_for_extension(@players)

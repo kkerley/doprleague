@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   
-  helper_method :current_members, :past_members, :current_philip_members, :current_russell_members
+  helper_method :current_members, :past_members, :current_philip_members, :current_russell_members, :current_user_inbox
 
   # check_authorization
 
@@ -51,4 +51,7 @@ class ApplicationController < ActionController::Base
   	russell_teams
   end
 
+  def current_user_inbox
+    current_user.mailbox.inbox.unread(current_user)
+  end
 end

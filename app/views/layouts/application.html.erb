@@ -113,23 +113,30 @@
 							<div class="form-group"> 
 						    	<%= text_field_tag :query, params[:query], :class => "form-control", :placeholder => "Search players" %>
 							</div>
-							<%= submit_tag "Search", name: nil, :class => "btn btn-default" %>
+							<%= submit_tag "Search", data: { toggle: "tooltip", placement: "bottom", title: "Submit a blank search for the master players list" }, id: "btn_players_search", :class => "btn btn-default" %>
 			  		<% end %>
 
 			  		</li>
 			  		<% if current_user %>
-			  			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= image_tag current_user.avatar.url(:tiny) %>&nbsp;<b class="caret"></a></b>
+			  			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			  				<%= image_tag current_user.avatar.url(:tiny) %> 
+			  				<% if current_user_inbox.count > 0 %>
+			  					<span class="label label-danger"><%= current_user_inbox.count %></span>
+			  				<% end %>
+
+			  				<b class="caret"></b></a>
 			  			
 			  					<ul class="dropdown-menu">
 			  						<li id="li-user-first-name"><%= link_to (image_tag current_user.avatar.url(:tiny)) + " " + current_user.team.team_name, current_user.team %></li> 
-			  						<li><%= link_to("/teams/#{current_user.team.to_param}/draft_rosters") do %>
+			  						<li>
+											 <%= link_to("/teams/#{current_user.team.to_param}/#inbox") do %>
+											 	<i class="fa fa-inbox"></i> Messages <span class="badge"><%= current_user_inbox.count %></span>
+											 	<% end %>
+										</li>
+			  						<li><%= link_to("/teams/#{current_user.team.to_param}/#draftrosters") do %>
 												<i class="fa fa-eye"></i> Draft rosters
 											<% end %>
 										</li>
-										<li>
-											 <a href="/conversations"><i class="fa fa-inbox"></i> Messages</a>
-										</li>
-
 										<li id="logout">
 											<%= link_to(destroy_user_session_path, method: :delete) do %>
 												<i class="fa fa-sign-out"></i> Log out</a>

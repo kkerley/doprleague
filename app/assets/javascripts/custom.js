@@ -22,7 +22,13 @@ $(document).ready(function(){
 
 
 
+	// function for going to a specific tab
+	$(function () {
+	   var activeTab = $('[href=' + location.hash + ']');
+	   activeTab && activeTab.tab('show');
+	});
 	
+	//enabling tooltip on the global search button
+	$('#btn_players_search').tooltip();
 
-	
 });
