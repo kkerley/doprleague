@@ -2,12 +2,28 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
-Version 2.5.3 [2014/05/12]
+Version 2.5.6 [2014/05/13]
+--------------------------------------------------
+- Changed the style of unread messages in the inbox
+
+
+Version 2.5.5 [2014/05/13]
+--------------------------------------------------
+- Added default style for notifications (gray with a 0) so that it's always there in the nav
+- Made the styling logic on conversations#show more efficient
+- Updated verbiage of global search button's tooltip
+- Changed the style of the import box on players#index
+- Removed the unnecessary panel garbage from around the search box on players#index
+- Added placeholder text to the search box on players#index
+- Reordered the "League info" dropdown
+
+
+Version 2.5.4 [2014/05/12]
 --------------------------------------------------
 - Prettied up the login form
 
 
-Version 2.5.2 [2014/05/12]
+Version 2.5.3 [2014/05/12]
 --------------------------------------------------
 - Cleaned up the sign in page
 - Made the full salary progressions chart responsive

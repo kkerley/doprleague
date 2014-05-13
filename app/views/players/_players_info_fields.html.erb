@@ -5,7 +5,7 @@
 				<% if can? :manage, @players %>
 					<div class="col-md-5 col-md-offset-3">
 			
-						<div class="panel panel-success">
+						<div class="panel panel-danger">
 							<div class="panel-heading">
 				          		<p class="panel-title bold">Import players <small>only .csv accepted at this time.</small></p>
 								<small class="muted">Download full list in <%= link_to ".csv", players_path(format: "csv") %> <!-- or <% link_to ".xsl", players_path(format: "xls") %> --></small>
@@ -15,7 +15,7 @@
 										 <div class="form-group"> 
 											<%= file_field_tag :file, :class => "form-control", :style => "width: 350px" %><br />
 										</div>
-										  	<%= submit_tag "Import", :class => "btn btn-success btn-large" %>
+										  	<%= submit_tag "Import", :class => "btn btn-danger btn-large" %>
 									
 										<% end %>
 								</div>

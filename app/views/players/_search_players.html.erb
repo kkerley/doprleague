@@ -1,6 +1,6 @@
-<%= form_tag players_path, :class => "form-inline", method: :get do %>
+<%= form_tag players_path, class: "form-inline margin-bottom-2em", method: :get do %>
 	<div class="form-group"> 
-	    <%= text_field_tag :query, params[:query], :class => "form-control", :style => "width: 250px;" %>
+	    <%= text_field_tag :query, params[:query], class: "form-control", style: "width: 250px;", placeholder: "Search players" %>
 	</div>
-	<%= submit_tag "Search", name: nil, :class => "btn btn-warning btn-large" %>
+	<%= submit_tag "Search", name: nil, :class => "btn btn-success btn-large" %>
 <% end %>

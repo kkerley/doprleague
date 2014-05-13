@@ -21,11 +21,9 @@
 		
 		<% message = receipt.message %>
 
-		<% if message.sender == current_user %>
-			<div class="bg-warning img-rounded" style="padding: .5em;">
-		<% else %>
-			<div class="bg-info img-rounded" style="padding: .5em;">
-		<% end %>
+		
+			<div class="<%= message.sender == current_user ? 'bg-warning' : 'bg-info' %> img-rounded" style="padding: .5em;">
+		
 		 		<%= simple_format h message.body %>
 		 		
 			</div>
