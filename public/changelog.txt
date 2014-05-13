@@ -2,10 +2,27 @@
 Disciples of Philip Rivers (doprleague.info) site CHANGELOG
 ====================================================================================================
 
+Version 2.5.3 [2014/05/12]
+--------------------------------------------------
+- Prettied up the login form
+
+
+Version 2.5.2 [2014/05/12]
+--------------------------------------------------
+- Cleaned up the sign in page
+- Made the full salary progressions chart responsive
+
+
+Version 2.5.2 [2014/05/12]
+--------------------------------------------------
+- Fixed the Draft Rosters tab showing for everyone on teams#show
+
+
 Version 2.5.1 [2014/05/11]
 --------------------------------------------------
 - Fixed an issue with the mailboxer initializer attemping to send emails to notify message recipients of a new message
 - Changed the redirect after sending a new message to go to the teams#show inbox tab
+
 
 Version 2.5 [2014/05/11]
 --------------------------------------------------
