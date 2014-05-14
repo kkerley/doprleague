@@ -117,8 +117,8 @@
 								</td>
 							
 								<% if can? :manage, player %>
-									<td><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit", edit_player_path(player) %></td>
-									<td><i class="fa fa-minus-circle"></i> <%= link_to 'Delete', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+									<td><%= link_to edit_player_path(player) do %><i class="fa fa-pencil-square-o"></i><% end %></td>
+									<td><%= link_to player, method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-minus-circle"></i><% end %></td>
 								<% end %>
 							<% end %>
 							<td></td>

@@ -16,15 +16,29 @@
 		<div class="tab-content">
 		  <div class="tab-pane active fade in" id="inbox">
 		  	<p class="h2">Inbox</p>
-		  		<%= render mailbox.inbox %>
+		  		<% if mailbox.inbox.count > 0 %>
+		  			<%= render mailbox.inbox %>
+		  		<% else %>
+		  			No messages to display.
+		  		<% end %>
 		  </div>
 		  <div class="tab-pane fade" id="sentbox">
 		  	<p class="h2">Sentbox</p>
-		  		<%= render mailbox.sentbox %>
+		  		<% if mailbox.sentbox.count > 0 %>
+		  			<%= render mailbox.sentbox %>
+		  		<% else %>
+		  			No messages to display.
+		  		<% end %>
+		  		
 		  </div>
 		  <div class="tab-pane fade" id="trash">
 		 	 	<p class="h2">Trash</p>
-		  		<%= render mailbox.trash %>
+		 	 		<% if mailbox.trash.count > 0 %>
+		  			<%= render mailbox.trash %>
+		  		<% else %>
+		  			No messages to display.
+		  		<% end %>
+		  		
 			</div>
 		</div>
 	</div>

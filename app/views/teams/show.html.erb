@@ -92,7 +92,13 @@
   							<% else %>
   							 	<i class="fa fa-envelope-o"></i> 
   							<% end %> Inbox</p>
-						<%= render current_user.mailbox.inbox %>
+  							<hr />
+  							<% if current_user.mailbox.inbox.count > 0 %>
+					  			<%= render current_user.mailbox.inbox %>
+					  		<% else %>
+					  			<%= render 'empty_mailbox' %>
+					  		<% end %>
+						
 					</div>
 					<div class="col-md-4 col-md-offset-1">
 						<%= render "mailboxer_toolbar" %>
@@ -107,7 +113,13 @@
 				<div class="row">
 					<div class="col-md-7">
 						<p class="h3"><i class="fa fa-folder-open-o"></i> Sent</p>
-						<%= render current_user.mailbox.sentbox %>
+						<hr />
+						<% if current_user.mailbox.sentbox.count > 0 %>
+			  			<%= render current_user.mailbox.sentbox %>
+			  		<% else %>
+			  			<%= render 'empty_mailbox' %>
+			  		<% end %>
+						
 					</div>
 					<div class="col-md-4 col-md-offset-1">
 						<%= render "mailboxer_toolbar" %>
@@ -123,7 +135,13 @@
 				<div class="row">
 					<div class="col-md-7">
 						<p class="h3"><i class="fa fa-trash-o"></i> Trash</p>
-						<%= render current_user.mailbox.trash %>
+						<hr />
+						<% if current_user.mailbox.trash.count > 0 %>
+			  			<%= render current_user.mailbox.trash %>
+			  		<% else %>
+			  			<%= render 'empty_mailbox' %>
+			  		<% end %>
+						
 					</div>
 					<div class="col-md-4 col-md-offset-1">
 						<%= render "mailboxer_toolbar" %>

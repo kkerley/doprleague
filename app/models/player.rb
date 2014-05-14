@@ -1,5 +1,6 @@
 class Player < ActiveRecord::Base
   include ModifiedCurrentYear
+  include PublicActivity::Common
 
   attr_accessible :auction_value, :first_name, :last_name, :nfl_team, :position, :bye_week, :full_name, :contracts_attributes, :subcontracts_attributes
   

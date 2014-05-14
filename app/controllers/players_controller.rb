@@ -71,6 +71,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.save
+        @player.create_activity :create, owner: current_user
         format.html { redirect_to @player, notice: 'Player was successfully created.' }
         format.json { render json: @player, status: :created, location: @player }
       else
@@ -87,6 +88,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.update_attributes(params[:player])
+        @player.create_activity :update, owner: current_user
         format.html { redirect_to @player, notice: 'Player was successfully updated.' }
         format.json { head :no_content }
       else
@@ -100,6 +102,7 @@ class PlayersController < ApplicationController
   # DELETE /players/1.json
   def destroy
     @player = Player.find(params[:id])
+    @player.create_activity :destroy, owner: current_user
     @player.destroy
 
     respond_to do |format|
@@ -111,6 +114,8 @@ class PlayersController < ApplicationController
   def import
     if params[:file].present?
       Player.import(params[:file])
+      @player = Player.first # necessary to create the public_activity entry
+      @player.create_activity :import, owner: current_user
       redirect_to players_url, notice: "Players imported."
     else
       redirect_to players_url, flash: { alert: "Select a file, please." }

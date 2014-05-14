@@ -1,6 +1,24 @@
 ====================================================================================================
-Disciples of Philip Rivers (doprleague.info) site CHANGELOG
+Disciples of Philip Rivers (http://doprleague.info) site CHANGELOG
+Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com)
 ====================================================================================================
+
+Version 2.5.9 [2014/05/xx]
+--------------------------------------------------
+- Removed the words "edit" and "delete" from next to their respetive icons on players#index for admins
+- Removed Bootstrap theme
+
+
+Version 2.5.8 [2014/05/13]
+--------------------------------------------------
+- Added content to display if there are no messages in the inbox, sentbox or trash
+- Added <hr /> below the title of each mailbox view
+
+
+Version 2.5.7 [2014/05/13]
+--------------------------------------------------
+- Added public_activity tracking to the Player model
+
 
 Version 2.5.6 [2014/05/13]
 --------------------------------------------------
