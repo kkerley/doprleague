@@ -107,9 +107,10 @@ class Player < ActiveRecord::Base
       rank = <<-RANK
           ts_rank(to_tsvector(first_name), plainto_tsquery(#{sanitize(query)})) +
           ts_rank(to_tsvector(last_name), plainto_tsquery(#{sanitize(query)})) + 
-          ts_rank(to_tsvector(position), plainto_tsquery(#{sanitize(query)}))
+          ts_rank(to_tsvector(position), plainto_tsquery(#{sanitize(query)})) + 
+          ts_rank(to_tsvector(cast(auction_value as text)), plainto_tsquery(#{sanitize(query)}))
         RANK
-      where("first_name @@ :q or last_name @@ :q or position @@ :q", q: "%#{query}%").order("#{rank} desc")
+      where("first_name @@ :q or last_name @@ :q or position @@ :q or cast(auction_value as text) @@ :q", q: "%#{query}%").order("#{rank} desc")
     else
       scoped
     end

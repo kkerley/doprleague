@@ -31,4 +31,6 @@ $(document).ready(function(){
 	//enabling tooltip on the global search button
 	$('#btn_players_search').tooltip();
 
+
+
 });

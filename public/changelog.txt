@@ -7,6 +7,9 @@ Version 2.5.9 [2014/05/xx]
 --------------------------------------------------
 - Removed the words "edit" and "delete" from next to their respetive icons on players#index for admins
 - Removed Bootstrap theme
+- Touched up the admin interface some
+- Added ability to search by auction_value
+- Added indices to first_name, last_name, position and auction_value for players
 
 
 Version 2.5.8 [2014/05/13]
