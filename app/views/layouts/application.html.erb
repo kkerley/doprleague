@@ -27,22 +27,7 @@
 		  src: url('/fonts/glyphicons-halflings-regular.eot');
 		  src: url('/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 		}
-		/*
-		// retina iPads
-		@media only screen 
-  		and (min-device-width: 1536px)
-  		and (max-device-width: 2048px)
-  		and (orientation : landscape)
-  		and (-webkit-min-device-pixel-ratio: 2) {
-	      .nav-left { // STYLE HERE YOUR MIN/MAX SIZE }
-	      .nav-collapse { // STYLE HERE YOUR MIN/MAX SIZE }
-		}
-
-		// regular iPads
-		@media only screen 
-			and (min-device-width : 768px) 
-			and (max-device-width : 1024px)  { // STYLES GO HERE }
-		*/
+		
 	</style>
 
 </head>
@@ -190,7 +175,7 @@
 			
 			<div class="row">
 				<div class="col-md-12">
-					<p class="h2"><%= yield(:title) %>
+					<p class="h2 margin-bottom-1em"><%= yield(:title) %>
 					<small class="lead" style="font-weight: normal;"><%= yield(:section_subtitle) %></small></p>
 					
 			
@@ -223,7 +208,7 @@
 					
 					
 					<p class="muted credit">This site is built by Kyle Kerley using a custom Rails 3.2.18-powered content management system structured by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and served up on nginx through Phusion Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a>.</p>
-					<p class="muted credit">Site version: <strong>2.5.8</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
+					<p class="muted credit">Site version: <strong>2.5.9</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
 	            	<p class="muted credit">&copy; 2013-<%= current_year_footer %> Kyle Kerley. All rights reserved.</p>
 	                
 	            </div>

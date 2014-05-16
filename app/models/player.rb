@@ -188,7 +188,11 @@ class Player < ActiveRecord::Base
     length = self.this_year.contract.contract_length   
     auction_value = self.current_contract.subcontracts.first.salary_amount
     this_progression = SalaryProgression.find_by_auction_value(auction_value).attributes.to_a
-    next_salary = this_progression[(length + 1)][1]
+    next_salary = if self.current_contract.is_extended? 
+                    this_progression[(length + 2)][1]
+                  else
+                    this_progression[(length + 1)][1]
+                  end
     top_5_players_of_position = Player.where("position = ?", self.position).sort_by { |player| player.auction_value }.reverse.first(5)
     top_5_average = self.average_salaries(top_5_players_of_position)
     franchise_cost = self.which_is_higher_franchise_cost(top_5_average, next_salary)

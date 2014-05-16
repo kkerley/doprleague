@@ -8,8 +8,11 @@ Version 2.5.9 [2014/05/xx]
 - Removed the words "edit" and "delete" from next to their respetive icons on players#index for admins
 - Removed Bootstrap theme
 - Touched up the admin interface some
-- Added ability to search by auction_value
+- Added ability to search for players by auction_value
 - Added indices to first_name, last_name, position and auction_value for players
+- Made the placeholder text in the players#index search box more helpful
+- Added 1em of space between the bottom of the page headline on all pages
+- Fixed logic for calculating cost of franchising a player in the GM Actions tab on teams#show to account for extended contracts
 
 
 Version 2.5.8 [2014/05/13]
