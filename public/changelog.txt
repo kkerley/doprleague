@@ -3,16 +3,33 @@ Disciples of Philip Rivers (http://doprleague.info) site CHANGELOG
 Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com)
 ====================================================================================================
 
-Version 2.5.9 [2014/05/xx]
+
+Version 2.5.10 [2014/05/17]
 --------------------------------------------------
-- Removed the words "edit" and "delete" from next to their respetive icons on players#index for admins
-- Removed Bootstrap theme
-- Touched up the admin interface some
+- Added count of unread inbox items next to "Inbox" in the Mailbox dropdown on teams#show
+- Moved the upload form from players#index to a new tab on the Admin page
+- Cleaned up some poor code on the Admin and players#index pages
+- Changed the global search button color to green
+- Removed the admin toolbar from every page and put it on the Admin page only
+- Reorganized the Admin page and made fonts bigger
+- Changed the edit/delete links on players#index to match the same styles found on draft_rosters#index
+- Removed the top pagination links on players#index to try to reduce the clutter
+- Changed the way pagination works; for "All" players, 50 records per page. For position filters, it shows them all
+- Fixed up the Free Agents view
+- Added simple sorting to the players#index and players#free_agents tables; future refinement will be necessary
+- Upgraded to Font Awesome 4.1
+
+
+Version 2.5.9 [2014/05/16]
+--------------------------------------------------
+- Fixed logic for calculating cost of franchising a player in the GM Actions tab on teams#show to account for extended contracts
 - Added ability to search for players by auction_value
 - Added indices to first_name, last_name, position and auction_value for players
 - Made the placeholder text in the players#index search box more helpful
+- Removed the words "edit" and "delete" from next to their respetive icons on players#index for admins
+- Removed Bootstrap theme
+- Touched up the admin interface some
 - Added 1em of space between the bottom of the page headline on all pages
-- Fixed logic for calculating cost of franchising a player in the GM Actions tab on teams#show to account for extended contracts
 
 
 Version 2.5.8 [2014/05/13]

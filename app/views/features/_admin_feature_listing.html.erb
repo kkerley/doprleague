@@ -1,20 +1,19 @@
 <div class="row margin-bottom-1em">
-  <div class="col-md-6"><a name="feature" class="expand" style="cursor: pointer;"><%= feature.title %> <i class="fa fa-angle-down only-this"></i></a>
+  <div class="col-md-6"><p class="h4"><a name="feature" class="expand" style="cursor: pointer;"><%= feature.title %> <i class="fa fa-angle-down only-this"></i></a></p>
 	<div class="hidden-content admin-hidden">
-		<strong>CONTENT</strong><br />
-		<%= best_in_place_if current_user, feature, :content, :type => :textarea, :html_attrs => { :style => 'width: 540px' }, :display_with => lambda { |v| textilize(v).html_safe } %><br /><br />
+		<%= best_in_place_if current_user, feature, :content, type: :textarea, html_attrs: { style: 'width: 540px' }, display_with: lambda { |v| textilize(v).html_safe } %><br /><br />
 	</div>	
 	</div>
   	<div class="col-md-1 text-center">
-		<%if feature.is_published? %>
+		<p class="h4"><%if feature.is_published? %>
 			<span class="label label-success">Yes</span>
 		<% else %>
 			<span class="label label-danger">No</span>
-		<% end %>
+		<% end %></p>
 	</div>
-  <div class="col-md-1 text-center"><%= best_in_place_if current_user, feature, :homepage_order, :html_attrs => { :style => 'width: 16px' } %></div>
+  <div class="col-md-1 text-center"><p class="h4"><%= best_in_place_if current_user, feature, :homepage_order, :html_attrs => { :style => 'width: 16px' } %></p></div>
 
-  <div class="col-md-1 text-center"><%= link_to "Edit", edit_feature_path(feature), :class => 'btn btn-warning btn-small' %></div>
-  <div class="col-md-1 text-center"><%= link_to "Delete", feature, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger btn-small' %></div>
+  <div class="col-md-1 text-center"><p class="h4"><%= link_to edit_feature_path(feature), class: 'label label-warning' do -%><i class="fa fa-pencil-square-o"></i> Edit <% end %></p></div>
+  <div class="col-md-1 text-center"><p class="h4"><%= link_to feature, :confirm => 'Are you sure?', method: :delete, class: 'label label-danger' do %><i class="fa fa-minus-circle"></i>  Delete<% end %></p></div>
 
 </div>

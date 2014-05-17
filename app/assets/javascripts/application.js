@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require best_in_place
 //= require JQtextile
+//= require stupidtable
 //= require custom
 //= require_self
 //= require_tree .

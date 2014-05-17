@@ -5,7 +5,7 @@
 
   	<%= include_gon %>
   	<%= stylesheet_link_tag 	"application", :media => "all" %>
-  	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  	<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
   	<link rel="icon" 
       type="image/png" 
@@ -98,7 +98,7 @@
 							<div class="form-group"> 
 						    	<%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search players" %>
 							</div>
-							<%= submit_tag "Search", data: { toggle: "tooltip", placement: "bottom", title: "Submit a blank search to get the full players list" }, id: "btn_players_search", :class => "btn btn-default" %>
+							<%= submit_tag "Search", data: { toggle: "tooltip", placement: "bottom", title: "Submit a blank search to get the full players list" }, id: "btn_players_search", :class => "btn btn-success" %>
 			  		<% end %>
 
 			  		</li>
@@ -152,11 +152,7 @@
 					<a href="/"><img src="/assets/dopr_thin.jpg" alt="Disciples of Philip Rivers Fantasy Football League" border="0" class="img-responsive" /></a>
 				</div>
 			</div>
-			<% if current_user %>
-				<% if current_user.role == "admin" %>
-					<%= render "/layouts/admin_control_panel/admin_control_panel" %>
-				<% end %>
-			<% end %>
+		
 		
 		
 			<% if flash[:notice] %>
@@ -208,7 +204,7 @@
 					
 					
 					<p class="muted credit">This site is built by Kyle Kerley using a custom Rails 3.2.18-powered content management system structured by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and served up on nginx through Phusion Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a>.</p>
-					<p class="muted credit">Site version: <strong>2.5.9</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
+					<p class="muted credit">Site version: <strong>2.5.10</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
 	            	<p class="muted credit">&copy; 2013-<%= current_year_footer %> Kyle Kerley. All rights reserved.</p>
 	                
 	            </div>

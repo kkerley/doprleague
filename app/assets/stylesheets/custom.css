@@ -107,7 +107,7 @@ ul.list-no-display{
 }
 
 .admin-hidden{
-	background-color: rgb(245, 245, 245);
+	font-size: 1.2em;
 	margin: .5em 0;
 	padding: .8em .5em;
 }
@@ -229,3 +229,8 @@ div.conversation{
   margin-bottom: 15px;
   padding: 7px 9px;
 }
+
+
+ th[data-sort]{
+      cursor:pointer;
+    }

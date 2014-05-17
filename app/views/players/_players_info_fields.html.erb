@@ -1,42 +1,7 @@
-
-			
-			
-			<% if current_user %>
-				<% if can? :manage, @players %>
-					<div class="col-md-5 col-md-offset-2">
-			
-						<div class="panel panel-danger">
-							<div class="panel-heading">
-				          		<p class="panel-title bold">Import players <small>only .csv accepted at this time.</small></p>
-								<small class="muted">Download full list in <%= link_to ".csv", players_path(format: "csv") %> <!-- or <% link_to ".xsl", players_path(format: "xls") %> --></small>
-				        	</div>
-								<div class="panel-body">
-										<%= form_tag import_players_path, :class => "form-inline", multipart: true do %>
-										 <div class="form-group"> 
-											<%= file_field_tag :file, :class => "form-control", :style => "width: 350px" %><br />
-										</div>
-										  	<%= submit_tag "Import", :class => "btn btn-danger btn-large" %>
-									
-										<% end %>
-								</div>
-						</div>
-					</div>		
-				<% end %>
-			<% end %>
-		
-		
-		
-		</div><!-- end of row -->
-			
-				
-			
-			
 		<div class="panel panel-default">
 			<div class="panel-heading">
           <p class="panel-title bold">NFL personnel</p>
-					<small class="muted">
-						Download full list in <%= link_to ".csv", players_path(format: "csv") %> <!-- or <% link_to ".xsl", players_path(format: "xls") %> -->
-					</small>
+					
 				
         	</div>
         	<div class="search-filters btn-group">
@@ -48,9 +13,11 @@
 						<a href="?utf8=✓&query=TE" class="btn btn-default">TE</a> 
 						<a href="?utf8=✓&query=K" class="btn btn-default">K</a> 
 						<a href="?utf8=✓&query=DEF" class="btn btn-default">DEF</a>
-						<br />
-        		<%= will_paginate @players, renderer: BootstrapPagination::Rails %>
+						
+        		
         	</div>
+
+
 
 
         	<div class="table-responsive">
@@ -58,12 +25,12 @@
 							<thead>
 								<tr>
 									<th></th>
-									<th data-sort="string">Name</th>
+									<th data-sort="string">Name <i class="fa fa-sort"></i></th>
 									
 									<th class="hidden-sm hidden-xs">Position</th>
 									
-									<th data-sort="int">Salary</th>
-									<th data-sort="string">Auction</th>
+									<th>Salary</th>
+									<th data-sort="int">Auction <i class="fa fa-sort"></i></th>
 									<th class="hidden-sm hidden-xs">Bye</th>
 									<th>Owned by</th>
 									<th><!-- contract link --></th>
@@ -91,7 +58,7 @@
 											$<%= player.this_year.salary_amount %>
 										<% end %>
 									</strong></td>
-									<td>$<%= player.auction_value %></td>
+									<td data-sort-value="<%= player.auction_value %>">$<%= player.auction_value %></td>
 									<td class="hidden-sm hidden-xs"><%= player.bye_week %></td>
 									<% if player.is_contracted? %>
 										<td>
@@ -117,8 +84,8 @@
 										</td>
 									
 										<% if can? :manage, player %>
-											<td><%= link_to edit_player_path(player) do %><i class="fa fa-pencil-square-o"></i><% end %></td>
-											<td><%= link_to player, method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-minus-circle"></i><% end %></td>
+											<td><%= link_to edit_player_path(player), :class => 'label label-warning' do %><i class="fa fa-pencil-square-o"></i> Edit<% end %></td>
+											<td><%= link_to player, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %></td>
 										<% end %>
 									<% end %>
 									<td></td>

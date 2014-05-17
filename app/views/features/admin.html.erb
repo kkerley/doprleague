@@ -1,55 +1,60 @@
 <% content_for :title, "Administrative control" %>
 <% content_for :section_subtitle, "Edit shown content inline by clicking on the text. The rest must be done by clicking \"Edit.\"" %>
 
+<%= render "/layouts/admin_control_panel/admin_control_panel" %>
 
 <ul class="nav nav-tabs margin-top-2em">
   <li class="active"><a href="#announcements" data-toggle="tab"><i class="fa fa-exclamation-circle"></i> Announcements</a></li>
-  <li><a href="#constitution" data-toggle="tab"><i class="fa fa-book"></i> Articles of the constitution</a></li>
+  <li><a href="#constitution" data-toggle="tab"><i class="fa fa-book"></i> Constitution</a></li>
   <li><a href="#faqs" data-toggle="tab"><i class="fa fa-question-circle"></i> FAQs</a></li>
   <li><a href="#fbpolls" data-toggle="tab"><i class="fa fa-tasks"></i> Facebook polls</a></li>
+  <li><a href="#players" data-toggle="tab"><i class="fa fa-bullhorn"></i> NFL players</a></li>
   <li><a href="#members" data-toggle="tab"><i class="fa fa-users"></i> Members</a></li>
 </ul>
 
-
 <!-- Tab panes -->
 <div class="tab-content">
+  
+
   <div class="tab-pane fade in active" id="announcements">
   	<div class="row"><br/><br/>
-			<div class="col-md-12"><p class="headline"><a href="/" style="color: #333;">Announcements</a></p></div>
+			<div class="col-md-12"><p class="headline"><a href="/" style="color: #333;"><i class="fa fa-exclamation-circle"></i> Announcements</a></p></div>
+		</div>
+		<div class="row">
 		  	<div class="col-md-12">               
 		    	<%= render 'admin_feature_listing_header' %>
 		        <% @announcements.each do |feature| %>
 		 			<%= render 'admin_feature_listing', :feature => feature %>
 				<% end %>
-				<br />
-				<hr />
+				
 			</div>
 		</div>
   </div><!-- end of announcements -->
 
   <div class="tab-pane fade" id="constitution">
   	<div class="row "><br/><br/>
-			<div class="col-md-12"><p class="headline"><a href="/constitution" style="color: #333;">Articles of the constitution</a></p></div>
+			<div class="col-md-12"><p class="headline"><a href="/constitution" style="color: #333;"><i class="fa fa-book"></i> Constitution</a></p></div>
+		</div>
+		<div class="row">
 		  	<div class="col-md-12">               
 		    	<%= render 'admin_feature_listing_header' %>
 		       	<% @constitution_features.each do |feature| %>
 		 			<%= render 'admin_feature_listing', :feature => feature %>
 				<% end %>
-				<br />
-				<hr />
 			</div>
 		</div>
   </div><!-- end of constitution -->
 
   <div class="tab-pane fade" id="faqs">
   	<div class="row "><br/><br/>
-			<div class="col-md-12"><p class="headline"><a href="/faqs" style="color: #333;">FAQs</a></p></div>
+			<div class="col-md-12"><p class="headline"><a href="/faqs" style="color: #333;"><i class="fa fa-question-circle"></i> FAQs</a></p></div>
+		</div>
+		<div class="row">
 		  	<div class="col-md-12">               
 		    	<%= render 'admin_feature_listing_header' %>
 		       	<% @faqs.each do |feature| %>
 		 			<%= render 'admin_feature_listing', :feature => feature %>
 				<% end %>
-				<br />
 				<hr />
 			</div>
 		</div>
@@ -57,28 +62,53 @@
 
   <div class="tab-pane fade" id="fbpolls">
   	<div class="row "><br/><br/>
-			<div class="col-md-12"><p class="headline"><a href="/polls" style="color: #333;">Facebook polls</a></p></div>
+			<div class="col-md-12"><p class="headline"><a href="/polls" style="color: #333;"><i class="fa fa-tasks"></i> Facebook polls</a></p></div>
+		</div>
+		<div class="row">
 		  	<div class="col-md-12">               
 		    	<%= render 'admin_feature_listing_header' %>
 		       	<% @facebook_polls.each do |feature| %>
 		 			<%= render 'admin_feature_listing', :feature => feature %>
 				<% end %>
-				<br />
-				<hr />
 			</div>
 		</div>
   </div><!-- end of fbpolls -->
 
+  <div class="tab-pane fade" id="players">
+  	<div class="row"><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/" style="color: #333;"><i class="fa fa-bullhorn"></i> NFL players</a></p></div>
+		</div>
+		<div class="row">
+		  <div class="col-md-5">               
+		    <p class="h2"><small class="muted">Download full list in <%= link_to ".csv", players_path(format: "csv") %></small></p>	
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+				    <p class="panel-title bold">Import players <small>only .csv accepted at this time.</small></p>
+				  </div>
+					<div class="panel-body">
+						<%= form_tag import_players_path, :class => "form-inline", multipart: true do %>
+							<div class="form-group"> 
+								<%= file_field_tag :file, :class => "form-control", :style => "width: 350px" %><br />
+							</div>
+							<%= submit_tag "Import", :class => "btn btn-danger btn-large" %>
+									
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div><!-- end of NFL players -->
+
   <div class="tab-pane fade" id="members">
   	<div class="row "><br/><br/>
-			<div class="col-md-12"><p class="headline"><a href="/members" style="color: #333;">Members</a></p></div>
+			<div class="col-md-12"><p class="headline"><a href="/members" style="color: #333;"><i class="fa fa-users"></i> Members</a></p></div>
+		</div>
+		<div class="row">
 		  	<div class="col-md-12">               
 		       	<%= render 'admin_user_management_header' %>
 		       	<% @users.each do |user| %>
 		 			<%= render 'admin_user_management', :user => user %>
 				<% end %>
-				<br />
-				<hr />
 			</div>
 		</div>
   </div><!-- end of members -->

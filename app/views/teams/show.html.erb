@@ -21,7 +21,7 @@
   							 	<i class="fa fa-envelope"></i>
   							<% else %>
   							 	<i class="fa fa-envelope-o"></i> 
-  							<% end %> Inbox</a>
+  							<% end %> Inbox (<%= current_user.mailbox.inbox.unread(current_user).count %>)</a> 
   				</li>
   				<li><a href="#sentbox" data-toggle="tab"><i class="fa fa-folder-open-o"></i> Sent</a></li>
   				<li><a href="#trash" data-toggle="tab"><i class="fa fa-trash-o"></i> Trash</a></li>
