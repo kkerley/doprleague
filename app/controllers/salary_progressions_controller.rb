@@ -92,7 +92,7 @@ class SalaryProgressionsController < ApplicationController
       SalaryProgression.import(params[:file])
       redirect_to salary_progressions_url, notice: "Salary chart imported."
     else
-      redirect_to salary_progressions_url, flash: { alert: "Select a file, please." }
+      redirect_to '/admin#salaries', flash: { alert: "Select a file, please." }
     end
   end
 end

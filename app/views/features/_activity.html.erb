@@ -6,9 +6,9 @@
   			 	<% if activity.key.split(".")[1] == "create" %>
   			 		<span class="label label-success" style="display: inline-block;"><i class="fa fa-plus-circle"></i> </span>
   			 	<% elsif activity.key.split(".")[1] == "update" %>
-  			 		<span class="label label-warning" style="display: inline-block;"><i class="fa fa-pencil-square-o"></i> </span>
+  			 		<span class="label label-warning" style="display: inline-block;"><i class="fa fa-history"></i> </span>
   			 	<% elsif activity.key.split(".")[1] == "destroy" %>
-  			 		<span class="label label-danger" style="display: inline-block;"><i class="fa fa-minus-circle"></i> </span>
+  			 		<span class="label label-danger" style="display: inline-block;"><i class="fa fa-trash-o"></i> </span>
   			 	<% elsif activity.key.split(".")[1] == "import" %>
   			 		<span class="label label-primary" style="display: inline-block;"><i class="fa fa-cloud-upload"></i> </span>
   			 	<% else %>

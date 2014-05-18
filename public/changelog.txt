@@ -3,6 +3,12 @@ Disciples of Philip Rivers (http://doprleague.info) site CHANGELOG
 Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com)
 ====================================================================================================
 
+Version 2.5.13 [2014/05/18]
+--------------------------------------------------
+- Fixed the import logic for players and salaray_progressions to redirect to the Admin page if no file is selected before hitting the "Import" button
+- Changed the icon for destroyed and updated items in the activity feed
+
+
 
 Version 2.5.12 [2014/05/18]
 --------------------------------------------------

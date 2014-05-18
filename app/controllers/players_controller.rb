@@ -122,7 +122,7 @@ class PlayersController < ApplicationController
       @player.create_activity :import, owner: current_user
       redirect_to players_url, notice: "Players imported."
     else
-      redirect_to players_url, flash: { alert: "Select a file, please." }
+      redirect_to '/admin#players', flash: { alert: "Select a file, please." }
     end
   end
 
