@@ -1,7 +1,7 @@
 updated 
 
 <% if activity.trackable %>
-	<%= link_to activity.trackable.full_name, activity.trackable %>'s information.<br /><small class="muted"><%= l activity.created_at, format: :feed %></small>
+	<%= link_to activity.trackable.full_name, activity.trackable %>'s information.
 <% else %>
 	a player who has since been removed from the site.
-<% end %>
+<% end %><br /><small class="muted"><%= l activity.created_at, format: :feed %></small>

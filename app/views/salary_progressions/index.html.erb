@@ -1,5 +1,5 @@
 <% content_for :title, "Salary progressions" %>
-<% content_for :section_subtitle, "The chart of contract prices for five years out based on auction value." %>
+<% content_for :section_subtitle, "The chart of contract costs for 20 years out based on auction value." %>
 
 
 <% if current_user %>
@@ -8,17 +8,17 @@
 		<div class="row">
 			<div class="col-md-5">
 
-				<div class="panel panel-success margin-bottom-4em">
+				<div class="panel panel-danger margin-bottom-4em">
 					<div class="panel-heading">
 		          		<p class="panel-title bold">Import salary progressions <small class="muted" style="font-weight: normal;">only .csv accepted at this time.</small></p>
 						<small class="muted">Download full list in <%= link_to ".csv", salary_progressions_path(format: "csv") %></small>
 		        	</div>
 						<div class="panel-body">
-								<%= form_tag import_salary_progressions_path, :class => "form-inline", multipart: true do %>
+								<%= form_tag import_salary_progressions_path, class: "form-inline", multipart: true do %>
 								 <div class="form-group"> 
-									<%= file_field_tag :file, :class => "form-control", :style => "width: 350px" %><br />
+									<%= file_field_tag :file, class: "form-control", style: "width: 350px" %><br />
 								</div>
-								  	<%= submit_tag "Import", :class => "btn btn-success btn-large" %>
+								  	<%= submit_tag "Import", class: "btn btn-danger btn-large" %>
 						
 								<% end %>
 						</div>
@@ -35,7 +35,7 @@
 	
 		<div class="panel panel-default">
 			<div class="panel-heading">
-      		<p class="panel-title bold">Salaries</p>
+      		<p class="panel-title"><i class="fa fa-money"></i> Salary progressions</p>
     	</div>
     	<div class="table-responsive">
 	      <table cellspacing="0" cellpadding="0" border="0" class="table table-condensed table-striped table-hover">

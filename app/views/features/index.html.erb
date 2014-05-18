@@ -25,7 +25,7 @@
 	<div class="col-md-4 hidden-xs"><br />
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-      	<p class="panel-title bold"><a href="/members/">The league</a></p>
+      	<p class="panel-title"><a href="/members/"><i class="fa fa-list-alt"></i> The league</a></p>
     	</div>
         	
 			<table class="table table-striped" cellpadding="0" cellspacing="0" border="0">
@@ -34,7 +34,7 @@
 					<td colspan="4"><strong>&nbsp;&nbsp;Philip Division</strong></td>
 				</tr>
 				<% current_philip_members.each do |user|%>
-					<%= render '/users/member_list_nav', :user => user %>
+					<%= render '/users/member_list_nav', user: user %>
 				<% end %>
 				<tr>
 					
@@ -42,7 +42,7 @@
 				</tr>
 
 				<% current_russell_members.each do |user|%>
-					<%= render '/users/member_list_nav', :user => user %>
+					<%= render '/users/member_list_nav', user: user %>
 				<% end %>
 			</table>
 			

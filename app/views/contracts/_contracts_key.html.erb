@@ -1,16 +1,11 @@
 <div class="panel panel-default">
-	<div class="panel-body">
+	
 		<%= render "/contracts/contract_clauses_key" %>
 		<table class="table table-condensed">
 			<tbody>
 				<tr>
 					<td></td>
-					<td>Buyouts:</td>
-					<td><%= link_to buyouts_contracts.count, "/contracts/buyouts" %></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>Extensions:</td>
+					<td>Extended:</td>
 					<td><%= link_to extensions_contracts.count, "/contracts/extensions" %></td>
 				</tr>
 				<tr>
@@ -20,10 +15,15 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td>Extended and franchised:</td>
+					<td>Extended &amp; franchised:</td>
 					<td><%= link_to both_contracts.count, "/contracts/extended_and_franchised" %></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>Bought out:</td>
+					<td><%= link_to buyouts_contracts.count, "/contracts/buyouts" %></td>
 				</tr>
 			</tbody>
 		</table>
-	</div>
+	</div><!-- end of panel-body -->
 </div>

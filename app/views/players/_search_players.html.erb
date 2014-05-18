@@ -1,6 +1,10 @@
 <%= form_tag players_path, class: "form-inline margin-bottom-2em", method: :get do %>
-	<div class="form-group"> 
-	    <%= text_field_tag :query, params[:query], class: "form-control", style: "width: 340px;", placeholder: "Search by name, position or auction value (no $)" %>
+	<div class="input-group"> 
+	  <%= text_field_tag :query, params[:query], class: "form-control",  placeholder: "Search by name, position or auction value (no $)" %>
+		<span class="input-group-btn">
+			<%= button_tag name: nil, class: "btn btn-success btn-large" do %>
+				<i class="fa fa-search"></i>
+			<% end %>
+		</span>
 	</div>
-	<%= submit_tag "Search", name: nil, :class => "btn btn-success btn-large" %>
 <% end %>

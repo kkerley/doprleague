@@ -1,5 +1,5 @@
 <% if activity.trackable %>
-	added <%= link_to activity.trackable.full_name, activity.trackable %> to the master players list.<br /><small class="muted"><%= l activity.created_at, format: :feed %></small>
+	added <%= link_to activity.trackable.full_name, activity.trackable %> to the master players list.
 <% else %>
 	added a new player who has since been removed from the site.
-<% end %>
+<% end %><br /><small class="muted"><%= l activity.created_at, format: :feed %></small>

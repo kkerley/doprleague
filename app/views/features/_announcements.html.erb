@@ -9,7 +9,7 @@
 
 				<% if current_user %>
 					<% if can? :manage, announce %>
-						<p><i class="fa fa-pencil-square-o"></i>  <%= link_to 'Edit announcement', edit_feature_path(announce) %></p>
+						<p><i class="fa fa-pencil-square-o"></i> <%= link_to 'Edit announcement', edit_feature_path(announce) %></p>
 					<% end %>
 				<% end %>
 

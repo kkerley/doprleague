@@ -2,7 +2,7 @@
 <% content_for :section_subtitle, "Player and contract information." %>
 
 <div class="row">
-	<div class="col-md-7">
+	<div class="col-md-7 col-xs-6">
 		
 		<% if @player.is_contracted? %>
 			<p class="lead margin-bottom-2em"><span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> Contracted to <%= link_to @player.this_year.team.team_name, @player.this_year.team %> as of <%= current_year %></p>
@@ -75,7 +75,7 @@
 		<% end %>
 		
 	</div>
-	<div class="col-md-5"><br />
+	<div class="col-md-5 col-xs-6"><br />
 		
 		<% if @player.is_contracted? && !@player.this_year.contract.is_extended && !@player.this_year.contract.is_franchised %>
 			<div class="bs-callout bs-callout-danger">

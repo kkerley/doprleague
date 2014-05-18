@@ -2,6 +2,7 @@
 	<div class="col-md-9">
 		
 		<div class="panel panel-default">
+			<div class="panel-heading"><p class="panel-title"><i class="fa fa-file-text-o"></i> Contracts</p></div>
 			
 			<div class="table-responsive"><br />	
 				<table class="table table-condensed table-striped">
@@ -39,13 +40,13 @@
 								</td>
 								<td class="<%= contract.is_bought_out ? 'bought-out' : contract.is_extended && contract.is_franchised ? 'extended_and_franchised'  : contract.is_extended ? 'extended' : contract.is_franchised ? 'franchised' :'' %>">
 									<% if contract.is_bought_out %> 
-										<%= link_to "bought out", contract %> by <%= link_to Team.find(contract.bought_out_by_team_id).team_name, Team.find(contract.bought_out_by_team_id) %>
+										<%= link_to "bought out", contract %> by <%= image_tag Team.find(contract.bought_out_by_team_id).user.avatar.url(:tiny) %> <%= link_to Team.find(contract.bought_out_by_team_id).team_name, Team.find(contract.bought_out_by_team_id) %>
 									<% else %> 
 										<%=link_to "contracted", contract -%>
 											<% if contract.player.is_contracted? %> 
-												to <%= link_to Team.find(contract.player.this_year.team_id).team_name, Team.find(contract.player.this_year.team) %>
+												to <%= image_tag Team.find(contract.player.this_year.team_id).user.avatar.url(:tiny) %> <%= link_to Team.find(contract.player.this_year.team_id).team_name, Team.find(contract.player.this_year.team) %>
 											<% else %>
-												to <%= link_to Team.find(contract.subcontracts.last.team_id).team_name, Team.find(contract.subcontracts.last.team_id) %>
+												to <%= image_tag Team.find(contract.subcontracts.last.team_id).user.avatar.url(:tiny) %> <%= link_to Team.find(contract.subcontracts.last.team_id).team_name, Team.find(contract.subcontracts.last.team_id) %>
 											<% end %>
 									<% end %>
 										
@@ -55,7 +56,7 @@
 								</td>
 								<% if current_user %>
 									<% if can? :manage, contract %>
-										<td class="<%= contract.is_bought_out ? 'bought-out' : contract.is_extended && contract.is_franchised ? 'extended_and_franchised'  : contract.is_extended ? 'extended' : contract.is_franchised ? 'franchised' :'' %>"><%= link_to "Delete", contract, :confirm => 'Are you sure?', :method => :delete, :class => 'label label-danger' %></td>
+										<td class="<%= contract.is_bought_out ? 'bought-out' : contract.is_extended && contract.is_franchised ? 'extended_and_franchised'  : contract.is_extended ? 'extended' : contract.is_franchised ? 'franchised' :'' %>"><%= link_to contract, confirm: 'Are you sure?', method: :delete, class: 'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %></td>
 									<% end %>
 								<% end %>
 							</tr>

@@ -1,6 +1,6 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
-          <p class="panel-title bold">NFL personnel</p>
+          <p class="panel-title"><i class="fa fa-bullhorn"></i> NFL personnel</p>
 					
 				
         	</div>
@@ -65,7 +65,7 @@
 											<span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>	
 										</td>
 										<td>
-											<%= link_to "Contract", player.current_contract, :class => "btn btn-primary btn-xs" %>
+											<%= link_to player.current_contract, :class => "btn btn-primary btn-xs" do %><i class="fa fa-file-text-o"></i><% end %>
 										</td>  
 										
 									<% else %>
