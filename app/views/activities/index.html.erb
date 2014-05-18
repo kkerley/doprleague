@@ -3,9 +3,13 @@
 
 <% @activities.each do |activity| %>
   <div class="activity">
-    <% image_tag activity.owner.avatar.url(:tiny) %> <% link_to activity.owner.display_name, activity.owner if activity.owner %>
-    <% render_activity activity %>
-
-    <%= activity.inspect %>
+  	<div class="row">
+  		<div class="col-xs-1">
+  			<% image_tag activity.owner.avatar.url(:tiny) %> <% link_to activity.owner.display_name, activity.owner if activity.owner %>
+  		</div>
+    	<div class="col-xs-11">
+    		<% render_activity activity %>
+    	</div>
+    </div>
   </div>
 <% end %>

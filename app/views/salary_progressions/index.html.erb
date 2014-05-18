@@ -1,33 +1,5 @@
 <% content_for :title, "Salary progressions" %>
-<% content_for :section_subtitle, "The chart of contract costs for 20 years out based on auction value." %>
-
-
-<% if current_user %>
-	<% if can? :manage, @salary_progressions %>
-	<hr />
-		<div class="row">
-			<div class="col-md-5">
-
-				<div class="panel panel-danger margin-bottom-4em">
-					<div class="panel-heading">
-		          		<p class="panel-title bold">Import salary progressions <small class="muted" style="font-weight: normal;">only .csv accepted at this time.</small></p>
-						<small class="muted">Download full list in <%= link_to ".csv", salary_progressions_path(format: "csv") %></small>
-		        	</div>
-						<div class="panel-body">
-								<%= form_tag import_salary_progressions_path, class: "form-inline", multipart: true do %>
-								 <div class="form-group"> 
-									<%= file_field_tag :file, class: "form-control", style: "width: 350px" %><br />
-								</div>
-								  	<%= submit_tag "Import", class: "btn btn-danger btn-large" %>
-						
-								<% end %>
-						</div>
-				</div>
-			</div>
-		</div>	
-	<% end %>
-<% end %>
-
+<% content_for :section_subtitle, "The chart of contract costs for up to 20 years out, based on auction value." %>
 
 <div class="row">
 	<div class="col-md-12"><br />

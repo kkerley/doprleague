@@ -4,6 +4,15 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.5.12 [2014/05/18]
+--------------------------------------------------
+- Caught a few more style updates needed on teams#show
+- Updated the look of public_activity entries for real this time
+- Moved the salary progressions upload form from salary_progressions#index to the Admin page
+- Fixed a few incorrect links on the Admin page
+- Changed the width of the global search to not break the layout in iPad portrait mode
+
+
 Version 2.5.11 [2014/05/18]
 --------------------------------------------------
 - Changed some CSS classes for better mobile display (players#index, players#show)
