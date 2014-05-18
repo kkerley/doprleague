@@ -1,84 +1,132 @@
 <% content_for :title, "#{@player.full_name} (#{@player.position}) for #{@player.nfl_team}" %>
 <% content_for :section_subtitle, "Player and contract information." %>
-
 <div class="row">
-	<div class="col-md-7 col-xs-6">
-		
+	<div class="col-xs-12">
 		<% if @player.is_contracted? %>
-			<p class="lead margin-bottom-2em"><span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> Contracted to <%= link_to @player.this_year.team.team_name, @player.this_year.team %> as of <%= current_year %></p>
+			<p class="lead margin-bottom-2em"><span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> Contracted to <%= image_tag @player.this_year.team.user.avatar(:mini) %> <%= link_to @player.this_year.team.team_name, @player.this_year.team %> as of <%= @player.this_year.contract.subcontracts.first.contract_year %></p>
 		<% else %>
 			<p class="lead"><span class="label label-success">FA</span> Free agent as of <%= current_year %></p>
 			<% if current_user %>
 				<p class="lead margin-bottom-2em"><i class="fa fa-pencil-square-o"></i> <%= link_to "Add a contract for #{@player.full_name}", edit_player_path(@player) %></p>
-					
 			<% end %>
-			
 		<% end %>
+	</div>
+</div>
 
+<% unless @player.is_contracted? %>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+	      		<p class="panel-title"><i class="fa fa-money"></i> Salary progression for <%= @player.full_name %> using <%= current_year %> auction value</p>
+	    	</div>
+	    	<div class="table-responsive">
+		      <table cellspacing="0" cellpadding="0" border="0" class="table table-condensed table-striped table-hover">
+						<tr>
+							<th></th>
+							<th>Auction</th>
+							<th>Y2</th>
+							<th>Y3</th>
+							<th>Y4</th>
+							<th>Y5</th>
+							<th>Y6</th>
+							<th>Y7</th>
+							<th>Y8</th>
+							<th>Y9</th>
+							<th>Y10</th>
+							<th>Y11</th>
+							<th>Y12</th>
+							<th>Y13</th>
+							<th>Y14</th>
+							<th>Y15</th>
+							<th>Y16</th>
+							<th>Y17</th>
+							<th>Y18</th>
+							<th>Y19</th>
+							<th>Y20</th>
+							<% if current_user %>
+								<% if can? :manage, @salary_progressions %>
+									<td></td>
+								<% end %>
+							<% end %>
+						</tr>
+						<%= render '/salary_progressions/non_admin_table_row', salary: @salary_progression %>
+					</table>
+					</div>
+	      </div><!-- end of panel -->
+		</div>
+	</div>
+<% end %>
+
+<div class="row">
+	<div class="col-md-7 col-xs-6">
 		<% if @contracts.count > 0 %>
 			<p class="h1">Contracts</p>
 			
 			<% @contracts.each do |contract| %>
 					
 					<% if contract == @player.current_contract %>
-					<div class="panel panel-info margin-bottom-2em">
+						<div class="panel panel-info margin-bottom-2em">
 					<% else %>
-					<div class="panel panel-default margin-bottom-2em">
+						<div class="panel panel-default margin-bottom-2em">
 					<% end %>
-					<div class="panel-heading">
-		          		
-						<p class="panel-title bold">Contract started in <%= contract.contract_start_year %> for <%= contract.full_contract_length%> years
-						<% if contract.is_extended %>
-							<i class="fa fa-plus-circle"></i> 
-						<% end %>
+							<div class="panel-heading">
+				          		
+								<p class="panel-title bold">Contract started in <%= contract.contract_start_year %> for <%= contract.full_contract_length%> years
+								<% if contract.is_extended %>
+									<i class="fa fa-plus-circle"></i> 
+								<% end %>
 
-						<% if contract.is_franchised %>
-							<i class="fa fa-tag"></i>
-						<% end %>
-						</p>
-					</div>
+								<% if contract.is_franchised %>
+									<i class="fa fa-tag"></i>
+								<% end %>
+								</p>
+							</div>
 					
-					<table class="table table-striped table-condensed">
-						<%= render "/contracts/contract_info_table", contract: contract %>
+							<table class="table table-striped table-condensed">
+								<%= render "/contracts/contract_info_table", contract: contract %>
 
-							
+									<% if contract.is_bought_out %>
+										<tr>
+											<td></td>
+											<td colspan="3"><span class="label label-danger"><i class="fa fa-exclamation-circle"></i></span> Contract bought out by 
+												<%= link_to Team.find(contract.bought_out_by_team_id).team_name, Team.find(contract.bought_out_by_team_id) %>
+											</td>
+										</tr>
+									<% end %>
 
-							<% if contract.is_bought_out %>
-								<tr>
-									<td></td>
-									<td colspan="3"><span class="label label-danger"><i class="fa fa-exclamation-circle"></i></span> Contract bought out by 
-										<%= link_to Team.find(contract.bought_out_by_team_id).team_name, Team.find(contract.bought_out_by_team_id) %>
-									</td>
-								</tr>
-							<% end %>
+									
+											<tr>
+												<td></td>
+												<td colspan="3">
+													<% if current_user %>
+														<% if can? :manage, @player %>
+															<i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this contract for #{@player.full_name}", edit_contract_path(contract) %> | 
+														<% end %>
+													<% end %> <%= link_to "View this contract", contract %>
+												</td>
+											</tr>
+									</tbody>
+								</table>
+						
+							</div>
 
-							
-									<tr>
-										<td></td>
-										<td colspan="3">
-											<% if current_user %>
-												<% if can? :manage, @player %>
-													<i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this contract for #{@player.full_name}", edit_contract_path(contract) %> | 
-												<% end %>
-											<% end %> <%= link_to "View this contract", contract %>
-										</td>
-									</tr>
-								
-
-						</tbody>
-					</table>
-					
-				</div>	
 			<% end %>
-			<%= render "/contracts/contract_clauses_key" %>
-		
+			<div class="row">
+			<div class="col-md-5 col-xs-6">
+				<div class="panel panel-default">
+					<%= render "/contracts/contract_clauses_key" %></div><!-- end of panel-body -->
+				</div>
+			</div>
+		</div>
 		<% end %>
 		
 	</div>
 	<div class="col-md-5 col-xs-6"><br />
 		
+
 		<% if @player.is_contracted? && !@player.this_year.contract.is_extended && !@player.this_year.contract.is_franchised %>
-			<div class="bs-callout bs-callout-danger">
+			<div class="bs-callout bs-callout-danger margin-top-3em">
 				<h4><i class="fa fa-plus-circle"></i> <%= @player.full_name %> is eligible for an extension</h4>
 				<p>The next step in his salary progression is  <strong>$<%= @player.to_extend_now %></strong></p>
 			</div>

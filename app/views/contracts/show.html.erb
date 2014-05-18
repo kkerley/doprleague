@@ -5,47 +5,47 @@
 		<p><%= link_to "View " + @contract.player.full_name + "'s information", @contract.player %> | <%= link_to "View all contracts", contracts_path %></p>
 
 		<% if @contract.is_bought_out %>
-					<div class="panel panel-default margin-bottom-2em">
-				<% else %>
-					<div class="panel panel-default margin-bottom-2em">
-				<% end %>
-					<div class="panel-heading">
-		          		
-						<p class="panel-title bold">Contract started in <%= @contract.contract_start_year %> for <%= @contract.full_contract_length%> <% if @contract.contract_length == 1 %>year<% else %>years<% end %>
-						<% if @contract.is_extended %>
-							<i class="fa fa-plus-circle"></i> 
-						<% end %>
-
-						<% if @contract.is_franchised %>
-							<i class="fa fa-tag"></i>
-						<% end %>
-						<br />
-						<small>Auction value: $<%= @contract.player.auction_value %></small>
-						</p>
-					</div>
-		
-		
-
-
-		<% if @contract.is_bought_out %>
-		<table class="table table-condensed">
+			<div class="panel panel-default margin-bottom-2em">
 		<% else %>
-		<table class="table table-condensed table-striped">
+			<div class="panel panel-default margin-bottom-2em">
 		<% end %>
-			<%= render 'contract_info_table', contract: @contract %>
-				<% if current_user %>
-					<% if can? :manage, @contract %>
-						<tr>
-							<td></td>
-							<td colspan="3"><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this contract", edit_contract_path(@contract) %></td>
-						</tr>
+				<div class="panel-heading">   		
+					<p class="panel-title"><i class="fa fa-file-text-o"></i> Contract started in <%= @contract.contract_start_year %> for <%= @contract.full_contract_length%> <% if @contract.contract_length == 1 %>year<% else %>years<% end %>
+					<% if @contract.is_extended %>
+						<i class="fa fa-plus-circle"></i> 
 					<% end %>
-				<% end %>
 
-			</tbody>
-		</table>
-	</div>
-		<%= render "/contracts/contract_clauses_key" %>
+					<% if @contract.is_franchised %>
+						<i class="fa fa-tag"></i>
+					<% end %>
+					<br />
+					<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Auction value: $<%= @contract.player.auction_value %></small>
+					</p>
+				</div>
+				
+				<% if @contract.is_bought_out %>
+				<table class="table table-condensed">
+				<% else %>
+				<table class="table table-condensed table-striped">
+				<% end %>
+					<%= render 'contract_info_table', contract: @contract %>
+						<% if current_user %>
+							<% if can? :manage, @contract %>
+								<tr>
+									<td></td>
+									<td colspan="3"><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this contract", edit_contract_path(@contract) %></td>
+								</tr>
+							<% end %>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
 		
 	</div>
+	<div class="col-md-3 margin-top-2em">
+		<div class="panel panel-info">
+			<%= render "/contracts/contract_clauses_key" %></div><!-- end of panel-body -->
+		</div>
+	</div>
+
 </div>

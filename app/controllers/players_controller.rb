@@ -35,6 +35,7 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @contracts = @player.contracts.order("contract_start_year desc").includes(:subcontracts)
+    @salary_progression = SalaryProgression.find_by_auction_value(@player.auction_value)
 
     if @player.is_contracted?
       @top_5_players_of_position = Player.where("position = ?", @player.position).sort_by { |player| player.auction_value }.reverse.first(5)

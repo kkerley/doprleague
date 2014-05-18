@@ -1,11 +1,13 @@
 class ContractsController < ApplicationController
+  require 'will_paginate/array'
   # before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
   load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new]
 
   # GET /contracts
   # GET /contracts.json
   def index
-    @contracts = Contract.all  
+    # @contracts = Contract.all  
+    @contracts = Contract.page(params[:page]).per_page(40).includes(:subcontracts)
 
     respond_to do |format|
       format.html # index.html.erb

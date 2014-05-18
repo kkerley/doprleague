@@ -45,26 +45,26 @@
 							<% if can? :manage, salary %>
 								<tr>
 									<td></td>
-									<td><strong>$<%= best_in_place_if current_user, salary, :auction_value, :html_attrs => { :style => 'width: 80px' } %></strong></td>
-									<td>$<%= best_in_place_if current_user, salary, :year2, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year3, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year4, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year5, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year6, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year7, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year8, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year9, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year10, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year11, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year12, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year13, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year14, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year15, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year16, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year17, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year18, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year19, :html_attrs => { :style => 'width: 80px' } %></td>
-									<td>$<%= best_in_place_if current_user, salary, :year20, :html_attrs => { :style => 'width: 80px' } %></td>							
+									<td><strong>$<%= best_in_place_if current_user, salary, :auction_value, html_attrs: { style: 'width: 80px' } %></strong></td>
+									<td>$<%= best_in_place_if current_user, salary, :year2, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year3, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year4, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year5, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year6, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year7, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year8, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year9, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year10, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year11, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year12, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year13, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year14, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year15, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year16, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year17, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year18, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year19, html_attrs: { style: 'width: 80px' } %></td>
+									<td>$<%= best_in_place_if current_user, salary, :year20, html_attrs: { style: 'width: 80px' } %></td>							
 									<td>
 											<%= link_to edit_salary_progression_path(salary) do %>
 												<i class="fa fa-pencil-square-o fa-lg"></i>
