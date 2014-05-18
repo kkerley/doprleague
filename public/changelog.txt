@@ -4,6 +4,12 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.5.15 [2014/05/19]
+--------------------------------------------------
+- Added necessary check to ensure that only admins can see "Add a contract for <player>" on players#show
+- Added current auction value for player on players#show if player is a free agent
+
+
 Version 2.5.14 [2014/05/18]
 --------------------------------------------------
 - Added pagination to contracts#index
