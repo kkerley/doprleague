@@ -4,7 +4,7 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
-Version 2.5.11 [2014/05/xx]
+Version 2.5.11 [2014/05/18]
 --------------------------------------------------
 - Changed some CSS classes for better mobile display (players#index, players#show)
 - Changed the style of the global, all and free agents search boxes
