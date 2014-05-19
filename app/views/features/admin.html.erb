@@ -8,6 +8,7 @@
   <li><a href="#constitution" data-toggle="tab"><i class="fa fa-book"></i> Constitution</a></li>
   <li><a href="#faqs" data-toggle="tab"><i class="fa fa-question-circle"></i> FAQs</a></li>
   <li><a href="#fbpolls" data-toggle="tab"><i class="fa fa-tasks"></i> Facebook polls</a></li>
+  <li><a href="#superBowls" data-toggle="tab"><i class="fa fa-ticket"></i> Super Bowls</a></li>
   <li><a href="#players" data-toggle="tab"><i class="fa fa-bullhorn"></i> NFL players</a></li>
   <li><a href="#salaries" data-toggle="tab"><i class="fa fa-money"></i> Salary progressions</a></li>
   <li><a href="#members" data-toggle="tab"><i class="fa fa-users"></i> Members</a></li>
@@ -22,12 +23,11 @@
 			<div class="col-md-12"><p class="headline"><a href="/" style="color: #333;"><i class="fa fa-exclamation-circle"></i> Announcements</a></p></div>
 		</div>
 		<div class="row">
-		  	<div class="col-md-12">               
-		    	<%= render 'admin_feature_listing_header' %>
-		        <% @announcements.each do |feature| %>
-		 			<%= render 'admin_feature_listing', :feature => feature %>
+	  	<div class="col-md-12">               
+	    	<%= render 'admin_feature_listing_header' %>
+        <% @announcements.each do |feature| %>
+ 					<%= render 'admin_feature_listing', feature: feature %>
 				<% end %>
-				
 			</div>
 		</div>
   </div><!-- end of announcements -->
@@ -37,43 +37,78 @@
 			<div class="col-md-12"><p class="headline"><a href="/constitution" style="color: #333;"><i class="fa fa-book"></i> Constitution</a></p></div>
 		</div>
 		<div class="row">
-		  	<div class="col-md-12">               
-		    	<%= render 'admin_feature_listing_header' %>
-		       	<% @constitution_features.each do |feature| %>
-		 			<%= render 'admin_feature_listing', :feature => feature %>
+	  	<div class="col-md-12">               
+	    	<%= render 'admin_feature_listing_header' %>
+	      <% @constitution_features.each do |feature| %>
+	 				<%= render 'admin_feature_listing', feature: feature %>
 				<% end %>
 			</div>
 		</div>
   </div><!-- end of constitution -->
+
 
   <div class="tab-pane fade" id="faqs">
   	<div class="row "><br/><br/>
 			<div class="col-md-12"><p class="headline"><a href="/faqs" style="color: #333;"><i class="fa fa-question-circle"></i> FAQs</a></p></div>
 		</div>
 		<div class="row">
-		  	<div class="col-md-12">               
-		    	<%= render 'admin_feature_listing_header' %>
-		       	<% @faqs.each do |feature| %>
-		 			<%= render 'admin_feature_listing', :feature => feature %>
+		  <div class="col-md-12">               
+		    <%= render 'admin_feature_listing_header' %>
+		    <% @faqs.each do |feature| %>
+		 			<%= render 'admin_feature_listing', feature: feature %>
 				<% end %>
 				<hr />
 			</div>
 		</div>
   </div><!-- end of faqs -->
 
+
   <div class="tab-pane fade" id="fbpolls">
   	<div class="row "><br/><br/>
 			<div class="col-md-12"><p class="headline"><a href="/polls" style="color: #333;"><i class="fa fa-tasks"></i> Facebook polls</a></p></div>
 		</div>
 		<div class="row">
-		  	<div class="col-md-12">               
-		    	<%= render 'admin_feature_listing_header' %>
-		       	<% @facebook_polls.each do |feature| %>
-		 			<%= render 'admin_feature_listing', :feature => feature %>
+	  	<div class="col-md-12">               
+	    	<%= render 'admin_feature_listing_header' %>
+	      <% @facebook_polls.each do |feature| %>
+		 			<%= render 'admin_feature_listing', feature: feature %>
 				<% end %>
 			</div>
 		</div>
   </div><!-- end of fbpolls -->
+
+
+  <div class="tab-pane fade in active" id="superBowls">
+  	<div class="row"><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/" style="color: #333;"><i class="fa fa-ticket"></i> Super Bowls</a></p></div>
+		</div>
+		<div class="row">
+		  	<div class="col-md-12">               
+		    	<table class="table table-striped"> 
+	        	<thead>
+	        		<tr>
+	        			<th>Year</th>
+	        			<th>AFC Team</th>
+	        			<th>NFC Team</th>
+	        			<th>AFC score</th>
+	        			<th>NFC score</th>
+	        			<th>NFL winner</th>
+	        			<th>DoPR winner</th>
+	        			<th></th>
+	        			<th></th>
+	        		</tr>
+	        	</thead>
+	        	<tbody>
+			        <% @super_bowls.each do |sb| %>
+			 					<%= render 'admin_super_bowls', sb: sb %>
+							<% end %>
+						</tbody>
+					</table>
+				
+			</div>
+		</div>
+  </div><!-- end of superBowls -->
+  
 
   <div class="tab-pane fade" id="players">
   	<div class="row"><br/><br/>
@@ -108,6 +143,7 @@
 		  </div>
 		</div>
   </div><!-- end of NFL players -->
+
 
   <div class="tab-pane fade" id="salaries">
   	<div class="row "><br/><br/>
@@ -148,11 +184,25 @@
 			<div class="col-md-12"><p class="headline"><a href="/members" style="color: #333;"><i class="fa fa-users"></i> Members</a></p></div>
 		</div>
 		<div class="row">
-		  	<div class="col-md-12">               
-		       	<%= render 'admin_user_management_header' %>
-		       	<% @users.each do |user| %>
-		 			<%= render 'admin_user_management', :user => user %>
-				<% end %>
+		  	<div class="col-md-12"> 
+		  		<table class="table table-striped">
+		  			<thead>              
+		       		<tr>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Team name</th>
+								<th>Division</th>
+								<th>Admin?</th>
+								<th></th>
+								<th></th>
+							</tr>
+		       	</thead>
+		       	<tbody>
+		       		<% @users.each do |user| %>
+		 						<%= render 'admin_user_management', :user => user %>
+							<% end %>
+						</tbody>
+					</table>
 			</div>
 		</div>
   </div><!-- end of members -->

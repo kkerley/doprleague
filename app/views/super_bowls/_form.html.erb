@@ -1,4 +1,4 @@
-<%= form_for(@super_bowl) do |f| %>
+<%= form_for @super_bowl, html: { class: "form-horizontal" } do |f| %>
   <% if @super_bowl.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@super_bowl.errors.count, "error") %> prohibited this super_bowl from being saved:</h2>
@@ -12,51 +12,71 @@
   <% end %>
 
   <% if @super_bowl.new_record? %>
-    <div class="field">
-      <%= f.label :year %><br />
-      <%= f.text_field :year, value: current_year %>
+    <div class="form-group">
+      <%= f.label :year, class: 'col-lg-3 control-label'  %>
+      <div class="col-lg-6">
+        <%= f.text_field :year, value: current_year, class: 'form-control', style: "width: 100px;" %>
+      </div>
     </div>
   <% else %>
-    <div class="field">
-      <%= f.label :year %><br />
-      <%= f.text_field :year %>
+    <div class="form-group">
+      <%= f.label :year, class: 'col-lg-3 control-label'  %>
+      <div class="col-lg-6">
+        <%= f.text_field :year, class: 'form-control' %>
+      </div>
     </div>
   <% end %>  
-  <div class="field">
-    <%= f.label :nfl_team1_id, "AFC team" %><br />
-    <%= f.select(:nfl_team1_id, NflTeam.afc.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
+  <div class="form-group">
+    <%= f.label :nfl_team1_id, "AFC team", class: 'col-lg-3 control-label'  %>
+    <div class="col-lg-6">
+      <%= f.select(:nfl_team1_id, NflTeam.afc.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :nfl_team2_id, "NFC team" %><br />
-    <%= f.select(:nfl_team2_id, NflTeam.nfc.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
+  <div class="form-group">
+    <%= f.label :nfl_team2_id, "NFC team", class: 'col-lg-3 control-label'  %>
+    <div class="col-lg-6">
+      <%= f.select(:nfl_team2_id, NflTeam.nfc.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%>
+    </div>
   </div>
   <!--
-  <div class="field">
-    <% f.label :tie_breaker %><br />
-    <% f.check_box :tie_breaker %>
+  <div class="form-group">
+    <% f.label :tie_breaker, class: 'col-lg-3 control-label'  %>
+    <div class="col-lg-6">
+      <% f.check_box :tie_breaker, class: 'form-control' %>
+    </div>
   </div>
   -->
-  <div class="field">
-    <%= f.label :nfl_team1_final_score, "AFC team final score" %><br />
-    <%= f.text_field :nfl_team1_final_score %>
+  <div class="form-group">
+    <%= f.label :nfl_team1_final_score, "AFC team final score", class: 'col-lg-3 control-label'  %>
+    <div class="col-lg-6">
+      <%= f.text_field :nfl_team1_final_score, class: 'form-control', style: "width: 100px;" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :nfl_team2_final_score, "NFC team final score" %><br />
-    <%= f.text_field :nfl_team2_final_score %>
+  <div class="form-group">
+    <%= f.label :nfl_team2_final_score, "NFC team final score", class: 'col-lg-3 control-label'  %>
+    <div class="col-lg-6">
+      <%= f.text_field :nfl_team2_final_score, class: 'form-control', style: "width: 100px;" %>
+    </div>
   </div>
  <!--
-  <div class="field">
-    <% f.label :nfl_winner_id %><br />
-    <% f.select(:nfl_winner_id, NflTeam.all.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
+  <div class="form-group">
+    <% f.label :nfl_winner_id, class: 'col-lg-3 control-label'  %>
+    <div class="col-lg-6">
+      <% f.select(:nfl_winner_id, NflTeam.all.map {|c| [c.full_team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%>
+    </div>
   </div>
 
  
-  <div class="field">
-    <% f.label :dopr_winner_id %><br />
-    <% f.select(:dopr_winner_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%><br />
+  <div class="form-group">
+    <% f.label :dopr_winner_id, class: 'col-lg-3 control-label'  %>
+    <div class="col-lg-6">
+      <% f.select(:dopr_winner_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true }, { :class => "form-control" })%>
+    </div>
   </div>
 -->
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-lg-offset-3 col-lg-6">
+       <%= f.submit class: "btn btn-success btn-large" %>
+    </div>
   </div>
 <% end %>

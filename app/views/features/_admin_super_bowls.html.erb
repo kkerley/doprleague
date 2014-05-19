@@ -1,0 +1,11 @@
+<tr>
+	<td><%= link_to sb.year, sb %></td>
+	<td><%= sb.afc_team.full_team_name %></td>
+	<td><%= sb.nfc_team.full_team_name %></td>
+	<td><%= sb.nfl_team1_final_score %></td>
+	<td><%= sb.nfl_team2_final_score %></td>
+	<td><%= sb.nfl_winner.full_team_name %></td>
+	<td><%= link_to sb.dopr_winner.team_name, sb.dopr_winner %></td>
+	<td><%= link_to edit_super_bowl_path(sb), class: 'label label-warning' do %><i class="fa fa-pencil-square-o"></i> Edit<% end %></td>
+	<td><%= link_to sb, method: :delete, data: { confirm: 'Are you sure?' }, class:'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %></td>
+</tr>

@@ -33,11 +33,7 @@
 						<th>Y18</th>
 						<th>Y19</th>
 						<th>Y20</th>
-						<% if current_user %>
-							<% if can? :manage, @salary_progressions %>
-								<td></td>
-							<% end %>
-						<% end %>
+						
 					</tr>
 					
 					<% @salary_progressions.each do |salary| %>
@@ -65,11 +61,7 @@
 									<td>$<%= best_in_place_if current_user, salary, :year18, html_attrs: { style: 'width: 80px' } %></td>
 									<td>$<%= best_in_place_if current_user, salary, :year19, html_attrs: { style: 'width: 80px' } %></td>
 									<td>$<%= best_in_place_if current_user, salary, :year20, html_attrs: { style: 'width: 80px' } %></td>							
-									<td>
-											<%= link_to edit_salary_progression_path(salary) do %>
-												<i class="fa fa-pencil-square-o fa-lg"></i>
-											<% end %>
-									</td>
+									
 								</tr>
 							<% else %>
 								<%= render 'non_admin_table_row', salary: salary %>
@@ -80,14 +72,7 @@
 						<% end %>
 					<% end %>
 					
-					<% if current_user %>
-						<% if can? :manage, @salary_progressions %>
-							<tr>
-								<td></td>
-								<td colspan="21"><span class="glyphicon glyphicon-plus-sign"></span> <%= link_to 'New salary progression', new_salary_progression_path %></td>
-							</tr>
-						<% end %>
-					<% end %>
+					
 				</table>
 				</div>
       </div><!-- end of panel -->

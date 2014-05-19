@@ -60,7 +60,7 @@
 										<span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>	
 									</td>
 									<td>
-										<%= link_to player.current_contract, :class => "btn btn-primary btn-xs" do %><i class="fa fa-file-text-o"></i><% end %>
+										<%= link_to player.current_contract, class:"btn btn-primary btn-xs" do %><i class="fa fa-file-text-o"></i><% end %>
 									</td>  
 									
 								<% else %>
@@ -79,8 +79,8 @@
 									</td>
 								
 									<% if can? :manage, player %>
-										<td><%= link_to edit_player_path(player), :class => 'label label-warning' do %><i class="fa fa-pencil-square-o"></i> Edit<% end %></td>
-										<td><%= link_to player, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %></td>
+										<td><%= link_to edit_player_path(player), class:'label label-warning' do %><i class="fa fa-pencil-square-o"></i> Edit<% end %></td>
+										<td><%= link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class:'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %></td>
 									<% end %>
 								<% end %>
 								<td></td>

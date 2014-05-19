@@ -5,7 +5,7 @@
   <div class="col-md-9">
     <p class="h1">
       <% unless @super_bowl.nfl_team1_id.nil? %>
-        <%= link_to NflTeam.find(@super_bowl.nfl_team1_id).full_team_name, NflTeam.find(@super_bowl.nfl_team1_id) %>: 
+        <%= link_to @super_bowl.afc_team.full_team_name, @super_bowl.afc_team %>: 
         <%= @super_bowl.nfl_team1_final_score %>
 
       <% else %> 
@@ -14,7 +14,7 @@
      vs.
      
       <% unless @super_bowl.nfl_team2_id.nil? %>
-        <%= link_to NflTeam.find(@super_bowl.nfl_team2_id).full_team_name, NflTeam.find(@super_bowl.nfl_team2_id) %>:
+        <%= link_to @super_bowl.nfc_team.full_team_name, @super_bowl.nfc_team %>:
         <%= @super_bowl.nfl_team2_final_score %>
       <% else %> 
         No team yet.
@@ -24,7 +24,7 @@
 
     <p class="h3">
       <% unless @super_bowl.nfl_winner_id.nil? %>
-        WINNER: <%= link_to NflTeam.find(@super_bowl.nfl_winner_id).full_team_name, NflTeam.find(@super_bowl.nfl_winner_id) %><br />
+        WINNER: <%= link_to @super_bowl.nfl_winner.full_team_name, @super_bowl.nfl_winner %><br />
         <% if @super_bowl.tie_breaker? %>
           Total points scored: <%= @super_bowl.total_points_scored %>
         <% end %>
@@ -32,8 +32,8 @@
     </p>
 
     <% unless @super_bowl.dopr_winner_id.nil? %>
-      <p>
-        $5 Super Bowl pick winner: <%= Team.find(@super_bowl.dopr_winner_id).team_name %>
+      <p class="bold">
+        $5 Super Bowl pick winner: <%= link_to @super_bowl.dopr_winner.team_name, @super_bowl.dopr_winner %>
       </p>
     <% end %>
 

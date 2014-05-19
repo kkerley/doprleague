@@ -4,7 +4,27 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
-Version 2.5.15 [2014/05/19]
+Version 2.5.18 [2014/05/19]
+--------------------------------------------------
+- Removed the button to add a new standings record from standings#index
+- Removed the button to add a new salary progression from salary_progressions#index
+- Removed the edit button/column from the salary_progressions#index table
+- Removed the button for a new Super Bowl from super_bowls#index and put it on the Admin page
+- Fixed up the Super Bowls form
+- Added a tab to the Admin page for managing Super Bowls
+- Changed the layout of the Members tab on the Admin page
+- Code convention changes throughout the views (:class => to class:, etc)
+- Made some necessary model methods to remove logic from super_bowl views
+
+
+Version 2.5.17 [2014/05/18]
+--------------------------------------------------
+- Added position next to player name in the GM actions panel on teams#show
+- Added contract icons to players#show
+- Adjusted some spacing on players#show 
+
+
+Version 2.5.16 [2014/05/18]
 --------------------------------------------------
 - Fixed issue with mobile (iPhone) rendering on players#show
 

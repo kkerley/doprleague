@@ -118,6 +118,7 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
     @faqs = Feature.for_faqs
     @facebook_polls = Feature.for_polls
     @constitution_features = Feature.for_constitution
+    @super_bowls = SuperBowl.all
     @users = User.all
   end
   

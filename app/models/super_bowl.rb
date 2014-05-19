@@ -17,7 +17,6 @@ class SuperBowl < ActiveRecord::Base
 
 
 
-
   def self.current_year
     # The new seasons starts on 8/1 so technically, it's the previous year through 7/31
     current_date = Time.now
@@ -116,6 +115,27 @@ class SuperBowl < ActiveRecord::Base
         end
       end
     end
+  end
+
+
+  def afc_team
+    team = NflTeam.find(self.nfl_team1_id)
+    return team
+  end
+
+  def nfc_team
+    team = NflTeam.find(self.nfl_team2_id)
+    return team
+  end
+
+  def nfl_winner
+    team = NflTeam.find(self.nfl_winner_id)
+    return team
+  end
+
+  def dopr_winner
+    team = Team.find(self.dopr_winner_id)
+    return team
   end
 
 # end of class 

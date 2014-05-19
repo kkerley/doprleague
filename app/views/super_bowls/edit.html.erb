@@ -1,6 +1,8 @@
-<h1>Editing the <%= @super_bowl.year %> Super Bowl</h1>
+<% content_for :title, "Editing #{@super_bowl.year} Super Bowl" %>
+<% content_for :section_subtitle, "Add AFC and NFC teams and update with the final score. The site will do the rest." %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @super_bowl %> |
-<%= link_to 'Back', super_bowls_path %>
+<div class="row">
+	<div class="col-md-10">
+		<%= render "form" %>
+	</div>
+</div>

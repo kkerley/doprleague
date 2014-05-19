@@ -1,28 +1,15 @@
-<div class="row">
-	<div class="col-md-2">
-		
-		<%= best_in_place_if current_user, user, :display_name %>
-	</div>
-	<div class="col-md-3">		
-		<%= best_in_place_if current_user, user, :email %>
-	</div>
-	<div class="col-md-2">		
-		<%= best_in_place_if current_user, user.team, :team_name %>
-	</div>
-
-	<div class="col-md-2">		
-		<%= best_in_place_if current_user, user.team, :division %>
-	</div>
-
-	<div class="col-md-1">
-		
-			<%if user.role == "admin" %>
-				<span class="label label-success">Yes</span>
-			<% else %>
-				<span class="label label-danger">No</span>
-			<% end %>
-	</div>
-	
-	<div class="col-md-1"><%= link_to "Edit", edit_user_path(user), :class => 'btn btn-warning btn-small' %><br />&nbsp;</div>
-	<div class="col-md-1"><%= link_to "Delete", user, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger btn-small' %><br />&nbsp;</div>
-</div>
+<tr>
+	<td><%= best_in_place_if current_user, user, :display_name %></td>
+	<td><%= best_in_place_if current_user, user, :email %></td>
+	<td><%= best_in_place_if current_user, user.team, :team_name %></td>
+	<td><%= best_in_place_if current_user, user.team, :division %></td>
+	<td>
+		<%if user.role == "admin" %>
+			<span class="label label-success">Yes</span>
+		<% else %>
+			<span class="label label-danger">No</span>
+		<% end %>
+	</td>
+	<td><%= link_to edit_user_path(user), class: 'label label-warning' do %><i class="fa fa-pencil-square-o"></i> Edit<% end %></td>
+	<td><%= link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class:'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %></td>
+</tr>

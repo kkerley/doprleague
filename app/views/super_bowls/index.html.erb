@@ -6,32 +6,32 @@
     <div class="col-md-8">
 
         <% @super_bowls.each do |super_bowl| %>
-        <p class="h1"><%= link_to super_bowl.year, super_bowl %></p>
-        <p class="lead">
-            <% unless super_bowl.nfl_team1_id.nil? %>
-                <%= link_to NflTeam.find(super_bowl.nfl_team1_id).full_team_name, NflTeam.find(super_bowl.nfl_team1_id) %> 
-                <% unless super_bowl.nfl_team1_final_score.nil? %>
-                    (<%= super_bowl.nfl_team1_final_score %>)
+            <p class="h1"><%= link_to super_bowl.year, super_bowl %></p>
+            <p class="lead">
+                <% unless super_bowl.nfl_team1_id.nil? %>
+                    <%= link_to super_bowl.afc_team.full_team_name, super_bowl.afc_team %> 
+                    <% unless super_bowl.nfl_team1_final_score.nil? %>
+                        (<%= super_bowl.nfl_team1_final_score %>)
+                    <% end %>
+                <% end %> 
+                vs. 
+                <% unless super_bowl.nfl_team2_id.nil? %>
+                    <%= link_to super_bowl.nfc_team.full_team_name, super_bowl.nfc_team %> 
+                    <% unless super_bowl.nfl_team2_final_score.nil? %>
+                        (<%= super_bowl.nfl_team2_final_score %>)
+                    <% end %>
                 <% end %>
-            <% end %> 
-            vs. 
-            <% unless super_bowl.nfl_team2_id.nil? %>
-                <%= link_to NflTeam.find(super_bowl.nfl_team2_id).full_team_name, NflTeam.find(super_bowl.nfl_team2_id) %> 
-                <% unless super_bowl.nfl_team2_final_score.nil? %>
-                    (<%= super_bowl.nfl_team2_final_score %>)
-                <% end %>
-            <% end %>
-            </p>
+                </p>
 
-            <p>
-            <% unless super_bowl.nfl_winner_id.nil? %>
-                
-                Super Bowl winner: <%= NflTeam.find(super_bowl.nfl_winner_id).full_team_name %><br />
-                <% unless super_bowl.dopr_winner_id.nil? %>
-                    DoPR $5 prize winner: <%= link_to Team.find(super_bowl.dopr_winner_id).team_name, Team.find(super_bowl.dopr_winner_id) %>
+                <p>
+                <% unless super_bowl.nfl_winner_id.nil? %>
+                    
+                    Super Bowl winner: <%= super_bowl.nfl_winner.full_team_name %><br />
+                    <% unless super_bowl.dopr_winner_id.nil? %>
+                        DoPR $5 prize winner: <%= link_to super_bowl.dopr_winner.team_name, super_bowl.dopr_winner %>
+                    <% end %>
                 <% end %>
-            <% end %>
-        </p>
+            </p>
 
             <hr />
         <% end %>
@@ -49,7 +49,7 @@
                         <li>
                             <%= link_to super_bowl.year, super_bowl %> 
                             <% unless super_bowl.dopr_winner_id.nil? %>
-                                DoPR winner: <%= link_to Team.find(super_bowl.dopr_winner_id).team_name, Team.find(super_bowl.dopr_winner_id) %>
+                                DoPR winner: <%= link_to super_bowl.dopr_winner.team_name, super_bowl.dopr_winner %>
                             <% end %> 
                         </li>
                     <% end %>
@@ -60,10 +60,3 @@
 
     </div><!-- end of col-md-4 -->
 </div>
-
-
-<% if current_user %>
-    <% if can? :manage, @super_bowls %>
-        <%= link_to 'New Super bowl', new_super_bowl_path %>
-    <% end %>
-<% end %>
