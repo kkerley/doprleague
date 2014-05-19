@@ -1,7 +1,7 @@
 <% content_for :title, "#{@player.full_name} (#{@player.position}) for #{@player.nfl_team}" %>
 <% content_for :section_subtitle, "Player and contract information." %>
 <div class="row">
-	<div class="col-xs-12">
+	<div class="col-md-12">
 		<% if @player.is_contracted? %>
 			<p class="lead margin-bottom-2em"><span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> Contracted to <%= image_tag @player.this_year.team.user.avatar(:mini) %> <%= link_to @player.this_year.team.team_name, @player.this_year.team %> as of <%= @player.this_year.contract.subcontracts.first.contract_year %></p>
 		<% else %>
@@ -17,7 +17,7 @@
 
 <% unless @player.is_contracted? %>
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 	      		<p class="panel-title"><i class="fa fa-money"></i> Salary progression for <%= @player.full_name %> using <%= current_year %> auction value</p>
@@ -61,7 +61,7 @@
 <% end %>
 
 <div class="row">
-	<div class="col-md-7 col-xs-6">
+	<div class="col-md-7">
 		<% if @contracts.count > 0 %>
 			<p class="h1">Contracts</p>
 			
@@ -115,7 +115,7 @@
 
 			<% end %>
 			<div class="row">
-			<div class="col-md-5 col-xs-6">
+			<div class="col-md-5">
 				<div class="panel panel-default">
 					<%= render "/contracts/contract_clauses_key" %></div><!-- end of panel-body -->
 				</div>
@@ -124,7 +124,7 @@
 		<% end %>
 		
 	</div>
-	<div class="col-md-5 col-xs-6"><br />
+	<div class="col-md-5"><br />
 		
 
 		<% if @player.is_contracted? && !@player.this_year.contract.is_extended && !@player.this_year.contract.is_franchised %>
