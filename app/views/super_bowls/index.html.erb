@@ -2,61 +2,52 @@
 <% content_for :section_subtitle, "All past league Super Bowl information." %>
 
 
+
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
 
-        <% @super_bowls.each do |super_bowl| %>
-            <p class="h1"><%= link_to super_bowl.year, super_bowl %></p>
-            <p class="lead">
-                <% unless super_bowl.nfl_team1_id.nil? %>
-                    <%= link_to super_bowl.afc_team.full_team_name, super_bowl.afc_team %> 
-                    <% unless super_bowl.nfl_team1_final_score.nil? %>
-                        (<%= super_bowl.nfl_team1_final_score %>)
-                    <% end %>
-                <% end %> 
-                vs. 
-                <% unless super_bowl.nfl_team2_id.nil? %>
-                    <%= link_to super_bowl.nfc_team.full_team_name, super_bowl.nfc_team %> 
-                    <% unless super_bowl.nfl_team2_final_score.nil? %>
-                        (<%= super_bowl.nfl_team2_final_score %>)
-                    <% end %>
+        <table class="table table-striped"> 
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Year</th>
+                    <th>AFC Team</th>
+                    <th>NFC Team</th>
+                    <th>AFC score</th>
+                    <th>NFC score</th>
+                    <th>NFL winner</th>
+                    <th>DoPR winner</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @super_bowls.each do |sb| %>
+                    <tr>
+                        <td><i class="fa fa-ticket"></i></td>
+                        <td><%= link_to sb.year, sb %></td>
+                        <td><%= sb.afc_team.full_team_name %></td>
+                        <td><%= sb.nfc_team.full_team_name %></td>
+                        <td><%= sb.nfl_team1_final_score %></td>
+                        <td><%= sb.nfl_team2_final_score %></td>
+                        <td><%= sb.nfl_winner.full_team_name %></td>
+                        <td><%= link_to sb.dopr_winner.team_name, sb.dopr_winner %></td>
+                    </tr>
                 <% end %>
-                </p>
-
-                <p>
-                <% unless super_bowl.nfl_winner_id.nil? %>
-                    
-                    Super Bowl winner: <%= super_bowl.nfl_winner.full_team_name %><br />
-                    <% unless super_bowl.dopr_winner_id.nil? %>
-                        DoPR $5 prize winner: <%= link_to super_bowl.dopr_winner.team_name, super_bowl.dopr_winner %>
-                    <% end %>
-                <% end %>
-            </p>
-
-            <hr />
-        <% end %>
+            </tbody>
+        </table>
     </div><!-- end of col-md-8 -->
 
-    <div class="col-md-4">
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <p class="panel-title"><i class="fa fa-ticket"></i> Super Bowls</p>
-            </div>
-            <div class="panel-body">
-                <ul>
-                    <% @super_bowls.each do |super_bowl| %>
-                        <li>
-                            <%= link_to super_bowl.year, super_bowl %> 
-                            <% unless super_bowl.dopr_winner_id.nil? %>
-                                DoPR winner: <%= link_to super_bowl.dopr_winner.team_name, super_bowl.dopr_winner %>
-                            <% end %> 
-                        </li>
-                    <% end %>
-                </ul>
-            </div>
-            
-        </div><!-- end of panel -->
-
-    </div><!-- end of col-md-4 -->
+    <div class="col-md-3">
+        <br />
+        <% if current_user %>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p class="panel-title"><a href="/members"><i class="fa fa-cog"></i> GM actions</a></p>
+                </div>
+                <div class="panel-body"> 
+                    <%= render '/teams/gm_actions_super_bowl_picks' %>
+                </div>
+            </div><!-- end of panel -->
+        <% end %>
+    </div><!-- end of col-md-3-->   
+    
 </div>

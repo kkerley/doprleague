@@ -1,0 +1,19 @@
+<% if @current_sb.nil? %>
+	No current Super Bowl
+<% else %>
+
+	<p class="h4"><%= @current_sb.year %> Super Bowl pick</p>
+
+	<div class="row">
+	    <div id="enter_pick" class="col-md-12">
+				<% unless @current_user_submitted %>
+					<p><%= link_to "No pick entered yet. Submit your pick now", new_super_bowl_pick_path, id: "new_pick", remote: true %></p>
+				   
+				<% else %>
+				  <p><%= current_user.display_name %> picked the <strong><%= @my_pick.nfl_team.full_team_name if @my_pick.nfl_team %></strong> to win the <%= link_to "#{@current_sb.year} Super Bowl", @current_sb %>. 
+				  	<% if @current_sb.tie_breaker %><%= link_to "Edit", edit_super_bowl_pick_path(@my_pick) %><% end %></p>
+				<% end %>
+			</div>
+			<div id="current_picks_list" class="col-md-12"></div>
+	</div>
+<% end %>

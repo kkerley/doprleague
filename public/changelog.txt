@@ -15,6 +15,9 @@ Version 2.5.18 [2014/05/19]
 - Changed the layout of the Members tab on the Admin page
 - Code convention changes throughout the views (:class => to class:, etc)
 - Made some necessary model methods to remove logic from super_bowl views
+- Completely changed the super_bowls#index view to look more like the Admin view of them
+- Fixed issue with the Super Bowl pick remote form not refreshing correctly
+- Added "GM Actions" panel to super_bowls#index containing the link to submit a pick for the current super bowl if none is submitted yet
 
 
 Version 2.5.17 [2014/05/18]

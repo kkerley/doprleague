@@ -59,6 +59,28 @@ class TeamsController < ApplicationController
     @team_remainder_current_year_plus_4 = @team.remainder(@total_cap_current_year_plus_4, @team_budget_current_year_plus_4.amount)
     @team_remainder_current_year_plus_5 = @team.remainder(@total_cap_current_year_plus_5, @team_budget_current_year_plus_5.amount)
 
+    @current_sb = SuperBowl.current_super_bowl
+    
+    unless @current_sb.nil?
+      @picks = @current_sb.super_bowl_picks
+
+      if @current_sb.tie_breaker?
+        @tied_teams = @current_sb.tied_teams
+      end
+
+      if current_user
+        unless @picks.empty?
+          @my_pick = @current_sb.find_my_pick(@current_sb, current_user.team.id)
+
+          if @my_pick
+            @current_user_submitted = true
+          else
+            @current_user_submitted = false
+          end
+        end
+      end
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @team }

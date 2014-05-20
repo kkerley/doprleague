@@ -4,8 +4,28 @@ class SuperBowlsController < ApplicationController
   # GET /super_bowls
   # GET /super_bowls.json
   def index
-    @super_bowls = SuperBowl.all
+    @super_bowls = SuperBowl.order("year desc")
     @current_sb = SuperBowl.current_super_bowl
+    
+    unless @current_sb.nil?
+      @picks = @current_sb.super_bowl_picks
+
+      if @current_sb.tie_breaker?
+        @tied_teams = @current_sb.tied_teams
+      end
+
+      if current_user
+        unless @picks.empty?
+          @my_pick = @current_sb.find_my_pick(@current_sb, current_user.team.id)
+
+          if @my_pick
+            @current_user_submitted = true
+          else
+            @current_user_submitted = false
+          end
+        end
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb
