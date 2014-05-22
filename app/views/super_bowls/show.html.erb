@@ -47,8 +47,8 @@
           </div>
         </div>
         <% else %>
-        <p><%= current_user.display_name %> picked the <strong><%= @my_pick.nfl_team.full_team_name if @my_pick.nfl_team %></strong> to win the <%= link_to "#{@current_sb.year} Super Bowl", @current_sb %>. 
-            <% if @current_sb.tie_breaker %><%= link_to "Edit", edit_super_bowl_pick_path(@my_pick) %><% end %></p>
+        <p><%= current_user.display_name %> picked the <strong><%= @my_pick.nfl_team.full_team_name if @my_pick.nfl_team %></strong> to win the <%= link_to "#{@super_bowl.year} Super Bowl", @super_bowl %>. 
+            <% if @super_bowl.tie_breaker %><%= link_to "Edit", edit_super_bowl_pick_path(@my_pick) %><% end %></p>
       <% end %>
     <% end %>
 

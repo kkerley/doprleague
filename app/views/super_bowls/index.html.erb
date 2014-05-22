@@ -5,35 +5,36 @@
 
 <div class="row">
     <div class="col-md-9">
-
-        <table class="table table-striped"> 
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Year</th>
-                    <th>AFC Team</th>
-                    <th>NFC Team</th>
-                    <th>AFC score</th>
-                    <th>NFC score</th>
-                    <th>NFL winner</th>
-                    <th>DoPR winner</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @super_bowls.each do |sb| %>
+        <div class="table-responsive">
+            <table class="table table-striped"> 
+                <thead>
                     <tr>
-                        <td><i class="fa fa-ticket"></i></td>
-                        <td><%= link_to sb.year, sb %></td>
-                        <td><%= sb.afc_team.full_team_name %></td>
-                        <td><%= sb.nfc_team.full_team_name %></td>
-                        <td><%= sb.nfl_team1_final_score %></td>
-                        <td><%= sb.nfl_team2_final_score %></td>
-                        <td><%= sb.nfl_winner.full_team_name %></td>
-                        <td><%= link_to sb.dopr_winner.team_name, sb.dopr_winner %></td>
+                        <th></th>
+                        <th>Year</th>
+                        <th>AFC Team</th>
+                        <th>NFC Team</th>
+                        <th>AFC score</th>
+                        <th>NFC score</th>
+                        <th>NFL winner</th>
+                        <th>DoPR winner</th>
                     </tr>
-                <% end %>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <% @super_bowls.each do |sb| %>
+                        <tr>
+                            <td><i class="fa fa-ticket"></i></td>
+                            <td><%= link_to sb.year, sb %></td>
+                            <td><%= sb.afc_team.full_team_name %></td>
+                            <td><%= sb.nfc_team.full_team_name %></td>
+                            <td><%= sb.nfl_team1_final_score %></td>
+                            <td><%= sb.nfl_team2_final_score %></td>
+                            <td><%= sb.nfl_winner.full_team_name %></td>
+                            <td><%= link_to sb.dopr_winner.team_name, sb.dopr_winner %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
     </div><!-- end of col-md-8 -->
 
     <div class="col-md-3">

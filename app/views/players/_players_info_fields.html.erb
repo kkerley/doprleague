@@ -44,7 +44,7 @@
 						<% @players.each do |player| %>
 							<tr>
 								<td></td>
-								<td><%= link_to player.full_name, player %></td>
+								<td><%= link_to player.full_name, player %> (<%= link_to player.nfl_team,  NflTeam.find_by_shorthand(player.nfl_team) if player.nfl_team %>)</td>
 								
 								<td class="hidden-sm hidden-xs"><%= player.position %></td>
 								

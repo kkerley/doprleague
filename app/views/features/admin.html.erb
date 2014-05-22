@@ -1,5 +1,5 @@
 <% content_for :title, "Administrative control" %>
-<% content_for :section_subtitle, "Edit shown content inline by clicking on the text. The rest must be done by clicking \"Edit.\"" %>
+<% content_for :section_subtitle, "Create and manage site content." %>
 
 <%= render "/layouts/admin_control_panel/admin_control_panel" %>
 
@@ -20,28 +20,40 @@
 
   <div class="tab-pane fade in active" id="announcements">
   	<div class="row"><br/><br/>
-			<div class="col-md-12"><p class="headline"><a href="/" style="color: #333;"><i class="fa fa-exclamation-circle"></i> Announcements</a></p></div>
+			<div class="col-md-12"><p class="headline"><a href="/" style="color: #333;"><i class="fa fa-exclamation-circle"></i> Announcements</a> <small class="muted" style="font-size: 50%;">Content and order may be edited in-place by clicking the field. Click the "Edit" button for everything else.</small></p></div>
 		</div>
 		<div class="row">
 	  	<div class="col-md-12">               
-	    	<%= render 'admin_feature_listing_header' %>
-        <% @announcements.each do |feature| %>
- 					<%= render 'admin_feature_listing', feature: feature %>
-				<% end %>
+	    	<div class="table-responsive">
+		    	<table class="table table-striped">
+			    	<%= render 'admin_feature_listing_header' %>
+		        <tbody>
+			        <% @announcements.each do |feature| %>
+			 					<%= render 'admin_feature_listing', feature: feature %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
   </div><!-- end of announcements -->
 
   <div class="tab-pane fade" id="constitution">
   	<div class="row "><br/><br/>
-			<div class="col-md-12"><p class="headline"><a href="/constitution" style="color: #333;"><i class="fa fa-book"></i> Constitution</a></p></div>
+			<div class="col-md-12"><p class="headline"><a href="/constitution" style="color: #333;"><i class="fa fa-book"></i> Constitution</a> <small class="muted" style="font-size: 50%;">Content and order may be edited in-place by clicking the field. Click the "Edit" button for everything else.</small></p></div>
 		</div>
 		<div class="row">
-	  	<div class="col-md-12">               
-	    	<%= render 'admin_feature_listing_header' %>
-	      <% @constitution_features.each do |feature| %>
-	 				<%= render 'admin_feature_listing', feature: feature %>
-				<% end %>
+	  	<div class="col-md-12">
+	  		<div class="table-responsive">            
+					<table class="table table-striped">
+			    	<%= render 'admin_feature_listing_header' %>
+		        <tbody>
+			        <% @constitution_features.each do |feature| %>
+			 					<%= render 'admin_feature_listing', feature: feature %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
   </div><!-- end of constitution -->
@@ -49,15 +61,20 @@
 
   <div class="tab-pane fade" id="faqs">
   	<div class="row "><br/><br/>
-			<div class="col-md-12"><p class="headline"><a href="/faqs" style="color: #333;"><i class="fa fa-question-circle"></i> FAQs</a></p></div>
+			<div class="col-md-12"><p class="headline"><a href="/faqs" style="color: #333;"><i class="fa fa-question-circle"></i> FAQs</a> <small class="muted" style="font-size: 50%;">Content and order may be edited in-place by clicking the field. Click the "Edit" button for everything else.</small></p></div>
 		</div>
 		<div class="row">
-		  <div class="col-md-12">               
-		    <%= render 'admin_feature_listing_header' %>
-		    <% @faqs.each do |feature| %>
-		 			<%= render 'admin_feature_listing', feature: feature %>
-				<% end %>
-				<hr />
+		  <div class="col-md-12">
+		  	<div class="table-responsive">              
+			    <table class="table table-striped">
+			    	<%= render 'admin_feature_listing_header' %>
+		        <tbody>
+			        <% @faqs.each do |feature| %>
+			 					<%= render 'admin_feature_listing', feature: feature %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
   </div><!-- end of faqs -->
@@ -65,25 +82,32 @@
 
   <div class="tab-pane fade" id="fbpolls">
   	<div class="row "><br/><br/>
-			<div class="col-md-12"><p class="headline"><a href="/polls" style="color: #333;"><i class="fa fa-tasks"></i> Facebook polls</a></p></div>
+			<div class="col-md-12"><p class="headline"><a href="/polls" style="color: #333;"><i class="fa fa-tasks"></i> Facebook polls</a> <small class="muted" style="font-size: 50%;">Content and order may be edited in-place by clicking the field. Click the "Edit" button for everything else.</small></p></div>
 		</div>
 		<div class="row">
-	  	<div class="col-md-12">               
-	    	<%= render 'admin_feature_listing_header' %>
-	      <% @facebook_polls.each do |feature| %>
-		 			<%= render 'admin_feature_listing', feature: feature %>
-				<% end %>
+	  	<div class="col-md-12">
+	  		<div class="table-responsive">            
+		    	<table class="table table-striped">
+			    	<%= render 'admin_feature_listing_header' %>
+		        <tbody>
+			        <% @facebook_polls.each do |feature| %>
+			 					<%= render 'admin_feature_listing', feature: feature %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
   </div><!-- end of fbpolls -->
 
 
-  <div class="tab-pane fade in active" id="superBowls">
+  <div class="tab-pane fade" id="superBowls">
   	<div class="row"><br/><br/>
 			<div class="col-md-12"><p class="headline"><a href="/" style="color: #333;"><i class="fa fa-ticket"></i> Super Bowls</a></p></div>
 		</div>
 		<div class="row">
-		  	<div class="col-md-12">               
+	  	<div class="col-md-12">
+	  		<div class="table-responsive">            
 		    	<table class="table table-striped"> 
 	        	<thead>
 	        		<tr>
@@ -104,7 +128,7 @@
 							<% end %>
 						</tbody>
 					</table>
-				
+				</div>
 			</div>
 		</div>
   </div><!-- end of superBowls -->
@@ -181,10 +205,11 @@
 
   <div class="tab-pane fade" id="members">
   	<div class="row "><br/><br/>
-			<div class="col-md-12"><p class="headline"><a href="/members" style="color: #333;"><i class="fa fa-users"></i> Members</a></p></div>
+			<div class="col-md-12"><p class="headline"><a href="/members" style="color: #333;"><i class="fa fa-users"></i> Members</a> <small class="muted" style="font-size: 50%;">Name, email, team name and division may be edited from here by clicking on the text.</small></p></div>
 		</div>
 		<div class="row">
-		  	<div class="col-md-12"> 
+	  	<div class="col-md-12">
+	  		<div class="table-responsive">
 		  		<table class="table table-striped">
 		  			<thead>              
 		       		<tr>
@@ -203,6 +228,7 @@
 							<% end %>
 						</tbody>
 					</table>
+				</div>
 			</div>
 		</div>
   </div><!-- end of members -->

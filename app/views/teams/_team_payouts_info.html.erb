@@ -13,8 +13,10 @@
  	</div><!-- end of panel -->
   <%= render 'layouts/back_to_top_link' %>
 
-  <!-- fancy chart showing payout breakdown -->
-  <p class="h1">Breakdown of the $<%= @total_payout_amount_to_date %> paid out to date</p>
-  <div id="members-chartdiv" style="width: 750px; height: 500px;"></div>
-	<%= render 'layouts/back_to_top_link' %>
+  <div class="hidden-sm hidden-xs">
+	  <!-- fancy chart showing payout breakdown -->
+	  <p class="h1">Breakdown of the $<%= @total_payout_amount_to_date %> paid out to date</p>
+	  <div id="members-chartdiv" style="width: 750px; height: 500px;"></div>
+		<%= render 'layouts/back_to_top_link' %>
+	</div>
 </div><!-- end of col-md-8 -->

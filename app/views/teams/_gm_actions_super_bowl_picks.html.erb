@@ -1,8 +1,9 @@
 <% if @current_sb.nil? %>
-	No current Super Bowl
+<p class="h4"><i class="fa fa-ticket"></i> Super Bowl pick</p>
+<p>No current Super Bowl</p>
 <% else %>
 
-	<p class="h4"><%= @current_sb.year %> Super Bowl pick</p>
+	<p class="h4"><i class="fa fa-ticket"></i> <%= @current_sb.year %> Super Bowl pick</p>
 
 	<div class="row">
 	    <div id="enter_pick" class="col-md-12">

@@ -1,22 +1,21 @@
 <% content_for :title, "Frequently asked questions" %>
 <% content_for :section_subtitle, "Check here first before getting lit up on Facebook for asking something." %>
 
-
-		
+	
 <div class="row">
 	<div class="col-md-4 col-md-push-8">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-            	<p class="panel-title"><i class="fa fa-question-circle"></i> FAQs Contents</p>
-          	</div>
-          	<div class="panel-body">
-        		<ol>
+        <p class="panel-title"><i class="fa fa-question-circle"></i> FAQs Contents</p>
+      </div>
+      <div class="panel-body">
+    		<ol>
 					<% @articles.each do |article| %>
 						<li><%= link_to article.title, "#" + article.title.parameterize %></li>
 					<% end %>
 				</ol>
-          	</div>
-        </div><!-- end of panel -->
+    	</div>
+    </div><!-- end of panel -->
 	</div><!-- end of col-md-4-->
 
 	<div class="col-md-8 col-md-pull-4">
@@ -27,7 +26,7 @@
 			    	<div class="panel-heading">
 			      		<p class="panel-title">
 					        <i class="fa fa-question-circle"></i> <a name="<%= article.title.parameterize %>"></a><a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= article.id %>">
-					           <%= article.title %>
+					          <%= article.title %>
 					        </a>
 			      		</p>
 			    	</div>

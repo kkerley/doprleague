@@ -4,6 +4,38 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.5.23 [2014/05/21]
+--------------------------------------------------
+- Added link to player's NFL team on players#index if a player has an nfl_team shorthand attribute
+
+
+Version 2.5.22 [2014/05/21]
+--------------------------------------------------
+- Overhauled nfl_teams#show to make it look similar to players#show
+- Uploaded the teams to the site to pull in the correct players for each
+
+
+Version 2.5.21 [2014/05/21]
+--------------------------------------------------
+- Fixed the Constitution page to not be fully expanded by default. This (and Polls and FAQs may change in the future)
+
+
+Version 2.5.20 [2014/05/21]
+--------------------------------------------------
+- Fixed a few incorrect variable calls on super_bowls#show that would cause site failures after the year change
+
+
+Version 2.5.19 [2014/05/20]
+--------------------------------------------------
+- Changed the layout for announcements, polls, constitution and FAQs on the Admin page to be table-based
+- Removed CSS causing the Super Bowls tab on Admin to show when Announcements first load
+- Made the table on super_bowls#index responsive
+- Made tables on standings#index responsive
+- Hid the pie chart on teams#show#payouts for small and extra-small devices
+- Made all of the tables of content on the Admin page responsive
+- Added Font Awesome ticket icon to the GM actions panel
+
+
 Version 2.5.18 [2014/05/19]
 --------------------------------------------------
 - Removed the button to add a new standings record from standings#index

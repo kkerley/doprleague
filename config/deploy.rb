@@ -1,8 +1,16 @@
-set :application, "doprleague.info"
-set :repository,  "set your repository location here"
+require "bundler/capistrano"
 
-set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :application, "doprleague"
+set :user, "kkerley"
+set :deploy_to, "/var/www/#{application}"
+set :deploy_via, :remote_cache
+set :use_sudo, false
+
+
+
+set :scm, :git 
+set :repository,  "git@github.com:kkerley/#{application}.git"
+set :branch, "master"
 
 role :web, "your web-server here"                          # Your HTTP server, Apache/etc
 role :app, "your app-server here"                          # This may be the same as your `Web` server
