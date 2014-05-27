@@ -21,12 +21,14 @@
 						<tr>
 							<th></th>
 							<th data-sort="string">Name <i class="fa fa-sort"></i></th>
-							
 							<th class="hidden-sm hidden-xs">Position</th>
+							<th></th>
+							<th class="hidden-sm hidden-xs">Bye</th>
+							
 							
 							<th>Salary</th>
 							<th data-sort="int">Auction <i class="fa fa-sort"></i></th>
-							<th class="hidden-sm hidden-xs">Bye</th>
+							
 							<th>Owned by</th>
 							<th><!-- contract link --></th>
 							<% if current_user %>
@@ -44,9 +46,11 @@
 						<% @players.each do |player| %>
 							<tr>
 								<td></td>
-								<td><%= link_to player.full_name, player %> (<%= link_to player.nfl_team,  NflTeam.find_by_shorthand(player.nfl_team) if player.nfl_team %>)</td>
-								
+								<td><%= link_to player.full_name, player %></td>
 								<td class="hidden-sm hidden-xs"><%= player.position %></td>
+								<td><%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %> <small><%= link_to player.nfl_team, player.nfl_team_model if player.nfl_team %></small></td>
+								<td class="hidden-sm hidden-xs"><%= player.nfl_team_model.bye_week if player.nfl_team %></td>
+								
 								
 								<td><strong>
 									<% if player.is_contracted? %>
@@ -54,7 +58,7 @@
 									<% end %>
 								</strong></td>
 								<td data-sort-value="<%= player.auction_value %>">$<%= player.auction_value %></td>
-								<td class="hidden-sm hidden-xs"><%= player.bye_week %></td>
+								
 								<% if player.is_contracted? %>
 									<td>
 										<span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>	

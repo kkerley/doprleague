@@ -35,6 +35,11 @@ class Player < ActiveRecord::Base
     self.first_name = split.first
     self.last_name = split.last
   end
+
+  def nfl_team_model
+    nfl_team = NflTeam.find_by_shorthand(self.nfl_team)
+    return nfl_team
+  end
   
 
   def is_contracted? # used for the players#index action to display whether or not a player has a current/active contract or not. ONLY RETURNS TRUE OR FALSE
@@ -108,9 +113,10 @@ class Player < ActiveRecord::Base
           ts_rank(to_tsvector(first_name), plainto_tsquery(#{sanitize(query)})) +
           ts_rank(to_tsvector(last_name), plainto_tsquery(#{sanitize(query)})) + 
           ts_rank(to_tsvector(position), plainto_tsquery(#{sanitize(query)})) + 
-          ts_rank(to_tsvector(cast(auction_value as text)), plainto_tsquery(#{sanitize(query)}))
+          ts_rank(to_tsvector(cast(auction_value as text)), plainto_tsquery(#{sanitize(query)})) +
+          ts_rank(to_tsvector(nfl_team), plainto_tsquery(#{sanitize(query)}))
         RANK
-      where("first_name @@ :q or last_name @@ :q or position @@ :q or cast(auction_value as text) @@ :q", q: "%#{query}%").order("#{rank} desc")
+      where("first_name @@ :q or last_name @@ :q or position @@ :q or cast(auction_value as text) @@ :q or nfl_team @@ :q", q: "%#{query}%").order("#{rank} desc")
     else
       scoped
     end

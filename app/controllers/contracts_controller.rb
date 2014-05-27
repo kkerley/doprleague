@@ -92,18 +92,22 @@ class ContractsController < ApplicationController
 
   def buyouts
     # uses helper methods
+    @contracts = Contract.buyouts.paginate(:page => params[:page], :per_page => 40).includes(:subcontracts)
   end
 
   def extensions
     # uses helper methods
+    @contracts = Contract.where('is_extended = ?', true).where('is_franchised != ?', true).where('is_bought_out != ?', true).paginate(:page => params[:page], :per_page => 40).includes(:subcontracts)
   end
 
   def franchises
     # uses helper methods
+    @contracts = Contract.where('is_franchised = ?', true).where('is_extended != ?', true).where('is_bought_out != ?', true).paginate(:page => params[:page], :per_page => 40).includes(:subcontracts)
   end
 
   def extended_and_franchised
     # uses helper methods
+    @contracts = Contract.where('is_extended = ?', true).where('is_franchised = ?', true ).where('is_bought_out != ?', true).paginate(:page => params[:page], :per_page => 40).includes(:subcontracts)
   end
 
 

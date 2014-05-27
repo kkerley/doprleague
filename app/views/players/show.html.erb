@@ -1,8 +1,8 @@
 <% content_for :title, "#{@player.full_name} (#{@player.position}) for #{@player.nfl_team}" %>
 <% content_for :section_subtitle, "Player and contract information." %>
 
-<div class="row">
-	<div class="col-md-12">
+<div class="row margin-bottom-1em">
+	<div class="col-md-10">
 		<% if @player.is_contracted? %>
 			<p class="lead margin-bottom-1em"><span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> Contracted to <%= image_tag @player.this_year.team.user.avatar(:mini) %> <%= link_to @player.this_year.team.team_name, @player.this_year.team %> as of <%= @player.this_year.contract.subcontracts.first.contract_year %></p>
 		<% else %>
@@ -14,6 +14,7 @@
 			<% end %>
 		<% end %>
 	</div>
+	<div class="col-md-2"><%= link_to image_tag(@player.nfl_team_model.avatar(:thumb)), @player.nfl_team_model %></div>
 </div>
 
 <% unless @player.is_contracted? %>

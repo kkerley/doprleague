@@ -1,6 +1,8 @@
-<h1>Editing nfl_team</h1>
+<% content_for :title, "Editing #{@nfl_team.full_team_name}"%>
 
-<%= render 'form' %>
+<div class="row">
+	<div class="col-md-7">
+		<%= render 'form' %>
+	</div>
+</div>
 
-<%= link_to 'Show', @nfl_team %> |
-<%= link_to 'Back', nfl_teams_path %>

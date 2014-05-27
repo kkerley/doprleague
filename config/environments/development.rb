@@ -38,4 +38,5 @@ KkerleyCom::Application.configure do
   
   Paperclip.options[:command_path] = "/opt/ImageMagick/bin/convert"
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.reload_classes_only_on_change = false
 end

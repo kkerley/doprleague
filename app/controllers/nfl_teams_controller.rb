@@ -1,4 +1,5 @@
 class NflTeamsController < ApplicationController
+  load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new]
   # GET /nfl_teams
   # GET /nfl_teams.json
   def index

@@ -1,11 +1,24 @@
 <div class="row">
 	<div class="col-md-12">
 		<p class="btn-group margin-bottom-2em">
-			<% link_to(conversations_path, {class: "btn btn-default btn-large", style: "vertical-align: middle;"}) do %> 
-				<i class="fa fa-inbox"></i> View full mailbox
+			<%= link_to(new_message_path,{class: "btn btn-info btn-large", style: "vertical-align: middle;"}) do %>
+				<i class="fa fa-envelope-o"></i> New
 			<% end %>
-			<%= link_to(new_message_path,{class: "btn btn-default btn-large", style: "vertical-align: middle;"}) do %>
-				<i class="fa fa-envelope-o"></i> New message
+
+			<%= link_to("/teams/#{current_user.team.to_param}#inbox", {class: "btn btn-default btn-large", style: "vertical-align: middle;",  data: {toggle: "tab"}}) do %> 
+				<% if current_user.mailbox.inbox.unread(current_user).count > 0 %>
+				 	<i class="fa fa-envelope"></i>
+				<% else %>
+				 	<i class="fa fa-envelope-o"></i> 
+				<% end %> Inbox (<%= current_user.mailbox.inbox.unread(current_user).count %>)
+			<% end %>
+
+			<%= link_to("/teams/#{current_user.team.to_param}#sentbox", {class: "btn btn-default btn-large", style: "vertical-align: middle;",  data: {toggle: "tab"}}) do %> 
+				<i class="fa fa-folder-open-o"></i> Sent
+			<% end %>
+
+			<%= link_to("/teams/#{current_user.team.to_param}#trash", {class: "btn btn-default btn-large", style: "vertical-align: middle;",  data: {toggle: "tab"}}) do %> 
+				<i class="fa fa-trash-o"></i> Trash
 			<% end %>
 			</p>
 	

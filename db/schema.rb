@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140515044047) do
+ActiveRecord::Schema.define(:version => 20140527052635) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -139,8 +139,13 @@ ActiveRecord::Schema.define(:version => 20140515044047) do
     t.string   "conference"
     t.string   "city"
     t.string   "shorthand"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.integer  "bye_week"
   end
 
   create_table "notifications", :force => true do |t|
@@ -183,6 +188,7 @@ ActiveRecord::Schema.define(:version => 20140515044047) do
   add_index "players", ["auction_value"], :name => "index_players_on_auction_value"
   add_index "players", ["first_name"], :name => "index_players_on_first_name"
   add_index "players", ["last_name"], :name => "index_players_on_last_name"
+  add_index "players", ["nfl_team"], :name => "index_players_on_nfl_team"
   add_index "players", ["position"], :name => "index_players_on_position"
 
   create_table "receipts", :force => true do |t|

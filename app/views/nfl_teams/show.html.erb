@@ -2,60 +2,74 @@
 <% content_for :section_subtitle, "All players for this team" %>
 
 <div class="row">
-	<div class="col-md-8">
-		<table class='table table-striped'>
-			<thead>
-				<tr>
-					<th></th>
-					<th data-sort="string">Name</th>
-					
-					<th class="hidden-sm hidden-xs">Position</th>
-					
-					<th>Salary</th>
-					<th data-sort="int">Auction</th>
-					<th class="hidden-sm hidden-xs">Bye</th>
-					<th>Owned by</th>
-					<th><!-- contract link --></th>
-					
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @team_players.each do |player| %>
-				<tr>
-								<td></td>
-								<td><%= link_to player.full_name, player %></td>
-								
-								<td class="hidden-sm hidden-xs"><%= player.position %></td>
-								
-								<td><strong>
-									<% if player.is_contracted? %>
-										$<%= player.this_year.salary_amount %>
-									<% end %>
-								</strong></td>
-								<td data-sort-value="<%= player.auction_value %>">$<%= player.auction_value %></td>
-								<td class="hidden-sm hidden-xs"><%= player.bye_week %></td>
-								<% if player.is_contracted? %>
-									<td>
-										<span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>	
-									</td>
-									<td>
-										<%= link_to player.current_contract, class:"btn btn-primary btn-xs" do %><i class="fa fa-file-text-o"></i><% end %>
-									</td>  
-									
-								<% else %>
-									<td>
-										<span class="label label-success">FA</span>
-									</td>
-									<td></td>
-									
 
-								<% end %>
-								
-								<td></td>
-							</tr>
-				<% end %>
-			</tbody>
-		</table>
+	<div class="col-md-4 col-md-push-8">
+		<%= image_tag @nfl_team.avatar(:medium), class: "img-responsive" %>
+
 	</div>
+
+	<div class="col-md-8 col-md-pull-4">
+		<p><a href="/nfl_teams"><i class="fa fa-angle-double-left"></i> View all teams</a></p>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+      		<p class="panel-title"><i class="fa fa-shield"></i> <%= @nfl_team.full_team_name %> personnel</p>
+    	</div>
+			<table class='table table-striped'>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Name</th>
+						
+						<th class="hidden-sm hidden-xs">Position</th>
+						
+						<th>Salary</th>
+						<th>Auction</th>
+						<th class="hidden-sm hidden-xs">Bye</th>
+						<th>Owned by</th>
+						<th><!-- contract link --></th>
+						
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @team_players.each do |player| %>
+						<tr>
+							<td></td>
+							<td><%= link_to player.full_name, player %></td>
+							
+							<td class="hidden-sm hidden-xs"><%= player.position %></td>
+							
+							<td><strong>
+								<% if player.is_contracted? %>
+									$<%= player.this_year.salary_amount %>
+								<% end %>
+							</strong></td>
+							<td>$<%= player.auction_value %></td>
+							<td class="hidden-sm hidden-xs"><%= player.bye_week %></td>
+							<% if player.is_contracted? %>
+								<td>
+									<span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>	
+								</td>
+								<td>
+									<%= link_to player.current_contract, class:"btn btn-primary btn-xs" do %><i class="fa fa-file-text-o"></i><% end %>
+								</td>  
+								
+							<% else %>
+								<td>
+									<span class="label label-success">FA</span>
+								</td>
+								<td></td>
+								
+
+							<% end %>
+							
+							<td></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
 </div>

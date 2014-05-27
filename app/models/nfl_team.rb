@@ -1,5 +1,5 @@
 class NflTeam < ActiveRecord::Base
-  attr_accessible :city, :conference, :mascot, :shorthand
+  attr_accessible :city, :conference, :mascot, :shorthand, :avatar, :bye_week
 
   has_many :super_bowls, foreign_key: :nfl_winner_id
   has_many :super_bowl_picks
@@ -7,6 +7,8 @@ class NflTeam < ActiveRecord::Base
   default_scope order ("city asc")
   scope :afc, lambda { where("conference = ?", "AFC").order("city asc") }
   scope :nfc, lambda { where("conference = ?", "NFC").order("city asc") }
+
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>", :mini => "32x32>", :tiny => "16x16>" }, :default_url => "/images/:style/missing.png"
 
 
   def to_param
@@ -21,6 +23,11 @@ class NflTeam < ActiveRecord::Base
     split = name.split(' ', 2)
     self.city = split.first
     self.mascot = split.last
+  end
+
+  def total_players
+    players = Player.find_all_by_nfl_team(self.shorthand)
+    return players.count
   end
 
   def self.import(file)

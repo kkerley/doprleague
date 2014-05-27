@@ -20,6 +20,9 @@ class Contract < ActiveRecord::Base
   after_update :check_for_extension, :if => Proc.new { |a| a.is_extended_changed? }
   after_update :check_for_franchise, :if => Proc.new { |a| a.is_franchised_changed? }
 
+  scope :buyouts, lambda {where(is_bought_out: true)}
+  scope :extensions, lambda {where(is_bought_out: true)}
+
 
   def create_subcontracts
     contracted_team_id = self.contracted_team

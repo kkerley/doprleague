@@ -5,18 +5,36 @@
 			<tbody>
 				<tr>
 					<td></td>
+					<td>All:</td>
+					<td><%= link_to all_contracts.count, "/contracts" %></td>
+				</tr>
+				<tr>
+					<td></td>
 					<td>Extended:</td>
 					<td><%= link_to extensions_contracts.count, "/contracts/extensions" %></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td>Franchised:</td>
-					<td><%= link_to franchises_contracts.count, "/contracts/franchises" %></td>
+					<td>
+						<% if franchises_contracts.count > 0 %>
+							<%= link_to franchises_contracts.count, "/contracts/franchises" %>
+						<% else %>
+							<%= franchises_contracts.count %>
+						<% end %>
+					</td>
 				</tr>
 				<tr>
 					<td></td>
 					<td>Extended &amp; franchised:</td>
-					<td><%= link_to both_contracts.count, "/contracts/extended_and_franchised" %></td>
+					<td>
+						<% if both_contracts.count > 0 %>
+							<%= link_to both_contracts.count, "/contracts/extended_and_franchised" %>
+						<% else %>
+							<%= both_contracts.count %>
+						<% end %>
+
+					</td>
 				</tr>
 				<tr>
 					<td></td>

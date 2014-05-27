@@ -1,12 +1,12 @@
 require "bundler/capistrano"
 
+server "198.199.101.218", 
+
 set :application, "doprleague"
 set :user, "kkerley"
 set :deploy_to, "/var/www/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
-
-
 
 set :scm, :git 
 set :repository,  "git@github.com:kkerley/#{application}.git"

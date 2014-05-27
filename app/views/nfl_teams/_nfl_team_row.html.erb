@@ -1,0 +1,14 @@
+<tr>
+  <td></td>
+  <td><%= link_to nfl_team.full_team_name, nfl_team %></td>
+  <td><%= image_tag nfl_team.avatar(:tiny) %></td>
+  <td><%= nfl_team.shorthand %></td>
+  <td><%= nfl_team.bye_week %></td>
+  <td><%= link_to nfl_team.total_players, "/players/?utf8=✓&query=#{nfl_team.shorthand}" %></td>
+  <% if current_user %>
+    <% if can? :manage, @nfl_teams %>
+      <td><%= link_to edit_nfl_team_path(nfl_team), class:'label label-warning' do %><i class="fa fa-pencil-square-o"></i> Edit<% end %></td>
+      <td><%= link_to nfl_team, method: :delete, data: { confirm: 'Are you sure?' }, class:'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %></td>
+     <% end %>
+  <% end %>
+</tr>

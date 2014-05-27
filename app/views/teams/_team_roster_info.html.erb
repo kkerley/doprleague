@@ -3,9 +3,9 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">
         		
-			<p class="panel-title bold"><%= image_tag @team.user.avatar(:mini), :border => 0, :style => "display: inline;", :align => "right" %>
-				<i class="fa fa-list"></i> <strong>Roster</strong><br />
-				<small>Includes active roster spots, dead money, and contract buyouts.<br />
+			<p class="panel-title"><%= image_tag @team.user.avatar(:mini), :border => 0, :style => "display: inline;", :align => "right" %>
+				<i class="fa fa-list"></i> Roster<br />
+				<small class="muted">Includes active roster spots, dead money, and contract buyouts.<br />
 
 				<!--<a href="#" style="font-weight: normal;">View entire roster <i class="fa fa-expand"></i></a>--></small>
 			</p>
@@ -18,6 +18,8 @@
 				<thead>
 					<th width="5"></th>
 					<th>Name</th>
+					<th></th>
+					<th>Bye</th>
 					<th class="hidden-sm hidden-xs">Pos</th>
 					<th>Auc</th>
 					<th><%= current_year %></th>
@@ -35,7 +37,7 @@
 						<% @players.each do |player| %>
 							<tr>
 								<td></td>
-								<td><%= link_to player.full_name, player %> (<%= link_to player.nfl_team, NflTeam.find_by_shorthand(player.nfl_team) %>)
+								<td><%= link_to player.full_name, player %> 
 									
 									<% if player.this_team_contract(@team).is_bought_out %>
 										<i class="fa fa-usd"></i> 
@@ -49,6 +51,8 @@
 									<% end %>
 									
 								</td>
+								<td><%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %></td>
+								<td><%= player.nfl_team_model.bye_week if player.nfl_team  %></td>
 								<td class="hidden-sm hidden-xs"><%= player.position %></td>
 								<td><span class="badge">$<%= player.auction_value %></span></td>
 								<% player.this_team_contract(@team).subcontracts.current_year_or_later.limit(6).each do |sub| %>

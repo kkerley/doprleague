@@ -4,6 +4,32 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.5.25 [2014/05/27]
+--------------------------------------------------
+- Added toolbar links to inbox, sentbox and trash on teams#show when in any of those three views
+- Font changes to various tabs on teams#show
+- Added panel for the draft rosters tab on teams#show
+- Added panel for the three mailboxer tabs on teams#show
+- Added striped rows to the payouts tab table on teams#show
+- Added NFL teams to the navigation dropdown
+- Updated views for nfl_teams#show, #index and #edit
+- Added column on teams#show for player's team logo
+- Added column on players#index for player's team logo
+- Added player's team logo on players#show
+- Reordered columns on players#index
+- Made super_bowls#show trophy image responsive
+- Adjusted the look of the inbox, sentbox and trash on teams#show
+- Added ability to search by NFL team shorthand for players
+- Updated search box verbiage to reflect new search criteria
+
+
+Version 2.5.24 [2014/05/25]
+--------------------------------------------------
+- Fixed issues with viewing buyouts, extensions, franchises and extensions + franchises
+- Removed link to the above-mentioned #show pages if the count was 0
+- Added a link in the Contracts key to view all contracts + the total count of contracts
+
+
 Version 2.5.23 [2014/05/21]
 --------------------------------------------------
 - Added link to player's NFL team on players#index if a player has an nfl_team shorthand attribute

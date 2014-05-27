@@ -1,11 +1,11 @@
 
-	<%= f.text_field :title, :style => 'width: 500px', :class => 'form-control' %>
+	<%= f.text_field :title, :style => 'width: 500px', class: 'form-control' %>
 	
 	<%= f.check_box :show_title, label: "" %> 
 		
 <!--
   <div class="form-group">
-    <% f.label :subtitle, :class => 'col-lg-2 control-label' %>
+    <% f.label :subtitle, class: 'col-lg-2 control-label' %>
 
  
 	<div class="col-lg-10">
@@ -13,7 +13,7 @@
 	</div>
   </div>
   <div class="form-group">
-    <% f.label :excerpt, :class => 'col-lg-2 control-label' %>
+    <% f.label :excerpt, class: 'col-lg-2 control-label' %>
 
 	<div class="col-lg-10">
 		<% f.text_area :excerpt, :style => 'width: 500px; height: 100px' %>
@@ -22,12 +22,12 @@
 
 -->
 
-	<%= f.text_area :content, :style => 'width: 500px; height: 250px', :class => 'form-control' %>
+	<%= f.text_area :content, :style => 'width: 500px; height: 250px', class: 'form-control' %>
 	
   
 <!--
   <div class="form-group">
-    <%= f.label "Link", :class => 'col-lg-2 control-label' %>
+    <%= f.label "Link", class: 'col-lg-2 control-label' %>
 
 	<div class="col-lg-10">
 		<%= f.text_field :url_path, :style => 'width: 500px' %>
@@ -45,5 +45,5 @@
 		-->
 
 
-   	 <%= f.submit :class => "btn btn-success btn-large" %>
+   	 <%= f.submit class: "btn btn-success btn-large" %>
 	

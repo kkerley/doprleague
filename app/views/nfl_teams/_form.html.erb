@@ -1,32 +1,17 @@
-<%= form_for(@nfl_team) do |f| %>
-  <% if @nfl_team.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@nfl_team.errors.count, "error") %> prohibited this nfl_team from being saved:</h2>
+<%= labeled_form_for @nfl_team, :html => { :multipart => true, :class => "form-horizontal" } do |f| %>
+  <%= f.error_messages %>
+  
+  <%= f.text_field :city, class: 'form-control' %>  
+  <%= f.text_field :shorthand, class: 'form-control' %>
+  <%= f.text_field :mascot, class: 'form-control' %>
+  <%= f.text_field :conference, class: 'form-control' %>
+  <%= f.text_field :bye_week, class: 'form-control' %>
+  <div class="col-lg-9 col-lg-offset-3">
+    Current avatar:<br />
+    <%= image_tag @nfl_team.avatar.url(:thumb) %><br /><br />
 
-      <ul>
-      <% @nfl_team.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
   </div>
-  <div class="field">
-    <%= f.label :shorthand %><br />
-    <%= f.text_field :shorthand %>
-  </div>
-  <div class="field">
-    <%= f.label :mascot %><br />
-    <%= f.text_field :mascot %>
-  </div>
-  <div class="field">
-    <%= f.label :conference %><br />
-    <%= f.text_field :conference %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.file_field :avatar, label: "Image", class: 'form-control' %>
+  
+  <%= f.submit class: "btn btn-success btn-large" %>
 <% end %>

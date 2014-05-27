@@ -1,72 +1,56 @@
-<h1>Listing NFL Teams</h1>
+<% content_for :title, "NFL teams" %>
+<% content_for :section_subtitle, "All teams with pertinent, league-related info" %>
+
 <div class="row">
-  <div class="col-md-12"><br />
-    <div class="row">
-      
-      <% if current_user %>
-        <% if can? :manage, @nfl_teams %>
-          <div class="col-md-5">
-      
-            <div class="panel panel-success">
-              <div class="panel-heading">
-                      <p class="panel-title bold">Import NFL teams <small>only .csv accepted at this time.</small></p>
-               
-                  </div>
-                <div class="panel-body">
-                    <%= form_tag import_nfl_teams_path, :class => "form-inline", multipart: true do %>
-                     <div class="form-group"> 
-                      <%= file_field_tag :file, :class => "form-control", :style => "width: 350px" %><br />
-                    </div>
-                        <%= submit_tag "Import", :class => "btn btn-success btn-large" %>
-                  
-                    <% end %>
-                </div>
-            </div>
-          </div>    
+  <div class="col-md-8"><br />
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p class="panel-title"><i class="fa fa-shield"></i> NFL teams</p>
+      </div>
+      <table class="table table-condensed table-striped">
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>Shorthand</th>
+          <th>Bye</th>
+          <th># of players</th>
+          <% if current_user %>
+            <% if can? :manage, @nfl_teams %>
+              <th></th>
+              <th></th>
+            <% end %>
+          <% end %>
+        </tr>
+        <tr>
+          <td></td>
+          <% if current_user %>
+            <% if can? :manage, @nfl_teams %>
+              <td colspan="7"><strong>AFC</strong></td>
+            <% else %> 
+              <td colspan="5"><strong>AFC</strong></td>
+            <% end %>
+          <% end %>
+          
+        </tr>
+        <% @afc.each do |nfl_team| %>
+          <%= render 'nfl_team_row', nfl_team: nfl_team %>
         <% end %>
-      <% end %>
-  </div><!-- end of row -->
-<table>
-  <tr>
-    <th>City</th>
-    <th>Mascot</th>
-    <th>Shorthand</th>
-    <th>Conference</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-<tr>
-  <td colspan="7"><strong>AFC</strong></td>
-</tr>
-<% @afc.each do |nfl_team| %>
-  <tr>
-    <td><%= nfl_team.city %></td>
-    <td><%= nfl_team.shorthand %></td>
-    <td><%= nfl_team.mascot %></td>
-    <td><%= nfl_team.conference %></td>
-    <td><%= link_to 'Show', nfl_team %></td>
-    <td><%= link_to 'Edit', edit_nfl_team_path(nfl_team) %></td>
-    <td><%= link_to 'Destroy', nfl_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
 
-<tr>
-  <td colspan="7"><strong>NFC</strong></td>
-</tr>
-<% @nfc.each do |nfl_team| %>
-  <tr>
-    <td><%= nfl_team.city %></td>
-    <td><%= nfl_team.shorthand %></td>
-    <td><%= nfl_team.mascot %></td>
-    <td><%= nfl_team.conference %></td>
-    <td><%= link_to 'Show', nfl_team %></td>
-    <td><%= link_to 'Edit', edit_nfl_team_path(nfl_team) %></td>
-    <td><%= link_to 'Destroy', nfl_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Nfl team', new_nfl_team_path %>
+        <tr>
+          <td></td>
+          <% if current_user %>
+            <% if can? :manage, @nfl_teams %>
+              <td colspan="7"><strong>NFC</strong></td>
+            <% else %> 
+              <td colspan="5"><strong>NFC</strong></td>
+            <% end %>
+          <% end %>
+        </tr>
+        <% @nfc.each do |nfl_team| %>
+         <%= render 'nfl_team_row', nfl_team: nfl_team %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

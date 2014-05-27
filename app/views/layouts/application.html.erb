@@ -80,6 +80,7 @@
 									<li><a href="/players"><i class="fa fa-bullhorn"></i> NFL players</a></li>
 									<li><a href="/contracts"><i class="fa fa-file-text-o"></i> Contracts</a></li>
 									<li><a href="/salary_progressions"><i class="fa fa-money"></i> Salary progressions</a></li>
+									<li><a href="/nfl_teams"><i class="fa fa-shield"></i> NFL teams</a></li>
 									<li><a href="/constitution"><i class="fa fa-book"></i> Constitution</a></li>
 									<li><a href="/polls"><i class="fa fa-tasks"></i> Facebook polls</a></li>
 									<li><a href="/payouts"><i class="fa fa-trophy"></i> League payouts &amp; awards</a></li>
@@ -90,23 +91,21 @@
 								</ul>
 							</li>
 							
-				
-				
 	         
-						<li>
-		        <%= form_tag players_path, class: "navbar-form navbar-left", style: "width: 250px;", method: :get do %>
-							<div class="input-group"> 
-						    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search players" %>
-							
-								<span class="input-group-btn">
-									<%= button_tag(data: { toggle: "tooltip", placement: "bottom", title: "Blank search returns full players list" }, id: "btn_players_search", class: "btn btn-success") do %>
-										<i class="fa fa-search"></i>
-									<% end %>
-								</span>
-							</div>
-			  		<% end %>
+							<li>
+			        <%= form_tag players_path, class: "navbar-form navbar-left", style: "width: 250px;", method: :get do %>
+								<div class="input-group"> 
+							    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search players" %>
+								
+									<span class="input-group-btn">
+										<%= button_tag(data: { toggle: "tooltip", placement: "bottom", title: "Blank search returns full players list" }, id: "btn_players_search", class: "btn btn-success") do %>
+											<i class="fa fa-search"></i>
+										<% end %>
+									</span>
+								</div>
+				  		<% end %>
 
-			  		</li>
+				  		</li>
 			  		<% if current_user %>
 			  			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			  				<%= image_tag current_user.avatar.url(:tiny) %> 
@@ -202,7 +201,7 @@
 	
 	
 	<p class="muted credit">This site is built by Kyle Kerley using a custom Rails 3.2.18-powered content management system structured by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and served up on nginx through Phusion Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a>.</p>
-	<p class="muted credit">Site version: <strong>2.5.23</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
+	<p class="muted credit">Site version: <strong>2.5.25</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
       	<p class="muted credit">&copy; 2013-<%= current_year_footer %> Kyle Kerley. All rights reserved.</p>
           
       </div>
