@@ -5,6 +5,9 @@
   $<%= @budget.amount %>
 </p>
 
-
-<%= link_to 'Edit', edit_team_budget_path(@team, @budget) %> |
-<%= link_to 'Back', team_budgets_path %>
+<% if current_user %>
+	<% if can? :manage, @budget %>
+		<%= link_to 'Edit', edit_team_budget_path(@team, @budget) %> |
+		<%= link_to 'Back', team_budgets_path %>
+	<% end %>
+<% end %>

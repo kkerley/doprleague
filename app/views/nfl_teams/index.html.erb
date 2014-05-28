@@ -7,54 +7,56 @@
       <div class="panel-heading">
         <p class="panel-title"><i class="fa fa-shield"></i> NFL teams</p>
       </div>
-      <table class="table table-condensed table-striped">
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th>Shorthand</th>
-          <th>Bye</th>
-          <th># of players</th>
-          <% if current_user %>
-            <% if can? :manage, @nfl_teams %>
-              <th></th>
-              <th></th>
+      <div class="table-responsive">
+        <table class="table table-condensed table-striped">
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Shorthand</th>
+            <th>Bye</th>
+            <th># of players</th>
+            <% if current_user %>
+              <% if can? :manage, @nfl_teams %>
+                <th></th>
+                <th></th>
+              <% end %>
             <% end %>
-          <% end %>
-        </tr>
-        <tr>
-          <td></td>
-          <% if current_user %>
-            <% if can? :manage, @nfl_teams %>
-              <td colspan="7"><strong>AFC</strong></td>
-            <% else %> 
+          </tr>
+          <tr>
+            <td></td>
+            <% if current_user %>
+              <% if can? :manage, @nfl_teams %>
+                <td colspan="7"><strong>AFC</strong></td>
+              <% else %> 
+                <td colspan="5"><strong>AFC</strong></td>
+              <% end %>
+            <% else %>
               <td colspan="5"><strong>AFC</strong></td>
             <% end %>
-          <% else %>
-            <td colspan="5"><strong>AFC</strong></td>
+            
+          </tr>
+          <% @afc.each do |nfl_team| %>
+            <%= render 'nfl_team_row', nfl_team: nfl_team %>
           <% end %>
-          
-        </tr>
-        <% @afc.each do |nfl_team| %>
-          <%= render 'nfl_team_row', nfl_team: nfl_team %>
-        <% end %>
 
-        <tr>
-          <td></td>
-          <% if current_user %>
-            <% if can? :manage, @nfl_teams %>
-              <td colspan="7"><strong>NFC</strong></td>
-            <% else %> 
+          <tr>
+            <td></td>
+            <% if current_user %>
+              <% if can? :manage, @nfl_teams %>
+                <td colspan="7"><strong>NFC</strong></td>
+              <% else %> 
+                <td colspan="5"><strong>NFC</strong></td>
+              <% end %>
+            <% else %>
               <td colspan="5"><strong>NFC</strong></td>
             <% end %>
-          <% else %>
-            <td colspan="5"><strong>NFC</strong></td>
+          </tr>
+          <% @nfc.each do |nfl_team| %>
+           <%= render 'nfl_team_row', nfl_team: nfl_team %>
           <% end %>
-        </tr>
-        <% @nfc.each do |nfl_team| %>
-         <%= render 'nfl_team_row', nfl_team: nfl_team %>
-        <% end %>
-      </table>
+        </table>
+      </div>
     </div>
   </div>
 </div>

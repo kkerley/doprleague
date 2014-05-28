@@ -4,6 +4,13 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.5.29 [2014/05/28]
+--------------------------------------------------
+- Made a number of tables responsive
+- Updated budgets#index to follow current design guidelines
+- Updated budgets#show to not have the "edit" link visible to non-admins
+
+
 Version 2.5.28 [2014/05/27]
 --------------------------------------------------
 - Added public_activity to nfl_teams#import and nfl_teams#update

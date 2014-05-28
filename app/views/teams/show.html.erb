@@ -70,23 +70,23 @@
 					<div class="panel-heading">
           	<p class="panel-title"><a href="/members"><i class="fa fa-list-alt"></i> The league</a></p>
         	</div>
-		        	
-					<table cellspacing="0" cellpadding="0" border="0" class="table table-striped">
-						<tr>
-							<td colspan="4"><strong>&nbsp;&nbsp;Philip Division</strong></td>
-						</tr>
-						<% current_philip_members.each do |user|%>
-							<%= render '/users/member_list_nav', :user => user %>
-						<% end %>
-						<tr>
-							<td colspan="4"><strong>&nbsp;&nbsp;Russell Division</strong></td>
-						</tr>
+		      <div class="table-responsive">  	
+						<table cellspacing="0" cellpadding="0" border="0" class="table table-striped">
+							<tr>
+								<td colspan="4"><strong>&nbsp;&nbsp;Philip Division</strong></td>
+							</tr>
+							<% current_philip_members.each do |user|%>
+								<%= render '/users/member_list_nav', :user => user %>
+							<% end %>
+							<tr>
+								<td colspan="4"><strong>&nbsp;&nbsp;Russell Division</strong></td>
+							</tr>
 
-						<% current_russell_members.each do |user|%>
-							<%= render '/users/member_list_nav', :user => user %>
-						<% end %>
-					</table>
-					
+							<% current_russell_members.each do |user|%>
+								<%= render '/users/member_list_nav', :user => user %>
+							<% end %>
+						</table>
+					</div>
 				</div><!-- end of panel -->
 			</div><!-- end of col-md-4-->	
 		</div><!-- end of row -->
@@ -114,19 +114,20 @@
   							<% end %> Inbox</p>
 					    </div>
 
-
-							<table class="table table-condensed" cellspacing="0" cellpadding="0" border="0">
-								<tr>
-									
-									<td>
-										<% if current_user.mailbox.inbox.count > 0 %>
-							  			<%= render current_user.mailbox.inbox %>
-							  		<% else %>
-							  			<%= render 'empty_mailbox' %>
-							  		<% end %>
-							  	</td>
-							  </tr>
-							</table>
+					    <div class="table-responsive">
+								<table class="table table-condensed" cellspacing="0" cellpadding="0" border="0">
+									<tr>
+										
+										<td>
+											<% if current_user.mailbox.inbox.count > 0 %>
+								  			<%= render current_user.mailbox.inbox %>
+								  		<% else %>
+								  			<%= render 'empty_mailbox' %>
+								  		<% end %>
+								  	</td>
+								  </tr>
+								</table>
+							</div>
 						</div>
 					</div>
 					
@@ -144,25 +145,22 @@
 					    <div class="panel-heading">       
 					      <p class="panel-title"><i class="fa fa-folder-open-o"></i> Sent</p>
 					    </div>
-							
-							<table class="table table-condensed" cellspacing="0" cellpadding="0" border="0">
-								<tr>
-									
-									<td>
-										<% if current_user.mailbox.sentbox.count > 0 %>
-							  			<%= render current_user.mailbox.sentbox %>
-							  		<% else %>
-							  			<%= render 'empty_mailbox' %>
-							  		<% end %>
-							  	</td>
-							  </tr>
-							</table>
-						</div>
-
-						
-						
+							<div class="table-responsive">
+								<table class="table table-condensed" cellspacing="0" cellpadding="0" border="0">
+									<tr>
+										
+										<td>
+											<% if current_user.mailbox.sentbox.count > 0 %>
+								  			<%= render current_user.mailbox.sentbox %>
+								  		<% else %>
+								  			<%= render 'empty_mailbox' %>
+								  		<% end %>
+								  	</td>
+								  </tr>
+								</table>
+							</div>
+						</div>				
 					</div>
-					
 				</div>
 
 				
