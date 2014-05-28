@@ -1,0 +1,7 @@
+updated 
+
+<% if activity.trackable %>
+	the <%= link_to activity.trackable.full_team_name, activity.trackable %>'s information.
+<% else %>
+	an NFL team that has since been removed from the site.
+<% end %><br /><small class="muted"><%= l activity.created_at, format: :feed %></small>

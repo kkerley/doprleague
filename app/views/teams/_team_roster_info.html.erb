@@ -148,7 +148,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @qbs.each do |qb| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to qb.full_name, qb %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= link_to qb.full_name, qb %> <%= link_to image_tag(qb.nfl_team_model.avatar(:tiny)), qb.nfl_team_model if qb.nfl_team %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>
@@ -162,7 +162,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @rbs.each do |rb| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to rb.full_name, rb %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= link_to rb.full_name, rb %> <%= link_to image_tag(rb.nfl_team_model.avatar(:tiny)), rb.nfl_team_model if rb.nfl_team %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>
@@ -176,7 +176,7 @@
 						<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @wrs.each do |wr| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to wr.full_name, wr %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= link_to wr.full_name, wr %> <%= link_to image_tag(wr.nfl_team_model.avatar(:tiny)), wr.nfl_team_model if wr.nfl_team %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>
@@ -190,7 +190,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @tes.each do |te| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to te.full_name, te %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= link_to te.full_name, te %> <%= link_to image_tag(te.nfl_team_model.avatar(:tiny)), te.nfl_team_model if te.nfl_team %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>
@@ -204,7 +204,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @kickers.each do |k| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to k.full_name, k %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= link_to k.full_name, k %> <%= link_to image_tag(k.nfl_team_model.avatar(:tiny)), k.nfl_team_model if k.nfl_team %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>
@@ -218,7 +218,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @defs.each do |d| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to d.full_name, d %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= link_to d.full_name, d %> <%= link_to image_tag(d.nfl_team_model.avatar(:tiny)), d.nfl_team_model if d.nfl_team %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>

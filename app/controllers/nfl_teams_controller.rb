@@ -6,10 +6,12 @@ class NflTeamsController < ApplicationController
     # @nfl_teams = NflTeam.all
     @afc = NflTeam.afc
     @nfc = NflTeam.nfc
+    @all_teams = NflTeam.order(:city)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @nfl_teams }
+      format.csv { send_data @all_teams.to_csv }
     end
   end
 
@@ -64,6 +66,7 @@ class NflTeamsController < ApplicationController
 
     respond_to do |format|
       if @nfl_team.update_attributes(params[:nfl_team])
+        @nfl_team.create_activity :update, owner: current_user
         format.html { redirect_to @nfl_team, notice: 'Nfl team was successfully updated.' }
         format.json { head :no_content }
       else
@@ -88,6 +91,8 @@ class NflTeamsController < ApplicationController
   def import
     if params[:file].present?
       NflTeam.import(params[:file])
+      @nfl_team = NflTeam.first # necessary to create the public_activity entry
+      @nfl_team.create_activity :import, owner: current_user
       redirect_to nfl_teams_url, notice: "NFL teams imported."
     else
       redirect_to nfl_teams_url, flash: { alert: "Select a file, please." }

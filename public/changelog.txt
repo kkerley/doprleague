@@ -4,13 +4,24 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
-Version 2.5.25 [2014/05/27]
+Version 2.5.28 [2014/05/27]
+--------------------------------------------------
+- Added public_activity to nfl_teams#import and nfl_teams#update
+
+
+Version 2.5.27 [2014/05/27]
+--------------------------------------------------
+- Added team logo next to player's names in the Roster breakdown by position box on teams#show
+- Added action to export NFL teams to .csv
+
+
+Version 2.5.26 [2014/05/27]
 --------------------------------------------------
 - Fixed issue on nfl_teams#index that prevented the AFC/NFC rows from showing for users not logged in
 - Fixed the bottom rows of the roster on teams#show to lineup correctly after adding the new columns for team logo and bye
 
 
-Version 2.5.25 [2014/05/27]
+Version 2.5.25 [2014/05/26]
 --------------------------------------------------
 - Added toolbar links to inbox, sentbox and trash on teams#show when in any of those three views
 - Font changes to various tabs on teams#show

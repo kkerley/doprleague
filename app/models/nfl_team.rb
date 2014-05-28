@@ -1,4 +1,6 @@
 class NflTeam < ActiveRecord::Base
+  include PublicActivity::Common
+  
   attr_accessible :city, :conference, :mascot, :shorthand, :avatar, :bye_week
 
   has_many :super_bowls, foreign_key: :nfl_winner_id
@@ -35,6 +37,15 @@ class NflTeam < ActiveRecord::Base
       nfl_team = find_by_id(row["id"]) || new
       nfl_team.attributes = row.to_hash.slice(*accessible_attributes)
       nfl_team.save!
+    end
+  end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |nfl_team|
+        csv << nfl_team.attributes.values_at(*column_names)
+      end
     end
   end
 end
