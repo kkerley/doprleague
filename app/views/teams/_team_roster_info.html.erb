@@ -51,6 +51,7 @@
 									<% end %>
 									
 								</td>
+
 								<td><%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %></td>
 								<td><%= player.nfl_team_model.bye_week if player.nfl_team  %></td>
 								<td class="hidden-sm hidden-xs"><%= player.position %></td>
@@ -79,6 +80,8 @@
 						<td><h4><span class="label label-danger">TOTAL SPENT:</span></h4></td>
 						<td></td>
 						<td></td>
+						<td></td>
+						<td></td>
 						<td><h4>$<%= @total_cap_current_year %></h4></td>
 						<td><h4>$<%= @total_cap_current_year_plus_1 %></h4></td>
 						<td><h4>$<%= @total_cap_current_year_plus_2 %></h4></td>
@@ -90,6 +93,8 @@
 						<td></td>
 						
 						<td>Yearly budget amount: </td>
+						<td></td>
+						<td></td>
 						<td></td>
 						<td></td>
 						<td><%= link_to "$" + @team_budget_current_year.amount.to_s, team_budget_path(@team, @team_budget_current_year) %></td>
@@ -104,6 +109,8 @@
 						<td></td>
 						
 						<td>Remainder: </td>
+						<td></td>
+						<td></td>
 						<td></td>
 						<td></td>
 						<td>$<%= @team_remainder_current_year %></td>
