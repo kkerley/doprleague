@@ -1,7 +1,7 @@
 <tr>
 	<td></td>
 	<td><%= image_tag user.avatar(:tiny) %> <% if user.team %>
-				<%= link_to user.team.team_name, user.team %> <span class="muted">[<%= user.display_name %>]</span>
+				<%= link_to user.team.team_name, user.team %> <small class="muted">[<%= user.display_name %>]</small>
 			<% else %>
 				No team.
 			<% end %>

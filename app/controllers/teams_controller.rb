@@ -35,6 +35,16 @@ class TeamsController < ApplicationController
     @kickers = @players.find_all { |player| player.position == "K" if player.is_contracted? && player.this_year.team_id == @team.id }
     @defs = @players.find_all { |player| player.position == "DEF" if player.is_contracted? && player.this_year.team_id == @team.id }
 
+    @week4 = @team.players_by_bye_week(4, @team)
+    @week5 = @team.players_by_bye_week(5, @team)
+    @week6 = @team.players_by_bye_week(6, @team)
+    @week7 = @team.players_by_bye_week(7, @team)
+    @week8 = @team.players_by_bye_week(8, @team)
+    @week9 = @team.players_by_bye_week(9, @team)
+    @week10 = @team.players_by_bye_week(10, @team)
+    @week11 = @team.players_by_bye_week(11, @team)
+    @week12 = @team.players_by_bye_week(12, @team)
+
     @total_payout_amount_to_date = Payout.all.count * 1200
     gon.all_users_and_awards = User.order(:id).includes(:awards)
 

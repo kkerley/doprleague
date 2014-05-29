@@ -125,5 +125,18 @@ class Team < ActiveRecord::Base
     players_to_franchise.uniq
   end
 
+  #breakdown by bye week
+  def players_by_bye_week(bye_week, team)
+    players = self.get_subcontract_players
+    players_on_bye = []
 
+    players.each do|player|
+      if player.nfl_team_model.bye_week == bye_week
+        if player.is_contracted? && player.this_year.team_id == team.id
+          players_on_bye << player
+        end
+      end
+    end
+    players_on_bye.uniq
+  end
 end

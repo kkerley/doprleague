@@ -1,0 +1,101 @@
+<p class="h4 margin-top-2em"><i class="fa fa-align-left"></i> Roster breakdown by position for the <%= current_year %> season</p>
+	<div class="table-responsive">
+		<table class="table table-condensed table-bordered table-striped" cellpadding="0" cellspacing="0" border="0">
+	    		<thead>
+	    			<tr>
+	    				<th width="5"></th>
+	    				<th width="20">Pos</th>
+	    				<th width="20">#</th>
+	    				<th style="padding-left: 15px;">Players</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody>
+	    			
+	    			<tr>
+	    				<td></td>
+	    				<td>QB</td>
+	    				<td><%= @qbs.count %></td>
+	    				<td>
+	    					<table cellspacing="0" cellpadding="0" border="0">
+	    						<tr>
+			      				<% @qbs.each do |qb| %>
+			      					<td class="roster-breakdown-by-player-row"><%= link_to qb.full_name, qb %> <%= link_to image_tag(qb.nfl_team_model.avatar(:tiny)), qb.nfl_team_model if qb.nfl_team %></td>
+			      				<% end %>
+			      			</tr>
+			      		</table>
+	      			</td>
+	    			</tr>
+	    			<tr>
+	    				<td></td>
+	    				<td>RB</td>
+	    				<td><%= @rbs.count %></td>
+	    				<td>
+	    					<table cellspacing="0" cellpadding="0" border="0">
+	    						<tr>
+			      				<% @rbs.each do |rb| %>
+			      					<td class="roster-breakdown-by-player-row"><%= link_to rb.full_name, rb %> <%= link_to image_tag(rb.nfl_team_model.avatar(:tiny)), rb.nfl_team_model if rb.nfl_team %></td>
+			      				<% end %>
+			      			</tr>
+			      		</table>
+	      			</td>
+	    			</tr>
+	    			<tr>
+	    				<td></td>
+	    				<td>WR</td>
+	    				<td><%= @wrs.count %></td>
+					<td>
+						<table cellspacing="0" cellpadding="0" border="0">
+	    						<tr>
+			      				<% @wrs.each do |wr| %>
+			      					<td class="roster-breakdown-by-player-row"><%= link_to wr.full_name, wr %> <%= link_to image_tag(wr.nfl_team_model.avatar(:tiny)), wr.nfl_team_model if wr.nfl_team %></td>
+			      				<% end %>
+			      			</tr>
+			      		</table>
+					</td>
+	    			</tr>
+	    			<tr>
+	    				<td></td>
+	    				<td>TE</td>
+	    				<td><%= @tes.count %></td>
+	    				<td>
+	    					<table cellspacing="0" cellpadding="0" border="0">
+	    						<tr>
+			      				<% @tes.each do |te| %>
+			      					<td class="roster-breakdown-by-player-row"><%= link_to te.full_name, te %> <%= link_to image_tag(te.nfl_team_model.avatar(:tiny)), te.nfl_team_model if te.nfl_team %></td>
+			      				<% end %>
+			      			</tr>
+			      		</table>
+	    				</td>
+	    			</tr>
+	    			<tr>
+	    				<td></td>
+	    				<td>K</td>
+	    				<td><%= @kickers.count %></td>
+	    				<td>
+	    					<table cellspacing="0" cellpadding="0" border="0">
+	    						<tr>
+			      				<% @kickers.each do |k| %>
+			      					<td class="roster-breakdown-by-player-row"><%= link_to k.full_name, k %> <%= link_to image_tag(k.nfl_team_model.avatar(:tiny)), k.nfl_team_model if k.nfl_team %></td>
+			      				<% end %>
+			      			</tr>
+			      		</table>
+	    				</td>
+	    			</tr>
+	    			<tr>
+	    				<td></td>
+	    				<td>D</td>
+	    				<td><%= @defs.count %></td>
+	    				<td>
+	    					<table cellspacing="0" cellpadding="0" border="0">
+	    						<tr>
+			      				<% @defs.each do |d| %>
+			      					<td class="roster-breakdown-by-player-row"><%= link_to d.full_name, d %> <%= link_to image_tag(d.nfl_team_model.avatar(:tiny)), d.nfl_team_model if d.nfl_team %></td>
+			      				<% end %>
+			      			</tr>
+			      		</table>
+	    				</td>
+	    			</tr>
+	    		</tbody>
+	    	</table>
+	    </div>
+		<% render 'layouts/back_to_top_link' %>

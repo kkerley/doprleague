@@ -15,6 +15,9 @@
 			<div class="panel-heading">
       		<p class="panel-title"><i class="fa fa-shield"></i> <%= @nfl_team.full_team_name %> personnel</p>
     	</div>
+    	<div class="panel-body">
+		    <p><%= current_year %> bye week: <%= @nfl_team.bye_week %></p>
+		  </div>
     	<div class="table-responsive">
 				<table class='table table-striped'>
 					<thead>

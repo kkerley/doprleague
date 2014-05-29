@@ -1,1 +1,1 @@
-<%= image_tag user.avatar.url(:tiny) %> <%= user.team.team_name unless user.team.blank? %> <span class="muted">[<%= user.display_name  %>]</span>
+<%= image_tag user.avatar.url(:tiny) %> <%= user.team.team_name unless user.team.blank? %> <small class="muted">[<%= user.display_name  %>]</small>

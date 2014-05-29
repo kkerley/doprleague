@@ -4,6 +4,19 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.5.30 [2014/05/28]
+--------------------------------------------------
+- Added "roster breakdown by bye week" table to teams#show
+- Added Standings to Admin page
+- Changed size of buttons on players#index to be smaller and not break on mobile
+- Updated the Members nav dropdown with dividers and headers
+- Broke up the League info dropdown with dividers and headers
+- Added a divider between the team-related links in that dropdown and the log out link
+- Added bye week to nfl_teams#show
+- Added team logo next to Super Bowl pick in the GM actions panel
+- Made users' actual names smaller in dropdown nav and in the various "The League" panels
+
+
 Version 2.5.29 [2014/05/28]
 --------------------------------------------------
 - Made a number of tables responsive
