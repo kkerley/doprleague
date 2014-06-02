@@ -10,9 +10,9 @@ class PlayersController < ApplicationController
   # GET /players.json
   def index
     if(params[:query])
-      @players = Player.page(params[:page]).per_page(Player.count).text_search(params[:query]).includes(:contracts).includes(:subcontracts)
+      @players = Player.includes(:contracts).includes(:subcontracts).text_search(params[:query]).page(params[:page]).per_page(Player.count)
     else
-      @players = Player.page(params[:page]).per_page(50).text_search(params[:query]).includes(:contracts).includes(:subcontracts)
+      @players = Player.includes(:contracts).includes(:subcontracts).text_search(params[:query]).page(params[:page]).per_page(50)
     end
     # @players = Player.text_search(params[:query]).includes(:contracts).includes(:subcontracts).sort_by { |player| player.this_year_salary }.reverse
     @players_download = Player.order(:last_name)

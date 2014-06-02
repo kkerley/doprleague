@@ -1,0 +1,12 @@
+<tr>
+      <td></td>
+      <td><%= team_record.rank %></td>
+      <td><%= image_tag team_record.team.user.avatar.url(:tiny) %> <%= link_to team_record.team.team_name, team_record.team %></td>
+      <td class="bold"><%= team_record.wlt %></td>
+      <td><%= team_record.pct %></td>
+      <td><%= team_record.division_record %></td>
+      <td><%= team_record.pts_for %></td>
+      <td><%= team_record.pts_against %></td>
+      <td><%= team_record.streak %></td>
+      <td><%= team_record.moves %></td>
+</tr>

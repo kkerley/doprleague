@@ -2,7 +2,9 @@
 	<td>
 			<a name="feature" class="expand" style="cursor: pointer;"><strong><%= feature.title %></strong> <i class="fa fa-angle-down only-this"></i></a>
 			<div class="hidden-content admin-hidden">
-
+				<% if feature.avatar? %>
+					<%= image_tag(feature.avatar.url(:max720), :border => 0, :class => "img-polaroid margin-bottom-1em img-responsive") %>
+				<% end %>
 				<%= best_in_place_if current_user, feature, :content, type: :textarea, html_attrs: { style: 'width: 540px' }, display_with: lambda { |v| textilize(v).html_safe } %><br /><br />
 			</div>	
 	</td>

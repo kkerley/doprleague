@@ -50,6 +50,7 @@ group :test do
 end
 
 gem "rspec-rails", :group => [:test, :development]
+gem "rack-mini-profiler"
 
 # gem 'friendly_id', :require => "friendly_id"
 

@@ -113,13 +113,4 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
     @articles = Feature.for_polls.published
   end
   
-  def admin
-    @announcements = Feature.for_announcements
-    @faqs = Feature.for_faqs
-    @facebook_polls = Feature.for_polls
-    @constitution_features = Feature.for_constitution
-    @super_bowls = SuperBowl.order("year desc")
-    @users = User.all
-  end
-  
 end

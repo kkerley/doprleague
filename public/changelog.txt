@@ -3,11 +3,18 @@ Disciples of Philip Rivers (http://doprleague.info) site CHANGELOG
 Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com)
 ====================================================================================================
 
+Version 2.5.31 [2014/06/01]
+--------------------------------------------------
+- Added Standings to Admin page
+- Created admin controller to remove the admin code from features_controller
+- Added Facebook poll images to admin page
+- Changed the player position buttons to be responsive on players#index
+- Reordered the queries for players#index to improve loading speed by over 5x
+
 
 Version 2.5.30 [2014/05/28]
 --------------------------------------------------
 - Added "roster breakdown by bye week" table to teams#show
-- Added Standings to Admin page
 - Changed size of buttons on players#index to be smaller and not break on mobile
 - Updated the Members nav dropdown with dividers and headers
 - Broke up the League info dropdown with dividers and headers

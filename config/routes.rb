@@ -1,4 +1,6 @@
 KkerleyCom::Application.routes.draw do
+  
+
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
   resources :activities
@@ -17,6 +19,7 @@ KkerleyCom::Application.routes.draw do
   resources :events
   resources :team_records
   resources :standings
+  resources :admin
 
   resources :players do 
     collection do
@@ -72,7 +75,8 @@ KkerleyCom::Application.routes.draw do
   get "faqs" => "features#faqs", :as => "faqs"
   get "constitution" => "features#constitution", :as => "constitution"
   get "polls" => "features#polls", :as => "polls"
-  get "admin" => "features#admin", :as => "admin"
+  # get "admin" => "features#admin", :as => "admin"
+  get "admin/index" # => "admin/index", :as => "admin"
   get "members" => "users#index", :as => "members"
   
   devise_scope :user do 

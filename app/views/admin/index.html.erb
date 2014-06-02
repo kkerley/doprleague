@@ -1,0 +1,362 @@
+<% content_for :title, "Administrative control" %>
+<% content_for :section_subtitle, "Create and manage site content." %>
+
+<%= render "/layouts/admin_control_panel/admin_control_panel" %>  			
+
+
+<ul class="nav nav-tabs margin-top-2em">
+  <li class="active dropdown">
+  	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			<i class="fa fa-info-circle"></i> League info <b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+			<li><a href="#announcements" data-toggle="tab"><i class="fa fa-exclamation-circle"></i> Announcements</a></li>
+		  <li><a href="#constitution" data-toggle="tab"><i class="fa fa-book"></i> Constitution</a></li>
+		  <li><a href="#faqs" data-toggle="tab"><i class="fa fa-question-circle"></i> FAQs</a></li>
+		  <li><a href="#fbpolls" data-toggle="tab"><i class="fa fa-tasks"></i> Polls</a></li>
+		</ul>
+	</li>
+  <li><a href="#superBowls" data-toggle="tab"><i class="fa fa-ticket"></i> Super Bowls</a></li>
+  <li><a href="#players" data-toggle="tab"><i class="fa fa-bullhorn"></i> NFL players</a></li>
+  <li><a href="#nflTeams" data-toggle="tab"><i class="fa fa-shield"></i> NFL teams</a></li>
+  <li><a href="#salaries" data-toggle="tab"><i class="fa fa-money"></i> Salaries</a></li>
+  <li><a href="#standings" data-toggle="tab"><i class="fa fa-list-ol"></i> Standings</a></li>
+  <li><a href="#members" data-toggle="tab"><i class="fa fa-users"></i> Members</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  
+
+  <div class="tab-pane fade in active" id="announcements">
+  	<div class="row"><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/" style="color: #333;"><i class="fa fa-exclamation-circle"></i> Announcements</a> <small class="muted" style="font-size: 50%;">Content and order may be edited in-place by clicking the field. Click the "Edit" button for everything else.</small></p></div>
+		</div>
+		<div class="row">
+	  	<div class="col-md-12">               
+	    	<div class="table-responsive">
+		    	<table class="table table-striped">
+			    	<%= render 'admin_feature_listing_header' %>
+		        <tbody>
+			        <% @announcements.each do |feature| %>
+			 					<%= render 'admin_feature_listing', feature: feature %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+  </div><!-- end of announcements -->
+
+  <div class="tab-pane fade" id="constitution">
+  	<div class="row "><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/constitution" style="color: #333;"><i class="fa fa-book"></i> Constitution</a> <small class="muted" style="font-size: 50%;">Content and order may be edited in-place by clicking the field. Click the "Edit" button for everything else.</small></p></div>
+		</div>
+		<div class="row">
+	  	<div class="col-md-12">
+	  		<div class="table-responsive">            
+					<table class="table table-striped">
+			    	<%= render 'admin_feature_listing_header' %>
+		        <tbody>
+			        <% @constitution_features.each do |feature| %>
+			 					<%= render 'admin_feature_listing', feature: feature %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+  </div><!-- end of constitution -->
+
+
+  <div class="tab-pane fade" id="faqs">
+  	<div class="row "><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/faqs" style="color: #333;"><i class="fa fa-question-circle"></i> FAQs</a> <small class="muted" style="font-size: 50%;">Content and order may be edited in-place by clicking the field. Click the "Edit" button for everything else.</small></p></div>
+		</div>
+		<div class="row">
+		  <div class="col-md-12">
+		  	<div class="table-responsive">              
+			    <table class="table table-striped">
+			    	<%= render 'admin_feature_listing_header' %>
+		        <tbody>
+			        <% @faqs.each do |feature| %>
+			 					<%= render 'admin_feature_listing', feature: feature %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+  </div><!-- end of faqs -->
+
+
+  <div class="tab-pane fade" id="fbpolls">
+  	<div class="row "><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/polls" style="color: #333;"><i class="fa fa-tasks"></i> Facebook polls</a> <small class="muted" style="font-size: 50%;">Content and order may be edited in-place by clicking the field. Click the "Edit" button for everything else.</small></p></div>
+		</div>
+		<div class="row">
+	  	<div class="col-md-12">
+	  		<div class="table-responsive">            
+		    	<table class="table table-striped">
+			    	<%= render 'admin_feature_listing_header' %>
+		        <tbody>
+			        <% @facebook_polls.each do |feature| %>
+			 					<%= render 'admin_feature_listing', feature: feature %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+  </div><!-- end of fbpolls -->
+
+
+  <div class="tab-pane fade" id="superBowls">
+  	<div class="row"><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/" style="color: #333;"><i class="fa fa-ticket"></i> Super Bowls</a></p></div>
+		</div>
+		<div class="row">
+	  	<div class="col-md-12">
+	  		<div class="table-responsive">            
+		    	<table class="table table-striped"> 
+	        	<thead>
+	        		<tr>
+	        			<th>Year</th>
+	        			<th>AFC Team</th>
+	        			<th>NFC Team</th>
+	        			<th>AFC score</th>
+	        			<th>NFC score</th>
+	        			<th>NFL winner</th>
+	        			<th>DoPR winner</th>
+	        			<th></th>
+	        			<th></th>
+	        		</tr>
+	        	</thead>
+	        	<tbody>
+			        <% @super_bowls.each do |sb| %>
+			 					<%= render 'admin_super_bowls', sb: sb %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+  </div><!-- end of superBowls -->
+  
+
+  <div class="tab-pane fade" id="players">
+  	<div class="row"><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/players" style="color: #333;"><i class="fa fa-bullhorn"></i> NFL players</a></p></div>
+		</div>
+		<div class="row">
+		  <div class="col-md-5">               
+
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+				    <p class="panel-title bold"><i class="fa fa-cloud-upload"></i> Import players <small class="muted" style="font-weight: normal;">only .csv accepted at this time.</small></p>
+				  </div>
+					<div class="panel-body">
+						<%= form_tag import_players_path, class: "form-inline", multipart: true do %>
+							<div class="input-group"> 
+								<%= file_field_tag :file, class: "form-control" %><br />
+								
+								<span class="input-group-btn">
+									<%= button_tag class: "btn btn-danger btn-large" do %>
+										<i class="fa fa-cloud-upload"></i> Import
+									<% end %>
+								</span>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-5">
+				 <p><%= link_to players_path(format: "csv"), class: "btn btn-primary btn-large" do %>
+		    	<i class="fa fa-cloud-download"></i> Download full list in .csv
+		    	<% end %></p>	
+		  </div>
+		</div>
+  </div><!-- end of NFL players -->
+
+  <div class="tab-pane fade" id="nflTeams">
+  	<div class="row"><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/nfl_teams" style="color: #333;"><i class="fa fa-shield"></i> NFL teams</a></p></div>
+		</div>
+		<div class="row">
+		  <div class="col-md-5">               
+
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+            <p class="panel-title bold">Import NFL teams <small>only .csv accepted at this time.</small></p>
+           
+          </div>
+          <div class="panel-body">
+            <%= form_tag import_nfl_teams_path, :class => "form-inline", multipart: true do %>
+              <div class="form-group"> 
+                <%= file_field_tag :file, :class => "form-control", :style => "width: 350px" %><br />
+              </div>
+              <%= submit_tag "Import", :class => "btn btn-success btn-large" %>
+            <% end %>
+          </div>
+				</div>
+			</div>
+			<div class="col-md-5">
+				 <p><%= link_to nfl_teams_path(format: "csv"), class: "btn btn-primary btn-large" do %>
+		    	<i class="fa fa-cloud-download"></i> Download full list in .csv
+		    	<% end %></p>	
+		  </div>
+		</div>
+  </div><!-- end of NFL players -->
+
+
+  <div class="tab-pane fade" id="salaries">
+  	<div class="row "><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/salary_progressions" style="color: #333;"><i class="fa fa-money"></i> Salary progressions</a></p></div>
+		</div>
+		<div class="row">
+			<div class="col-md-5">
+
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+		          <p class="panel-title"><i class="fa fa-cloud-upload"></i> Import salary progressions <small class="muted" style="font-weight: normal;">only .csv accepted at this time.</small></p>
+		      </div>
+					<div class="panel-body">
+							<%= form_tag import_salary_progressions_path, class: "form-inline", multipart: true do %>
+							 <div class="input-group"> 
+								<%= file_field_tag :file, class: "form-control" %><br />
+							
+							  <span class="input-group-btn">
+									<%= button_tag class: "btn btn-danger btn-large" do %>
+										<i class="fa fa-cloud-upload"></i> Import
+									<% end %>
+								</span>
+							</div>
+							<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-5">
+				 <p><%= link_to salary_progressions_path(format: "csv"), class: "btn btn-primary btn-large" do %>
+		    	<i class="fa fa-cloud-download"></i> Download full list in .csv
+		    	<% end %></p>	
+		  </div>
+		</div>	
+  </div><!-- end of salaries -->
+
+
+  <div class="tab-pane fade" id="standings">
+  	<div class="row "><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/salary_progressions" style="color: #333;"><i class="fa fa-list-ol"></i> Standings</a></p></div>
+		</div>
+		<div class="row">
+
+  <div class="col-md-2 col-md-push-10">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <p class="panel-title"><i class="fa fa-list-ol"></i> All standings</p>
+        </div>
+        <div class="panel-body">
+          <ul>
+          <% @standings.each do |standing|%>
+            <li><%= link_to standing.year.to_s, "#" + standing.year.to_s %> </li>
+          <% end %>
+        </ul>
+
+        
+        </div>
+      </div>
+  </div><!-- end of col-md-2 -->
+
+
+  <div class="col-md-10 col-md-pull-2">
+    <% @standings.each do |standing| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <p class="panel-title"><a id="<%= standing.year %>"></a><i class="fa fa-list-ol"></i> <%= standing.year %> standings</p>
+        </div>
+       
+        <div class="table-responsive">
+          <table class="table table-condensed table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Rank</th>
+                <th>Team</th>
+                <th>Wlt</th>
+                <th>Pct</th>
+                <th>Division</th>
+                <th>Pts for</th>
+                <th>Pts against</th>
+                <th>Streak</th>
+                <th>Moves</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td colspan="9"><strong>Philip Division</strong></td>
+              </tr>
+              <% standing.team_records.first(6).each do |team_record| %>
+                <%= render '/standings/admin_standings_table_row', team_record: team_record %>
+              <% end %>
+              <tr>
+                <td></td>
+                <td colspan="9"><strong>Russell Division</strong></td>
+              </tr>
+              <% standing.team_records.last(6).each do |team_record| %>
+                <%= render '/standings/admin_standings_table_row', team_record: team_record %>
+              <% end %>
+              <tr>
+              	<td></td>
+              	<td colspan="7" align="right"><i class="fa fa-cogs"></i> &nbsp;</td>
+              	<td colspan="2"><%= link_to edit_standing_path(standing), class: 'label label-warning' do -%><i class="fa fa-pencil-square-o"></i> Edit <% end %>&nbsp;
+              		<%= link_to standing, :confirm => 'Are you sure?', method: :delete, class: 'label label-danger' do %><i class="fa fa-minus-circle"></i>  Delete<% end %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+          
+        
+
+      </div>
+        <small>* denotes playoff berth</small>
+        <%= render 'layouts/back_to_top_link' %>
+    <% end %>
+    
+  </div><!-- end of col-md-10 -->
+
+  
+</div>
+  </div><!-- end of standings -->
+
+  <div class="tab-pane fade" id="members">
+  	<div class="row "><br/><br/>
+			<div class="col-md-12"><p class="headline"><a href="/members" style="color: #333;"><i class="fa fa-users"></i> Members</a> <small class="muted" style="font-size: 50%;">Name, email, team name and division may be edited from here by clicking on the text.</small></p></div>
+		</div>
+		<div class="row">
+	  	<div class="col-md-12">
+	  		<div class="table-responsive">
+		  		<table class="table table-striped">
+		  			<thead>              
+		       		<tr>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Team name</th>
+								<th>Division</th>
+								<th>Admin?</th>
+								<th></th>
+								<th></th>
+							</tr>
+		       	</thead>
+		       	<tbody>
+		       		<% @users.each do |user| %>
+		 						<%= render 'admin_user_management', :user => user %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+  </div><!-- end of members -->
+
+</div>
