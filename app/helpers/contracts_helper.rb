@@ -4,18 +4,18 @@ module ContractsHelper
     end
 
 	def buyouts_contracts
-		@contracts = Contract.where('is_bought_out = ?', true).page(params[:page]).per_page(40).includes(:subcontracts)
+		@contracts = Contract.where('is_bought_out = ?', true).includes(:subcontracts).page params[:page]
 	end
 
 	def extensions_contracts
-    	@contracts = Contract.where('is_extended = ?', true).where('is_franchised != ?', true).where('is_bought_out != ?', true)
+    	@contracts = Contract.where('is_extended = ?', true).where('is_franchised != ?', true).where('is_bought_out != ?', true).includes(:subcontracts)
     end
 
     def franchises_contracts
-    	@contracts = Contract.where('is_franchised = ?', true).where('is_extended != ?', true).where('is_bought_out != ?', true)
+    	@contracts = Contract.where('is_franchised = ?', true).where('is_extended != ?', true).where('is_bought_out != ?', true).includes(:subcontracts)
     end
 
     def both_contracts
-    	@contracts = Contract.where('is_extended = ?', true).where('is_franchised = ?', true ).where('is_bought_out != ?', true)
+    	@contracts = Contract.where('is_extended = ?', true).where('is_franchised = ?', true ).where('is_bought_out != ?', true).includes(:subcontracts)
     end
 end

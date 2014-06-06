@@ -1,4 +1,4 @@
-		<div class="panel panel-default">
+<div class="panel panel-default">
 			<div class="panel-heading">
 		      <p class="panel-title"><i class="fa fa-bullhorn"></i> NFL personnel</p>
 					
@@ -16,18 +16,18 @@
 			</div>
 
 			<div class="table-responsive">
-		  	<table cellspacing="0" cellpadding="0" border="0" class="table table-striped table-condensed" id="playersTable">
+				<table cellspacing="0" cellpadding="0" border="0" class="table table-striped table-condensed" id="playersTable">
 					<thead>
 						<tr>
 							<th></th>
-							<th data-sort="string">Name <i class="fa fa-sort"></i></th>
+							<th><%= smart_listing.sortable "Name", "last_name" %></th>
 							<th class="hidden-sm hidden-xs">Position</th>
-							<th>Team</th>
+							<th><%= smart_listing.sortable "Team", "nfl_team" %></th>
 							<th class="hidden-sm hidden-xs">Bye</th>
 							
 							
 							<th>Salary</th>
-							<th data-sort="int">Auction <i class="fa fa-sort"></i></th>
+							<th><%= smart_listing.sortable "Auction", "auction_value" %></th>
 							
 							<th>Owned by</th>
 							<th><!-- contract link --></th>
@@ -43,7 +43,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% @players.each do |player| %>
+						<% smart_listing.collection.each do |player| %>
 							<tr>
 								<td></td>
 								<td><%= link_to player.full_name, player %></td>
@@ -57,7 +57,7 @@
 										$<%= player.this_year.salary_amount %>
 									<% end %>
 								</strong></td>
-								<td data-sort-value="<%= player.auction_value %>">$<%= player.auction_value %></td>
+								<td>$<%= player.auction_value %></td>
 								
 								<% if player.is_contracted? %>
 									<td>
@@ -89,12 +89,14 @@
 								<% end %>
 								<td></td>
 							</tr>
-						<% end %>
-					</tbody>
-				</table>
-			</div>	
-		</div><!-- end of panel -->
-		<%= will_paginate @players, renderer: BootstrapPagination::Rails %>
+						<% end %>				
+						</tbody>
+					</table>
+				</div>	
+			</div><!-- end of panel -->
+		<%= smart_listing.paginate %>
+		<%= smart_listing.pagination_per_page_links %>
+
 	</div><!-- end of col-md-9 -->
 	
 </div><!-- end of row -->

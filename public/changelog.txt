@@ -3,6 +3,27 @@ Disciples of Philip Rivers (http://doprleague.info) site CHANGELOG
 Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com)
 ====================================================================================================
 
+
+Version 2.5.34 [2014/06/05]
+--------------------------------------------------
+- Added Facebook-style page title count for messages
+
+
+Version 2.5.33 [2014/06/05]
+--------------------------------------------------
+- Added "500" option to players#index per-page amounts since returning the full list via blank search isn't possible
+- Removed tooltip over the search button
+
+
+Version 2.5.32 [2014/06/05]
+--------------------------------------------------
+- Added Haml gem for eventual sitewide rewrite of views
+- Added smart_listing gem for much improved Ajax sorting/displaying of players
+- Removed default_scope from players (for smart_listing to function properly)
+- Switched to kaminari for all pagination
+- Moved "Directory" link under "Members" to the very bottom
+
+
 Version 2.5.31 [2014/06/01]
 --------------------------------------------------
 - Added Standings to Admin page

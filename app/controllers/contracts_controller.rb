@@ -1,13 +1,12 @@
 class ContractsController < ApplicationController
-  require 'will_paginate/array'
-  # before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
+  
   load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new]
 
   # GET /contracts
   # GET /contracts.json
   def index
     # @contracts = Contract.all  
-    @contracts = Contract.page(params[:page]).per_page(40).includes(:subcontracts)
+    @contracts = Contract.includes(:subcontracts).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -92,22 +91,22 @@ class ContractsController < ApplicationController
 
   def buyouts
     # uses helper methods
-    @contracts = Contract.buyouts.paginate(:page => params[:page], :per_page => 40).includes(:subcontracts)
+    @contracts = Contract.buyouts.includes(:subcontracts).page params[:page]
   end
 
   def extensions
     # uses helper methods
-    @contracts = Contract.where('is_extended = ?', true).where('is_franchised != ?', true).where('is_bought_out != ?', true).paginate(:page => params[:page], :per_page => 40).includes(:subcontracts)
+    @contracts = Contract.where('is_extended = ?', true).where('is_franchised != ?', true).where('is_bought_out != ?', true).includes(:subcontracts).page params[:page]
   end
 
   def franchises
     # uses helper methods
-    @contracts = Contract.where('is_franchised = ?', true).where('is_extended != ?', true).where('is_bought_out != ?', true).paginate(:page => params[:page], :per_page => 40).includes(:subcontracts)
+    @contracts = Contract.where('is_franchised = ?', true).where('is_extended != ?', true).where('is_bought_out != ?', true).includes(:subcontracts).page params[:page]
   end
 
   def extended_and_franchised
     # uses helper methods
-    @contracts = Contract.where('is_extended = ?', true).where('is_franchised = ?', true ).where('is_bought_out != ?', true).paginate(:page => params[:page], :per_page => 40).includes(:subcontracts)
+    @contracts = Contract.where('is_extended = ?', true).where('is_franchised = ?', true ).where('is_bought_out != ?', true).includes(:subcontracts).page params[:page]
   end
 
 

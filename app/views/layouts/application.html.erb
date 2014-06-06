@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Disciples of Philip Rivers | <%= yield(:title) %></title>
+  <title><% if current_user %>
+  					<% if current_user_inbox.count > 0 %>
+  						(<%= current_user_inbox.count %>)
+  					<% end %>
+  				<% end %>Disciples of Philip Rivers | <%= yield(:title) %></title>
 
   	<%= include_gon %>
   	<%= stylesheet_link_tag 	"application", :media => "all" %>
@@ -52,8 +56,7 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i> Members <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="/members"><i class="fa fa-list-alt"></i> Directory</a></li>
-									<li class="divider"></li>
+									
 									<li role="presentation" class="dropdown-header">Philip Division</li>
 
 									<% current_philip_members.each do |user|%>
@@ -73,6 +76,8 @@
 											<% end %>
 										</li>
 									<% end %>
+									<li class="divider"></li>
+									<li><a href="/members"><i class="fa fa-list-alt"></i> Directory</a></li>
 								</ul>
 							</li>
 							
@@ -104,7 +109,7 @@
 							    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search players" %>
 								
 									<span class="input-group-btn">
-										<%= button_tag(data: { toggle: "tooltip", placement: "bottom", title: "Blank search returns full players list" }, id: "btn_players_search", class: "btn btn-success") do %>
+										<%= button_tag(id: "btn_players_search", class: "btn btn-success") do %>
 											<i class="fa fa-search"></i>
 										<% end %>
 									</span>
@@ -208,7 +213,7 @@
 	
 	
 	<p class="muted credit">This site is built by Kyle Kerley using a custom Rails 3.2.18-powered content management system structured by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and served up on nginx through Phusion Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a>.</p>
-	<p class="muted credit">Site version: <strong>2.5.31</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
+	<p class="muted credit">Site version: <strong>2.5.34</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
       	<p class="muted credit">&copy; 2013-<%= current_year_footer %> Kyle Kerley. All rights reserved.</p>
           
       </div>

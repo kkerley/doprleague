@@ -5,7 +5,7 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
   # GET /features
   # GET /features.json
   def index
-    @announcements = Feature.for_announcements.published.includes(:user).page(params[:page]).per_page(5)
+    @announcements = Feature.for_announcements.published.includes(:user).page params[:page]
     @activities = PublicActivity::Activity.order("created_at desc")
     
     

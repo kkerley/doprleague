@@ -16,11 +16,15 @@ gem 'friendly_id'
 gem 'acts_as_list'
 gem 'jquery-rails', '~> 2.3.0'
 gem 'jquery-ui-rails'
-gem 'will_paginate', '~> 3.0'
-gem 'will_paginate-bootstrap'
+# gem 'will_paginate', '~> 3.0'
+# gem 'will_paginate-bootstrap'
+gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'public_activity'
 gem 'mailboxer'
 gem 'simple_form'
+gem 'smart_listing'
+gem 'haml'
 
 
 # Gems used only for assets and not required

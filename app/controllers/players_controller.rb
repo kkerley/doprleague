@@ -1,5 +1,7 @@
 class PlayersController < ApplicationController
-  require 'will_paginate/array'
+  # require 'will_paginate/array'
+  include SmartListing::Helper::ControllerExtensions
+  helper  SmartListing::Helper
   # before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
   load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new]
   
@@ -9,11 +11,13 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    if(params[:query])
-      @players = Player.includes(:contracts).includes(:subcontracts).text_search(params[:query]).page(params[:page]).per_page(Player.count)
-    else
-      @players = Player.includes(:contracts).includes(:subcontracts).text_search(params[:query]).page(params[:page]).per_page(50)
-    end
+    
+   @players = smart_listing_create  :players, 
+                                    Player.includes(:contracts).includes(:subcontracts).text_search(params[:query]), 
+                                    partial: "players/players_info_fields", 
+                                    default_sort: {last_name: "asc"}, 
+                                    page_sizes: [25, 50, 100, 500]
+    
     # @players = Player.text_search(params[:query]).includes(:contracts).includes(:subcontracts).sort_by { |player| player.this_year_salary }.reverse
     @players_download = Player.order(:last_name)
     
@@ -26,6 +30,7 @@ class PlayersController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @players }
       format.csv { send_data @players_download.to_csv }
+      format.js
       format.xls
     end
   end

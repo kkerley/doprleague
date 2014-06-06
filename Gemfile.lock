@@ -122,6 +122,8 @@ GEM
     guard-rspec (4.2.7)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
+    haml (4.0.5)
+      tilt
     hike (1.2.3)
     i18n (0.6.9)
     journey (1.0.4)
@@ -131,6 +133,12 @@ GEM
     jquery-ui-rails (4.1.1)
       railties (>= 3.1.0)
     json (1.8.1)
+    kaminari (0.15.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    kaminari-bootstrap (3.0.1)
+      kaminari (>= 0.13.0)
+      rails
     launchy (2.4.2)
       addressable (~> 2.3)
     listen (2.6.2)
@@ -235,6 +243,10 @@ GEM
       actionpack (~> 3.0)
       activemodel (~> 3.0)
     slop (3.4.7)
+    smart_listing (1.0.0)
+      coffee-rails
+      kaminari (>= 0.15.1)
+      rails (>= 3.2)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -260,9 +272,6 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.0.7)
-    will_paginate (3.0.5)
-    will_paginate-bootstrap (1.0.0)
-      will_paginate (>= 3.0.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -285,9 +294,12 @@ DEPENDENCIES
   friendly_id
   gon
   guard-rspec
+  haml
   jquery-datatables-rails!
   jquery-rails (~> 2.3.0)
   jquery-ui-rails
+  kaminari
+  kaminari-bootstrap (~> 3.0.1)
   launchy
   mailboxer
   newrelic_rpm
@@ -301,7 +313,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   selenium-webdriver
   simple_form
+  smart_listing
   thin
   uglifier (>= 1.0.3)
-  will_paginate (~> 3.0)
-  will_paginate-bootstrap
