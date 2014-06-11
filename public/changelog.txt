@@ -4,6 +4,12 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.0 [2014/06/xx]
+--------------------------------------------------
+- Added trades platform
+- Link to start a new trade added to the teams#show "GM actions" box
+
+
 Version 2.5.34 [2014/06/05]
 --------------------------------------------------
 - Added Facebook-style page title count for messages

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140527052635) do
+ActiveRecord::Schema.define(:version => 20140610002949) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -244,6 +244,18 @@ ActiveRecord::Schema.define(:version => 20140527052635) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "stipulations", :force => true do |t|
+    t.integer  "trade_id"
+    t.integer  "year"
+    t.string   "stipulation_type"
+    t.string   "terms"
+    t.text     "description"
+    t.boolean  "rest_of_contract"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "trade_direction"
+  end
+
   create_table "subcontracts", :force => true do |t|
     t.integer  "team_id"
     t.integer  "contract_id"
@@ -299,6 +311,15 @@ ActiveRecord::Schema.define(:version => 20140527052635) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "division"
+  end
+
+  create_table "trades", :force => true do |t|
+    t.integer  "trader1_id"
+    t.integer  "trader2_id"
+    t.boolean  "is_accepted"
+    t.text     "notes"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Year:</b>
+  <%= @stipulation.year %>
+</p>
+
+<p>
+  <b>Stipulation type:</b>
+  <%= @stipulation.stipulation_type %>
+</p>
+
+<p>
+  <b>Terms:</b>
+  <%= @stipulation.terms %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @stipulation.description %>
+</p>
+
+<p>
+  <b>Rest of contract:</b>
+  <%= @stipulation.rest_of_contract %>
+</p>
+
+
+<%= link_to 'Edit', edit_stipulation_path(@stipulation) %> |
+<%= link_to 'Back', stipulations_path %>

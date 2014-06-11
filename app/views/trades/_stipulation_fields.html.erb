@@ -1,0 +1,26 @@
+<fieldset class="stipulation">
+	<p class="h4"><i class="fa fa-dot-circle-o"></i> Trade stipulation</p>
+	<hr />
+	<%= f.select 			:stipulation_type, 
+										[ 'Cap space', 'Draft spot', 'Player', 'Other' ], 
+										{ prompt: "Select" }, 
+										{ class: "form-control", style: "width: 150px;", label: "Type" } %>
+
+	<%= f.select 			:trade_direction, 
+										[ 'to', 'from' ], 
+										{ prompt: "Select"}, 
+										{ class: "form-control trade-direction", style: "width: 150px;", label: "Direction", 
+											data: { 
+												container: "body",
+												toggle: "popover",
+												trigger: "static", 
+												placement: "right",
+												html: true
+												} 
+										} %>
+
+	<%= f.text_field 	:year, class:'form-control', style: "width: 150px;" %>
+	<%= f.text_field 	:terms, class:'form-control' %>
+	<%= f.text_area 	:description, class:'form-control', style: "height: 100px;" %>
+	<%= f.check_box 	:rest_of_contract %>
+</fieldset>

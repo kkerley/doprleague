@@ -14,11 +14,10 @@ FactoryGirl.define do
 		password_confirmation "guessthis123"
 		is_current true
 		role 'admin'
-	
 
 		after(:create) do |user|
 			team = FactoryGirl.create(:team, user: user)
-			sb_pick = FactoryGirl.create(:super_bowl_pick, team_id: team.id)
+			# sb_pick = FactoryGirl.create(:super_bowl_pick, team_id: team.id)
 		end
   end
 

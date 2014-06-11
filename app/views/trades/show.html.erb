@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Trader1:</b>
+  <%= @trade.trader1_id %>
+</p>
+
+<p>
+  <b>Trader2:</b>
+  <%= @trade.trader2_id %>
+</p>
+
+<p>
+  <b>Is accepted:</b>
+  <%= @trade.is_accepted %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @trade.notes %>
+</p>
+
+
+<% @stipulations.each do |stip| %>
+	<p>
+		<%= stip.stipulation_type %><br />
+		<%= stip.year %><br />
+		<%= stip.terms %><br />
+		<%= stip.description %><br />
+		<%= stip.rest_of_contract %><br />
+	</p>
+<% end %>
+
+<%= link_to 'Edit', edit_trade_path(@trade) %> |
+<%= link_to 'Back', trades_path %>

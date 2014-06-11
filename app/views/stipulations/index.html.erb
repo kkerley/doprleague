@@ -1,0 +1,33 @@
+<h1>Listing stipulations</h1>
+
+<table>
+  <tr>
+    <th>Year</th>
+    <th>Stipulation type</th>
+    <th>Terms</th>
+    <th>Description</th>
+    <th>Rest of contract</th>
+    <th>Trade</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stipulations.each do |stipulation| %>
+  <tr>
+    <td><%= stipulation.year %></td>
+    <td><%= stipulation.stipulation_type %></td>
+    <td><%= stipulation.terms %></td>
+    <td><%= stipulation.description %></td>
+    <td><%= stipulation.rest_of_contract %></td>
+    <td><%= stipulation.trade_id %></td>
+    <td><%= link_to 'Show', stipulation %></td>
+    <td><%= link_to 'Edit', edit_stipulation_path(stipulation) %></td>
+    <td><%= link_to 'Destroy', stipulation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stipulation', new_stipulation_path %>

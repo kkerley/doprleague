@@ -129,15 +129,22 @@
 			  					<ul class="dropdown-menu">
 			  						<li id="li-user-first-name"><%= link_to (image_tag current_user.avatar.url(:tiny)) + " " + current_user.team.team_name, current_user.team %></li> 
 			  						<li>
-											 <%= link_to("/teams/#{current_user.team.to_param}/#inbox") do %>
-											 	<i class="fa fa-inbox"></i> Messages <span class="badge"><%= current_user_inbox.count %></span>
-											 	<% end %>
+			  							<%= link_to("/teams/#{current_user.team.to_param}/#trades") do %>
+										 		<i class="fa fa-exchange"></i> Trades
+										 	<% end %>
+			  						</li>
+			  						<li>
+										 	<%= link_to("/teams/#{current_user.team.to_param}/#inbox") do %>
+										 		<i class="fa fa-inbox"></i> Messages <span class="badge"><%= current_user_inbox.count %></span>
+										 	<% end %>
 										</li>
-			  						<li><%= link_to("/teams/#{current_user.team.to_param}/#draftrosters") do %>
+			  						<li>
+			  							<%= link_to("/teams/#{current_user.team.to_param}/#draftrosters") do %>
 												<i class="fa fa-eye"></i> Draft rosters
 											<% end %>
 										</li>
-										<li><%= link_to("/teams/#{current_user.team.to_param}/#payouts") do %>
+										<li>
+											<%= link_to("/teams/#{current_user.team.to_param}/#payouts") do %>
 												<i class="fa fa-trophy"></i> Payouts
 											<% end %>
 										</li>
@@ -213,7 +220,7 @@
 	
 	
 	<p class="muted credit">This site is built by Kyle Kerley using a custom Rails 3.2.18-powered content management system structured by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and served up on nginx through Phusion Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a>.</p>
-	<p class="muted credit">Site version: <strong>2.5.34</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
+	<p class="muted credit">Site version: <strong>2.6.0</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
       	<p class="muted credit">&copy; 2013-<%= current_year_footer %> Kyle Kerley. All rights reserved.</p>
           
       </div>

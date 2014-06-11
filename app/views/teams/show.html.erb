@@ -10,7 +10,8 @@
   
   <% if current_user %>
   	<% if current_user == @team.user %>
-  		<li><a href="#draftrosters" data-toggle="tab" id="payouts-tab"><i class="fa fa-eye"></i> Draft Rosters</a></li>
+  		<li><a href="#draftrosters" data-toggle="tab"><i class="fa fa-eye"></i> Draft Rosters</a></li>
+  		<li><a href="#trades" data-toggle="tab"><i class="fa fa-exchange"></i> Trades</a></li>
   		<li class="dropdown">
   			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
   				<i class="fa fa-inbox"></i> Mailbox <span class="badge"><%= current_user.mailbox.inbox.unread(current_user).count %></span> <b class="caret"></b>
@@ -49,6 +50,8 @@
   					<%= render 'gm_actions_extensions_franchises' %>
   					<% if current_user %>
   						<% if current_user == @team.user %>
+  							<hr />
+  							<%= render 'gm_actions_trades' %>
 		  					<hr />
 		  					<%= render 'gm_actions_super_bowl_picks' %>
 		  				<% end %>
@@ -99,104 +102,112 @@
 
   <% if current_user %>
   	<% if current_user == @team.user %>
-			<div class="tab-pane fade" id="inbox">
-				<br />
-				<div class="row">
-					<div class="col-md-12">
-						<%= render "mailboxer_toolbar" %>
-
-						<div class="panel panel-default">
-					    <div class="panel-heading">       
-					      <p class="panel-title"><% if current_user.mailbox.inbox.unread(current_user).count > 0 %>
-  							 	<i class="fa fa-envelope"></i>
-  							<% else %>
-  							 	<i class="fa fa-envelope-o"></i> 
-  							<% end %> Inbox</p>
-					    </div>
-
-					    <div class="table-responsive">
-								<table class="table table-condensed" cellspacing="0" cellpadding="0" border="0">
-									<tr>
-										
-										<td>
-											<% if current_user.mailbox.inbox.count > 0 %>
-								  			<%= render current_user.mailbox.inbox %>
-								  		<% else %>
-								  			<%= render 'empty_mailbox' %>
-								  		<% end %>
-								  	</td>
-								  </tr>
-								</table>
-							</div>
-						</div>
-					</div>
-					
-				</div>
-				
-					
-			</div>
-
-			<div class="tab-pane fade" id="sentbox">
-				<br />
-				<div class="row">
-					<div class="col-md-12">
-						<%= render "mailboxer_toolbar" %>
-						<div class="panel panel-default">
-					    <div class="panel-heading">       
-					      <p class="panel-title"><i class="fa fa-folder-open-o"></i> Sent</p>
-					    </div>
-							<div class="table-responsive">
-								<table class="table table-condensed" cellspacing="0" cellpadding="0" border="0">
-									<tr>
-										
-										<td>
-											<% if current_user.mailbox.sentbox.count > 0 %>
-								  			<%= render current_user.mailbox.sentbox %>
-								  		<% else %>
-								  			<%= render 'empty_mailbox' %>
-								  		<% end %>
-								  	</td>
-								  </tr>
-								</table>
-							</div>
-						</div>				
-					</div>
-				</div>
-
-				
-					
-			</div>
-
-			<div class="tab-pane fade" id="trash">
-				<br />
-				<div class="row">
-					<div class="col-md-12">
-						<%= render "mailboxer_toolbar" %>
-						<div class="panel panel-default">
-					    <div class="panel-heading">       
-					      <p class="panel-title"><i class="fa fa-trash-o"></i> Trash</p>
-					    </div>
-							
-							<table class="table table-condensed" cellspacing="0" cellpadding="0" border="0">
-								<tr>
+	  	<div class="tab-pane fade" id="trades">
+					<br />
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-default">
+						    <div class="panel-heading">       
+						      <p class="panel-title"><i class="fa fa-exchange"></i> Trades</p>
+						    </div>
 								
-									<td>
-										<% if current_user.mailbox.trash.count > 0 %>
-			  							<%= render current_user.mailbox.trash %>
-							  		<% else %>
-							  			<%= render 'empty_mailbox' %>
-							  		<% end %>
-							  	</td>
-							  </tr>
-							</table>
+								Trades here
+							</div>
 						</div>
-
 					</div>
-					
 				</div>
-				
-					
-			</div>
+
+
+				<div class="tab-pane fade" id="inbox">
+					<br />
+					<div class="row">
+						<div class="col-md-12">
+							<%= render "mailboxer_toolbar" %>
+
+							<div class="panel panel-default">
+						    <div class="panel-heading">       
+						      <p class="panel-title"><% if current_user.mailbox.inbox.unread(current_user).count > 0 %>
+	  							 	<i class="fa fa-envelope"></i>
+	  							<% else %>
+	  							 	<i class="fa fa-envelope-o"></i> 
+	  							<% end %> Inbox</p>
+						    </div>
+
+						    <div class="table-responsive">
+									<table class="table table-condensed" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											
+											<td>
+												<% if current_user.mailbox.inbox.count > 0 %>
+									  			<%= render current_user.mailbox.inbox %>
+									  		<% else %>
+									  			<%= render 'empty_mailbox' %>
+									  		<% end %>
+									  	</td>
+									  </tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="tab-pane fade" id="sentbox">
+					<br />
+					<div class="row">
+						<div class="col-md-12">
+							<%= render "mailboxer_toolbar" %>
+							<div class="panel panel-default">
+						    <div class="panel-heading">       
+						      <p class="panel-title"><i class="fa fa-folder-open-o"></i> Sent</p>
+						    </div>
+								<div class="table-responsive">
+									<table class="table table-condensed" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											
+											<td>
+												<% if current_user.mailbox.sentbox.count > 0 %>
+									  			<%= render current_user.mailbox.sentbox %>
+									  		<% else %>
+									  			<%= render 'empty_mailbox' %>
+									  		<% end %>
+									  	</td>
+									  </tr>
+									</table>
+								</div>
+							</div>				
+						</div>
+					</div>	
+				</div>
+
+				<div class="tab-pane fade" id="trash">
+					<br />
+					<div class="row">
+						<div class="col-md-12">
+							<%= render "mailboxer_toolbar" %>
+							<div class="panel panel-default">
+						    <div class="panel-heading">       
+						      <p class="panel-title"><i class="fa fa-trash-o"></i> Trash</p>
+						    </div>
+								
+								<table class="table table-condensed" cellspacing="0" cellpadding="0" border="0">
+									<tr>
+									
+										<td>
+											<% if current_user.mailbox.trash.count > 0 %>
+				  							<%= render current_user.mailbox.trash %>
+								  		<% else %>
+								  			<%= render 'empty_mailbox' %>
+								  		<% end %>
+								  	</td>
+								  </tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			
 		<% end %>
   <% end %>
 </div>

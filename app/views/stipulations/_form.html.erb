@@ -1,0 +1,37 @@
+<%= form_for(@stipulation) do |f| %>
+  <% if @stipulation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stipulation.errors.count, "error") %> prohibited this stipulation from being saved:</h2>
+
+      <ul>
+      <% @stipulation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :year %><br />
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :stipulation_type %><br />
+    <%= f.text_field :stipulation_type %>
+  </div>
+  <div class="field">
+    <%= f.label :terms %><br />
+    <%= f.text_field :terms %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :rest_of_contract %><br />
+    <%= f.check_box :rest_of_contract %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

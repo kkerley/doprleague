@@ -271,3 +271,29 @@ div.conversation{
     line-height: 1.2;
   }
 }
+
+.stipulation{
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: #f7f7f7;
+	padding: 1em;
+	margin-bottom: 1em;
+}
+
+label{
+	font-weight: normal;
+}
+
+#error_explanation{
+	border: 1px solid #c00;
+	background-color: #FAE6E6;
+	margin-bottom: 1em;
+	padding: 0 1em;
+	width: 600px;
+}
+
+#error_explanation h2{
+	color: #c00;
+	font-size: 24px;
+	font-weight: normal;
+}
