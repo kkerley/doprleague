@@ -254,6 +254,7 @@ ActiveRecord::Schema.define(:version => 20140610002949) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.string   "trade_direction"
+    t.integer  "player_id"
   end
 
   create_table "subcontracts", :force => true do |t|

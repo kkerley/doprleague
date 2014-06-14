@@ -4,10 +4,10 @@ class LabeledFormBuilder < ActionView::Helpers::FormBuilder
   %w[text_field text_area password_field collection_select select file_field].each do |method_name|
     define_method(method_name) do |name, *args|
       content_tag :div, class: "form-group" do
-        label = content_tag :div, class: "col-lg-3 control-label" do
+        label = content_tag :div, class: "col-lg-2 control-label" do
           field_label(name, *args)
         end
-        label += content_tag :div, class: "col-lg-9" do
+        label += content_tag :div, class: "col-lg-10" do
           super(name, *args)
         end
       end
@@ -16,7 +16,7 @@ class LabeledFormBuilder < ActionView::Helpers::FormBuilder
 
   def check_box(name, *args)
     content_tag :div, class: "form-group" do
-      content_tag :div, class: "col-lg-offset-3 col-lg-9 put-inline margin-top-1em" do
+      content_tag :div, class: "col-lg-offset-2 col-lg-10 put-inline" do
         super + " " + field_label(name, *args)
       end
     end

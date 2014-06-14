@@ -21,10 +21,14 @@
     <%= f.collection_select(:trader2_id, Team.active_teams, :id, :team_name, { prompt: "Select"}, {class: "form-control", style: "width: 250px;", label: "Trade with"}) %>
 
     
-    <%= f.fields_for :stipulations do |builder| %>
-      <%= render 'stipulation_fields', f: builder %>
-    <%end %> 
-    <div class="col-md-9 col-md-offset-3 hidden-content margin-bottom-1em"><%= link_to_add_fields "+ Add stipulation", f, :stipulations %></div>
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-3">
+        <%= f.fields_for :stipulations do |builder| %>
+          <%= render 'stipulation_fields', f: builder %>
+        <%end %> 
+      </div>
+    </div>
+    <div class="col-md-9 col-md-offset-3 hidden-content margin-bottom-1em add_stipulation_link"><%= link_to_add_fields "+ Add stipulation", f, :stipulations %></div>
 
     <% unless @trade.new_record? %>
       <%= f.check_box :is_accepted, label: "Accept this trade?" %>

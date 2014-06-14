@@ -26,7 +26,7 @@ class TradesController < ApplicationController
   # GET /trades/new.json
   def new
     @trade = Trade.new
-    # @trade.stipulations.build
+    @trade.stipulations.build
 
     respond_to do |format|
       format.html # new.html.erb

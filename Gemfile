@@ -25,6 +25,7 @@ gem 'mailboxer'
 gem 'simple_form'
 gem 'smart_listing'
 gem 'haml'
+# gem 'dependent-fields-rails'
 
 
 # Gems used only for assets and not required

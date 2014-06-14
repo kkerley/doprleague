@@ -280,6 +280,11 @@ div.conversation{
 	margin-bottom: 1em;
 }
 
+.player-trade-fields{
+	visibility: visible;
+	display: none;
+}
+
 label{
 	font-weight: normal;
 }
@@ -297,3 +302,4 @@ label{
 	font-size: 24px;
 	font-weight: normal;
 }
+

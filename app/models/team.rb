@@ -13,7 +13,7 @@ class Team < ActiveRecord::Base
   has_many :draft_rosters
   has_many :super_bowls, foreign_key: :dopr_winner_id
   has_many :super_bowl_picks
-  has_many :trades
+  # has_many :trades
 
   default_scope order('team_name ASC')
 

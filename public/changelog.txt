@@ -8,6 +8,7 @@ Version 2.6.0 [2014/06/xx]
 --------------------------------------------------
 - Added trades platform
 - Link to start a new trade added to the teams#show "GM actions" box
+- Added dependent-fields-rails gem for easier forms for trades (and possibly other areas)
 
 
 Version 2.5.34 [2014/06/05]

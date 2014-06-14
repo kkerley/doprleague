@@ -1,7 +1,7 @@
 class Trade < ActiveRecord::Base
   attr_accessible :is_accepted, :notes, :trader1_id, :trader2_id, :stipulations_attributes
 
-  has_many :teams
+  # has_many :teams
   has_many :stipulations, dependent: :destroy
 
   accepts_nested_attributes_for :stipulations
