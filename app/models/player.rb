@@ -9,6 +9,8 @@ class Player < ActiveRecord::Base
   has_many :teams, through: :subcontracts
   has_many :roster_spots
   has_many :draft_rosters, through: :roster_spots
+  has_many :stipulations
+  has_many :trades, through: :stipulations
   
   accepts_nested_attributes_for :contracts, :reject_if => lambda { |a| a[:contracted_team].blank? }   
 

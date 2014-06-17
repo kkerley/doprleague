@@ -1,7 +1,7 @@
 class LabeledFormBuilder < ActionView::Helpers::FormBuilder
   delegate :content_tag, :tag, to: :@template
   
-  %w[text_field text_area password_field collection_select select file_field].each do |method_name|
+  %w[text_field text_area password_field collection_select select file_field grouped_collection_select].each do |method_name|
     define_method(method_name) do |name, *args|
       content_tag :div, class: "form-group" do
         label = content_tag :div, class: "col-lg-2 control-label" do
@@ -25,7 +25,7 @@ class LabeledFormBuilder < ActionView::Helpers::FormBuilder
   
   
   def submit(*args)
-    content_tag :div, class: "col-lg-offset-3 col-lg-9" do
+    content_tag :div, class: "col-lg-offset-2 col-lg-9" do
       super
     end
   end

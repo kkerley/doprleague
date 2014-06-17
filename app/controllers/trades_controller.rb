@@ -1,4 +1,6 @@
 class TradesController < ApplicationController
+  load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new]
+
   # GET /trades
   # GET /trades.json
   def index
@@ -15,6 +17,8 @@ class TradesController < ApplicationController
   def show
     @trade = Trade.find(params[:id])
     @stipulations = @trade.stipulations
+    @trader1 = Team.find(@trade.trader1_id)
+    @trader2 = Team.find(@trade.trader2_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -61,13 +65,13 @@ class TradesController < ApplicationController
     @trade = Trade.find(params[:id])
 
     respond_to do |format|
-      if @trade.update_attributes(params[:trade])
-        format.html { redirect_to @trade, notice: 'Trade was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @trade.errors, status: :unprocessable_entity }
-      end
+        if @trade.update_attributes(params[:trade])
+          format.html { redirect_to @trade, notice: 'Trade was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @trade.errors, status: :unprocessable_entity }
+        end
     end
   end
 

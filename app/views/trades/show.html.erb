@@ -1,18 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Trader1:</b>
-  <%= @trade.trader1_id %>
-</p>
-
-<p>
-  <b>Trader2:</b>
-  <%= @trade.trader2_id %>
-</p>
+<% content_for :title do %>
+  Trade between <%= link_to @trader1.team_name, @trader1 %> and <%= link_to @trader2.team_name, @trader2 %>
+<% end %>
+<% content_for :section_subtitle do %>
+  from <%= l @trade.created_at, format: :short %>
+<% end %>
 
 <p>
   <b>Is accepted:</b>
-  <%= @trade.is_accepted %>
+  <%= @trade.trader1_accepted %><br />
+  <%= @trade.trader2_accepted %>
 </p>
 
 <p>
@@ -24,10 +20,13 @@
 <% @stipulations.each do |stip| %>
 	<p>
 		<%= stip.stipulation_type %><br />
+    <%= stip.trade_direction %><br />
 		<%= stip.year %><br />
 		<%= stip.terms %><br />
-		<%= stip.description %><br />
+		
 		<%= stip.rest_of_contract %><br />
+    <%= Player.find(stip.player_id).full_name if stip.player_id %><br />
+    <%= stip.description %><br />
 	</p>
 <% end %>
 

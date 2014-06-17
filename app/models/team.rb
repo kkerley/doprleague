@@ -88,6 +88,10 @@ class Team < ActiveRecord::Base
     end
     valid_subs
   end
+
+  def unique_players
+    self.get_subcontract_players.uniq
+  end
   
   
   def calculate_yearly_salary(year)

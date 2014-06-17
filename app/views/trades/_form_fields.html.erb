@@ -1,0 +1,24 @@
+<%= f.collection_select(:trader2_id, Team.current_league_members, :id, :team_name, { prompt: "Select"}, {class: "form-control", style: "width: 250px;", label: "Trade with"}) %>
+
+      <div class="row">
+        <div class="col-sm-9 col-sm-offset-2">
+          <%= f.fields_for :stipulations do |builder| %>
+            <%= render 'stipulation_fields', f: builder %>
+          <%end %> 
+        </div>
+      </div>
+
+      <% if @trade.new_record? %>
+        <div class="row">
+          <div class="col-md-9 col-md-offset-2 hidden-content margin-bottom-1em add_stipulation_link">
+            <%= link_to_add_fields "+ Add stipulation", f, :stipulations %>
+          </div>
+        </div>
+      <% else %>
+        <div class="row">
+          <div class="col-md-9 col-md-offset-2 margin-bottom-1em add_stipulation_link">
+            <%= link_to_add_fields "+ Add stipulation", f, :stipulations %>
+          </div>
+        </div>  
+      <% end %>
+      <%= f.text_area :notes, class: "form-control", style: "height: 100px; width: 600px" %>

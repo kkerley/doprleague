@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140610002949) do
+ActiveRecord::Schema.define(:version => 20140616034121) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -317,10 +317,11 @@ ActiveRecord::Schema.define(:version => 20140610002949) do
   create_table "trades", :force => true do |t|
     t.integer  "trader1_id"
     t.integer  "trader2_id"
-    t.boolean  "is_accepted"
+    t.boolean  "trader1_accepted"
     t.text     "notes"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.boolean  "trader2_accepted"
   end
 
   create_table "users", :force => true do |t|

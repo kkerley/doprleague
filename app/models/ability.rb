@@ -17,6 +17,10 @@ class Ability
                 can :manage, SuperBowlPick, :team_id => user.team.id
                 can :manage, DraftRoster, :team_id => user.team.id
                 can :manage, Message
+                can :create, Trade
+                can :manage, Trade do |trade| 
+                    trade.trader1_id == user.team.id || trade.trader2_id == user.team.id 
+                end
             end
         else
             can :read, :all

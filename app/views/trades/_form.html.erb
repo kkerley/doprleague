@@ -1,45 +1,64 @@
 <%= labeled_form_for @trade, html: { class: "form-horizontal" } do |f| %>
   <% if @trade.errors.any? %>
-    <div id="error_explanation">
-      <h2><strong><%= pluralize(@trade.errors.count, "error") %></strong> prohibited this trade from being saved:</h2>
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-2">
+        <div id="error_explanation">
+          <h2><strong><%= pluralize(@trade.errors.count, "error") %></strong> prohibited this trade from being saved:</h2>
 
-      <ul>
-      <% @trade.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+          <% @trade.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
   <% end %>
    
   <% if @trade.new_record? %> 
-    <%= f.hidden_field :trader1_id, value: current_user.team.id %>
+    <%= f.hidden_field :trader1_id, value: current_user.team.id %> <div id="trader1_team_name" style="display: none;"><%= current_user.team.team_name %></div>
+    <%= render 'form_fields', f: f %>
   <% else %>
-    <%= f.hidden_field :trader1_id %>
+    <%= f.hidden_field :trader1_id %> <div id="trader1_team_name" style="display: none;"><%= Team.find(@trade.trader1_id).team_name %></div>
+
+    <% if controller.action_name == 'edit' && current_user.team.id == @trade.trader2_id %>
+      Trade with <%= Team.find(@trade.trader2_id).team_name %>
+
+      <% @trade.stipulations.each do |stip| %>
+        <p class="h4"><i class="fa fa-dot-circle-o"></i> Trade stipulation</p>
+        <p><%= stip.stipulation_type %></p>
+        <p><%= stip.trade_direction %></p>
+        <p><%= stip.year %></p>
+        <p><%= stip.terms if stip.stipulation_type != "Player" %></p>
+        <p><%= Player.find(stip.player_id).full_name if stip.stipulation_type == "Player" %></p>
+        <p><%= stip.rest_of_contract if stip.stipulation_type == "Player"  %></p>
+        <p><%= stip.description %></p>
+        <hr />
+      <% end %>
+    <% else %>
+      <%= render 'form_fields', f: f %>
+    <% end %>
+
   <% end %>
 
-    
-    <%= f.collection_select(:trader2_id, Team.active_teams, :id, :team_name, { prompt: "Select"}, {class: "form-control", style: "width: 250px;", label: "Trade with"}) %>
+   
+  
 
-    
-    <div class="row">
-      <div class="col-sm-9 col-sm-offset-2">
-        <%= f.fields_for :stipulations do |builder| %>
-          <%= render 'stipulation_fields', f: builder %>
-        <%end %> 
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-9 col-md-offset-2 hidden-content margin-bottom-1em add_stipulation_link">
-        <%= link_to_add_fields "+ Add stipulation", f, :stipulations %>
-      </div>
-    </div>
 
-    <% unless @trade.new_record? %>
-      <%= f.check_box :is_accepted, label: "Accept this trade?" %>
-
+  
+  
+  <% if @trade.new_record? %>
+    <%= f.check_box :trader1_accepted, label: "Trade initiator: do you accept this trade?" %><br />
+  <% else %>
+    <% if current_user.team.id == @trade.trader1_id %>
+      <%= f.check_box :trader1_accepted, label: "Trade initiator: do you accept this trade?" %><br />
+    <% elsif current_user.team.id == @trade.trader2_id %>
+      <%= f.check_box :trader2_accepted, label: "Trade recipient: do you accept this trade?" %>
+       
       <br />
     <% end %>
-    <%= f.text_area :notes, class: "form-control", style: "height: 100px; width: 600px" %>
-    <%= f.submit class: "btn btn-success" %>
+  <% end %>
+
+  <%= f.submit class: "btn btn-success" %>
 
 <% end %>
