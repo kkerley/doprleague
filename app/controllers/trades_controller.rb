@@ -16,7 +16,7 @@ class TradesController < ApplicationController
   # GET /trades/1.json
   def show
     @trade = Trade.find(params[:id])
-    @stipulations = @trade.stipulations
+    @stipulations = @trade.stipulations.order('trade_direction desc')
     @trader1 = Team.find(@trade.trader1_id)
     @trader2 = Team.find(@trade.trader2_id)
 
@@ -41,6 +41,8 @@ class TradesController < ApplicationController
   # GET /trades/1/edit
   def edit
     @trade = Trade.find(params[:id])
+    @trader1 = Team.find(@trade.trader1_id)
+    @trader2 = Team.find(@trade.trader2_id)
   end
 
   # POST /trades
@@ -50,6 +52,9 @@ class TradesController < ApplicationController
 
     respond_to do |format|
       if @trade.save
+        @recipient = Team.find(@trade.trader2_id).user
+        @trade.create_activity :create, owner: current_user
+        current_user.send_message(@recipient, "Hey, I sent you a trade proposal", "Trade proposal awaiting your approval")
         format.html { redirect_to @trade, notice: 'Trade was successfully created.' }
         format.json { render json: @trade, status: :created, location: @trade }
       else
@@ -66,6 +71,9 @@ class TradesController < ApplicationController
 
     respond_to do |format|
         if @trade.update_attributes(params[:trade])
+          if @trade.is_accepted
+            @trade.create_activity :update, owner: current_user
+          end
           format.html { redirect_to @trade, notice: 'Trade was successfully updated.' }
           format.json { head :no_content }
         else

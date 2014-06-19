@@ -1,0 +1,30 @@
+<p>
+  <% if stip.stipulation_type == 'Cap space' %> 
+    <span class="label label-success margin-right-1em"><i class="fa fa-usd">&nbsp;</i></span>
+
+    <%= render 'direction_info', stip: stip %> 
+    <strong>$<%= stip.terms %> of cap space</strong> for the <%= stip.year %> season.
+
+  <% elsif stip.stipulation_type == 'Draft spot' %>
+    <span class="label label-danger margin-right-1em"><i class="fa fa-list-ol"></i></span>
+
+    <%= render 'direction_info', stip: stip %> 
+    <%= image_tag @trader2.user.avatar(:tiny) %> <%= link_to @trader2.team_name, @trader2 %>'s <strong>round <%= stip.terms %> pick</strong> for the <%= stip.year %> season.
+
+  <% elsif stip.stipulation_type == 'Player' %>
+    <span class="label label-primary margin-right-1em"><i class="fa fa-bullhorn"></i></span> 
+
+    <%= render 'direction_info', stip: stip %> 
+    <%= link_to Player.find(stip.player_id).full_name, Player.find(stip.player_id) %> 
+
+    <% if stip.rest_of_contract %>
+      for <strong>the rest of his contract</strong> starting with the <%= stip.year %> season.
+    <% else %>
+      for the <strong><%= stip.year %> season</strong>.
+    <% end %>
+  <% else %>
+    <span class="label label-warning margin-right-1em"><i class="fa fa-dot-circle-o"></i></span> other
+    <%= render 'direction_info', stip: stip %> 
+  <% end %>
+
+</p>

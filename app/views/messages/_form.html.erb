@@ -1,4 +1,4 @@
-<p class="h4" style="margin-top: 6.5em">Reply:</p>
+<p class="h4">Reply:</p>
  <%= form_for :message, url: [:reply, conversation], html: { class: "form-horizontal" } do |f| %>
 	 <%= f.text_area :body, :style => 'width: 100%; height: 300px;', :class => 'form-control margin-bottom-1em' %>
 	 <%= f.submit "Send Message", class: 'btn btn-success' %>

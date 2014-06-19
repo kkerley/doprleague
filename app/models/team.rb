@@ -4,15 +4,15 @@ class Team < ActiveRecord::Base
   attr_accessible :team_name, :user_id, :division
   
   belongs_to :user
-  has_many :subcontracts
-  has_many :players, through: :subcontracts
-  has_many :contracts, through: :subcontracts
-  has_many :team_records
-  has_many :budgets
-  has_many :events
-  has_many :draft_rosters
-  has_many :super_bowls, foreign_key: :dopr_winner_id
-  has_many :super_bowl_picks
+  has_many :subcontracts, fully_load: true
+  has_many :players, through: :subcontracts, fully_load: true
+  has_many :contracts, through: :subcontracts, fully_load: true
+  has_many :team_records, fully_load: true
+  has_many :budgets, fully_load: true
+  has_many :events, fully_load: true
+  has_many :draft_rosters, fully_load: true
+  has_many :super_bowls, foreign_key: :dopr_winner_id, fully_load: true
+  has_many :super_bowl_picks, fully_load: true
   # has_many :trades
 
   default_scope order('team_name ASC')
@@ -44,21 +44,6 @@ class Team < ActiveRecord::Base
 
     return active_teams
   end
-  
-
-  def team_trades
-    all_trades = Trade.all
-    this_team_trades = []
-
-    all_trades.each do |trade|
-      if self.id == trade.trader1_id || self.id == trade.trader2_id
-        unless trade.is_accepted
-          this_team_trades << trade
-        end #end of unless
-      end
-    end # end of all_trades.each do
-    return this_team_trades
-  end # end of self.trades
   
 
   def self.list_team_options

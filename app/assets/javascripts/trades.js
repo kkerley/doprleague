@@ -52,6 +52,7 @@ $(document).ready(function(){
 			
 		} else {
 			$('div', location).next('.player-trade-fields').hide();
+			$('div', location).next('.terms-field').show();
 		}
 	});
 	

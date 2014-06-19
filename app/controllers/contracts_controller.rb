@@ -6,7 +6,7 @@ class ContractsController < ApplicationController
   # GET /contracts.json
   def index
     # @contracts = Contract.all  
-    @contracts = Contract.includes(:subcontracts).page params[:page]
+    @contracts = Contract.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

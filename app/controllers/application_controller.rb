@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   
-  helper_method :current_members, :past_members, :current_philip_members, :current_russell_members, :current_user_inbox
+  helper_method :current_members, :past_members, :current_philip_members, :current_russell_members, :current_user_inbox, :current_user_pending_trades, :global_notification_count
 
   # check_authorization
 
@@ -35,8 +35,6 @@ class ApplicationController < ActionController::Base
   	  end
   	end
   	philip_teams
-
-    
   end
 
   def current_russell_members
@@ -53,5 +51,13 @@ class ApplicationController < ActionController::Base
 
   def current_user_inbox
     current_user.mailbox.inbox.unread(current_user)
+  end
+
+  def current_user_pending_trades
+    Trade.for_team(current_user.team.id).pending_trades
+  end
+
+  def global_notification_count
+    current_user_inbox.count + current_user_pending_trades.count
   end
 end

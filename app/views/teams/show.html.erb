@@ -11,7 +11,9 @@
   <% if current_user %>
   	<% if current_user == @team.user %>
   		<li><a href="#draftrosters" data-toggle="tab"><i class="fa fa-eye"></i> Draft Rosters</a></li>
-  		<li><a href="#trades" data-toggle="tab"><i class="fa fa-exchange"></i> Trades</a></li>
+  		<li>
+  			<a href="#trades" data-toggle="tab"><i class="fa fa-exchange"></i> Trades <span class="badge"><%= @pending_trades.count %></span></a>
+  		</li>
   		<li class="dropdown">
   			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
   				<i class="fa fa-inbox"></i> Mailbox <span class="badge"><%= current_user.mailbox.inbox.unread(current_user).count %></span> <b class="caret"></b>
@@ -106,13 +108,8 @@
 					<br />
 					<div class="row">
 						<div class="col-md-12">
-							<div class="panel panel-default">
-						    <div class="panel-heading">       
-						      <p class="panel-title"><i class="fa fa-exchange"></i> Trades</p>
-						    </div>
-								
-								Trades here
-							</div>
+							
+							<%= render 'team_trades' %>
 						</div>
 					</div>
 				</div>

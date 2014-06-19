@@ -1,4 +1,6 @@
 class Trade < ActiveRecord::Base
+  include PublicActivity::Common
+  
   attr_accessible :notes, :trader1_accepted, :trader1_id, :trader2_accepted, :trader2_id, :stipulations_attributes
 
   # has_many :teams
@@ -16,6 +18,12 @@ class Trade < ActiveRecord::Base
 
   # before_update :check_for_changes
   before_update :check_for_both_acceptance
+
+  scope :for_team, lambda { |team_id| where("trader1_id = ? or trader2_id = ?", team_id, team_id) }
+  scope :accepted_trades, lambda { where("trader1_accepted = ? and trader2_accepted = ?", true, true) }
+  scope :initiated_trades, lambda { |team_id| where("trader1_id = ?", team_id) }
+  scope :is_recipient, lambda { |team_id| where("trader2_id = ?", team_id) }
+  scope :pending_trades, lambda { where(trader2_accepted: nil) }
 
   def trader_name(trader_id)
   	trader = Team.find(trader_id)

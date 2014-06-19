@@ -13,7 +13,7 @@ class PlayersController < ApplicationController
   def index
     
    @players = smart_listing_create  :players, 
-                                    Player.includes(:contracts).includes(:subcontracts).text_search(params[:query]), 
+                                    Player.text_search(params[:query]), 
                                     partial: "players/players_info_fields", 
                                     default_sort: {last_name: "asc"}, 
                                     page_sizes: [25, 50, 100, 500]

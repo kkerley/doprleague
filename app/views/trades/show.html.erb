@@ -5,30 +5,27 @@
   from <%= l @trade.created_at, format: :short %>
 <% end %>
 
-<p>
-  <b>Is accepted:</b>
-  <%= @trade.trader1_accepted %><br />
-  <%= @trade.trader2_accepted %>
-</p>
-
-<p>
-  <b>Notes:</b>
-  <%= @trade.notes %>
-</p>
 
 
-<% @stipulations.each do |stip| %>
-	<p>
-		<%= stip.stipulation_type %><br />
-    <%= stip.trade_direction %><br />
-		<%= stip.year %><br />
-		<%= stip.terms %><br />
-		
-		<%= stip.rest_of_contract %><br />
-    <%= Player.find(stip.player_id).full_name if stip.player_id %><br />
-    <%= stip.description %><br />
-	</p>
-<% end %>
 
-<%= link_to 'Edit', edit_trade_path(@trade) %> |
-<%= link_to 'Back', trades_path %>
+<p class="h3 margin-bottom-1em"><i class="fa fa-dot-circle-o"></i> Trade stipulations</p>
+
+<div class="stipulations-list">
+  <% @stipulations.each do |stip| %>
+    <%= render "stipulations", stip: stip %>
+  <% end %>
+
+
+  <% unless @trade.notes.blank? %>
+    <p class="h4">Notes</p>
+    <%= RedCloth.new(@trade.notes).to_html.html_safe %>
+  <% end %>
+
+  <% unless @trade.is_accepted %>
+    <% if can? :manage, @trade %>
+      <%= link_to edit_trade_path(@trade), class: "btn btn-success margin-top-2em" do %>
+        <i class="fa fa-pencil-square-o"></i> Edit trade
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+<% if activity.trackable %>
+	and 
+		<% if activity.owner.team == Team.find(activity.trackable.trader2_id) %>
+			<%= link_to Team.find(activity.trackable.trader1_id).user.display_name, Team.find(activity.trackable.trader1_id) %>
+		<% else %>
+			<%= link_to Team.find(activity.trackable.trader2_id).user.display_name, Team.find(activity.trackable.trader2_id) %>
+		<% end %>
+	 have agreed to the terms of their <%= link_to "trade proposal", activity.trackable %>.
+<% else %>
+	initiated a new trade that has since been removed from the site.
+<% end %><br /><small class="muted"><%= l activity.created_at, format: :feed %></small>

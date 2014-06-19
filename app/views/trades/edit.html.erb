@@ -1,4 +1,6 @@
-<% content_for :title, "Editing trade" %>
-<% content_for :section_subtitle, "The trade will need to be accepted by both parties before it executes" %>
+<% content_for :title do %>
+	Editing trade between <%= link_to @trader1.team_name, @trader1 %> and <%= link_to @trader2.team_name, @trader2 %>
+<% end %>
+<% content_for :section_subtitle, "Must be accepted by both parties before going into effect" %>
 
 <%= render 'form' %>

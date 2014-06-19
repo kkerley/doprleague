@@ -110,6 +110,9 @@ GEM
     formatador (0.2.4)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
+    goldiloader (0.0.3)
+      activerecord (>= 3.2, <= 4.1)
+      activesupport (>= 3.2, <= 4.1)
     gon (5.0.1)
       actionpack (>= 2.3.0)
       json
@@ -292,6 +295,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   friendly_id
+  goldiloader
   gon
   guard-rspec
   haml

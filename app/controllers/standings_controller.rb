@@ -6,7 +6,7 @@ class StandingsController < ApplicationController
   # GET /standings
   # GET /standings.json
   def index
-    @standings = Standing.order(:year).includes(:team_records)
+    @standings = Standing.order(:year)
 
     respond_to do |format|
       format.html # index.html.erb

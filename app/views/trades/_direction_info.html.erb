@@ -1,0 +1,7 @@
+<% if stip.trade_direction == 'to' %>
+  <%= image_tag @trader2.user.avatar(:tiny) %> <%= link_to @trader2.team_name, @trader2 %>
+<% else %>
+  <%= image_tag @trader1.user.avatar(:tiny) %> <%= link_to @trader1.team_name, @trader1 %>
+<% end %>
+
+receives

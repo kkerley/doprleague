@@ -22,7 +22,11 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @messages_count = current_user.mailbox.inbox.unread(current_user).count if current_user
     @draft_rosters = @team.draft_rosters.all
-    @trades = @team.team_trades
+
+    @trades = Trade.for_team(@team.id)
+    @accepted_trades = @trades.accepted_trades
+    @initiated_trades = Trade.initiated_trades(@team.id).pending_trades
+    @pending_trades = Trade.is_recipient(@team.id).pending_trades
     
     @players = @team.get_subcontract_players.uniq 
     @players_to_extend = @team.available_for_extension(@players)

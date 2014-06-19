@@ -5,7 +5,7 @@ class PayoutsController < ApplicationController
   # GET /payouts
   # GET /payouts.json
   def index
-    @payouts = Payout.order(:year).includes(:awards)
+    @payouts = Payout.order(:year)
 
     respond_to do |format|
       format.html # index.html.erb

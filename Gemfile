@@ -26,6 +26,7 @@ gem 'simple_form'
 gem 'smart_listing'
 gem 'haml'
 # gem 'dependent-fields-rails'
+gem 'goldiloader'
 
 
 # Gems used only for assets and not required

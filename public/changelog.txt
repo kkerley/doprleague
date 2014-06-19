@@ -7,8 +7,16 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 Version 2.6.0 [2014/06/xx]
 --------------------------------------------------
 - Added trades platform
+- Added global_notification_count to include unread messages + pending trades counts
 - Link to start a new trade added to the teams#show "GM actions" box
 - Added dependent-fields-rails gem for easier forms for trades (and possibly other areas)
+- Added goldiloader gem for automatic eager loading to hopefully improve page load times
+- Changed the icon for Constitution to be the Font Awesome gavel
+- Changed the icon for All-time standings
+- Added public_activity feed entries for new and accepted trades
+- Changed the link to point to a user's team#show, rather than users#show for public_activity posts
+- Removed the "Edit this member" row from the user-specific payouts tables
+- Fixed (sort of) trade stipulations show/hide fields
 
 
 Version 2.5.34 [2014/06/05]

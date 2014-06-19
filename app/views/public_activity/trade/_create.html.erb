@@ -1,0 +1,5 @@
+<% if activity.trackable %>
+	initiated a new <%= link_to "trade", activity.trackable %> with <%= link_to Team.find(activity.trackable.trader2_id).user.display_name, Team.find(activity.trackable.trader2_id) %>.
+<% else %>
+	initiated a new trade that has since been removed from the site.
+<% end %><br /><small class="muted"><%= l activity.created_at, format: :feed %></small>

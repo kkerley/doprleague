@@ -1,29 +1,24 @@
-<h1>Listing trades</h1>
+<% content_for :title, "All trades" %>
+<% content_for :section_subtitle, "Includes trades that were not accepted" %>
 
-<table>
-  <tr>
-    <th>Trader1</th>
-    <th>Trader2</th>
-    <th>Is accepted</th>
-    <th>Notes</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="row">
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+              
+        <p class="panel-title">
+          <i class="fa fa-exchange"></i> Trades
+        </p>
+      </div>
 
-<% @trades.each do |trade| %>
-  <tr>
-    <td><%= trade.trader1_id %></td>
-    <td><%= trade.trader2_id %></td>
-    <td><%= trade.is_accepted %></td>
-    <td><%= trade.notes %></td>
-    <td><%= link_to 'Show', trade %></td>
-    <td><%= link_to 'Edit', edit_trade_path(trade) %></td>
-    <td><%= link_to 'Destroy', trade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Trade', new_trade_path %>
+      <%= render "trades_list", trades: @trades %>
+    </div>
+  </div><!-- end of col-md-8 -->
+  <div class="col-md-3">
+    <% if current_user %>
+      <%= link_to new_trade_path, class: "btn btn-success" do %>
+        <i class="fa fa-exchange"></i> Start a new trade
+      <% end %>
+    <% end %>
+  </div>
+</div>

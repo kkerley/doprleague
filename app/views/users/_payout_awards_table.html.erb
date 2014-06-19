@@ -31,14 +31,7 @@
 			<td class="headline"><span class="label label-success">$<%= user.total_winnings %></span></td>
 			<td></td>
 		</tr>
-		<% if current_user %>
-			<% if can? :manage, user %>
-				<tr>
-					<td></td>
-					<td colspan="3"><i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this member", edit_user_path(user) %></td>
-				</tr>
-			<% end %>
-		<% end %>
+		
 	</tbody>
 </table>
 		

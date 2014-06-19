@@ -4,13 +4,13 @@ class Player < ActiveRecord::Base
 
   attr_accessible :auction_value, :first_name, :last_name, :nfl_team, :position, :bye_week, :full_name, :contracts_attributes, :subcontracts_attributes
   
-  has_many :contracts, dependent: :destroy
-  has_many :subcontracts, through: :contracts
-  has_many :teams, through: :subcontracts
-  has_many :roster_spots
-  has_many :draft_rosters, through: :roster_spots
-  has_many :stipulations
-  has_many :trades, through: :stipulations
+  has_many :contracts, dependent: :destroy, fully_load: true
+  has_many :subcontracts, through: :contracts, fully_load: true
+  has_many :teams, through: :subcontracts, fully_load: true
+  has_many :roster_spots, fully_load: true
+  has_many :draft_rosters, through: :roster_spots, fully_load: true
+  has_many :stipulations, fully_load: true
+  has_many :trades, through: :stipulations, fully_load: true
   
   accepts_nested_attributes_for :contracts, :reject_if => lambda { |a| a[:contracted_team].blank? }   
 

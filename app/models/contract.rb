@@ -7,9 +7,9 @@ class Contract < ActiveRecord::Base
   attr_accessible :contract_length, :is_bought_out, :bought_out_by_team_id, :is_extended, :is_franchised, :contract_start_year, :contracted_team, :player_id, :subcontracts_attributes, :is_drafted, :is_dead_money
   attr_accessor :contracted_team
   
-  belongs_to :player
-  has_many :subcontracts, dependent: :destroy
-  has_many :teams, through: :subcontracts
+  belongs_to :player, fully_load: true
+  has_many :subcontracts, dependent: :destroy, fully_load: true
+  has_many :teams, through: :subcontracts, fully_load: true
   
   accepts_nested_attributes_for :subcontracts, :reject_if => lambda { |a| a[:team_id].blank? }
   

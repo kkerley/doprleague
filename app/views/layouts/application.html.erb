@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <title><% if current_user %>
-  					<% if current_user_inbox.count > 0 %>
-  						(<%= current_user_inbox.count %>)
+  					<% if global_notification_count > 0 %>
+  						(<%= global_notification_count %>)
   					<% end %>
   				<% end %>Disciples of Philip Rivers | <%= yield(:title) %></title>
 
@@ -92,10 +92,11 @@
 									<li><a href="/nfl_teams"><i class="fa fa-shield"></i> NFL teams</a></li>
 									<li class="divider"></li>
 									<li role="presentation" class="dropdown-header">League-specific</li>
-									<li><a href="/constitution"><i class="fa fa-book"></i> Constitution</a></li>
+									<li><a href="/constitution"><i class="fa fa-gavel"></i> Constitution</a></li>
 									<li><a href="/polls"><i class="fa fa-tasks"></i> Facebook polls</a></li>
+									<li><a href="/trades"><i class="fa fa-exchange"></i> Trades</a></li>
 									<li><a href="/payouts"><i class="fa fa-trophy"></i> League payouts &amp; awards</a></li>
-									<li><a href="/standings"><i class="fa fa-list-ol"></i> All-time standings</a></li>
+									<li><a href="/standings"><i class="fa fa-sort-numeric-asc"></i> All-time standings</a></li>
 									<li><a href="/events"><i class="fa fa-calendar"></i> Events</a></li>
 									<li><a href="/super_bowls"><i class="fa fa-ticket"></i> Super Bowl Picks</a></li>
 									<li><a href="/faqs"><i class="fa fa-question-circle"></i> FAQs</a></li>
@@ -121,7 +122,7 @@
 			  			<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			  				<%= image_tag current_user.avatar.url(:tiny) %> 
 			  				
-			  					<span class="label <%= current_user_inbox.count > 0 ? 'label-danger' : 'label-default' %>"><%= current_user_inbox.count %></span>
+			  					<span class="label <%= global_notification_count > 0 ? 'label-danger' : 'label-default' %>"><%= global_notification_count %></span>
 			  				
 
 			  				<b class="caret"></b></a>
@@ -130,7 +131,7 @@
 			  						<li id="li-user-first-name"><%= link_to (image_tag current_user.avatar.url(:tiny)) + " " + current_user.team.team_name, current_user.team %></li> 
 			  						<li>
 			  							<%= link_to("/teams/#{current_user.team.to_param}/#trades") do %>
-										 		<i class="fa fa-exchange"></i> Trades
+										 		<i class="fa fa-exchange"></i> Trades <span class="badge"><%= current_user_pending_trades.count %></span>
 										 	<% end %>
 			  						</li>
 			  						<li>

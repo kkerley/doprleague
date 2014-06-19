@@ -22,29 +22,19 @@
     <%= f.hidden_field :trader1_id %> <div id="trader1_team_name" style="display: none;"><%= Team.find(@trade.trader1_id).team_name %></div>
 
     <% if controller.action_name == 'edit' && current_user.team.id == @trade.trader2_id %>
-      Trade with <%= Team.find(@trade.trader2_id).team_name %>
+      <p class="h3 margin-bottom-1em"><i class="fa fa-dot-circle-o"></i> Trade stipulations</p>
 
-      <% @trade.stipulations.each do |stip| %>
-        <p class="h4"><i class="fa fa-dot-circle-o"></i> Trade stipulation</p>
-        <p><%= stip.stipulation_type %></p>
-        <p><%= stip.trade_direction %></p>
-        <p><%= stip.year %></p>
-        <p><%= stip.terms if stip.stipulation_type != "Player" %></p>
-        <p><%= Player.find(stip.player_id).full_name if stip.stipulation_type == "Player" %></p>
-        <p><%= stip.rest_of_contract if stip.stipulation_type == "Player"  %></p>
-        <p><%= stip.description %></p>
-        <hr />
-      <% end %>
+      <div class="stipulations-list margin-bottom-2em">
+        <% @trade.stipulations.each do |stip| %>
+           <%= render "stipulations", stip: stip %>
+        <% end %>
+      </div>
+
     <% else %>
       <%= render 'form_fields', f: f %>
     <% end %>
 
   <% end %>
-
-   
-  
-
-
   
   
   <% if @trade.new_record? %>
