@@ -1,49 +1,10 @@
-
-	<%= f.text_field :title, :style => 'width: 500px', class: 'form-control' %>
-	
-	<%= f.check_box :show_title, label: "" %> 
+<%= f.text_field :title, style: 'width: 500px', class: 'form-control' %>
+<%= f.check_box :show_title, label: "", class: 'margin-bottom-2em' %> 
 		
-<!--
-  <div class="form-group">
-    <% f.label :subtitle, class: 'col-lg-2 control-label' %>
 
- 
-	<div class="col-lg-10">
-		<% f.text_field :subtitle, :style => 'width: 500px' %>
-	</div>
-  </div>
-  <div class="form-group">
-    <% f.label :excerpt, class: 'col-lg-2 control-label' %>
-
-	<div class="col-lg-10">
-		<% f.text_area :excerpt, :style => 'width: 500px; height: 100px' %>
-	</div>
-  </div>  
-
--->
-
-	<%= f.text_area :content, :style => 'width: 500px; height: 250px', class: 'form-control' %>
+<%= f.text_area :content, style: 'width: 500px; height: 250px', class: 'form-control' %>
 	
-  
-<!--
-  <div class="form-group">
-    <%= f.label "Link", class: 'col-lg-2 control-label' %>
+<%= f.file_field :avatar, label: "Image" %>
 
-	<div class="col-lg-10">
-		<%= f.text_field :url_path, :style => 'width: 500px' %>
-	</div>
-  </div>
--->
- 
-
-	
-		<%= f.file_field :avatar, label: "Image" %>
-		<!--
-		<div class="col-lg-9 col-lg-offset-3">
-			<small>Images only show for Facebook polls.</small><br /><br />
-		</div>
-		-->
-
-
-   	 <%= f.submit class: "btn btn-success btn-large" %>
+<%= f.submit class: "btn btn-success btn-large" %>
 	

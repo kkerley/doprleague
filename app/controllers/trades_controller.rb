@@ -5,6 +5,15 @@ class TradesController < ApplicationController
   # GET /trades.json
   def index
     @trades = Trade.all
+    @all_accepted_trades = Trade.accepted_trades
+
+    @test = Trade.accepted_trades_stipulations(@all_accepted_trades)
+
+    @stipulations_cap = Stipulation.cap_space.for_year(current_year)
+    @stipulations_draft = Stipulation.draft_spots.for_year(current_year)
+    @stipulations_players = Stipulation.player.for_year(current_year)
+    @stipulations_other = Stipulation.other.for_year(current_year)
+   
 
     respond_to do |format|
       format.html # index.html.erb

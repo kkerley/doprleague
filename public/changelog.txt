@@ -16,7 +16,7 @@ Version 2.6.0 [2014/06/xx]
 - Added public_activity feed entries for new and accepted trades
 - Changed the link to point to a user's team#show, rather than users#show for public_activity posts
 - Removed the "Edit this member" row from the user-specific payouts tables
-- Fixed (sort of) trade stipulations show/hide fields
+- Created a new Feature type: "help" to be used for creating the "how to" documentation on the site
 
 
 Version 2.5.34 [2014/06/05]

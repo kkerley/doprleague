@@ -69,6 +69,19 @@ class Trade < ActiveRecord::Base
     end
   end
 
+  def self.accepted_trades_stipulations(trades)
+    accepted_stipulations = []
+
+    trades.each do |trade|
+      if trade.is_accepted
+        trade.stipulations.each do |stip|
+          accepted_stipulations << stip
+        end
+      end
+    end
+    return accepted_stipulations
+  end
+
   def is_accepted
     self.trader1_accepted && self.trader2_accepted
   end

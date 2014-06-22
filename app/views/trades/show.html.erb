@@ -23,9 +23,11 @@
 
   <% unless @trade.is_accepted %>
     <% if can? :manage, @trade %>
-      <%= link_to edit_trade_path(@trade), class: "btn btn-success margin-top-2em" do %>
+      <%= link_to edit_trade_path(@trade), class: "btn btn-success margin-top-2em margin-bottom-2em" do %>
         <i class="fa fa-pencil-square-o"></i> Edit trade
       <% end %>
     <% end %>
   <% end %>
+
+  <p><i class="fa fa-exchange"></i> <a href="/trades">Back to full list of trades</a></p>
 </div>

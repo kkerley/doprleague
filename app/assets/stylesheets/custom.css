@@ -39,7 +39,7 @@ ul.ul-events li{
 	text-transform: uppercase;
 }
 
-.margin-top-0{
+.margin-top-0{ 
 	margin-top: 0;
 }
 
@@ -94,6 +94,15 @@ ul.ul-events li{
 .margin-left-1em{
 	margin-left: 1em !important;
 }
+
+.margin-left-2em{
+	margin-left: 2em !important;
+}
+
+.margin-left-3em{
+	margin-left: 3em !important;
+}
+
 .margin-right-1em{
 	margin-right: 1em !important;
 }

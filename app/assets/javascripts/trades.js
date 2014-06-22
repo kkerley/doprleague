@@ -29,6 +29,10 @@ $(document).ready(function(){
 	
 		var tradeType = selectBox.val();
 
+		//$('div', location).next('.trade-direction').prop('selectedIndex',0);
+		$('div', location).find('.trade-direction').prop('selectedIndex',0);
+
+
 		if(tradeType == "Player"){
 			$(document).on('change', '.trade-direction', function(){
 				var directionBox = $(this);

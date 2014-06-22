@@ -5,6 +5,7 @@
         <th width="5"></th>
         <th>Trade</th>
         <th></th>
+        <th># of stip.</th>
         <th></th>
         <th>Accepted?</th>
         
@@ -25,6 +26,7 @@
         <td></td>
         <td>between <%= image_tag Team.find(trade.trader1_id).user.avatar(:tiny) %> <%= link_to Team.find(trade.trader1_id).team_name, Team.find(trade.trader1_id) %></td>
         <td>and <%= image_tag Team.find(trade.trader2_id).user.avatar(:tiny) %> <%= link_to Team.find(trade.trader2_id).team_name, Team.find(trade.trader1_id) %></td>
+        <td><%= trade.stipulations.count %></td>
         <td>
           <%= link_to trade, class: "btn btn-info btn-xs" do %>
             <i class="fa fa-file-text"></i>

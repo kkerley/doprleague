@@ -1,0 +1,7 @@
+<% if stip.trade_direction == 'to' %>
+  <%= image_tag Team.find(stip.trade.trader2_id).user.avatar(:tiny) %> <%= link_to Team.find(stip.trade.trader2_id).team_name, Team.find(stip.trade.trader2_id) %>
+<% else %>
+  <%= image_tag Team.find(stip.trade.trader1_id).user.avatar(:tiny) %> <%= link_to Team.find(stip.trade.trader1_id).team_name, Team.find(stip.trade.trader1_id) %>
+<% end %>
+
+receives

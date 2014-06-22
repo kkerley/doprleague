@@ -1,20 +1,83 @@
-<% content_for :title, "All trades" %>
+<% content_for :title, "All trades and stipulations" %>
 <% content_for :section_subtitle, "Includes trades that were not accepted" %>
 
 <div class="row">
-  <div class="col-md-9">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-              
-        <p class="panel-title">
-          <i class="fa fa-exchange"></i> Trades
-        </p>
-      </div>
+  <div class="col-md-10">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#trades" data-toggle="tab"><span class="label label-default margin-right-1em"><i class="fa fa-exchange"></i></span>Trades</a></li>
+      <li><a href="#players" data-toggle="tab"><span class="label label-primary margin-right-1em"><i class="fa fa-bullhorn"></i></span>Stips: Players</a></li>
+      <li><a href="#draft_spots" data-toggle="tab"><span class="label label-danger margin-right-1em"><i class="fa fa-list-ol"></i></span>Stips: Draft spots</a></li>
+      <li><a href="#cap_space" data-toggle="tab"><span class="label label-success margin-right-1em">&nbsp;<i class="fa fa-usd"></i>&nbsp;</span>Stips: Cap space</a></li>
+      <li><a href="#other" data-toggle="tab"><span class="label label-warning margin-right-1em"><i class="fa fa-dot-circle-o"></i></span>Stips: Other</a></li>
+    </ul>
 
-      <%= render "trades_list", trades: @trades %>
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="trades"><br />
+        <div class="panel panel-default">
+          <div class="panel-heading">
+                  
+            <p class="panel-title">
+              <i class="fa fa-exchange"></i> All trades
+            </p>
+          </div>
+
+          <%= render "trades_list", trades: @trades %>
+        </div>
+      </div><!-- end of #trades -->
+
+      <div class="tab-pane fade" id="players"><br />
+        <p class="h3">All player trade stipulations for the <%= current_year %> season</p>
+        <hr />
+
+        <% @stipulations_players.each do |stip| %>
+          <%= render "stipulations_filtered", stip: stip %>
+        <% end %>
+        <% if @stipulations_players.count < 1 %>
+          <p class="h4 muted" style="text-align: center">No stipulations match these criteria</p>
+        <% end %>
+
+      </div><!-- end of #players -->
+
+      <div class="tab-pane fade" id="draft_spots"><br />
+        <p class="h3">All draft spot trade stipulations for the <%= current_year %> season</p>
+        <hr />
+
+        <% @stipulations_draft.each do |stip| %>
+          <%= render "stipulations_filtered", stip: stip %>
+        <% end %>
+        <% if @stipulations_draft.count < 1 %>
+          <p class="h4 muted" style="text-align: center">No stipulations match these criteria</p>
+        <% end %>
+      </div><!-- end of #draft_spots -->
+
+      <div class="tab-pane fade" id="cap_space"><br />
+        <p class="h3">All cap space trade stipulations for the <%= current_year %> season</p>
+        <hr />
+
+        <% @stipulations_cap.each do |stip| %>
+          <%= render "stipulations_filtered", stip: stip %>
+        <% end %>
+        <% if @stipulations_cap.count < 1 %>
+          <p class="h4 muted" style="text-align: center">No stipulations match these criteria</p>
+        <% end %>
+      </div><!-- end of #cap_space -->
+
+      <div class="tab-pane fade" id="other"><br />
+        <p class="h3">All "other" stipulations for the <%= current_year %> season</p>
+        <hr />
+
+        <% @stipulations_other.each do |stip| %>
+          <%= render "stipulations_filtered", stip: stip %>
+        <% end %>
+        <% if @stipulations_other.count < 1 %>
+          <p class="h4 muted" style="text-align: center">No stipulations match these criteria</p>
+        <% end %>
+      </div><!-- end of #other -->
     </div>
+
+    
   </div><!-- end of col-md-8 -->
-  <div class="col-md-3">
+  <div class="col-md-2">
     <% if current_user %>
       <%= link_to new_trade_path, class: "btn btn-success" do %>
         <i class="fa fa-exchange"></i> Start a new trade

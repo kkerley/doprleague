@@ -2,23 +2,23 @@
   <% if stip.stipulation_type == 'Cap space' %> 
     <span class="label label-success margin-right-1em"><i class="fa fa-usd fa-fw"></i></span>
 
-    <%= render 'direction_info', stip: stip %> 
+    <%= render 'direction_info_filtered', stip: stip %> 
     <strong>$<%= stip.terms %> of cap space</strong> for the <%= stip.year %> season.
 
   <% elsif stip.stipulation_type == 'Draft spot' %>
     <span class="label label-danger margin-right-1em"><i class="fa fa-list-ol fa-fw"></i></span>
 
-    <%= render 'direction_info', stip: stip %> 
+    <%= render 'direction_info_filtered', stip: stip %> 
      <% if stip.trade_direction == 'from' %>
-      <%= image_tag @trader2.user.avatar(:tiny) %> <%= link_to @trader2.team_name, @trader2 %>'s
+      <%= image_tag Team.find(stip.trade.trader2_id).user.avatar(:tiny) %> <%= link_to Team.find(stip.trade.trader2_id).team_name, Team.find(stip.trade.trader2_id) %>'s
     <% else %>
-      <%= image_tag @trader1.user.avatar(:tiny) %> <%= link_to @trader1.team_name, @trader1 %>'s
+      <%= image_tag Team.find(stip.trade.trader1_id).user.avatar(:tiny) %> <%= link_to Team.find(stip.trade.trader1_id).team_name, @trader1 %>'s
     <% end %> <strong>round <%= stip.terms %> pick</strong> for the <%= stip.year %> season.
 
   <% elsif stip.stipulation_type == 'Player' %>
     <span class="label label-primary margin-right-1em"><i class="fa fa-bullhorn fa-fw"></i></span> 
 
-    <%= render 'direction_info', stip: stip %> 
+    <%= render 'direction_info_filtered', stip: stip %> 
     <%= link_to Player.find(stip.player_id).full_name, Player.find(stip.player_id) %> 
 
     <% if stip.rest_of_contract %>
