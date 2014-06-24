@@ -25,9 +25,11 @@ class Feature < ActiveRecord::Base
   
   
   
-  scope :for_announcements, lambda { where("feature_type = ?", "Announcements").order("homepage_order desc") }
-  scope :for_faqs, lambda{ where("feature_type = ?", "FAQ").order("homepage_order asc") }
-  scope :for_constitution, lambda{ where("feature_type = ?", "Constitution").order("homepage_order asc") }
-  scope :for_polls, lambda{ where("feature_type = ?", "Poll").order("homepage_order asc") }
+  scope :for_announcements,   lambda { where("feature_type = ?", "Announcements").order("homepage_order desc") }
+  scope :for_faqs,            lambda { where("feature_type = ?", "FAQ").order("homepage_order asc") }
+  scope :for_constitution,    lambda { where("feature_type = ?", "Constitution").order("homepage_order asc") }
+  scope :for_polls,           lambda { where("feature_type = ?", "Poll").order("homepage_order asc") }
+  scope :for_help,            lambda { where("feature_type = ?", "Help").order("homepage_order asc") }
+  scope :for_admin_help,      lambda { where("feature_type = ?", "Admin help").order("homepage_order asc") }
   
 end

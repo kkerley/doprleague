@@ -1,12 +1,12 @@
-<div class="panel panel-default">
+<div class="panel panel-danger">
   <div class="panel-heading">       
-    <p class="panel-title"><i class="fa fa-exchange"></i> Pending trades <small class="muted">waiting on action from you</small></p>
+    <p class="panel-title"><i class="fa fa-square-o"></i> Pending trades <small class="muted">waiting on action from you</small></p>
   </div>
 	
 	<%= render "trades/trades_list", trades: @pending_trades %>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-warning">
   <div class="panel-heading">       
     <p class="panel-title"><i class="fa fa-exchange"></i> Initiated trades <small class="muted">waiting on action from someone else</small></p>
   </div>
@@ -14,9 +14,9 @@
 	<%= render "trades/trades_list", trades: @initiated_trades %>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-success">
   <div class="panel-heading">       
-    <p class="panel-title"><i class="fa fa-exchange"></i> Completed trades <small class="muted">waiting on action from someone else</small></p>
+    <p class="panel-title"><i class="fa fa-check-square-o"></i> Completed trades <small class="muted">waiting on action from someone else</small></p>
   </div>
 	
 	<%= render "trades/trades_list", trades: @accepted_trades %>

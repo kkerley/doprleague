@@ -54,7 +54,7 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
     respond_to do |format|
       if @feature.save
         @feature.create_activity :create, owner: current_user
-        format.html { redirect_to({:action => :admin}, {notice: 'Feature was successfully created.'}) }
+        format.html { redirect_to( "/admin", {notice: 'Feature was successfully created.'}) }
         format.json { render json: @feature, status: :created, location: @feature }
       else
         format.html { render action: "new" }
@@ -71,7 +71,7 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
     respond_to do |format|
       if @feature.update_attributes(params[:feature])
         @feature.create_activity :update, owner: current_user
-        format.html { redirect_to({:action => :admin }, {notice: 'Feature was successfully updated.'}) }
+        format.html { redirect_to("/admin", {notice: 'Feature was successfully updated.'}) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -110,6 +110,10 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
   
   def polls
     @articles = Feature.for_polls.published
+  end
+
+  def help
+    @articles = Feature.for_help.published + Feature.for_admin_help.published
   end
   
 end

@@ -81,7 +81,7 @@ KkerleyCom::Application.routes.draw do
   get "faqs" => "features#faqs", :as => "faqs"
   get "constitution" => "features#constitution", :as => "constitution"
   get "polls" => "features#polls", :as => "polls"
-  # get "admin" => "features#admin", :as => "admin"
+  get "help" => "features#help", :as => "help"
   get "admin/index" # => "admin/index", :as => "admin"
   get "members" => "users#index", :as => "members"
   

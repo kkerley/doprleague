@@ -12,7 +12,13 @@
 		<% if @trades.count > 0 %>
 			<ul>
 				<% @trades.each do |trade| %>
-					<li><%= link_to "Trade with " + trade.trader_name(trade.trader1_id), trade %></li>
+					<li>
+						<% if current_user.team.id == trade.trader1_id %>
+							<%= link_to "Trade with " + trade.trader_name(trade.trader2_id), trade %>
+						<% else %>
+							<%= link_to "Trade with " + trade.trader_name(trade.trader1_id), trade %>
+						<% end %>
+					</li>
 				<% end %>
 			</ul>
 		<% else %>

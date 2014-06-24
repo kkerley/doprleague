@@ -6,6 +6,7 @@ class AdminController < ApplicationController
     @faqs = Feature.for_faqs
     @facebook_polls = Feature.for_polls
     @constitution_features = Feature.for_constitution
+    @help_features = Feature.for_help + Feature.for_admin_help
     @super_bowls = SuperBowl.order("year desc")
     @users = User.all
     @standings = Standing.order(:year).includes(:team_records)
