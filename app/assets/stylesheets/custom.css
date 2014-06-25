@@ -315,3 +315,7 @@ label{
 .stipulations-list{
 	margin-left: 2em;
 }
+
+.modified-budget{
+	background-color: #FFCCFF !important;
+}

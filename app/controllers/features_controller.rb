@@ -53,7 +53,9 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
 
     respond_to do |format|
       if @feature.save
-        @feature.create_activity :create, owner: current_user
+        if @feature.is_published
+          @feature.create_activity :create, owner: current_user
+        end
         format.html { redirect_to( "/admin", {notice: 'Feature was successfully created.'}) }
         format.json { render json: @feature, status: :created, location: @feature }
       else
@@ -70,7 +72,9 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
 
     respond_to do |format|
       if @feature.update_attributes(params[:feature])
-        @feature.create_activity :update, owner: current_user
+        if @feature.is_published
+          @feature.create_activity :update, owner: current_user
+        end 
         format.html { redirect_to("/admin", {notice: 'Feature was successfully updated.'}) }
         format.json { head :no_content }
       else

@@ -1,7 +1,7 @@
 added a new
 
 <% if activity.trackable %>
-	<%= activity.trackable.feature_type.singularize.downcase %> called <%= link_to activity.trackable.title, "/" %>
+	<%= activity.trackable.feature_type.singularize.downcase %> article called <%= link_to activity.trackable.title, "/" %>
 <% else %>
-	post which has since been removed from the site.
+	article which has since been removed from the site.
 <% end %><br /><small class="muted"><%= l activity.created_at, format: :feed %></small>

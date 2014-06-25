@@ -30,25 +30,14 @@ class Trade < ActiveRecord::Base
   	return trader.team_name
   end
 
+  def calculate_budgets(trader1, trader2, stipulation)
+    trader1_budget = Budget.find_by_team_id_and_year(trader1.id, stipulation.year)
+    trader2_budget = Budget.find_by_team_id_and_year(trader2.id, stipulation.year)
 
-  def calculate_budgets(trader1, trader2, year, direction, amount)
-  	trader1_budget = Budget.find_by_team_id_and_year(trader1.id, year)
-		trader2_budget = Budget.find_by_team_id_and_year(trader2.id, year)
+    stipulation.trader1_budget_id = trader1_budget.id
+    stipulation.trader2_budget_id = trader2_budget.id
+    stipulation.save!
 
-		if direction == "to"
-			trader1_budget.amount -= amount.to_i
-			trader1_budget.save!
-
-			trader2_budget.amount += amount.to_i
-			trader2_budget.save!
-
-		elsif direction == "from"
-			trader1_budget.amount += amount.to_i
-			trader1_budget.save!
-
-			trader2_budget.amount -= amount.to_i
-			trader2_budget.save!
-		end
   end
 
   def adjust_contracts(trader1, trader2, year, direction, player_id, rest_of_contract, terms)
@@ -99,8 +88,8 @@ class Trade < ActiveRecord::Base
   		# get all stipulations, check each for type and run the necessary methods
   		self.stipulations.each do |stip|
   			if stip.stipulation_type == "Cap space"
-  				self.calculate_budgets(trader1, trader2, stip.year, stip.trade_direction, stip.terms)
-
+  				# self.calculate_budgets(trader1, trader2, stip.year, stip.trade_direction, stip.terms)
+          self.calculate_budgets(trader1, trader2, stip)
   			elsif stip.stipulation_type == "Draft spot"
 
   			elsif stip.stipulation_type == "Player"

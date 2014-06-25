@@ -18,6 +18,7 @@ class BudgetsController < ApplicationController
   # GET /budgets/1.json
   def show
     @budget = Budget.find(params[:id])
+    @stipulations = Stipulation.for_budget(@budget.id)
 
     respond_to do |format|
       format.html # show.html.erb

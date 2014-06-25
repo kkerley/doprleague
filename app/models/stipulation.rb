@@ -1,5 +1,5 @@
 class Stipulation < ActiveRecord::Base
-  attr_accessible :description, :player_id, :rest_of_contract, :stipulation_type, :trade_direction, :trade_id, :terms, :year
+  attr_accessible :description, :player_id, :rest_of_contract, :stipulation_type, :trade_direction, :trade_id, :trader1_budget_id, :trader2_budget_id, :terms, :year
   belongs_to :trade
   belongs_to :player
 
@@ -12,6 +12,7 @@ class Stipulation < ActiveRecord::Base
   scope :player, lambda { where("stipulation_type = ?", "Player") }
   scope :other, lambda { where("stipulation_type = ?", "Other") }
   scope :for_year, lambda { |year| where(year: year) if year.present? }
+  scope :for_budget, lambda { |budget_id| where("trader1_budget_id = ? or trader2_budget_id = ?", budget_id, budget_id) }
 
   def player_trade?
   	self.stipulation_type == "Player"

@@ -33,19 +33,19 @@ class TeamsController < ApplicationController
     @players_to_franchise = @team.available_for_franchise(@players, @team)
 
     # Need to adjust this to only pull in players for the current year
-    @qbs = @players.find_all { |player| player.position == "QB" if player.is_contracted? && player.this_year.team_id == @team.id }
-    @rbs = @players.find_all { |player| player.position == "RB" if player.is_contracted? && player.this_year.team_id == @team.id }
-    @wrs = @players.find_all { |player| player.position == "WR" if player.is_contracted? && player.this_year.team_id == @team.id }
-    @tes = @players.find_all { |player| player.position == "TE" if player.is_contracted? && player.this_year.team_id == @team.id }
-    @kickers = @players.find_all { |player| player.position == "K" if player.is_contracted? && player.this_year.team_id == @team.id }
-    @defs = @players.find_all { |player| player.position == "DEF" if player.is_contracted? && player.this_year.team_id == @team.id }
+    @qbs      = @players.find_all { |player| player.position == "QB" if player.is_contracted? && player.this_year.team_id == @team.id }
+    @rbs      = @players.find_all { |player| player.position == "RB" if player.is_contracted? && player.this_year.team_id == @team.id }
+    @wrs      = @players.find_all { |player| player.position == "WR" if player.is_contracted? && player.this_year.team_id == @team.id }
+    @tes      = @players.find_all { |player| player.position == "TE" if player.is_contracted? && player.this_year.team_id == @team.id }
+    @kickers  = @players.find_all { |player| player.position == "K" if player.is_contracted? && player.this_year.team_id == @team.id }
+    @defs     = @players.find_all { |player| player.position == "DEF" if player.is_contracted? && player.this_year.team_id == @team.id }
 
-    @week4 = @team.players_by_bye_week(4, @team)
-    @week5 = @team.players_by_bye_week(5, @team)
-    @week6 = @team.players_by_bye_week(6, @team)
-    @week7 = @team.players_by_bye_week(7, @team)
-    @week8 = @team.players_by_bye_week(8, @team)
-    @week9 = @team.players_by_bye_week(9, @team)
+    @week4  = @team.players_by_bye_week(4, @team)
+    @week5  = @team.players_by_bye_week(5, @team)
+    @week6  = @team.players_by_bye_week(6, @team)
+    @week7  = @team.players_by_bye_week(7, @team)
+    @week8  = @team.players_by_bye_week(8, @team)
+    @week9  = @team.players_by_bye_week(9, @team)
     @week10 = @team.players_by_bye_week(10, @team)
     @week11 = @team.players_by_bye_week(11, @team)
     @week12 = @team.players_by_bye_week(12, @team)
@@ -53,21 +53,28 @@ class TeamsController < ApplicationController
     @total_payout_amount_to_date = Payout.all.count * 1200
     gon.all_users_and_awards = User.order(:id).includes(:awards)
 
-    @total_cap_current_year = @team.calculate_yearly_salary(current_year)
-    @total_cap_current_year_plus_1 = @team.calculate_yearly_salary(current_year.to_i + 1)
-    @total_cap_current_year_plus_2 = @team.calculate_yearly_salary(current_year.to_i + 2)
-    @total_cap_current_year_plus_3 = @team.calculate_yearly_salary(current_year.to_i + 3)
-    @total_cap_current_year_plus_4 = @team.calculate_yearly_salary(current_year.to_i + 4)
-    @total_cap_current_year_plus_5 = @team.calculate_yearly_salary(current_year.to_i + 5)
+    @total_cap_current_year         = @team.calculate_yearly_salary(current_year)
+    @total_cap_current_year_plus_1  = @team.calculate_yearly_salary(current_year.to_i + 1)
+    @total_cap_current_year_plus_2  = @team.calculate_yearly_salary(current_year.to_i + 2)
+    @total_cap_current_year_plus_3  = @team.calculate_yearly_salary(current_year.to_i + 3)
+    @total_cap_current_year_plus_4  = @team.calculate_yearly_salary(current_year.to_i + 4)
+    @total_cap_current_year_plus_5  = @team.calculate_yearly_salary(current_year.to_i + 5)
 
-    @team_budget_current_year = @team.get_budget(current_year)
-    @team_budget_current_year_plus_1 = @team.get_budget(current_year.to_i + 1)
-    @team_budget_current_year_plus_2 = @team.get_budget(current_year.to_i + 2)
-    @team_budget_current_year_plus_3 = @team.get_budget(current_year.to_i + 3)
-    @team_budget_current_year_plus_4 = @team.get_budget(current_year.to_i + 4)
-    @team_budget_current_year_plus_5 = @team.get_budget(current_year.to_i + 5)
+    @team_budget_current_year         = @team.get_budget(current_year)
+    @team_budget_current_year_plus_1  = @team.get_budget(current_year.to_i + 1)
+    @team_budget_current_year_plus_2  = @team.get_budget(current_year.to_i + 2)
+    @team_budget_current_year_plus_3  = @team.get_budget(current_year.to_i + 3)
+    @team_budget_current_year_plus_4  = @team.get_budget(current_year.to_i + 4)
+    @team_budget_current_year_plus_5  = @team.get_budget(current_year.to_i + 5)
 
-    @team_remainder_current_year = @team.remainder(@total_cap_current_year, @team_budget_current_year.amount)
+    @team_budget_current_year_stipulations        = Stipulation.for_budget(@team_budget_current_year)
+    @team_budget_current_year_plus_1_stipulations = Stipulation.for_budget(@team_budget_current_year_plus_1)
+    @team_budget_current_year_plus_2_stipulations = Stipulation.for_budget(@team_budget_current_year_plus_2)
+    @team_budget_current_year_plus_3_stipulations = Stipulation.for_budget(@team_budget_current_year_plus_3)
+    @team_budget_current_year_plus_4_stipulations = Stipulation.for_budget(@team_budget_current_year_plus_4)
+    @team_budget_current_year_plus_5_stipulations = Stipulation.for_budget(@team_budget_current_year_plus_5)
+
+    @team_remainder_current_year        = @team.remainder(@total_cap_current_year, @team_budget_current_year.amount)
     @team_remainder_current_year_plus_1 = @team.remainder(@total_cap_current_year_plus_1, @team_budget_current_year_plus_1.amount)
     @team_remainder_current_year_plus_2 = @team.remainder(@total_cap_current_year_plus_2, @team_budget_current_year_plus_2.amount)
     @team_remainder_current_year_plus_3 = @team.remainder(@total_cap_current_year_plus_3, @team_budget_current_year_plus_3.amount)

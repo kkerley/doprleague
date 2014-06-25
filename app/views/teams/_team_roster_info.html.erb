@@ -97,12 +97,17 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td><%= link_to "$" + @team_budget_current_year.amount.to_s, team_budget_path(@team, @team_budget_current_year) %></td>
-						<td><%= link_to "$" + @team_budget_current_year_plus_1.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_1) %></td>
-						<td><%= link_to "$" + @team_budget_current_year_plus_2.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_2) %></td>
-						<td><%= link_to "$" + @team_budget_current_year_plus_3.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_3) %></td>
-						<td><%= link_to "$" + @team_budget_current_year_plus_4.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_4) %></td>
-						<!--<td><% link_to "$" + @team_budget_current_year_plus_5.amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_5) %></td>-->
+						<td class="<%= @team_budget_current_year_stipulations.count > 0 ? 'modified-budget' : '' %>">
+							<%= link_to "$" + @team_budget_current_year.calculated_amount.to_s, team_budget_path(@team, @team_budget_current_year) %></td>
+						<td class="<%= @team_budget_current_year_plus_1_stipulations.count > 0 ? 'modified-budget' : '' %>">
+							<%= link_to "$" + @team_budget_current_year_plus_1.calculated_amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_1) %></td>
+						<td class="<%= @team_budget_current_year_plus_2_stipulations.count > 0 ? 'modified-budget' : '' %>">
+							<%= link_to "$" + @team_budget_current_year_plus_2.calculated_amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_2) %></td>
+						<td class="<%= @team_budget_current_year_plus_3_stipulations.count > 0 ? 'modified-budget' : '' %>">
+							<%= link_to "$" + @team_budget_current_year_plus_3.calculated_amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_3) %></td>
+						<td class="<%= @team_budget_current_year_plus_4_stipulations.count > 0 ? 'modified-budget' : '' %>">
+							<%= link_to "$" + @team_budget_current_year_plus_4.calculated_amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_4) %></td>
+						<!--<td><% link_to "$" + @team_budget_current_year_plus_5.calculated_amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_5) %></td>-->
 					</tr>
 
 					<tr>

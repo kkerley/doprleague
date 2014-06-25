@@ -1,13 +1,28 @@
 <% content_for :title, "#{@team.team_name}'s #{@budget.year} budget" %>
 <% content_for :section_subtitle, "" %>
 
-<p class="h1">
+<p class="h1 margin-bottom-1em">
   $<%= @budget.amount %>
 </p>
 
+<% if @stipulations.count > 0 %>
+<hr />
+	<p class="h3 margin-bottom-1em"><i class="fa fa-dot-circle-o"></i> Trade stipulations affecting this budget:</p>
+		<% @stipulations.each do |stip| %>
+			<p>
+				<span class="label label-success margin-right-1em"><i class="fa fa-usd fa-fw"></i></span>
+
+	
+	    	<strong>$<%= stip.terms %> of cap space</strong> for the <%= stip.year %> season.
+	    </p>
+		<% end %>
+<% end %>
+
 <% if current_user %>
 	<% if can? :manage, @budget %>
-		<%= link_to 'Edit', edit_team_budget_path(@team, @budget) %> |
-		<%= link_to 'Back', team_budgets_path %>
+		<p>
+			<%= link_to 'Edit', edit_team_budget_path(@team, @budget) %> |
+			<%= link_to 'Back', team_budgets_path %>
+		</p>
 	<% end %>
 <% end %>

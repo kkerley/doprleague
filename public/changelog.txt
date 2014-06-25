@@ -4,7 +4,19 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
-Version 2.6.0 [2014/06/xx]
+Version 2.6.2 [2014/06/24]
+--------------------------------------------------
+- Changed the way budget stiuplations work (non-destructive addition/subtraction)
+- Added styling to teams#show to better highlight which budgets have been affected by stipulations
+
+
+Version 2.6.1 [2014/06/24]
+--------------------------------------------------
+- Updated verbiage for the creation of a new help topic
+- Updated logic so that new content added to the site doesn't have a public_activity entry until they're published
+
+
+Version 2.6.0 [2014/06/23]
 --------------------------------------------------
 - Added trades platform
 - Added global_notification_count to include unread messages + pending trades counts
