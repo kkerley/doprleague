@@ -4,6 +4,16 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.3 [2014/06/25]
+--------------------------------------------------
+- Added missing anchor links from /help so that the side nav works
+- Removed "Show title?" checkbox from the features form
+- Fixed Javascript issue on trades#new when attempting to add a stipulation after a Player stipulation
+- Fixed verbiage on budgets#show to be more descriptive and to link to the trade affecting them
+- Fixed budgets#show to use the calculated_amount
+- Fixed teams#show to show the remainder based on the calculated_amount, not original amount
+
+
 Version 2.6.2 [2014/06/24]
 --------------------------------------------------
 - Changed the way budget stiuplations work (non-destructive addition/subtraction)

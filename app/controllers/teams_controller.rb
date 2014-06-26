@@ -74,12 +74,12 @@ class TeamsController < ApplicationController
     @team_budget_current_year_plus_4_stipulations = Stipulation.for_budget(@team_budget_current_year_plus_4)
     @team_budget_current_year_plus_5_stipulations = Stipulation.for_budget(@team_budget_current_year_plus_5)
 
-    @team_remainder_current_year        = @team.remainder(@total_cap_current_year, @team_budget_current_year.amount)
-    @team_remainder_current_year_plus_1 = @team.remainder(@total_cap_current_year_plus_1, @team_budget_current_year_plus_1.amount)
-    @team_remainder_current_year_plus_2 = @team.remainder(@total_cap_current_year_plus_2, @team_budget_current_year_plus_2.amount)
-    @team_remainder_current_year_plus_3 = @team.remainder(@total_cap_current_year_plus_3, @team_budget_current_year_plus_3.amount)
-    @team_remainder_current_year_plus_4 = @team.remainder(@total_cap_current_year_plus_4, @team_budget_current_year_plus_4.amount)
-    @team_remainder_current_year_plus_5 = @team.remainder(@total_cap_current_year_plus_5, @team_budget_current_year_plus_5.amount)
+    @team_remainder_current_year        = @team.remainder(@total_cap_current_year, @team_budget_current_year.calculated_amount)
+    @team_remainder_current_year_plus_1 = @team.remainder(@total_cap_current_year_plus_1, @team_budget_current_year_plus_1.calculated_amount)
+    @team_remainder_current_year_plus_2 = @team.remainder(@total_cap_current_year_plus_2, @team_budget_current_year_plus_2.calculated_amount)
+    @team_remainder_current_year_plus_3 = @team.remainder(@total_cap_current_year_plus_3, @team_budget_current_year_plus_3.calculated_amount)
+    @team_remainder_current_year_plus_4 = @team.remainder(@total_cap_current_year_plus_4, @team_budget_current_year_plus_4.calculated_amount)
+    @team_remainder_current_year_plus_5 = @team.remainder(@total_cap_current_year_plus_5, @team_budget_current_year_plus_5.calculated_amount)
 
     @current_sb = SuperBowl.current_super_bowl
     

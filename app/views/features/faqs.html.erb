@@ -22,10 +22,11 @@
 		<div class="panel-group" id="accordion">
 		  
 			<% @articles.each do |article| %>
-			 	<div class="panel panel-default margin-bottom-2em">
+				<section id="<%= article.title.parameterize %>">
+			 		<div class="panel panel-default margin-bottom-2em">
 			    	<div class="panel-heading">
 			      		<p class="panel-title">
-					        <i class="fa fa-question-circle"></i> <a name="<%= article.title.parameterize %>"></a><a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= article.id %>">
+					        <i class="fa fa-question-circle"></i> <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= article.id %>">
 					          <%= article.title %>
 					        </a>
 			      		</p>
@@ -42,7 +43,8 @@
 			      		</div>
 			    	</div>
 			  	</div>
-				<% render 'layouts/back_to_top_link' %>
+					<% render 'layouts/back_to_top_link' %>
+				</section>
 			<% end %>
 		</div><!-- end of panel-group id accordion -->
 

@@ -7,6 +7,9 @@ $(document).ready(function(){
 	var escaped_trader2;
 	var options;
 	var players = $('.filtered-players-select').html();
+	var directionBox;
+	var dbLoctation
+
 	// console.log(players);
 
 	
@@ -35,8 +38,8 @@ $(document).ready(function(){
 
 		if(tradeType == "Player"){
 			$(document).on('change', '.trade-direction', function(){
-				var directionBox = $(this);
-				var dbLoctation = directionBox.parent().parent().parent();
+				directionBox = $(this);
+				dbLoctation = directionBox.parent().parent().parent();
 				
 				var directionBoxRelatedPlayers = $('div', dbLoctation).next('.player-trade-fields');
 				directionBoxRelatedPlayers.show();
@@ -55,8 +58,12 @@ $(document).ready(function(){
 			
 			
 		} else {
-			$('div', location).next('.player-trade-fields').hide();
-			$('div', location).next('.terms-field').show();
+			$(document).on('change', '.trade-direction', function(){
+				directionBox = $(this);
+				dbLoctation = directionBox.parent().parent().parent();
+				$('div', location).next('.player-trade-fields').hide();
+				$('div', location).next('.terms-field').show();
+			});
 		}
 	});
 	

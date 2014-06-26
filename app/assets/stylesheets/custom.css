@@ -319,3 +319,8 @@ label{
 .modified-budget{
 	background-color: #FFCCFF !important;
 }
+
+section {
+	padding-top: 40px;
+	margin-top: -40px;
+}

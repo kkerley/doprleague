@@ -26,28 +26,29 @@
 		
 		  
 			<% @articles.each do |article| %>
-			 	
-    		<p class="h3">
-	        <i class="fa fa-life-ring"></i> 
-	          <%= article.title %>
-	        
-    		</p>
-  	
-    			
-      		<%= RedCloth.new(article.content).to_html.html_safe %>
-      		<% if article.avatar? %>
-						<%= image_tag(article.avatar.url(:max720), :border => 0, :class => "img-polaroid margin-bottom-1em img-responsive") %>
-					<% end %>
-      		<% if current_user %>
-						<% if can? :manage, article %>
-							<br />
-							<p><i class="fa fa-pencil-square-o"></i> <%= link_to 'Edit this article', edit_feature_path(article) %></p>
+			 	<section id="<%= article.title.parameterize %>">
+	    		<p class="h3">
+		        <i class="fa fa-life-ring"></i> 
+		          <%= article.title %>
+		        
+	    		</p>
+	  	
+	    			
+	      		<%= RedCloth.new(article.content).to_html.html_safe %>
+	      		<% if article.avatar? %>
+							<%= image_tag(article.avatar.url(:max720), :border => 0, :class => "img-polaroid margin-bottom-1em img-responsive") %>
 						<% end %>
-					<% end %>
-			      	
-			  	
-				<%= render 'layouts/back_to_top_link' %>
-				<hr />
+	      		<% if current_user %>
+							<% if can? :manage, article %>
+								<br />
+								<p><i class="fa fa-pencil-square-o"></i> <%= link_to 'Edit this article', edit_feature_path(article) %></p>
+							<% end %>
+						<% end %>
+				      	
+				  	
+					<%= render 'layouts/back_to_top_link' %>
+					<hr />
+				</section>
 			<% end %>
 		
 

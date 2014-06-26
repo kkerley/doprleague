@@ -2,7 +2,7 @@
 <% content_for :section_subtitle, "" %>
 
 <p class="h1 margin-bottom-1em">
-  $<%= @budget.amount %>
+  $<%= @budget.calculated_amount %>
 </p>
 
 <% if @stipulations.count > 0 %>
@@ -13,7 +13,13 @@
 				<span class="label label-success margin-right-1em"><i class="fa fa-usd fa-fw"></i></span>
 
 	
-	    	<strong>$<%= stip.terms %> of cap space</strong> for the <%= stip.year %> season.
+	    	<strong>$<%= stip.terms %> of cap space</strong> for the <%= stip.year %> season <%= stip.trade_direction %> 
+
+	    	<% if stip.trade.trader1_id == @team.id %>
+	    		<%= Team.find(stip.trade.trader2_id).team_name -%>
+	    	<% else %>
+	    		<%= Team.find(stip.trade.trader1_id).team_name -%>
+	    	<% end %>. <%= link_to "View the full trade", stip.trade %>.
 	    </p>
 		<% end %>
 <% end %>
