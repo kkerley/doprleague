@@ -1,0 +1,5 @@
+$('#announcements').html('<%= escape_javascript render 'announcements' %>');
+$('#paginator_announcements').html('<%= escape_javascript(paginate(@announcements, remote: true, param_name: 'announcements').to_s) %>');
+
+$('#activity').html('<%= escape_javascript render 'activity' %>');
+$('#paginator_activity').html('<%= escape_javascript(paginate(@activities, remote: true, param_name: 'activities').to_s) %>');

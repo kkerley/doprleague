@@ -16,4 +16,6 @@
       </div>
 	<hr />
 <% end %>
-<%= paginate @announcements %>
+<div id="paginator_announcements">
+	<%= paginate @announcements, remote: true, param_name: "announcements" %>
+</div>

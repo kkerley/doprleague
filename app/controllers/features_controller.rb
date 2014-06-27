@@ -4,8 +4,8 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
   # GET /features
   # GET /features.json
   def index
-    @announcements = Feature.for_announcements.published.includes(:user).page params[:page]
-    @activities = PublicActivity::Activity.order("created_at desc")
+    @announcements = Feature.for_announcements.published.page params[:announcements]
+    @activities = PublicActivity::Activity.order("created_at desc").page params[:activities]
     
     
     # @all_features = Feature.homepage_list
@@ -13,6 +13,7 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @features }
+      format.js
     end
   end
 

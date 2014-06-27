@@ -22,3 +22,6 @@
     </div>
   </div>
 <% end %>
+<div id="paginator_activity">
+  <%= paginate @activities, remote: true, param_name: "activities" %>
+</div>

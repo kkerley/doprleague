@@ -1,7 +1,18 @@
 added a new
 
 <% if activity.trackable %>
-	<%= activity.trackable.feature_type.singularize.downcase %> article called <%= link_to activity.trackable.title, "/" %>
+	<%= activity.trackable.feature_type.singularize.downcase %> article called 
+	<% if activity.trackable.feature_type == "Announcements" %>
+		<%= link_to activity.trackable.title, "/" %>
+	<% elsif activity.trackable.feature_type == "Constitution" %> 
+		<%= link_to activity.trackable.title, "/constitution" %>
+	<% elsif activity.trackable.feature_type == "FAQ" %>
+		<%= link_to activity.trackable.title, "/faqs" %>
+	<% elsif activity.trackable.feature_type == "Poll" %> 
+		<%= link_to activity.trackable.title, "/polls" %>
+	<% elsif activity.trackable.feature_type == "Help" || activity.trackable.feature_type == "Admin Help" %> 
+		<%= link_to activity.trackable.title, "/help" %>
+	<% end %>
 <% else %>
 	article which has since been removed from the site.
 <% end %><br /><small class="muted"><%= l activity.created_at, format: :feed %></small>
