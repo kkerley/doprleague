@@ -9,6 +9,9 @@
 			</div>	
 	</td>
 	<td>
+		<%= best_in_place_if current_user, feature, :feature_type, html_attrs: {style: "width: 60px"} %></td>
+	</td>
+	<td>
 		<%if feature.is_published? %>
 			<span class="label label-success">Yes</span>
 		<% else %>

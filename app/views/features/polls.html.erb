@@ -36,7 +36,7 @@
 			    	<div id="collapse<%= article.id %>" class="panel-collapse collapse">
 			      		<div class="panel-body">
 			      			<% if article.avatar? %>
-										<%= image_tag(article.avatar.url(:max720), :border => 0, :class => "img-polaroid margin-bottom-1em img-responsive") %>
+										<%= image_tag(article.avatar.url(:max720), border: 0, class: "img-thumbnail margin-bottom-1em img-responsive") %>
 									<% end %>
 			        		<%= RedCloth.new(article.content).to_html.html_safe %>
 			        		<% if current_user %>

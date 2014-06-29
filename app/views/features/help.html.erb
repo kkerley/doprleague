@@ -8,51 +8,97 @@
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
-             		<p class="panel-title"><i class="fa fa-life-ring"></i> Help topics</p>
-           	</div>
-           	<div class="panel-body">
-             		<ol>
-						<% @articles.each do |help| %>
-							<li><%= link_to help.title, "#" + help.title.parameterize %></li>
-						<% end %>
+         <p class="panel-title"><i class="fa fa-life-ring"></i> Help topics</p>
+      </div>
+     	<div class="panel-body">
+       	<ol>
+					<% @articles.each do |help| %>
+						<li><%= link_to help.title, "#" + help.title.parameterize %></li>
+					<% end %>
 				</ol>
-           	</div>
+     	</div>
 		</div><!-- end of panel -->
+
+
+		<% if current_user %> 
+			<% if current_user.role == "admin" %>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+		         <p class="panel-title"><i class="fa fa-life-ring"></i> Admin help topics</p>
+		      </div>
+		     	<div class="panel-body">
+		       	<ol>
+							<% @admin_articles.each do |help| %>
+								<li><%= link_to help.title, "#" + help.title.parameterize %></li>
+							<% end %>
+						</ol>
+		     	</div>
+				</div><!-- end of panel -->
+			<% end %>
+		<% end %>
 	</div><!-- end of col-md-4 -->
 	
 	
 	<div class="col-md-8 col-md-pull-4">
-	
-		
+
 		  
 			<% @articles.each do |article| %>
 			 	<section id="<%= article.title.parameterize %>">
 	    		<p class="h3">
 		        <i class="fa fa-life-ring"></i> 
 		          <%= article.title %>
-		        
 	    		</p>
 	  	
 	    			
-	      		<%= RedCloth.new(article.content).to_html.html_safe %>
-	      		<% if article.avatar? %>
-							<%= image_tag(article.avatar.url(:max720), :border => 0, :class => "img-polaroid margin-bottom-1em img-responsive") %>
+      		<%= RedCloth.new(article.content).to_html.html_safe %>
+      		<% if article.avatar? %>
+						<%= image_tag(article.avatar.url(:max720), border: 0, class: "img-thumbnail margin-bottom-1em img-responsive") %>
+					<% end %>
+      		<% if current_user %>
+						<% if can? :manage, article %>
+							<br />
+							<p><i class="fa fa-pencil-square-o"></i> <%= link_to 'Edit this article', edit_feature_path(article) %></p>
 						<% end %>
-	      		<% if current_user %>
-							<% if can? :manage, article %>
-								<br />
-								<p><i class="fa fa-pencil-square-o"></i> <%= link_to 'Edit this article', edit_feature_path(article) %></p>
-							<% end %>
-						<% end %>
+					<% end %>
 				      	
 				  	
 					<%= render 'layouts/back_to_top_link' %>
 					<hr />
 				</section>
 			<% end %>
-		
 
+			<% if current_user %> 
+				<% if current_user.role == "admin" %>
+				
+					<p class="h2">Admin help topics</p>
+					<hr />
 
+					<% @admin_articles.each do |article| %>
+					 	<section id="<%= article.title.parameterize %>">
+			    		<p class="h3">
+				        <i class="fa fa-life-ring"></i> 
+				          <%= article.title %>
+			    		</p>
+			  	
+			    			
+		      		<%= RedCloth.new(article.content).to_html.html_safe %>
+		      		<% if article.avatar? %>
+								<%= image_tag(article.avatar.url(:max720), border: 0, class: "img-thumbnail margin-bottom-1em img-responsive") %>
+							<% end %>
+		      		<% if current_user %>
+								<% if can? :manage, article %>
+									<br />
+									<p><i class="fa fa-pencil-square-o"></i> <%= link_to 'Edit this article', edit_feature_path(article) %></p>
+								<% end %>
+							<% end %>
+						      	
+						  	
+							<%= render 'layouts/back_to_top_link' %>
+							<hr />
+						</section>
+					<% end %>
+				<% end %>
+			<% end %>
 	
 	</div><!-- end of col-md-8 -->
 </div>

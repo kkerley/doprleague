@@ -118,7 +118,8 @@ load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new, :
   end
 
   def help
-    @articles = Feature.for_help.published + Feature.for_admin_help.published
+    @articles = Feature.for_help.published
+    @admin_articles = Feature.for_admin_help.published
   end
   
 end

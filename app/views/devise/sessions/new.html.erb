@@ -1,7 +1,9 @@
 <div class="border-form-div">
   <p class="h2">Sign in</p>
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <!-- <label for="user_email">Email</label> -->
     <%= f.email_field :email, :autofocus => true, class: "form-control" %>
+    <!-- <label for="user_password">Password</label> -->
     <%= f.password_field :password, class: "form-control" %>
     <% if devise_mapping.rememberable? -%>
       <label class="checkbox"> <%= f.check_box :remember_me %> Remember me </label>

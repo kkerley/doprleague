@@ -4,11 +4,15 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
-Version 2.6.4 [2014/06/26]
+Version 2.6.4 [2014/06/xx]
 --------------------------------------------------
 - Updated public_activity feed for Feature articles to link to the appropriate page for articles that have been created/updated
 - Added pagination for public_activity feed and ajax'd it to work independently from the announcements pagination
-
+- Added a button to create a new trade from the teams#show trade tab
+- Added borders to images on /polls and /help
+- Fixed ongoing error with gon not being defined
+- Added "feature type" column to all Features in Admin
+- Added my personal referral URL for Digital Ocean in the footer
 
 
 Version 2.6.3 [2014/06/25]
