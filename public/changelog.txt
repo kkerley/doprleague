@@ -4,7 +4,7 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
-Version 2.6.4 [2014/06/xx]
+Version 2.6.4 [2014/06/29]
 --------------------------------------------------
 - Updated public_activity feed for Feature articles to link to the appropriate page for articles that have been created/updated
 - Added pagination for public_activity feed and ajax'd it to work independently from the announcements pagination
