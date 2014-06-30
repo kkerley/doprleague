@@ -4,6 +4,12 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.5 [2014/06/29]
+--------------------------------------------------
+- Added a link to the global dropdown to edit User information
+- Redesigned the 404, 500, 503 error pages to make fun of Philip
+
+
 Version 2.6.4 [2014/06/29]
 --------------------------------------------------
 - Updated public_activity feed for Feature articles to link to the appropriate page for articles that have been created/updated
