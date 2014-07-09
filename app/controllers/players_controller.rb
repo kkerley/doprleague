@@ -135,15 +135,25 @@ class PlayersController < ApplicationController
   def free_agents
     # @players = Player.text_search(params[:query]).free_agents.sort_by { |player| player.this_year_salary }.reverse # chain the text_search here
     
-    if(params[:query])
-      @players = Player.text_search(params[:query]).free_agents.paginate(page: params[:page], per_page: Player.count)
-    else
-      @players = Player.text_search(params[:query]).free_agents.paginate(page: params[:page], per_page: 50)
-    end
+    @players = smart_listing_create  :players, 
+                                    Player.text_search(params[:query]).free_agents,
+                                    array: true, 
+                                    partial: "players/players_info_fields", 
+                                    #default_sort: {last_name: "asc"}, 
+                                    #sort_attributes: [[ :last_name, "last_name" ], [:nfl_team, "nfl_team"], [:auction_value, "auction_value"]], 
+                                    
+                                    page_sizes: [25, 500]
     
     
     if current_user
       @draft_rosters = current_user.team.draft_rosters
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @players }
+      format.js
+      format.xls
     end
   end
 

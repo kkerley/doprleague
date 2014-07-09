@@ -41,8 +41,7 @@ class Contract < ActiveRecord::Base
       sub.contract_id = self.id
       sub.team_id = contracted_team_id
       sub.save! 
-    end
-     
+    end   
   end
 
 
@@ -55,8 +54,6 @@ class Contract < ActiveRecord::Base
           sub.this_is_a_buyout = true
           sub.save!
         end
-      else
-
       end
     end
   end

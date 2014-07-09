@@ -4,6 +4,20 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.7 [2014/07/08]
+--------------------------------------------------
+- Fixed incorrect pagination call on /players/free_agents causing 500 error
+- Fixed pagination and sorting issues on /players/free_agents
+- Fixed JS causing the draft rosters popup to not work (with extremely hacky JS...not even sure how/why it's working now)
+
+
+Version 2.6.6 [2014/06/30]
+--------------------------------------------------
+- Fixed the half-finished verbiage for adding/updating an "admin help" article
+- Removed "admin help" articles from the standard activities feed
+- Added logic check to ensure that a player was drafted before being listed as eligible for extension. Groundwork for future code enhancements
+
+
 Version 2.6.5 [2014/06/29]
 --------------------------------------------------
 - Added a link to the global dropdown to edit User information

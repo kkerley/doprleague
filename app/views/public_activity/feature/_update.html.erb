@@ -11,7 +11,9 @@ updated
 		<%= link_to activity.trackable.title, "/faqs" %>
 	<% elsif activity.trackable.feature_type == "Poll" %> 
 		<%= link_to activity.trackable.title, "/polls" %>
-	<% elsif activity.trackable.feature_type == "Help" || activity.trackable.feature_type == "Admin Help" %> 
+	<% elsif activity.trackable.feature_type == "Help" %> 
+		<%= link_to activity.trackable.title, "/help" %>
+	<% elsif activity.trackable.feature_type == "Admin help" %>
 		<%= link_to activity.trackable.title, "/help" %>
 	<% end %>
 <% else %>

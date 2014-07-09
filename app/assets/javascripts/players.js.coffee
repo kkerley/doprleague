@@ -4,14 +4,8 @@
 
 jQuery ->
 	location = $(this)
-	# rosters = gon.current_user_draft_rosters
-	# all_rosters = []
-
-	# buildLink = (roster) ->
-		# @roster_name = '<% form_tag(new_player_path) do %>Add a new roster<% end %>'
-		# all_rosters += @roster_name
-
-	# buildLink roster for roster in rosters
-		
-	# $('.watchable', location).attr('data-content', all_rosters)
 	$('.watchable', location).popover('hide')
+	$(document).on "click", ".watchable", location ->
+	  
+	  return
+	#$('.watchable', location).click().popover('show')
