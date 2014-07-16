@@ -2,7 +2,16 @@ class Player < ActiveRecord::Base
   include ModifiedCurrentYear
   include PublicActivity::Common
 
-  attr_accessible :auction_value, :first_name, :last_name, :nfl_team, :position, :bye_week, :full_name, :contracts_attributes, :subcontracts_attributes
+  attr_accessible   :auction_value, 
+                    :first_name, 
+                    :last_name, 
+                    :nfl_team, 
+                    :position, 
+                    :bye_week, 
+                    :full_name, 
+                    :is_retired, 
+                    :contracts_attributes, 
+                    :subcontracts_attributes
   
   has_many :contracts, dependent: :destroy, fully_load: true
   has_many :subcontracts, through: :contracts, fully_load: true

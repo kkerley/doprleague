@@ -4,7 +4,19 @@ class Contract < ActiveRecord::Base
 
   include ModifiedCurrentYear
 
-  attr_accessible :contract_length, :is_bought_out, :bought_out_by_team_id, :is_extended, :is_franchised, :contract_start_year, :contracted_team, :player_id, :subcontracts_attributes, :is_drafted, :is_dead_money
+  attr_accessible   :contract_length, 
+                    :is_bought_out, 
+                    :bought_out_by_team_id, 
+                    :is_extended, 
+                    :is_franchised, 
+                    :contract_start_year, 
+                    :contracted_team, 
+                    :player_id, 
+                    :is_drafted, 
+                    :is_dead_money, 
+                    :is_longterm_deal, 
+                    :subcontracts_attributes
+                    
   attr_accessor :contracted_team
   
   belongs_to :player, fully_load: true

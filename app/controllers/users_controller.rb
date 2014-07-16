@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         if current_user.role == "admin" 
-          format.html { redirect_to({ :controller => :features, :action => :admin }, {notice: 'User was successfully updated.'}) }
+          format.html { redirect_to({ :controller => :admin, :action => :index }, {notice: 'User was successfully updated.'}) }
         else
           format.html { redirect_to root_url, notice: 'User was successfully updated.' }
         end

@@ -4,6 +4,15 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.8 [2014/07/16]
+--------------------------------------------------
+- Added is_retired boolean to Player
+- Added is_longterm_deal boolean to Contract for upcoming adjustments to how contracts are created
+- Added is_rejected boolean to Trade
+- Added "remove" link to remove stipulations from a trade
+- Fixed incorrect redirect after updating a User as an admin
+
+
 Version 2.6.7 [2014/07/08]
 --------------------------------------------------
 - Fixed incorrect pagination call on /players/free_agents causing 500 error

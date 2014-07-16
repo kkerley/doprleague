@@ -1,13 +1,13 @@
 class Trade < ActiveRecord::Base
   include PublicActivity::Common
   
-  attr_accessible :notes, :trader1_accepted, :trader1_id, :trader2_accepted, :trader2_id, :stipulations_attributes
+  attr_accessible :notes, :trader1_accepted, :trader1_id, :trader2_accepted, :trader2_id, :is_rejected, :stipulations_attributes
 
   # has_many :teams
   has_many :stipulations, dependent: :destroy
   has_many :players, through: :stipulations
 
-  accepts_nested_attributes_for :stipulations
+  accepts_nested_attributes_for :stipulations, allow_destroy: true
 
   validates_presence_of :trader2_id
   validates_associated :stipulations
