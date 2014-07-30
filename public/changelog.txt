@@ -4,10 +4,11 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
-Version 2.6.9 [2014/07/xx]
+Version 2.6.9 [2014/07/29]
 --------------------------------------------------
 - Removed links to Glyphicons
-- Updated to Bootstrap 3.2
+- Updated to Bootstrap 3.2.0
+- Made numerous cosmetic updates to account for changes in 3.2; more are certain to come
 - Reconfigured to deploy with Capistrano 3.1
 
 

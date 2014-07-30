@@ -1,6 +1,6 @@
 <%= form_tag players_path, class: "form-inline margin-bottom-2em", method: :get do %>
 	<div class="input-group"> 
-	  <%= text_field_tag :query, params[:query], class: "form-control",  placeholder: "Name, position, NFL team shorthand or auction value (no $)" %>
+	  <%= text_field_tag :query, params[:query], class: "form-control",  placeholder: "Name, position, NFL team shorthand or auction value (no $)", size: 60 %>
 		<span class="input-group-btn">
 			<%= button_tag name: nil, class: "btn btn-success btn-large" do %>
 				<i class="fa fa-search"></i>
