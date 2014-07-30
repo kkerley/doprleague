@@ -43,6 +43,10 @@ group :development do
   gem 'binding_of_caller'
   gem 'quiet_assets'
   gem 'bullet'
+  gem 'capistrano', '~> 3.1.0'
+  gem 'capistrano-rails', '~> 1.1.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
 end
 
 group :test do
