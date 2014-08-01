@@ -4,6 +4,12 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.11 [2014/07/31]
+--------------------------------------------------
+- Fixed an issue where there was missing check to see if a player was contracted before trying to get the current contract on players#show
+- Fixed an issue on players#show that checks tos ee if a player has a team before trying to put the team's logo
+
+
 Version 2.6.10 [2014/07/31]
 --------------------------------------------------
 - Changed buyout clause to only affect future years, not current year, as they operate in a way similar to the deadlines for franchising and extensions
