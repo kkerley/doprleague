@@ -31,6 +31,7 @@ class Player < ActiveRecord::Base
   scope :all_tight_ends, lambda { where("position = ?", "TE").order("auction_value desc") }
   scope :all_kickers, lambda { where("position = ?", "K").order("auction_value desc") }
   scope :all_defenses, lambda { where("position = ?", "DEF").order("auction_value desc") }
+  scope :active_players, lambda { where("is_retired = ?", false).order("auction_value desc") }
   
   
   def to_param

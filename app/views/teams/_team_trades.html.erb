@@ -23,6 +23,14 @@
     	
     	<%= render "trades/trades_list", trades: @accepted_trades %>
     </div>
+
+    <div class="panel panel-danger">
+      <div class="panel-heading">       
+        <p class="panel-title"><i class="fa fa-times-circle"></i> Rejected trades <small class="muted">adjust or let it die</small></p>
+      </div>
+      
+      <%= render "trades/trades_list", trades: @accepted_trades %>
+    </div>
   </div>
   <div class="col-md-2">
     <p>

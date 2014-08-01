@@ -13,13 +13,13 @@ class PlayersController < ApplicationController
   def index
     
    @players = smart_listing_create  :players, 
-                                    Player.text_search(params[:query]), 
+                                    Player.text_search(params[:query]).active_players, 
                                     partial: "players/players_info_fields", 
                                     default_sort: {last_name: "asc"}, 
                                     page_sizes: [25, 50, 100, 500]
     
     # @players = Player.text_search(params[:query]).includes(:contracts).includes(:subcontracts).sort_by { |player| player.this_year_salary }.reverse
-    @players_download = Player.order(:last_name)
+    @players_download = Player.active_players.order(:last_name)
     
     if current_user
       # gon.current_user_draft_rosters = DraftRoster.where("team_id = ?", current_user.team.id) unless @players.empty?
@@ -136,7 +136,7 @@ class PlayersController < ApplicationController
     # @players = Player.text_search(params[:query]).free_agents.sort_by { |player| player.this_year_salary }.reverse # chain the text_search here
     
     @players = smart_listing_create  :players, 
-                                    Player.text_search(params[:query]).free_agents,
+                                    Player.text_search(params[:query]).active_players.free_agents,
                                     array: true, 
                                     partial: "players/players_info_fields", 
                                     #default_sort: {last_name: "asc"}, 

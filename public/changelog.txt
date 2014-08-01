@@ -4,6 +4,15 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.10 [2014/07/31]
+--------------------------------------------------
+- Changed buyout clause to only affect future years, not current year, as they operate in a way similar to the deadlines for franchising and extensions
+- Added logic to only pull non-retired players
+- Moved the "Contracts key" from being that box on teams#show to being inline in the roster table header row area
+- Added checkbox for trade recipient to reject a trade
+- Adjusted the new season start date to be  9/1 since I have no idea what timezone the server is in and it's already 2014 according to it
+
+
 Version 2.6.9 [2014/07/29]
 --------------------------------------------------
 - Removed links to Glyphicons

@@ -61,7 +61,7 @@ class Contract < ActiveRecord::Base
   def check_for_buyout
     if self.is_bought_out
       if self.bought_out_by_team_id
-        self.subcontracts.current_year_or_later.each do |sub|
+        self.subcontracts.future_years.each do |sub|
           sub.salary_amount *= 0.6
           sub.this_is_a_buyout = true
           sub.save!

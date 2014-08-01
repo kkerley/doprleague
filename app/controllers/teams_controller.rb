@@ -27,6 +27,7 @@ class TeamsController < ApplicationController
     @accepted_trades = @trades.accepted_trades
     @initiated_trades = Trade.initiated_trades(@team.id).pending_trades
     @pending_trades = Trade.is_recipient(@team.id).pending_trades
+    @rejected_trades = Trade.for_team(@team.id).rejected_trades
     
     @players = @team.get_subcontract_players.uniq 
     @players_to_extend = @team.available_for_extension(@players)

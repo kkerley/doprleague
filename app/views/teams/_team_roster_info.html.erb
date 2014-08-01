@@ -4,11 +4,9 @@
 		<div class="panel-heading">
         		
 			<p class="panel-title"><%= image_tag @team.user.avatar(:mini), :border => 0, :style => "display: inline;", :align => "right" %>
-				<i class="fa fa-list"></i> Roster<br />
-				<small class="muted">Includes active roster spots, dead money, and contract buyouts.<br />
-
-				<!--<a href="#" style="font-weight: normal;">View entire roster <i class="fa fa-expand"></i></a>--></small>
+				<i class="fa fa-list"></i> Roster
 			</p>
+			<%= render "/contracts/contract_clauses_key_inline" %>
     </div>
 
 		<div class="table-responsive">

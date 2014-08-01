@@ -24,6 +24,7 @@ class Trade < ActiveRecord::Base
   scope :initiated_trades, lambda { |team_id| where("trader1_id = ?", team_id) }
   scope :is_recipient, lambda { |team_id| where("trader2_id = ?", team_id) }
   scope :pending_trades, lambda { where(trader2_accepted: nil) }
+  scope :rejected_trades, lambda { where(is_rejected: true) }
 
   def trader_name(trader_id)
   	trader = Team.find(trader_id)
