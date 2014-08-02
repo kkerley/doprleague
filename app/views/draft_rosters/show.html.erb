@@ -12,5 +12,9 @@
 	<% end %>
 </ul>
 
+<% if @roster_spots.count == 0 %>
+	<p class="h3 muted margin-bottom-1em">No one on this roster yet. Go to the <a href="/players">players</a> page and add some using the eyeball icon</p>
+<% end %>
+
 <%= link_to 'Edit', edit_team_draft_roster_path(@team, @draft_roster) %> |
 <%= link_to 'Back', team_draft_rosters_path(@team) %>

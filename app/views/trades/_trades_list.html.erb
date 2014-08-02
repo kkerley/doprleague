@@ -24,8 +24,8 @@
     <% trades.each do |trade| %>
       <tr>
         <td></td>
-        <td>between <%= image_tag Team.find(trade.trader1_id).user.avatar(:tiny) %> <%= link_to Team.find(trade.trader1_id).team_name, Team.find(trade.trader1_id) %></td>
-        <td>and <%= image_tag Team.find(trade.trader2_id).user.avatar(:tiny) %> <%= link_to Team.find(trade.trader2_id).team_name, Team.find(trade.trader1_id) %></td>
+        <td>between <%= image_tag Team.find(trade.trader1_id).user.avatar(:tiny) if trade.trader1_id %> <%= link_to Team.find(trade.trader1_id).team_name, Team.find(trade.trader1_id) if trade.trader1_id %></td>
+        <td>and <%= image_tag Team.find(trade.trader2_id).user.avatar(:tiny) if trade.trader2_id %> <%= link_to Team.find(trade.trader2_id).team_name, Team.find(trade.trader1_id) if trade.trader2_id %></td>
         <td><%= trade.stipulations.count %></td>
         <td>
           <%= link_to trade, class: "btn btn-info btn-xs" do %>

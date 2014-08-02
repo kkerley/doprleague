@@ -4,7 +4,7 @@ class TradesController < ApplicationController
   # GET /trades
   # GET /trades.json
   def index
-    @trades = Trade.all
+    @trades = Trade.all - Trade.rejected_trades
     @all_accepted_trades = Trade.accepted_trades
 
     @test = Trade.accepted_trades_stipulations(@all_accepted_trades)
