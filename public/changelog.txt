@@ -4,6 +4,11 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.15 [2014/08/02]
+--------------------------------------------------
+- Fixed issue with Super Bowls in the /admin area
+
+
 Version 2.6.14 [2014/08/02]
 --------------------------------------------------
 - Fixed missing bye_week for players who don't have an NFL team yet on teams#show
