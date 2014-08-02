@@ -43,8 +43,8 @@
     <% if current_user.team.id == @trade.trader1_id %>
       <%= f.check_box :trader1_accepted, label: "Trade initiator: do you accept this trade?" %><br />
     <% elsif current_user.team.id == @trade.trader2_id %>
-      <%= f.check_box :trader2_accepted, label: "Trade recipient: do you accept this trade?" %><br />
-      <%= f.check_box :is_rejected, label: "Reject this trade?" %>
+      <%= f.check_box :trader2_accepted, label: "Trade recipient: do you accept this trade?" unless @trade.trader2_accepted %><br />
+      <%= f.check_box :is_rejected, label: "Reject this trade?" unless @trade.trader2_accepted %>
       <br />
     <% end %>
   <% end %>

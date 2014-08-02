@@ -156,9 +156,11 @@ class Team < ActiveRecord::Base
     players_on_bye = []
 
     players.each do|player|
-      if player.nfl_team_model.bye_week == bye_week
-        if player.is_contracted? && player.this_year.team_id == team.id
-          players_on_bye << player
+      if player.nfl_team_model
+        if player.nfl_team_model.bye_week == bye_week
+          if player.is_contracted? && player.this_year.team_id == team.id
+            players_on_bye << player
+          end
         end
       end
     end

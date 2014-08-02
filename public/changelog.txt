@@ -4,6 +4,12 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.14 [2014/08/02]
+--------------------------------------------------
+- Fixed missing bye_week for players who don't have an NFL team yet on teams#show
+- Rudimentary fix to keep an accepted trade from being rejected after the fact (more work needs to be done here)
+
+
 Version 2.6.13 [2014/08/02]
 --------------------------------------------------
 - Put in some checks for NFL team names on super_bowls#index
