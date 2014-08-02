@@ -1,9 +1,12 @@
-<ul class="list-inline margin-bottom-0">
-	<!--<li><i class="fa fa-key"></i> Contracts key:</li>-->
-	<li><small><i class="fa fa-plus-circle"></i> <span class="extended">Extended</span></small></li>
-	<li><small><i class="fa fa-tag"></i> <span class="franchised">Franchised</span></small></li>
-	<% if controller.class == ContractsController %>
-		<li><small><i class="fa fa-plus-circle"></i> <i class="fa fa-tag"></i> <span class="extended_and_franchised">Extended and franchised</span></small></li>
-	<% end %>
-	<li><small><i class="fa fa-usd"></i> <span class="bought-out">Bought out (60% of original salary)</span></small></small></li>
-</ul>
+<div class="">
+	<ul class="list-inline margin-bottom-1em">
+		<li></li>
+		<li><span class="badge"><i class="fa fa-key"></i></span></li>
+		<li><small><i class="fa fa-plus-circle"></i> <span class="extended">Extended</span></small></li>
+		<li><small><i class="fa fa-tag"></i> <span class="franchised">Franchised</span></small></li>
+		<% if controller.class == ContractsController %>
+			<li><small><i class="fa fa-plus-circle"></i> <i class="fa fa-tag"></i> <span class="extended_and_franchised">Extended and franchised</span></small></li>
+		<% end %>
+		<li><small><i class="fa fa-usd"></i> <span class="bought-out">Bought out (60% of original salary)</span></small></small></li>
+	</ul>
+</div>

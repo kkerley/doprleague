@@ -6,7 +6,7 @@
 			<p class="panel-title"><%= image_tag @team.user.avatar(:mini), :border => 0, :style => "display: inline;", :align => "right" %>
 				<i class="fa fa-list"></i> Roster
 			</p>
-			<%= render "/contracts/contract_clauses_key_inline" %>
+			
     </div>
 
 		<div class="table-responsive">
@@ -72,6 +72,9 @@
 						<td colspan="8">No players on this team.</td>
 					</tr>
 				<% end %>
+					<tr>
+						<td colspan="10"><%= render "/contracts/contract_clauses_key_inline" %></td>
+					</tr>
 					<tr>
 						<td></td>
 						
