@@ -4,6 +4,12 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.16 [2014/08/02]
+--------------------------------------------------
+- Put the correct season start date back in AGAIN (Gabrel didn't check his roster)
+- Fixed the inline contracts key on teams#show to be colspan="11"
+
+
 Version 2.6.15 [2014/08/02]
 --------------------------------------------------
 - Fixed issue with Super Bowls in the /admin area
