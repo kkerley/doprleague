@@ -24,12 +24,12 @@
                         <tr>
                             <td><i class="fa fa-ticket"></i></td>
                             <td><%= link_to sb.year, sb %></td>
-                            <td><%= sb.afc_team.full_team_name %></td>
-                            <td><%= sb.nfc_team.full_team_name %></td>
+                            <td><%= sb.afc_team.full_team_name if sb.nfl_team1_id %></td>
+                            <td><%= sb.nfc_team.full_team_name if sb.nfl_team2_id %></td>
                             <td><%= sb.nfl_team1_final_score %></td>
                             <td><%= sb.nfl_team2_final_score %></td>
-                            <td><%= sb.nfl_winner.full_team_name %></td>
-                            <td><%= link_to sb.dopr_winner.team_name, sb.dopr_winner %></td>
+                            <td><%= sb.nfl_winner.full_team_name if sb.nfl_winner_id %></td>
+                            <td><%= link_to sb.dopr_winner.team_name, sb.dopr_winner if sb.dopr_winner_id %></td>
                         </tr>
                     <% end %>
                 </tbody>

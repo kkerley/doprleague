@@ -4,6 +4,12 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.13 [2014/08/02]
+--------------------------------------------------
+- Put in some checks for NFL team names on super_bowls#index
+- Changed some verbiage on super_bowls#show
+
+
 Version 2.6.12 [2014/08/02]
 --------------------------------------------------
 - Site dates/times have been restored
