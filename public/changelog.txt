@@ -4,6 +4,11 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.17 [2014/08/04]
+--------------------------------------------------
+- Fixed issue with /players/free_agents pagination
+
+
 Version 2.6.16 [2014/08/02]
 --------------------------------------------------
 - Put the correct season start date back in AGAIN (Gabrel didn't check his roster)

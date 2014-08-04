@@ -48,8 +48,8 @@
 								<td></td>
 								<td><%= link_to player.full_name, player %></td>
 								<td class="hidden-sm hidden-xs"><%= player.position %></td>
-								<td><%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %> <small><%= link_to player.nfl_team, player.nfl_team_model if player.nfl_team %></small></td>
-								<td class="hidden-sm hidden-xs"><%= player.nfl_team_model.bye_week if player.nfl_team %></td>
+								<td><%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team_model %> <small><%= link_to player.nfl_team, player.nfl_team_model if player.nfl_team %></small></td>
+								<td class="hidden-sm hidden-xs"><%= player.nfl_team_model.bye_week if player.nfl_team_model %></td>
 								
 								
 								<td><strong>
