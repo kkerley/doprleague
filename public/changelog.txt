@@ -4,6 +4,15 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.19 [2014/08/05]
+--------------------------------------------------
+- Added additional information to draft rosters for total cap cost of players, cap space left for the current year, and more
+- Changed from an unordered list to a table for better structure
+- Added in team, bye week, position information
+- Changed the link on players' names on draft rosters to point to the player, not the roster_spot
+- Made a few changes to check for the proper associations on teams#show for NFL team logos and bye weeks
+
+
 Version 2.6.18 [2014/08/04]
 --------------------------------------------------
 - Removed the active_players filter on players#index and players#free_agents for now to fix sorting

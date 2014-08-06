@@ -16,4 +16,15 @@ class DraftRoster < ActiveRecord::Base
   def already_listed?(player)
   	self.players.include?(player)
   end
+
+  def roster_total
+    players = self.players
+    total = 0
+
+    players.each do |player|
+      total += player.auction_value
+    end
+
+    return total
+  end
 end

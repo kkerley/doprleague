@@ -22,6 +22,14 @@ class DraftRostersController < ApplicationController
     @players = @draft_roster.players.order("position")
     @roster_spots = @draft_roster.roster_spots.order("position")
 
+    @budget = @team.get_budget(current_year)
+    @total_cap_current_year = @team.calculate_yearly_salary(current_year)
+    @team_remainder_current_year = @team.remainder(@total_cap_current_year, @budget.calculated_amount)
+
+    @roster_total = @draft_roster.roster_total
+
+    @roster_remainder = @team_remainder_current_year - @roster_total
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @draft_roster }

@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $('#draft-roster-players').sortable(
+  $('#draft-roster-players tbody').sortable(
     axis: 'y'
     handle: '.handle'
     update: ->

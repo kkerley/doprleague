@@ -1,20 +1,69 @@
 <% content_for :title, "Draft Roster: #{@draft_roster.name}" %>
 <% content_for :section_subtitle, "Drag and drop listed players below to order them as you like." %>
 
+<div class="row">
 
-<ul id="draft-roster-players" data-update-url="<%= sort_roster_spots_url %>">
-	<% @roster_spots.each do |roster_spot| %>
-		<%= content_tag_for :li, roster_spot do %>
-			<span class="handle">[drag]</span>
-			<%= link_to h(roster_spot.player.full_name), roster_spot %>: <strong>$<%= roster_spot.player.auction_value %></strong>
-			<%= link_to "Delete", roster_spot, :confirm => 'Are you sure?', :method => :delete, :class => 'label label-danger' %>
+	<div class="col-md-7 col-sm-12 col-xs-12 margin-top-1em">
+		
+
+		<table class="table table-condensed table-striped" id="draft-roster-players">
+			<thead>
+				<tr>
+					<th width="5"></th>
+					<th></th>
+					<th>Name</th>
+					<th>Salary</th>
+					<th>Pos</th>
+					<th>Team</th>
+					<th>Bye</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody data-update-url="<%= sort_roster_spots_url %>">
+				<% @roster_spots.each do |roster_spot| %>
+					<%= content_tag_for :tr, roster_spot do %>
+						<td></td>
+						<td><span class="handle">[drag]</span></td>
+						<td><%= link_to h(roster_spot.player.full_name), roster_spot.player %></td>
+						<td><strong>$<%= roster_spot.player.auction_value %></strong></td>
+						<td><%= roster_spot.player.position %></td>
+						<td><%= link_to image_tag(roster_spot.player.nfl_team_model.avatar(:tiny)), roster_spot.player.nfl_team_model if roster_spot.player.nfl_team_model %></td>
+						<td><%= roster_spot.player.nfl_team_model.bye_week if roster_spot.player.nfl_team_model %></td>
+						<td><%= link_to roster_spot, method: :delete, data: { confirm: 'Are you sure?' }, class:'label label-danger' do %><i class="fa fa-minus-circle"></i> Remove<% end %></td>
+					<% end %>
+				<% end %>
+			</tbody>
+		</table>
+
+		<% if @roster_spots.count == 0 %>
+			<p class="h3 muted margin-bottom-1em">No one on this roster yet. Go to the <a href="/players">players</a> page and add some using the eyeball icon</p>
 		<% end %>
-	<% end %>
-</ul>
 
-<% if @roster_spots.count == 0 %>
-	<p class="h3 muted margin-bottom-1em">No one on this roster yet. Go to the <a href="/players">players</a> page and add some using the eyeball icon</p>
-<% end %>
+	
+	</div>
 
-<%= link_to 'Edit', edit_team_draft_roster_path(@team, @draft_roster) %> |
-<%= link_to 'Back', team_draft_rosters_path(@team) %>
+	<div class="col-md-5 col-sm-12 col-xs-12">
+		<div class="bs-callout bs-callout-info">
+			<h4><i class="fa fa-info-circle"></i> Roster info</h4>
+			
+			<blockquote>
+				<p>
+					Players on this roster: <strong><%= @roster_spots.count %></strong><br />
+					Remaining cap for <%= current_year %>: <strong>$<%= @team_remainder_current_year %></strong><br />
+					Roster total: <strong>$<%= @roster_total %></strong><br />
+					Cap remainder if all were drafted: <strong>$<%= @roster_remainder %></strong>
+				</p>
+			</blockquote>
+			<%= link_to edit_team_draft_roster_path(@team, @draft_roster), class: "label label-warning" do %>
+				<i class="fa fa-pencil-square-o"></i> Edit roster name
+			<% end %>
+			&nbsp;
+			<%= link_to '/teams/' + @team.to_param + '/#draftrosters', class: "label label-primary" do %>
+				<i class="fa fa-angle-double-left"></i> Back to team
+			<% end %>
+		</div>
+
+	</div><!-- end of col-md-5 -->
+
+
+</div>

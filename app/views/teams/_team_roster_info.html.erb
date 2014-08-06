@@ -50,8 +50,8 @@
 									
 								</td>
 
-								<td><%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %></td>
-								<td><%= player.nfl_team_model.bye_week if player.nfl_team  %></td>
+								<td><%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team_model %></td>
+								<td><%= player.nfl_team_model.bye_week if player.nfl_team_model  %></td>
 								<td class="hidden-sm hidden-xs"><%= player.position %></td>
 								<td><span class="badge">$<%= player.auction_value %></span></td>
 								<% player.this_team_contract(@team).subcontracts.current_year_or_later.limit(6).each do |sub| %>
