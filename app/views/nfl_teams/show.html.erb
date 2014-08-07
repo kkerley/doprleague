@@ -58,7 +58,14 @@
 									<td>
 										<%= link_to player.current_contract, class:"btn btn-primary btn-xs" do %><i class="fa fa-file-text-o"></i><% end %>
 									</td>  
-									
+								
+								<% elsif player.is_retired %>
+									<td>
+										<span class="label label-warning">RET</span>
+									</td>
+									<td></td>
+
+
 								<% else %>
 									<td>
 										<span class="label label-success">FA</span>

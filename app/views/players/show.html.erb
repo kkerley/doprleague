@@ -6,7 +6,7 @@
 		<% if @player.is_contracted? %>
 			<p class="lead margin-bottom-1em"><span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> Contracted to <%= image_tag @player.this_year.team.user.avatar(:mini) %> <%= link_to @player.this_year.team.team_name, @player.this_year.team %> as of <%= @player.this_year.contract.subcontracts.first.contract_year %></p>
 		<% elsif @player.is_retired %>
-			<p class="lead"><span class="label label-danger">Retired</span></p>
+			<p class="lead"><span class="label label-warning">Retired</span></p>
 			<% if current_user %>
 				<% if can? :manage, @player %>
 						<p class="margin-bottom-1em"><i class="fa fa-pencil-square-o"></i> <%= link_to "Edit #{@player.full_name}", edit_player_path(@player) %></p>

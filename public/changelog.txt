@@ -4,6 +4,12 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.21 [2014/08/07]
+--------------------------------------------------
+- Changed the "Retired" callout on players#show to be yellow instead of red (red is already use for contracted players)
+- Changed the "FA" label on nfl_teams#show to be a yellow "RET" for retired players
+
+
 Version 2.6.20 [2014/08/06]
 --------------------------------------------------
 - Added verbiage for when there are no search results
