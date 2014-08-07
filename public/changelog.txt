@@ -4,6 +4,14 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.20 [2014/08/06]
+--------------------------------------------------
+- Added verbiage for when there are no search results
+- Added checkbox for is_retired boolean field to players#edit
+- Updated players#index and players#free_agents to only have active (non-retired) players
+- Added new information flags on players#show for retired players
+
+
 Version 2.6.19 [2014/08/05]
 --------------------------------------------------
 - Added additional information to draft rosters for total cap cost of players, cap space left for the current year, and more

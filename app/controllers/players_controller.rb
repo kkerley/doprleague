@@ -13,7 +13,7 @@ class PlayersController < ApplicationController
   def index
     
    @players = smart_listing_create  :players, 
-                                    Player.text_search(params[:query]), 
+                                    Player.active_players.text_search(params[:query]), 
                                     partial: "players/players_info_fields", 
                                     default_sort: {last_name: "asc"}, 
                                     page_sizes: [25, 50, 100, 500]
@@ -136,7 +136,7 @@ class PlayersController < ApplicationController
     # @players = Player.text_search(params[:query]).free_agents.sort_by { |player| player.this_year_salary }.reverse # chain the text_search here
     
     @players = smart_listing_create  :players, 
-                                    Player.text_search(params[:query]).free_agents,
+                                    Player.active_players.text_search(params[:query]).free_agents,
                                     array: true, 
                                     partial: "players/players_info_fields", 
                                     #default_sort: {last_name: "asc"}, 

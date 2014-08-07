@@ -1,102 +1,116 @@
+
+
 <div class="panel panel-default">
-			<div class="panel-heading">
-		      <p class="panel-title"><i class="fa fa-bullhorn"></i> NFL personnel</p>
+	<div class="panel-heading">
+    <p class="panel-title"><i class="fa fa-bullhorn"></i> NFL personnel</p>
+	</div>
+	<div class="search-filters btn-group">
+		<a href="/players" class="btn btn-default btn-responsive">All</a> 
+		<a href="/players/free_agents" class="btn btn-default btn-responsive">FA</a>
+		<a href="?utf8=✓&query=QB" class="btn btn-default btn-responsive">QB</a> 
+		<a href="?utf8=✓&query=WR" class="btn btn-default btn-responsive">WR</a> 
+		<a href="?utf8=✓&query=RB" class="btn btn-default btn-responsive">RB</a> 
+		<a href="?utf8=✓&query=TE" class="btn btn-default btn-responsive">TE</a> 
+		<a href="?utf8=✓&query=K" class="btn btn-default btn-responsive">K</a> 
+		<a href="?utf8=✓&query=DEF" class="btn btn-default btn-responsive">DEF</a>
+	</div>
+
+	<div class="table-responsive">
+		<table cellspacing="0" cellpadding="0" border="0" class="table table-striped table-condensed" id="playersTable">
+			<thead>
+				<tr>
+					<th></th>
+					<th><%= smart_listing.sortable "Name", "last_name" %></th>
+					<th class="hidden-sm hidden-xs">Position</th>
+					<th><%= smart_listing.sortable "Team", "nfl_team" %></th>
+					<th class="hidden-sm hidden-xs">Bye</th>
 					
-				
-		  </div>
-			<div class="search-filters btn-group">
-				<a href="/players" class="btn btn-default btn-responsive">All</a> 
-				<a href="/players/free_agents" class="btn btn-default btn-responsive">FA</a>
-				<a href="?utf8=✓&query=QB" class="btn btn-default btn-responsive">QB</a> 
-				<a href="?utf8=✓&query=WR" class="btn btn-default btn-responsive">WR</a> 
-				<a href="?utf8=✓&query=RB" class="btn btn-default btn-responsive">RB</a> 
-				<a href="?utf8=✓&query=TE" class="btn btn-default btn-responsive">TE</a> 
-				<a href="?utf8=✓&query=K" class="btn btn-default btn-responsive">K</a> 
-				<a href="?utf8=✓&query=DEF" class="btn btn-default btn-responsive">DEF</a>
-			</div>
-
-			<div class="table-responsive">
-				<table cellspacing="0" cellpadding="0" border="0" class="table table-striped table-condensed" id="playersTable">
-					<thead>
-						<tr>
+					
+					<th>Salary</th>
+					<th><%= smart_listing.sortable "Auction", "auction_value" %></th>
+					
+					<th>Owned by</th>
+					<th><!-- contract link --></th>
+					<% if current_user %>
+						<th align="center">Watch</th>
+					
+						<% if can? :manage, @players %>
 							<th></th>
-							<th><%= smart_listing.sortable "Name", "last_name" %></th>
-							<th class="hidden-sm hidden-xs">Position</th>
-							<th><%= smart_listing.sortable "Team", "nfl_team" %></th>
-							<th class="hidden-sm hidden-xs">Bye</th>
-							
-							
-							<th>Salary</th>
-							<th><%= smart_listing.sortable "Auction", "auction_value" %></th>
-							
-							<th>Owned by</th>
-							<th><!-- contract link --></th>
-							<% if current_user %>
-								<th align="center">Watch</th>
-							
-								<% if can? :manage, @players %>
-									<th></th>
-									<th></th>
-								<% end %>
+							<th></th>
+						<% end %>
+					<% end %>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<% if smart_listing.collection.empty? %>
+				<tr>
+					<% if current_user %>
+						<% if current_user.role == "admin" %>
+							<td colspan="13" align="center">
+						<% else %>
+							<td colspan="11" align="center">
+						<% end %>
+					<% else %>
+						<td colspan="10" align="center">
+					<% end %>
+						<p class="h3 muted margin-bottom-1em">No results to show.</p>
+					</td>
+				</tr>
+				<% else %>
+				<% smart_listing.collection.each do |player| %>
+					<tr>
+						<td></td>
+						<td><%= link_to player.full_name, player %></td>
+						<td class="hidden-sm hidden-xs"><%= player.position %></td>
+						<td><%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team_model %> <small><%= link_to player.nfl_team, player.nfl_team_model if player.nfl_team %></small></td>
+						<td class="hidden-sm hidden-xs"><%= player.nfl_team_model.bye_week if player.nfl_team_model %></td>
+						
+						
+						<td><strong>
+							<% if player.is_contracted? %>
+								$<%= player.this_year.salary_amount %>
 							<% end %>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<% smart_listing.collection.each do |player| %>
-							<tr>
-								<td></td>
-								<td><%= link_to player.full_name, player %></td>
-								<td class="hidden-sm hidden-xs"><%= player.position %></td>
-								<td><%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team_model %> <small><%= link_to player.nfl_team, player.nfl_team_model if player.nfl_team %></small></td>
-								<td class="hidden-sm hidden-xs"><%= player.nfl_team_model.bye_week if player.nfl_team_model %></td>
-								
-								
-								<td><strong>
-									<% if player.is_contracted? %>
-										$<%= player.this_year.salary_amount %>
-									<% end %>
-								</strong></td>
-								<td>$<%= player.auction_value %></td>
-								
-								<% if player.is_contracted? %>
-									<td>
-										<span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>	
-									</td>
-									<td>
-										<%= link_to player.current_contract, class:"btn btn-primary btn-xs" do %><i class="fa fa-file-text-o"></i><% end %>
-									</td>  
-									
-								<% else %>
-									<td>
-										<span class="label label-success">FA</span>
-									</td>
-									<td></td>
-									
+						</strong></td>
+						<td>$<%= player.auction_value %></td>
+						
+						<% if player.is_contracted? %>
+							<td>
+								<span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>	
+							</td>
+							<td>
+								<%= link_to player.current_contract, class:"btn btn-primary btn-xs" do %><i class="fa fa-file-text-o"></i><% end %>
+							</td>  
+							
+						<% else %>
+							<td>
+								<span class="label label-success">FA</span>
+							</td>
+							<td></td>
+							
 
+						<% end %>
+						<% if current_user %>
+							<td align="center">
+								<% unless player.is_contracted? %>
+									<a id="watch<%= player.id %>" class="watchable" data-container="body" data-toggle="popover" data-placement="top" data-html="true" data-title="<strong>Add to draft roster:</strong>" data-content='<%= render "draft_rosters/team_full_list", player: player %>'><i class="fa fa-eye"></i></a>
 								<% end %>
-								<% if current_user %>
-									<td align="center">
-										<% unless player.is_contracted? %>
-											<a id="watch<%= player.id %>" class="watchable" data-container="body" data-toggle="popover" data-placement="top" data-html="true" data-title="<strong>Add to draft roster:</strong>" data-content='<%= render "draft_rosters/team_full_list", player: player %>'><i class="fa fa-eye"></i></a>
-										<% end %>
-									</td>
-								
-									<% if can? :manage, player %>
-										<td><%= link_to edit_player_path(player), class:'label label-warning' do %><i class="fa fa-pencil-square-o"></i> Edit<% end %></td>
-										<td><%= link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class:'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %></td>
-									<% end %>
-								<% end %>
-								<td></td>
-							</tr>
-						<% end %>				
-						</tbody>
-					</table>
-				</div>	
-			</div><!-- end of panel -->
-		<%= smart_listing.paginate %>
-		<%= smart_listing.pagination_per_page_links %>
+							</td>
+						
+							<% if can? :manage, player %>
+								<td><%= link_to edit_player_path(player), class:'label label-warning' do %><i class="fa fa-pencil-square-o"></i> Edit<% end %></td>
+								<td><%= link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class:'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %></td>
+							<% end %>
+						<% end %>
+						<td></td>
+					</tr>
+				<% end %>
+				<% end %>				
+				</tbody>
+			</table>
+		</div><!-- end of table-responsive -->
+	</div><!-- end of panel -->
+	<%= smart_listing.paginate %>
+	<%= smart_listing.pagination_per_page_links %>
 
-	</div><!-- end of col-md-9 -->
-	
-</div><!-- end of row -->

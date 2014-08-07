@@ -13,30 +13,36 @@
 
 
 	<div class="form-group">
-    	<%= f.label :full_name, class: 'col-lg-3 control-label' %>
+    <%= f.label :full_name, class: 'col-lg-3 control-label' %>
 		<div class="col-lg-9">
 	    	<%= f.text_field :full_name, class: 'form-control' %>
 		</div>
-  	</div>
-  	<div class="form-group">
+  </div>
+  <div class="form-group">
 		<%= f.label :nfl_team,  "NFL team (shorthand)", class: 'col-lg-3 control-label' %>
 		<div class="col-lg-9">
 			<%= f.text_field :nfl_team, class: 'form-control' %>
 		</div>
-  	</div>
+  </div>
 	<div class="form-group">
-    	<%= f.label :position, class: 'col-lg-3 control-label' %>
-    	<div class="col-lg-9">
+    <%= f.label :position, class: 'col-lg-3 control-label' %>
+    <div class="col-lg-9">
 			<%= f.text_field :position, class: 'form-control' %>
 		</div>
-  	</div>
+  </div>
 	<div class="form-group">
-    	<%= f.label :auction_value, class: 'col-lg-3 control-label' %>
-    	<div class="col-lg-9">
+    <%= f.label :auction_value, class: 'col-lg-3 control-label' %>
+    <div class="col-lg-9">
 			<%= f.text_field :auction_value, class: 'form-control' %>
 		</div>
-  	</div>
-
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-3 col-lg-9">
+      <label class="checkbox">
+        <%= f.check_box :is_retired %> Retired?
+      </label>
+    </div>
+  </div>
 	
 		
 	<%= f.fields_for :contracts do |builder| %>
