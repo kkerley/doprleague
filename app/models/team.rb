@@ -134,6 +134,19 @@ class Team < ActiveRecord::Base
     players_to_extend.uniq
   end
 
+  def last_chance_to_extend(players)
+    all_extendable = available_for_extension(players)
+    urgent = []
+
+    all_extendable.each do |player|
+      if player.current_contract.subcontracts.last.contract_year == current_year + 1
+        urgent << player
+      end
+    end
+
+    return urgent
+  end
+
   def available_for_franchise(players, team)
     players_to_franchise = []
 
@@ -148,6 +161,18 @@ class Team < ActiveRecord::Base
       end
     end
     players_to_franchise.uniq
+  end
+
+  def last_chance_to_franchise(players, team)
+    all_franchisable = available_for_franchise(players, team)
+    urgent = []
+
+    all_franchisable.each do |player|
+      if player.current_contract.subcontracts.last.contract_year == current_year
+        urgent << player
+      end
+    end
+    return urgent
   end
 
   #breakdown by bye week

@@ -27,11 +27,14 @@ class TeamsController < ApplicationController
     @accepted_trades = @trades.accepted_trades
     @initiated_trades = Trade.initiated_trades(@team.id).pending_trades
     @pending_trades = Trade.is_recipient(@team.id).pending_trades
+    @pending_and_initiated = @initiated_trades + @pending_trades
     @rejected_trades = @trades.rejected_trades
     
     @players = @team.get_subcontract_players.uniq 
-    @players_to_extend = @team.available_for_extension(@players)
-    @players_to_franchise = @team.available_for_franchise(@players, @team)
+    @last_chance_to_extend = @team.last_chance_to_extend(@players)
+    @last_chance_to_franchise = @team.last_chance_to_franchise(@players, @team)
+    @players_to_extend = @team.available_for_extension(@players) - @last_chance_to_extend
+    @players_to_franchise = @team.available_for_franchise(@players, @team) - @last_chance_to_franchise
 
     # Need to adjust this to only pull in players for the current year
     @qbs      = @players.find_all { |player| player.position == "QB" if player.is_contracted? && player.this_year.team_id == @team.id }

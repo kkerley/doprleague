@@ -4,6 +4,14 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.22 [2014/08/07]
+--------------------------------------------------
+- Added necessary methods to pull in only the expiring opportunities to extend/franchise on teams#show in the GM actions panel
+- Changed the "pending trades" section in the GM actions panel to actually show pending + initiated trades, not all trades including completed and rejected trades
+- Adjusted the layout of the "pending trades" section of the GM actions panel
+- Changed the style from panel-danger to panel-info for the Pending Trades box on the teams#show#trades panel
+
+
 Version 2.6.21 [2014/08/07]
 --------------------------------------------------
 - Changed the "Retired" callout on players#show to be yellow instead of red (red is already use for contracted players)
