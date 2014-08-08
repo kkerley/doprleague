@@ -4,6 +4,11 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.23 [2014/08/08]
+--------------------------------------------------
+- Changed the link for posted announcements' author to point to the author's team page, not the directory page location
+
+
 Version 2.6.22 [2014/08/07]
 --------------------------------------------------
 - Added necessary methods to pull in only the expiring opportunities to extend/franchise on teams#show in the GM actions panel

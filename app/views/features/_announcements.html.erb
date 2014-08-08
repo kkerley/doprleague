@@ -4,7 +4,7 @@
 					<%= image_tag(announce.avatar.url(:max200), :border => 0, :class => 'img-rounded') %>
 				<% end %>
       	<p class="h1 homepage-headline"><%= announce.title %></p>
-    		<p class="margin-bottom-1em"><small class="muted"><%= l announce.created_at, format: :short %> by <img src="<%= announce.user.avatar(:tiny) %>" border="0" style="vertical-align: text-top;" /> <%= link_to announce.user.display_name, "/members/#" + announce.user.display_name %></small></p>
+    		<p class="margin-bottom-1em"><small class="muted"><%= l announce.created_at, format: :short %> by <img src="<%= announce.user.avatar(:tiny) %>" border="0" style="vertical-align: text-top;" /> <%= link_to announce.user.display_name, announce.user.team %></small></p>
 				<%= RedCloth.new(announce.content).to_html.html_safe %>
 
 				<% if current_user %>
