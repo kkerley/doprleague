@@ -3,25 +3,29 @@
 		<p class="h4"><i class="fa fa-exchange"></i> Pending trades</p>
 	</div>
 	<div class="col-sm-3">
-		<%= link_to new_trade_path, class: "btn btn-success" do %>
-			<i class="fa fa-plus-circle"></i> New trade 
-		<% end %>
+		<p class="h4">
+			<%= link_to new_trade_path, class: "btn btn-success btn-xs" do %>
+				<i class="fa fa-plus-circle"></i> New trade 
+			<% end %>
+		</p>
 	</div>
 </div>
 <div class="row">
 	<div id="gm_trades" class="col-md-12">
 		<% if @pending_and_initiated.count > 0 %>
-			<ul>
-				<% @pending_and_initiated.each do |trade| %>
-					<li>
-						<% if current_user.team.id == trade.trader1_id %>
-							<%= link_to "Trade with " + trade.trader_name(trade.trader2_id), trade %>
-						<% else %>
-							<%= link_to "Trade with " + trade.trader_name(trade.trader1_id), trade %>
-						<% end %>
-					</li>
-				<% end %>
-			</ul>
+			<div class="indent-left-1em">
+				<ul>
+					<% @pending_and_initiated.each do |trade| %>
+						<li><i class="fa fa-square-o"></i> 
+							<% if current_user.team.id == trade.trader1_id %>
+								<%= link_to "Trade with " + trade.trader_name(trade.trader2_id), trade %>
+							<% else %>
+								<%= link_to "Trade with " + trade.trader_name(trade.trader1_id), trade %>
+							<% end %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
 		<% else %>
 			<p>No pending trades.</p>
 		<% end %>

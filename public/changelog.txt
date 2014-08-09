@@ -4,6 +4,19 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.24 [2014/08/08]
+--------------------------------------------------
+- Added verbiage for when there are no players to extend or franchise on teams#show
+- Removed the links for "other options" if there are none for extending and franchising on teams#show
+- Indented the "other options" to be in line with the items in the alert boxes above them
+- Added counts to both extensions and franchises "other options" links
+- Indented pending trades and added the square icon next to each one
+- Indented the Super Bowl Picks form
+- Changed the layout of the Super Bowl Picks form a bit
+- Changed the layout of a Super Bowl pick in the GM actions panel
+- Added sort_by(&:last_name) to rosters on teams#show
+
+
 Version 2.6.23 [2014/08/08]
 --------------------------------------------------
 - Changed the link for posted announcements' author to point to the author's team page, not the directory page location

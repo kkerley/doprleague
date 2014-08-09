@@ -30,7 +30,7 @@ class TeamsController < ApplicationController
     @pending_and_initiated = @initiated_trades + @pending_trades
     @rejected_trades = @trades.rejected_trades
     
-    @players = @team.get_subcontract_players.uniq 
+    @players = @team.get_subcontract_players.uniq.sort_by(&:last_name)
     @last_chance_to_extend = @team.last_chance_to_extend(@players)
     @last_chance_to_franchise = @team.last_chance_to_franchise(@players, @team)
     @players_to_extend = @team.available_for_extension(@players) - @last_chance_to_extend
