@@ -2,7 +2,14 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-    <p class="panel-title"><i class="fa fa-bullhorn"></i> NFL personnel</p>
+    <p class="panel-title"><i class="fa fa-bullhorn"></i> NFL personnel <small class="muted">Download full list of players in 
+    	<% if controller.action_name == "index" %>
+    		<a href="/players.csv">.csv</a>
+    	<% else %>
+    		<a href="/players/free_agents.csv">.csv</a>
+    	<% end %>
+    	</small>
+    </p>
 	</div>
 	<div class="search-filters btn-group">
 		<a href="/players" class="btn btn-default btn-responsive">All</a> 

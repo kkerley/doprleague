@@ -4,6 +4,14 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.25 [2014/08/13]
+--------------------------------------------------
+- Updated methods for calculating budget remainders to properly account for ALL stipulations affecting a given year's budget
+- Added link to download the full players list
+- Added link to download the full free agents list
+- Added 50, 100 options to the /players/free_agents pagination menu
+
+
 Version 2.6.24 [2014/08/08]
 --------------------------------------------------
 - Added verbiage for when there are no players to extend or franchise on teams#show

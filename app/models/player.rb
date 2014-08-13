@@ -218,10 +218,11 @@ class Player < ActiveRecord::Base
   end
 
   
-  def self.to_csv(options = {})
-    CSV.generate(options) do |csv|
+  # def self.to_csv(options = {})
+  def self.to_csv(players)
+    CSV.generate do |csv|
       csv << column_names
-      all.each do |player|
+      players.each do |player|
         csv << player.attributes.values_at(*column_names)
       end
     end

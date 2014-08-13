@@ -18,7 +18,6 @@ class PlayersController < ApplicationController
                                     default_sort: {last_name: "asc"}, 
                                     page_sizes: [25, 50, 100, 500]
     
-    # @players = Player.text_search(params[:query]).includes(:contracts).includes(:subcontracts).sort_by { |player| player.this_year_salary }.reverse
     @players_download = Player.active_players.order(:last_name)
     
     if current_user
@@ -29,7 +28,7 @@ class PlayersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @players }
-      format.csv { send_data @players_download.to_csv }
+      format.csv { send_data Player.to_csv(@players_download) }
       format.js
       format.xls
     end
@@ -133,17 +132,13 @@ class PlayersController < ApplicationController
   end
 
   def free_agents
-    # @players = Player.text_search(params[:query]).free_agents.sort_by { |player| player.this_year_salary }.reverse # chain the text_search here
-    
     @players = smart_listing_create  :players, 
                                     Player.active_players.text_search(params[:query]).free_agents,
                                     array: true, 
                                     partial: "players/players_info_fields", 
-                                    #default_sort: {last_name: "asc"}, 
-                                    #sort_attributes: [[ :last_name, "last_name" ], [:nfl_team, "nfl_team"], [:auction_value, "auction_value"]], 
-                                    
-                                    page_sizes: [25, 500]
+                                    page_sizes: [25, 50, 100, 500]
     
+    @players_download = Player.active_players.free_agents.sort_by(&:last_name)
     
     if current_user
       @draft_rosters = current_user.team.draft_rosters
@@ -152,6 +147,7 @@ class PlayersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @players }
+      format.csv { send_data Player.to_csv(@players_download) }
       format.js
       format.xls
     end
