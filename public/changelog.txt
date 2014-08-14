@@ -4,6 +4,11 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.26 [2014/08/13]
+--------------------------------------------------
+- Changed trades to order by creation_date desc
+
+
 Version 2.6.25 [2014/08/13]
 --------------------------------------------------
 - Updated methods for calculating budget remainders to properly account for ALL stipulations affecting a given year's budget
