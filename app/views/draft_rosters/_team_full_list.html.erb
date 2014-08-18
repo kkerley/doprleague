@@ -6,13 +6,11 @@
 		<% if dr.already_listed?(player) %>
 			Already on <%= link_to dr.name, team_draft_roster_path(@team, dr) %><br />
 		<% else %>
-			<%= form_tag(roster_spots_path(draft_roster_id: dr.id, player_id: player.id), {:class => 'margin-bottom-half'}) do %>	
-				
-					<%= button_tag(type: "submit", class: "btn btn-info btn-xs") do %>
-					    <i class="fa fa-plus-circle"></i> Add to <%= dr.name %>
-					<% end %>
-
-			<% end %>
+			<%= form_tag(roster_spots_path(draft_roster_id: dr.id, player_id: player.id), {:class => 'margin-bottom-half', remote: true}) do %>					
+				<%= button_tag(type: "submit", class: "btn btn-info btn-xs add-to-draft-roster") do %>
+				    <i class="fa fa-plus-circle"></i> Add to <%= dr.name %>
+				<% end %>			
+			<% end %>	
 		<% end %>
 	<% end %>
 <% end %>

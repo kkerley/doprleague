@@ -3,7 +3,14 @@ $(document).ready(function(){
 	jQuery(".best_in_place").best_in_place();
 	$(".best_in_place").bind('ajax:success', function(){ $(this).JQtextile('textile', this.innerHTML) });
 	
-	
+	var rand = Math.floor(Math.random() * 10) + 1;
+
+	if(rand == 7){		
+		$('#richard_sherman').show();
+		$('#richard_sherman').click(function(){
+			$(this).fadeOut('fast');
+		});
+	}
 
 	//functions for showing/hiding content expanders
 	$("a.expand").click(function(){
@@ -31,5 +38,7 @@ $(document).ready(function(){
 	//enabling tooltip on the global search button
 	$('#btn_players_search').tooltip();
 
-
+	$('.add-to-draft-roster').click(function(event){
+		event.preventDefault();
+	});
 });

@@ -29,6 +29,7 @@ class RosterSpotsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @roster_spot }
+      format.js
     end
   end
 
@@ -50,9 +51,11 @@ class RosterSpotsController < ApplicationController
       if @roster_spot.save
         format.html { redirect_to players_path, notice: 'Roster spot was successfully created.' }
         format.json { render json: @roster_spot, status: :created, location: @roster_spot }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @roster_spot.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
