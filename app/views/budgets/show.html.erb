@@ -10,17 +10,34 @@
 	<p class="h3 margin-bottom-1em"><i class="fa fa-dot-circle-o"></i> Trade stipulations affecting this budget:</p>
 		<% @stipulations.each do |stip| %>
 			<p>
-				<span class="label label-success margin-right-1em"><i class="fa fa-usd fa-fw"></i></span>
 
-	
-	    	<strong>$<%= stip.terms %> of cap space</strong> for the <%= stip.year %> season <%= stip.trade_direction %> 
+			<% if stip.trade.trader1_id == @budget.team.id %>
+				<% if stip.trade_direction == "to" %>
+					<span class="label label-danger margin-right-1em"><i class="fa fa-minus"></i><i class="fa fa-usd fa-fw"></i></span>
+					<strong>$<%= stip.terms %> of cap space</strong> for the <%= stip.year %> season <%= stip.trade_direction %>
+				<% else %>
+					<span class="label label-success margin-right-1em"><i class="fa fa-plus"></i><i class="fa fa-usd fa-fw"></i></span>
+					<strong>$<%= stip.terms %> of cap space</strong> for the <%= stip.year %> season <%= stip.trade_direction %> 
+				<% end %>
+			<% else %>
+				<% if stip.trade_direction == "to" %>
+					<span class="label label-success margin-right-1em"><i class="fa fa-plus"></i><i class="fa fa-usd fa-fw"></i></span>
+					<strong>$<%= stip.terms %> of cap space</strong> for the <%= stip.year %> season <%= stip.trade_direction %>
+				<% else %>
+					<span class="label label-danger margin-right-1em"><i class="fa fa-minus"></i><i class="fa fa-usd fa-fw"></i></span>
+					<strong>$<%= stip.terms %> of cap space</strong> for the <%= stip.year %> season <%= stip.trade_direction %> 
+				<% end %>
+			<% end %>
+	    	
 
 	    	<% if stip.trade.trader1_id == @team.id %>
-	    		<%= Team.find(stip.trade.trader2_id).team_name -%>
+	    		<%= link_to Team.find(stip.trade.trader2_id).team_name, Team.find(stip.trade.trader2_id) -%>
 	    	<% else %>
-	    		<%= Team.find(stip.trade.trader1_id).team_name -%>
-	    	<% end %>. <%= link_to "View the full trade", stip.trade %>.
+	    		<%= link_to Team.find(stip.trade.trader1_id).team_name, Team.find(stip.trade.trader1_id) -%>
+	    	<% end %>.
+	    	<blockquote><%= link_to stip.trade do  %><p><i class="fa fa-exchange"></i>  View the full trade<% end %></p></blockquote>
 	    </p>
+	    
 		<% end %>
 <% end %>
 

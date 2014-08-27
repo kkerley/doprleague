@@ -4,6 +4,17 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.6.28 [2014/08/26]
+--------------------------------------------------
+- Upgraded to Ruby 2.1.2 for security and massive speed increases
+- Changed verbiage on budgets#show for trade stipulations so they're correct and more indicative of which way money is going; added different colored icons depending on the flow of money
+- Cleaned up the Contract form fields on players#edit (more work to do here)
+- Added default value of current_year to "Contract start year"
+- Added new boolean "is_longterm_contract" to Contracts for allowing creation of 1 year contracts for the first 6 weeks of the season before signing a longer deal
+- Changed the form process for adding/creating Contracts
+- Fixed the GM actions Super Bowl pick display for once a pick has been made
+
+
 Version 2.6.27 [2014/08/17]
 --------------------------------------------------
 - No more page refreshes when adding players to draft rosters; the add functionality has been Ajax'd

@@ -1,0 +1,55 @@
+
+  <fieldset class="subcontract-fields margin-bottom-2em"> 
+    <div class="row">
+      <div class="col-md-8">
+        
+        <div class="form-group">
+          <%= f.label :contract_year, "Year", class: 'col-lg-3 control-label' %>
+          <div class="col-lg-9">
+            <%= f.text_field :contract_year, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :team_id, "Contracted to", class: 'col-lg-3 control-label' %>
+          <div class="col-lg-9">
+            <%= f.select(:team_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true, :prompt => "Select" }, {class: "form-control"}) %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :salary_amount, "Salary $", class: 'col-lg-3 control-label' %>
+          <div class="col-lg-9">
+            <%= f.text_field :salary_amount, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <div class="col-lg-offset-3 col-lg-9">
+            <label class="checkbox">
+              <%= f.check_box :this_is_a_buyout %> Buyout year?
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-offset-3 col-lg-9">
+            <label class="checkbox">
+              <%= f.check_box :this_is_an_extension %> Extension year? 
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-offset-3 col-lg-9">
+            <label class="checkbox">
+              <%= f.check_box :this_is_a_franchise_tag %> Franchise year?
+            </label>
+          </div>
+        </div>
+          
+      </div>
+    </div>
+  </fieldset>

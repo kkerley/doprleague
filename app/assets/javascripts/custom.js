@@ -41,4 +41,9 @@ $(document).ready(function(){
 	$('.add-to-draft-roster').click(function(event){
 		event.preventDefault();
 	});
+
+
+	$('.longterm_check_box').on('click', function(){
+		$('.longterm_length').toggle();
+	});
 });

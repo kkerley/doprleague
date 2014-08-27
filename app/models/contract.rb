@@ -27,10 +27,14 @@ class Contract < ActiveRecord::Base
   
 
   after_create :create_subcontracts
+  after_update :sign_longterm, :if => Proc.new { |a| a.is_longterm_deal_changed? }
 
   after_update :check_for_buyout, :if => Proc.new { |a| a.is_bought_out_changed? }
   after_update :check_for_extension, :if => Proc.new { |a| a.is_extended_changed? }
   after_update :check_for_franchise, :if => Proc.new { |a| a.is_franchised_changed? }
+
+  # validate :franchisable, :extendible
+
 
   scope :buyouts, lambda {where(is_bought_out: true)}
   scope :extensions, lambda {where(is_bought_out: true)}
@@ -40,7 +44,7 @@ class Contract < ActiveRecord::Base
     contracted_team_id = self.contracted_team
     player = Player.find(self.player_id)
     salary = player.auction_value
-   
+    
     salary_progression = SalaryProgression.find_by_auction_value(salary).attributes.to_a
 
     contract_start_year = self.contract_start_year
@@ -53,7 +57,26 @@ class Contract < ActiveRecord::Base
       sub.contract_id = self.id
       sub.team_id = contracted_team_id
       sub.save! 
-    end   
+    end 
+  end
+
+  def sign_longterm
+    player = Player.find(self.player_id)
+    salary = player.auction_value
+    contract_start_year = self.contract_start_year + 1
+    adjusted_contract_length = self.contract_length - 1
+    original_salary_progression = SalaryProgression.find_by_auction_value(salary).attributes.to_a
+    salary_progression = original_salary_progression.from(1)
+
+    adjusted_contract_length.times do |i|
+      sub = Subcontract.new
+      sub.contract_year = contract_start_year + i
+      i += 1
+      sub.salary_amount = salary_progression[i][1]
+      sub.contract_id = self.id
+      sub.team_id = self.subcontracts.first.team_id
+      sub.save! 
+    end
   end
 
 
@@ -187,6 +210,18 @@ class Contract < ActiveRecord::Base
       total += sub.salary_amount
     end
     total
+  end
+
+
+  private
+
+  def extendible
+    # make sure there is at least one contract year left in addition to the current year
+    # make sure current contract has not already been franchised
+  end
+
+  def franchisable
+
   end
 
 end

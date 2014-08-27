@@ -1,30 +1,19 @@
-<fieldset class="contract-fields">
-	
-		<legend>Add a contract<br />
-			<span class="label label-danger">!</span> <small>only if no existing contract or contract has expired<br /><br /></small>
-		</legend>
-	
+<fieldset class="margin-top-2em">
 	<div class="form-group">
-		<%= f.label :contracted_team, :class => 'col-lg-3 control-label' %>
+		<%= f.label :contracted_team, class: 'col-lg-3 control-label' %>
 		<div class="col-lg-9">
-		
-			<%= f.select(:contracted_team, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true, :prompt => "Select" }, {:class => "form-control"}) %>
+			<%= f.select(:contracted_team, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true, :prompt => "Select" }, {class: "form-control"}) %>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<%= f.label :contract_start_year, :class => 'col-lg-3 control-label' %>
+		<%= f.label :contract_start_year, class: 'col-lg-3 control-label' %>
 		<div class="col-lg-9">
-			<%= f.text_field :contract_start_year, :class => 'form-control' %>
+			<%= f.text_field :contract_start_year, value: current_year, class: 'form-control' %>
 		</div>
 	</div>
 
-	<div class="form-group">
-		<%= f.label :contract_length, :class => 'col-lg-3 control-label' %>
-		<div class="col-lg-9">
-			<%= f.text_field :contract_length, :class => 'form-control' %>
-		</div>
-	</div>
+	<%= f.hidden_field :contract_length, class: 'form-control', value: 1 %>
 
 	<div class="form-group">
 		<div class="col-lg-offset-3 col-lg-9">
@@ -33,10 +22,4 @@
 			</label>
 		</div>
 	</div>
-
-
-	<%= f.fields_for :subcontracts do |builder| %>
-		<%= render 'subcontract_fields', f: builder %>
-	<% end %>
-		
 </fieldset>

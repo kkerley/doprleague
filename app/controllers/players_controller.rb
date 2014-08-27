@@ -69,8 +69,7 @@ class PlayersController < ApplicationController
   # GET /players/1/edit
   def edit
     @player = Player.find(params[:id])
-    @player.contracts.build
-       
+    @player.contracts.build    
   end
 
   # POST /players
