@@ -19,7 +19,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @week4.each do |player| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to player.full_name, player %> <%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %></td>
+			      					<%= render 'bye_team_player_td', player: player %>
 			      				<% end %>
 			      			</tr>
 			      		</table>
@@ -33,7 +33,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @week5.each do |player| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to player.full_name, player %> <%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= render 'bye_team_player_td', player: player %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>
@@ -47,7 +47,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @week6.each do |player| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to player.full_name, player %> <%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= render 'bye_team_player_td', player: player %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>
@@ -61,7 +61,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @week7.each do |player| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to player.full_name, player %> <%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= render 'bye_team_player_td', player: player %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>
@@ -75,7 +75,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @week8.each do |player| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to player.full_name, player %> <%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= render 'bye_team_player_td', player: player %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>
@@ -89,7 +89,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @week9.each do |player| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to player.full_name, player %> <%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= render 'bye_team_player_td', player: player %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>
@@ -103,7 +103,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @week10.each do |player| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to player.full_name, player %> <%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= render 'bye_team_player_td', player: player %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>
@@ -117,7 +117,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @week11.each do |player| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to player.full_name, player %> <%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= render 'bye_team_player_td', player: player %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>
@@ -131,7 +131,7 @@
 	    					<table cellspacing="0" cellpadding="0" border="0">
 	    						<tr>
 			      				<% @week12.each do |player| %>
-			      					<td class="roster-breakdown-by-player-row"><%= link_to player.full_name, player %> <%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team %></td>
+			      					<td class="roster-breakdown-by-player-row"><%= render 'bye_team_player_td', player: player %></td>
 			      				<% end %>
 			      			</tr>
 			      		</table>

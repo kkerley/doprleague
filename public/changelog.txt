@@ -3,13 +3,20 @@ Disciples of Philip Rivers (http://doprleague.info) site CHANGELOG
 Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com)
 ====================================================================================================
 
+Version 2.6.29 [2014/08/31]
+--------------------------------------------------
+- Added player position to the "Roster breakdown by NFL team bye weeks..." section
+- Made Richard Sherman appear far less regularly
+- Added a check on activities to make sure the owner exists (shouldn't ever affect production, but better to be safe)
+- Changed styles of the buttons on players#index and players#free_agents to hopefully better reflect they can be used in conjunction with one another
+
 
 Version 2.6.28 [2014/08/26]
 --------------------------------------------------
 - Upgraded to Ruby 2.1.2 for security and massive speed increases
 - Changed verbiage on budgets#show for trade stipulations so they're correct and more indicative of which way money is going; added different colored icons depending on the flow of money
 - Cleaned up the Contract form fields on players#edit (more work to do here)
-- Added default value of current_year to "Contract start year"
+- Added default value of current_year to "Contract start year" (bug here that needs to be fixed. jQuery to populate it?)
 - Added new boolean "is_longterm_contract" to Contracts for allowing creation of 1 year contracts for the first 6 weeks of the season before signing a longer deal
 - Changed the form process for adding/creating Contracts
 - Fixed the GM actions Super Bowl pick display for once a pick has been made

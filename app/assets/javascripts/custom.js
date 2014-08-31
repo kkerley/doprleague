@@ -3,7 +3,7 @@ $(document).ready(function(){
 	jQuery(".best_in_place").best_in_place();
 	$(".best_in_place").bind('ajax:success', function(){ $(this).JQtextile('textile', this.innerHTML) });
 	
-	var rand = Math.floor(Math.random() * 10) + 1;
+	var rand = Math.floor(Math.random() * 100) + 1;
 
 	if(rand == 7){		
 		$('#richard_sherman').show();

@@ -12,14 +12,14 @@
     </p>
 	</div>
 	<div class="search-filters btn-group">
-		<a href="/players" class="btn btn-default btn-responsive">All</a> 
-		<a href="/players/free_agents" class="btn btn-default btn-responsive">FA</a>
-		<a href="?utf8=✓&query=QB" class="btn btn-default btn-responsive">QB</a> 
-		<a href="?utf8=✓&query=WR" class="btn btn-default btn-responsive">WR</a> 
-		<a href="?utf8=✓&query=RB" class="btn btn-default btn-responsive">RB</a> 
-		<a href="?utf8=✓&query=TE" class="btn btn-default btn-responsive">TE</a> 
-		<a href="?utf8=✓&query=K" class="btn btn-default btn-responsive">K</a> 
-		<a href="?utf8=✓&query=DEF" class="btn btn-default btn-responsive">DEF</a>
+		<a href="/players" class="btn btn-responsive <%= controller.action_name == "index" ? "btn-primary" : "btn-default" %>">All</a> 
+		<a href="/players/free_agents" class="btn btn-responsive <%= controller.action_name == "free_agents" ? "btn-primary" : "btn-default" %>">FA</a>
+		<a href="?utf8=✓&query=QB" class="btn btn-info btn-responsive">QB</a> 
+		<a href="?utf8=✓&query=WR" class="btn btn-info btn-responsive">WR</a> 
+		<a href="?utf8=✓&query=RB" class="btn btn-info btn-responsive">RB</a> 
+		<a href="?utf8=✓&query=TE" class="btn btn-info btn-responsive">TE</a> 
+		<a href="?utf8=✓&query=K" class="btn btn-info btn-responsive">K</a> 
+		<a href="?utf8=✓&query=DEF" class="btn btn-info btn-responsive">DEF</a>
 	</div>
 
 	<div class="table-responsive">
