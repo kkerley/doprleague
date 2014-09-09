@@ -190,6 +190,12 @@
 						<% end %>
 					</div>
 				</div>
+
+        <p class="h4">...or 
+          <%= link_to new_player_path do %> 
+            <i class="fa fa-plus-circle"></i> add a single player
+        <% end %>
+        </p>
 			</div>
 			<div class="col-md-5">
 				 <p><%= link_to players_path(format: "csv"), class: "btn btn-primary btn-large" do %>

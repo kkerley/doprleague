@@ -152,6 +152,10 @@ class PlayersController < ApplicationController
     end
   end
 
+  def search
+    # just a search form and some info about where to find site updates now
+  end
+
   private
     def load_team
       @team = current_user.team if current_user

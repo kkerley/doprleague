@@ -44,15 +44,17 @@
     </div>
   </div>
 	
+  <% unless @player.new_record? %>
 
   <p class="h2">Add a contract</p>    
-  <div class="alert alert-warning" role="alert">
-    <p><span class="label label-danger"><i class="fa fa-exclamation-circle"></i></span> Add only if no existing contract, existing contract was bought out or existing contract has expired</p>
-  </div>
-		
-	<%= f.fields_for :contracts do |builder| %>
-  		<%= render 'contract_fields', f: builder %>
- 	<% end %>
+    <div class="alert alert-warning" role="alert">
+      <p><span class="label label-danger"><i class="fa fa-exclamation-circle"></i></span> Add only if no existing contract, existing contract was bought out or existing contract has expired</p>
+    </div>
+  		
+  	<%= f.fields_for :contracts do |builder| %>
+    		<%= render 'contract_fields', f: builder %>
+   	<% end %>
+  <% end %>
   	
   <div class="form-group">
 		<div class="col-lg-offset-3 col-lg-9">

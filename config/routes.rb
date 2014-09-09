@@ -1,12 +1,7 @@
 KkerleyCom::Application.routes.draw do
-  
 
   resources :stipulations
-
-
   resources :trades
-
-
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
   resources :activities
@@ -30,6 +25,7 @@ KkerleyCom::Application.routes.draw do
   resources :players do 
     collection do
       get 'free_agents'
+      get 'search'
       post :import
     end
   end
@@ -75,7 +71,7 @@ KkerleyCom::Application.routes.draw do
     end
   end
   
-  root :to => "features#index"
+  root :to => "players#search"
  
   get "signup" => "users#new", :as => "signup"
   get "faqs" => "features#faqs", :as => "faqs"
@@ -84,9 +80,10 @@ KkerleyCom::Application.routes.draw do
   get "help" => "features#help", :as => "help"
   get "admin/index" # => "admin/index", :as => "admin"
   get "members" => "users#index", :as => "members"
+  get "announcements" => "features#index", :as => "announcements"
   
   devise_scope :user do 
-    root to: 'features#index'
+    root to: 'players#search'
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
 

@@ -3,6 +3,21 @@ Disciples of Philip Rivers (http://doprleague.info) site CHANGELOG
 Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com)
 ====================================================================================================
 
+Version 2.6.30 [2014/09/08]
+--------------------------------------------------
+- Removed the contract fields on the Players form for new records
+- Added a link in the Admin area to add a single player on the Players tab
+- Changed default sort order on rosters to be by first name
+- Added column on roster for player's full contract length
+- Changed the limit to 5 upcoming contract years on the teams#show roster
+- Created players#search action which contains little more than a giant search box and information advisory
+- Made the default root page players#search
+- Added "announcements" to the League Info dropdown
+- Added /announcements route
+- Made the banner 125px (down from 250px) high
+- Upgraded to Font Awesome 4.2.0
+
+
 Version 2.6.29 [2014/08/31]
 --------------------------------------------------
 - Added player position to the "Roster breakdown by NFL team bye weeks..." section

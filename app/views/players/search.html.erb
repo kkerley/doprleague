@@ -1,0 +1,25 @@
+<% content_for :title, "Hey." %>
+<% content_for :section_subtitle, "Search for players right from the homepage now" %>
+
+<div class="row">
+  <div class="col-sm-12 col-md-10">
+    
+      <%= form_tag players_path, class: "form-horizontal margin-bottom-4em margin-top-2em", method: :get do %>
+        <div class="input-group"> 
+          <%= text_field_tag :query, params[:query], class: "form-control input-lg",  placeholder: "Name, position, NFL team shorthand or auction value (no $)" %>
+        
+          <span class="input-group-btn">
+            <%= button_tag(id: "btn_players_search", class: "btn btn-success btn-lg") do %>
+              <i class="fa fa-search"></i> SEARCH
+            <% end %>
+          </span>
+        </div>
+      <% end %>
+    
+
+    <div class="bs-callout bs-callout-danger">
+      <h4><i class="fa fa-exclamation-circle"></i> Announcement</h4>
+      <p>Welcome to the new homepage. <a href="/announcements">League announcements</a> and site activity have been moved.</p>
+    </div>
+  </div>
+</div>
