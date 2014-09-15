@@ -11,7 +11,7 @@ class Ability
             else
                 can :read, :all
                 can [:update], User do |u|
-                    u == user
+                  u == user
                 end
                 can :manage, Event, :team_id => user.team.id
                 can :manage, SuperBowlPick, :team_id => user.team.id
@@ -19,7 +19,16 @@ class Ability
                 can :manage, Message
                 can :create, Trade
                 can :manage, Trade do |trade| 
-                    trade.trader1_id == user.team.id || trade.trader2_id == user.team.id 
+                  trade.trader1_id == user.team.id || trade.trader2_id == user.team.id 
+                end
+                can :manage, Player
+                can :create, Contract
+                can :manage, Contract do |con|
+                  con.player.this_year.team_id == user.team.id unless con.is_bought_out?
+                end
+
+                can :manage, Subcontract do |sub|
+                  sub.team_id == user.team.id
                 end
             end
         else

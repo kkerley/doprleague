@@ -1,11 +1,17 @@
 <fieldset class="margin-top-2em">
-	<div class="form-group">
-		<%= f.label :contracted_team, class: 'col-lg-3 control-label' %>
-		<div class="col-lg-9">
-			<%= f.select(:contracted_team, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true, :prompt => "Select" }, {class: "form-control"}) %>
-		</div>
-	</div>
-
+	
+	<% if current_user %>
+    <% if current_user.role == "admin" %>
+			<div class="form-group">
+				<%= f.label :contracted_team, class: 'col-lg-3 control-label' %>
+				<div class="col-lg-9">
+					<%= f.select(:contracted_team, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true, :prompt => "Select" }, {class: "form-control"}) %>
+				</div>
+			</div>
+		<% else %>
+			<%= f.hidden_field :contracted_team, value: current_user.team.id %>
+		<% end %>
+	<% end %>
 	<div class="form-group">
 		<%= f.label :contract_start_year, class: 'col-lg-3 control-label' %>
 		<div class="col-lg-9">

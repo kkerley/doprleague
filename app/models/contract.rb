@@ -61,21 +61,23 @@ class Contract < ActiveRecord::Base
   end
 
   def sign_longterm
-    player = Player.find(self.player_id)
-    salary = player.auction_value
-    contract_start_year = self.contract_start_year + 1
-    adjusted_contract_length = self.contract_length - 1
-    original_salary_progression = SalaryProgression.find_by_auction_value(salary).attributes.to_a
-    salary_progression = original_salary_progression.from(1)
+    if self.is_longterm_deal
+      player = Player.find(self.player_id)
+      salary = player.auction_value
+      contract_start_year = self.contract_start_year + 1
+      adjusted_contract_length = self.contract_length - 1
+      original_salary_progression = SalaryProgression.find_by_auction_value(salary).attributes.to_a
+      salary_progression = original_salary_progression.from(1)
 
-    adjusted_contract_length.times do |i|
-      sub = Subcontract.new
-      sub.contract_year = contract_start_year + i
-      i += 1
-      sub.salary_amount = salary_progression[i][1]
-      sub.contract_id = self.id
-      sub.team_id = self.subcontracts.first.team_id
-      sub.save! 
+      adjusted_contract_length.times do |i|
+        sub = Subcontract.new
+        sub.contract_year = contract_start_year + i
+        i += 1
+        sub.salary_amount = salary_progression[i][1]
+        sub.contract_id = self.id
+        sub.team_id = self.subcontracts.first.team_id
+        sub.save! 
+      end
     end
   end
 
@@ -88,6 +90,12 @@ class Contract < ActiveRecord::Base
           sub.salary_amount *= 0.6
           sub.this_is_a_buyout = true
           sub.save!
+
+          # update GM's annual actions to not allow more buyouts
+          actions = AnnualGmAction.find_by_team_id_and_year(self.bought_out_by_team_id, current_year)
+          actions.has_bought_out = true
+          actions.bought_out_player_id = self.player.id
+          actions.save!
         end
       end
     end
@@ -111,6 +119,12 @@ class Contract < ActiveRecord::Base
       sub.team_id = contracted_team_id
       sub.this_is_an_extension = true
       sub.save!
+
+      # update GM's annual actions to not allow more extensions
+      actions = AnnualGmAction.find_by_team_id_and_year(contracted_team_id, current_year)
+      actions.has_extended = true
+      actions.extended_player_id = self.player.id
+      actions.save!
     end
   end
 
@@ -163,6 +177,12 @@ class Contract < ActiveRecord::Base
       sub.team_id = contracted_team_id
       sub.this_is_a_franchise_tag = true
       sub.save!  
+
+      # update GM's annual actions to not allow more franchise tags
+      actions = AnnualGmAction.find_by_team_id_and_year(contracted_team_id, current_year)
+      actions.has_franchised = true
+      actions.franchised_player_id = self.player.id
+      actions.save!
     end
   end
 
@@ -213,15 +233,28 @@ class Contract < ActiveRecord::Base
   end
 
 
-  private
+  
 
   def extendible
     # make sure there is at least one contract year left in addition to the current year
     # make sure current contract has not already been franchised
+    if self.is_drafted && !self.is_franchised
+      if self.subcontracts.count > 1
+        return true
+      else
+        return false # contract isn't long enough
+      end
+    else
+      return false # player wasn't drafted
+    end
   end
 
   def franchisable
-
+    if self.subcontracts.count >= 1
+      return true
+    else
+      return false
+    end
   end
 
 end

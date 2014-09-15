@@ -19,5 +19,6 @@ config/database.yml
 * copy.*
 db/live_backups
 db/production_backup
+db/*.sql
 .DS_store
 app/views/players/code_to_check_salaries_for_franchising.txt

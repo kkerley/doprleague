@@ -13,6 +13,7 @@ class Team < ActiveRecord::Base
   has_many :draft_rosters, fully_load: true
   has_many :super_bowls, foreign_key: :dopr_winner_id, fully_load: true
   has_many :super_bowl_picks, fully_load: true
+  has_many :annual_gm_actions
   # has_many :trades
 
   default_scope order('team_name ASC')
@@ -191,4 +192,9 @@ class Team < ActiveRecord::Base
     end
     players_on_bye.uniq
   end
+
+  def current_year_actions
+    actions = AnnualGmAction.find_by_team_id_and_year(self.id, current_year)
+  end
+
 end

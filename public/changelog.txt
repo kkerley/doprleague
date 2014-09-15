@@ -3,6 +3,16 @@ Disciples of Philip Rivers (http://doprleague.info) site CHANGELOG
 Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com)
 ====================================================================================================
 
+
+Version 2.7.0 [2014/09/xx]
+--------------------------------------------------
+- Contracts 2.0
+- Added permissions logic to allow all users to create contracts to lessen the burden on Tanker and Kerley for managing all the roster moves
+- Added necessary view logic to only allow non-admins from creating and editing their own contracts
+- Added Annual GM Actions model to keep track of yearly GM actions (extensions, franchise tags, buyouts)
+
+
+
 Version 2.6.30 [2014/09/08]
 --------------------------------------------------
 - Removed the contract fields on the Players form for new records
