@@ -4,6 +4,43 @@
   </div>
 
   <div id="user_quick_look_content">
-  content here
+    <p class="bold">GM quick glance</p>
+    
+    <div class="progress" style="margin-bottom: 0;">
+      <div 
+      <% if current_user_team_cap_spent_percentage < 60 %>
+        class="progress-bar progress-bar-success progress-bar-striped active" 
+      <% elsif current_user_team_cap_spent_percentage < 60 && current_user_team_cap_spent_percentage > 80 %>
+        class="progress-bar progress-bar-warning progress-bar-striped active" 
+      <% else %>
+        class="progress-bar progress-bar-danger progress-bar-striped active" 
+      <% end %> role="progressbar" aria-valuenow="<%= current_user_team_cap_spent_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= current_user_team_cap_spent_percentage %>%">
+        <%= current_user_team_cap_spent_percentage %>%
+      </div>
+    </div>
+    <small style="color: #999"><strong style="color: #fff">$<%= current_user_team_cap_remainder %> left.</strong> Spent: $<%= current_user_team_cap_spent %> (of $<%= current_user_team_budget.calculated_amount %>) for <%= current_year %>.</small>
+    <hr />
+    <p><i class="fa fa-plus-circle"></i> 
+      <% if current_user_team_actions.has_extended %>
+        Extended <%= link_to Player.find(current_user_team_actions.extended_player_id).full_name, Player.find(current_user_team_actions.extended_player_id) %>
+      <% else %>
+        Extension still available.
+      <% end %>
+
+    </p>
+    <p><i class="fa fa-tag"></i>
+      <% if current_user_team_actions.has_franchised %>
+        Franchised <%= link_to Player.find(current_user_team_actions.franchised_player_id).full_name, Player.find(current_user_team_actions.franchised_player_id) %>
+      <% else %>
+        Franchise tag still available.
+      <% end %>
+    </p>
+    <p><i class="fa fa-usd"></i>
+      <% if current_user_team_actions.has_bought_out %>
+        Bought out <%= link_to Player.find(current_user_team_actions.bought_out_player_id).full_name, Player.find(current_user_team_actions.bought_out_player_id) %>
+      <% else %>
+        Buy out still available.
+      <% end %>
+    </p>
   </div>
 </div>

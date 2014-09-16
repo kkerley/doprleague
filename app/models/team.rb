@@ -98,6 +98,10 @@ class Team < ActiveRecord::Base
     yearly_budget - salary_total
   end
   
+
+  def cap_spent_percentage(salary_total, yearly_budget)
+    ((salary_total / yearly_budget) * 100).round(2)
+  end
   
   def build_budgets
     if Time.now.month < 8

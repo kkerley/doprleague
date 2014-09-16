@@ -11,6 +11,7 @@ Version 2.7.0 [2014/09/xx]
 - Added necessary view logic to only allow non-admins from creating and editing their own contracts
 - Added Annual GM Actions model to keep track of yearly GM actions (extensions, franchise tags, buyouts)
 
+- Removed duplicate "contracts key" from contracts#show
 
 
 Version 2.6.30 [2014/09/08]

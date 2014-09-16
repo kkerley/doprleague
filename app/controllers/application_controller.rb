@@ -4,7 +4,19 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   
-  helper_method :current_members, :past_members, :current_philip_members, :current_russell_members, :current_user_inbox, :current_user_pending_trades, :global_notification_count
+  helper_method :current_members, 
+                :past_members, 
+                :current_philip_members, 
+                :current_russell_members, 
+                :current_user_inbox, 
+                :current_user_pending_trades, 
+                :current_user_team,
+                :current_user_team_actions, 
+                :current_user_team_budget,
+                :current_user_team_cap_remainder, 
+                :current_user_team_cap_spent, 
+                :current_user_team_cap_spent_percentage, 
+                :global_notification_count
 
   # check_authorization
 
@@ -59,5 +71,30 @@ class ApplicationController < ActionController::Base
 
   def global_notification_count
     current_user_inbox.count + current_user_pending_trades.count
+  end
+
+  # methods for the GM quick look
+  def current_user_team
+    current_user.team
+  end
+
+  def current_user_team_budget
+    current_user_team.get_budget(current_year)
+  end
+
+  def current_user_team_cap_spent
+    current_user_team.calculate_yearly_salary(current_year)
+  end
+
+  def current_user_team_cap_remainder
+    current_user_team.remainder(current_user_team_cap_spent, current_user_team_budget.calculated_amount)
+  end
+
+  def current_user_team_cap_spent_percentage
+    current_user_team.cap_spent_percentage(current_user_team_cap_spent.to_f, current_user_team_budget.calculated_amount.to_f)
+  end
+
+  def current_user_team_actions
+    AnnualGmAction.find_by_team_id_and_year(current_user_team.id, current_year)
   end
 end

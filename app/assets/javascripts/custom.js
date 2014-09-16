@@ -46,4 +46,13 @@ $(document).ready(function(){
 	$('.longterm_check_box').on('click', function(){
 		$('.longterm_length').toggle();
 	});
+
+	$('#user_quick_look_trigger').click(function(){
+		if($(this).parent().css("right") == "-316px"){
+			$('#user_quick_look').animate({ 'right': 0 }, 400); 
+		} else {
+			$('#user_quick_look').animate({ 'right': "-316px" }, 400); 
+		}
+		
+	});
 });

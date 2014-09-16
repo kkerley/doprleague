@@ -1,3 +1,7 @@
+body{
+  overflow-x: hidden;
+}
+
 blockquote{ 
 	p{ font-size: .8em; }
 }
@@ -351,12 +355,32 @@ section {
 }
 
 #user_quick_look{
+  position: fixed;
+  right: -316px;
+  top: 80px;
+  width: 400px;
+  z-index: 500;
   
   #user_quick_look_trigger{
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    display: inline;
+    float: left;
+    font-size: 3em;
+    padding: .25em .5em;
+    
+  }
 
+  #user_quick_look_trigger:hover{
+    color: #1483C4;
   }
 
   #user_quick_look_content{
-    display: none;
+    background-color: #333;
+    color: #fff;
+    //margin-left: 6em;
+    padding: 1em 1em 1em 6em;
+    width: auto;
   }
 }
