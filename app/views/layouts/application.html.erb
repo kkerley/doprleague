@@ -106,7 +106,8 @@
 							<li>
 			        <%= form_tag players_path, class: "navbar-form navbar-left", style: "width: 250px;", method: :get do %>
 								<div class="input-group"> 
-							    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search players" %>
+							    <%= search_field_tag :query, params[:query], class: "form-control", placeholder: "Search players", id: "global_search_box" %>
+							    <i class="search-clear fa fa-times-circle"></i>
 								
 									<span class="input-group-btn">
 										<%= button_tag(id: "btn_players_search", class: "btn btn-success") do %>

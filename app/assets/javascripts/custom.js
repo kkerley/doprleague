@@ -48,11 +48,32 @@ $(document).ready(function(){
 	});
 
 	$('#user_quick_look_trigger').click(function(){
-		if($(this).parent().css("right") == "-316px"){
-			$('#user_quick_look').animate({ 'right': 0 }, 400); 
+
+		if($(this).parent().css("width") == "400px"){
+			var divRight = "-344px";
 		} else {
-			$('#user_quick_look').animate({ 'right': "-316px" }, 400); 
+			var divRight = "-244px";
 		}
 		
+		if($(this).parent().css("right") == divRight){
+			$('#user_quick_look').animate({ 'right': 0 }, 400);
+			$('#user_quick_look_content').removeClass("hidden-content");
+		} else {
+			$('#user_quick_look').animate({ 'right': divRight }, 400);
+			setTimeout(function(){
+				$('#user_quick_look_content').addClass("hidden-content"); 
+			}, 400);
+		}
+	});
+
+	$('#main_players_search_box').focus();
+
+	$("#global_search_box, #main_players_search_box").keyup(function(){
+		$(this).next(".search-clear").css("visibility", "visible");
+	});
+
+	$(".search-clear").click(function(){
+    $("#global_search_box, #main_players_search_box").val('');
+    $(this).css("visibility", "hidden");
 	});
 });

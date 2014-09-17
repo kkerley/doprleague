@@ -1,4 +1,7 @@
 body{
+  background-image: url('/images/bg_dopr_top.png');
+  background-position: left top;
+  background-repeat: repeat-x;
   overflow-x: hidden;
 }
 
@@ -354,10 +357,15 @@ section {
   display: none;
 }
 
+input[type="search"] {
+  -webkit-appearance: searchfield !important;
+  box-sizing: border-box;
+}
+
 #user_quick_look{
   position: fixed;
-  right: -316px;
-  top: 80px;
+  right: -344px;
+  top: 170px;
   width: 400px;
   z-index: 500;
   
@@ -367,7 +375,7 @@ section {
     cursor: pointer;
     display: inline;
     float: left;
-    font-size: 3em;
+    font-size: 2em;
     padding: .25em .5em;
     
   }
@@ -380,7 +388,50 @@ section {
     background-color: #333;
     color: #fff;
     //margin-left: 6em;
-    padding: 1em 1em 1em 6em;
+    padding: 1em 1em 1em 4.333333333em;
     width: auto;
+  }
+}
+
+.search-clear{
+  position: absolute;
+  right: 60px;
+  top: 0;
+  bottom: 0;
+  height: 1em;
+  margin: auto;
+  font-size: 1em;
+  cursor: pointer;
+  color: #ccc;
+  visibility: hidden;
+  z-index: 10;
+}
+
+.navbar-form .search-clear{
+  right: 45px;
+}
+
+@media all and (max-width: 1199px){
+  body{
+    background-image: url('/images/bg_dopr_top_1199.png');
+  }
+}
+
+@media all and (max-width: 991px){
+  body{
+    background-image: url('/images/bg_dopr_top_991.png');
+  }
+}
+
+@media all and (max-width: 767px){
+  body{
+    background-image: none;
+  }
+}
+
+@media all and (max-width: 640px){
+  #user_quick_look{
+    right: -244px;
+    width: 300px;
   }
 }

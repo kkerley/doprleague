@@ -6,11 +6,12 @@
     
       <%= form_tag players_path, class: "form-horizontal margin-bottom-4em margin-top-2em", method: :get do %>
         <div class="input-group"> 
-          <%= text_field_tag :query, params[:query], class: "form-control input-lg",  placeholder: "Name, position, NFL team shorthand or auction value (no $)" %>
+          <%= search_field_tag :query, params[:query], id: "main_players_search_box", class: "form-control input-lg",  placeholder: "Name, position, NFL team shorthand or auction value (no $)" %>
+          <i class="search-clear fa fa-times-circle"></i>
         
           <span class="input-group-btn">
-            <%= button_tag(id: "btn_players_search", class: "btn btn-success btn-lg") do %>
-              <i class="fa fa-search"></i> SEARCH
+            <%= button_tag(id: "btn_main_players_search", class: "btn btn-success btn-lg") do %>
+              <i class="fa fa-search"></i>
             <% end %>
           </span>
         </div>

@@ -8,10 +8,14 @@ Version 2.7.0 [2014/09/xx]
 --------------------------------------------------
 - Contracts 2.0
 - Added permissions logic to allow all users to create contracts to lessen the burden on Tanker and Kerley for managing all the roster moves
-- Added necessary view logic to only allow non-admins from creating and editing their own contracts
+- Added necessary view logic to allow non-admins to create and edit their own contracts
+- Added a "Cancel" button to the players#edit form
 - Added Annual GM Actions model to keep track of yearly GM actions (extensions, franchise tags, buyouts)
-
+- Added "GM quick glance" box to all pages for instant access to available cap and status of extensions, franchise tags and buyouts (need to add dates here after this are added)
 - Removed duplicate "contracts key" from contracts#show
+- Added a bg image to the top of the <body> tag to make the blue go edge-to-edge
+- Made the browser autofocus in the search box when on the homepage
+- Added a clear (X) to the search boxes
 
 
 Version 2.6.30 [2014/09/08]

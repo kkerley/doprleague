@@ -3,7 +3,7 @@
     <i class="fa fa-plug"></i>
   </div>
 
-  <div id="user_quick_look_content">
+  <div id="user_quick_look_content" class="hidden-content">
     <p class="bold">GM quick glance</p>
     
     <div class="progress" style="margin-bottom: 0;">
@@ -18,7 +18,7 @@
         <%= current_user_team_cap_spent_percentage %>%
       </div>
     </div>
-    <small style="color: #999"><strong style="color: #fff">$<%= current_user_team_cap_remainder %> left.</strong> Spent: $<%= current_user_team_cap_spent %> (of $<%= current_user_team_budget.calculated_amount %>) for <%= current_year %>.</small>
+    <small class="muted"><strong style="color: #fff">$<%= current_user_team_cap_remainder %> left.</strong> Spent: $<%= current_user_team_cap_spent %> (of $<%= current_user_team_budget.calculated_amount %>) for <%= current_year %>.</small>
     <hr />
     <p><i class="fa fa-plus-circle"></i> 
       <% if current_user_team_actions.has_extended %>

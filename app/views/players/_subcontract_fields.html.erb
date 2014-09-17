@@ -1,12 +1,12 @@
 <fieldset class="contract-fields margin-bottom-2em">
-	
+	<% if current_user.role == "admin" %>
 	<div class="row">
 		<div class="col-md-8">
 			<div class="row">
 				
-				<%= f.text_field :contract_year, :class => 'form-control' %>
-				<%= f.select(:team_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true, :prompt => "Select" }, {:class => "form-control"}) %>
-				<%= f.text_field :salary_amount, :class => 'form-control', :style => "display: inline;" %>
+				<%= f.text_field :contract_year, class: 'form-control' %>
+				<%= f.select(:team_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true, :prompt => "Select" }, {class: "form-control"}) %>
+				<%= f.text_field :salary_amount, class: 'form-control', :style => "display: inline;" %>
 					
 			</div>
 		</div>
@@ -18,4 +18,27 @@
 				<%= f.check_box :this_is_a_franchise_tag, label: 'Franchise year?' %>
 			</div>
 		</div>
+
+		<% else %>
+
+		<div class="row">
+		<div class="col-md-8">
+			<div class="row">
+				
+				<%= f.text_field :contract_year, class: 'form-control disabled', disabled: true %>
+				<%= f.select(:team_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { :include_blank => true, :prompt => "Select" }, {class: 'form-control disabled', disabled: true}) %>
+				<%= f.text_field :salary_amount, class: 'form-control disabled', disabled: true, :style => "display: inline;" %>
+					
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="row">
+				<%= f.check_box :this_is_a_buyout, label: 'Buyout year?', class: 'disabled', disabled: true %>
+				<%= f.check_box :this_is_an_extension, label: 'Extension year?', class: 'disabled', disabled: true %> 
+				<%= f.check_box :this_is_a_franchise_tag, label: 'Franchise year?', class: 'disabled', disabled: true %>
+			</div>
+		</div>
+
+		<% end %>
 </fieldset>
