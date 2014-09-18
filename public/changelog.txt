@@ -4,6 +4,11 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.7.1 [2014/09/17]
+--------------------------------------------------
+- Fixed logic for who can see the "Edit this contract" link on players#show
+
+
 Version 2.7.0 [2014/09/17]
 --------------------------------------------------
 - Contracts 2.0: all users may now create and manage their own contracts

@@ -112,8 +112,10 @@
 												<td></td>
 												<td colspan="3">
 													<% if current_user %>
-														<% if can? :manage, @player %>
-															<i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this contract for #{@player.full_name}", edit_contract_path(contract) %> | 
+														<% if @player.is_contracted? %>
+															<% if can? :manage, @player.current_contract %>
+																<i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this contract for #{@player.full_name}", edit_contract_path(contract) %> | 
+															<% end %>
 														<% end %>
 													<% end %> <%= link_to "View this contract", contract %>
 												</td>
