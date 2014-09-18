@@ -15,7 +15,12 @@
 	<div class="form-group">
 		<%= f.label :contract_start_year, class: 'col-lg-3 control-label' %>
 		<div class="col-lg-9">
+
+		<% if current_user.role == "admin" %>
 			<%= f.text_field :contract_start_year, value: current_year, class: 'form-control' %>
+		<% else %>
+			<%= f.text_field :contract_start_year, value: current_year, class: 'form-control disabled', disabled: true %>
+		<% end %>
 		</div>
 	</div>
 
