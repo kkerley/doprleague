@@ -1,0 +1,111 @@
+<tr>
+  <table cellspacing="0" cellpadding="0" border="0" class="table table-condensed table-bordered table-striped">
+        <thead>
+          <th width="5"></th>
+          <th><%= smart_listing.sortable "Name", :full_name %> </th>
+          <th></th>
+          <th>Bye</th>
+          <th class="hidden-sm hidden-xs">Pos</th>
+          <th>Len</th>
+          <th>Auc</th>
+          <th><%= current_year %></th>
+          <th><%= current_year.to_i + 1 %></th>
+          <th><%= current_year.to_i + 2 %></th>
+          <th><%= current_year.to_i + 3 %></th>
+          <th><%= current_year.to_i + 4 %></th>
+          <!--<th><% current_year.to_i + 5 %></th>-->
+        </thead>
+        
+        
+        <tbody>
+
+          <% unless smart_listing.empty? %>
+            <% smart_listing.collection.each do |player| %>
+              <tr>
+                <td></td>
+                <td><%= link_to player.full_name, player %> 
+                  
+                  <% if player.this_team_contract(@team).is_bought_out %>
+                    <i class="fa fa-usd"></i> 
+                  <% else %>
+                    <% if player.this_team_contract(@team).is_extended %>
+                      <i class="fa fa-plus-circle"></i>
+                    <% end %>
+                    <% if player.this_team_contract(@team).is_franchised %>
+                      <i class="fa fa-tag"></i>
+                    <% end %>
+                  <% end %>
+                  
+                </td>
+
+                <td><%= link_to image_tag(player.nfl_team_model.avatar(:tiny)), player.nfl_team_model if player.nfl_team_model %></td>
+                <td><%= player.nfl_team_model.bye_week if player.nfl_team_model  %></td>
+                <td class="hidden-sm hidden-xs"><%= player.position %></td>
+                <td class="hidden-sm hidden-xs"><%= player.current_contract.full_contract_length if player.is_contracted? %></td>
+                <td><span class="badge">$<%= player.auction_value %></span></td>
+                <% player.this_team_contract(@team).subcontracts.current_year_or_later.limit(5).each do |sub| %>
+                  <% if sub.team_id == @team.id %>
+                    
+                    <td class="<%=sub.this_is_a_buyout ? 'bought-out' : sub.this_is_an_extension ? 'extended' : sub.this_is_a_franchise_tag ? 'franchised' : '' %>">
+                    $<%= sub.salary_amount %></td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
+                <% end %>
+            </tr>
+            <% end %>
+
+          <% else %>
+          <tr>
+            <td></td>
+            <td colspan="11">No players on this team.</td>
+          </tr>
+        <% end %>
+          <tr>
+            <td colspan="12"><%= render "/contracts/contract_clauses_key_inline" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            
+            <td colspan="6"><h4><span class="label label-danger">TOTAL SPENT:</span></h4></td>
+            
+            <td><h4>$<%= @total_cap_current_year %></h4></td>
+            <td><h4>$<%= @total_cap_current_year_plus_1 %></h4></td>
+            <td><h4>$<%= @total_cap_current_year_plus_2 %></h4></td>
+            <td><h4>$<%= @total_cap_current_year_plus_3 %></h4></td>
+            <td><h4>$<%= @total_cap_current_year_plus_4 %></h4></td>
+            <!--<td><h4>$<% @total_cap_current_year_plus_5 %></h4></td>-->
+          </tr>
+          <tr>
+            <td></td>
+            
+            <td colspan="6">Yearly budget amount: </td>
+            
+            
+            <td class="<%= @team_budget_current_year_stipulations.count > 0 ? 'modified-budget' : '' %>">
+              <%= link_to "$" + @team_budget_current_year.calculated_amount.to_s, team_budget_path(@team, @team_budget_current_year) %></td>
+            <td class="<%= @team_budget_current_year_plus_1_stipulations.count > 0 ? 'modified-budget' : '' %>">
+              <%= link_to "$" + @team_budget_current_year_plus_1.calculated_amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_1) %></td>
+            <td class="<%= @team_budget_current_year_plus_2_stipulations.count > 0 ? 'modified-budget' : '' %>">
+              <%= link_to "$" + @team_budget_current_year_plus_2.calculated_amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_2) %></td>
+            <td class="<%= @team_budget_current_year_plus_3_stipulations.count > 0 ? 'modified-budget' : '' %>">
+              <%= link_to "$" + @team_budget_current_year_plus_3.calculated_amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_3) %></td>
+            <td class="<%= @team_budget_current_year_plus_4_stipulations.count > 0 ? 'modified-budget' : '' %>">
+              <%= link_to "$" + @team_budget_current_year_plus_4.calculated_amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_4) %></td>
+            <!--<td><% link_to "$" + @team_budget_current_year_plus_5.calculated_amount.to_s, team_budget_path(@team, @team_budget_current_year_plus_5) %></td>-->
+          </tr>
+
+          <tr>
+            <td></td>
+            
+            <td colspan="6">Remainder: </td>
+            
+            <td>$<%= @team_remainder_current_year %></td>
+            <td>$<%= @team_remainder_current_year_plus_1 %></td>
+            <td>$<%= @team_remainder_current_year_plus_2 %></td>
+            <td>$<%= @team_remainder_current_year_plus_3 %></td>
+            <td>$<%= @team_remainder_current_year_plus_4 %></td>
+            <!--<td>$<% @team_remainder_current_year_plus_5 %></td>-->
+          </tr>
+        </tbody>
+      </table>

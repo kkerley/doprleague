@@ -1,5 +1,7 @@
 class TeamsController < ApplicationController
-  # before_filter :require_login, :only => [:create, :edit, :update, :destroy, :new]
+  include SmartListing::Helper::ControllerExtensions
+  helper  SmartListing::Helper
+
   load_and_authorize_resource :only => [:create, :edit, :update, :destroy, :new]
 
 
@@ -31,6 +33,12 @@ class TeamsController < ApplicationController
     @rejected_trades = @trades.rejected_trades
     
     @players = @team.get_subcontract_players.uniq.sort_by(&:first_name)
+    # @players = smart_listing_create(:players, 
+    #                                 @team.get_subcontract_players.uniq.sort_by(&:first_name),#.joins(:contracts, :nfl_teams), 
+    #                                 #sort_attributes: [[:bye_week, "nfl_teams.bye_week"], [:contract_length, "contracts."]],
+    #                                 partial: 'teams/player_roster_detail_row', 
+    #                                 array: true,
+    #                                 page_sizes: [50])
     @last_chance_to_extend = @team.last_chance_to_extend(@players)
     @last_chance_to_franchise = @team.last_chance_to_franchise(@players, @team)
     @players_to_extend = @team.available_for_extension(@players) - @last_chance_to_extend

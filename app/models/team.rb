@@ -123,16 +123,10 @@ class Team < ActiveRecord::Base
     players_to_extend = []
 
     players.each do |player|
-      if player.is_contracted?
-        unless player.current_contract.is_extended? || player.current_contract.is_franchised?
-          unless player.this_year == player.current_contract.subcontracts.last # can't extend a player in his final contract year. He can be franchised, though.
-            if player.current_contract.is_drafted
-              team = player.this_year.team
-              if player.current_contract.still_belongs_to?(team)
-                players_to_extend << player
-              end
-            end
-          end
+      if player.is_contracted? && player.current_contract.extendible
+        team = player.this_year.team
+        if player.current_contract.still_belongs_to?(team)
+          players_to_extend << player
         end
       end
     end
@@ -156,12 +150,10 @@ class Team < ActiveRecord::Base
     players_to_franchise = []
 
     players.each do |player|
-      if player.is_contracted?
-        unless player.current_contract.is_franchised?
-          this_team = team
-          if player.current_contract.still_belongs_to?(this_team) || player.current_contract.will_belong_to?(this_team)
-            players_to_franchise << player
-          end
+      if player.is_contracted? && !player.current_contract.is_franchised?
+        this_team = team
+        if player.current_contract.still_belongs_to?(this_team) || player.current_contract.will_belong_to?(this_team)
+          players_to_franchise << player
         end
       end
     end

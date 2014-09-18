@@ -56,7 +56,13 @@
 								</td>
 								<% if current_user %>
 									<% if can? :manage, contract %>
-										<td class="<%= contract.is_bought_out ? 'bought-out' : contract.is_extended && contract.is_franchised ? 'extended_and_franchised'  : contract.is_extended ? 'extended' : contract.is_franchised ? 'franchised' :'' %>"><%= link_to contract, confirm: 'Are you sure?', method: :delete, class: 'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %></td>
+										<% if current_user.role == "admin" %>
+										<td class="<%= contract.is_bought_out ? 'bought-out' : contract.is_extended && contract.is_franchised ? 'extended_and_franchised'  : contract.is_extended ? 'extended' : contract.is_franchised ? 'franchised' :'' %>">
+												
+													<%= link_to contract, confirm: 'Are you sure?', method: :delete, class: 'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %>
+												
+										</td>
+										<% end %>
 									<% end %>
 								<% end %>
 							</tr>

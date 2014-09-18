@@ -107,7 +107,10 @@
 						
 							<% if can? :manage, player %>
 								<td><%= link_to edit_player_path(player), class:'label label-warning' do %><i class="fa fa-pencil-square-o"></i> Edit<% end %></td>
-								<td><%= link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class:'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %></td>
+								<td><% if current_user.role == "admin" %>
+											<%= link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class:'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %>
+										<% end %>
+								</td>
 							<% end %>
 						<% end %>
 						<td></td>

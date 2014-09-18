@@ -231,15 +231,13 @@ class Contract < ActiveRecord::Base
     end
     total
   end
-
-
   
 
   def extendible
     # make sure there is at least one contract year left in addition to the current year
     # make sure current contract has not already been franchised
-    if self.is_drafted && !self.is_franchised
-      if self.subcontracts.count > 1
+    if self.is_drafted && !self.is_franchised && !self.is_extended 
+      if self.contract_length_left > 1
         return true
       else
         return false # contract isn't long enough
@@ -250,7 +248,7 @@ class Contract < ActiveRecord::Base
   end
 
   def franchisable
-    if self.subcontracts.count >= 1
+    if self.contract_length_left >= 1 && !self.is_franchised
       return true
     else
       return false

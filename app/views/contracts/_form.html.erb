@@ -1,8 +1,13 @@
 <%= labeled_form_for @contract, :html => { :multipart => true, :class => "form-horizontal" } do |f| %>
   <%= f.error_messages %>
  
-  <%= f.text_field :contract_start_year, :class => 'form-control' %>
-  <%= f.text_field :contract_length, :class => 'form-control' %>
+  <% if current_user.role == "admin" %>
+    <%= f.text_field :contract_start_year, :class => 'form-control' %>
+    <%= f.text_field :contract_length, :class => 'form-control' %>
+  <% else %>
+    <%= f.text_field :contract_start_year, :class => 'form-control disabled', disabled: true %>
+    <%= f.text_field :contract_length, :class => 'form-control disabled', disabled: true %>
+  <% end %>
 
   <% if @contract.new_record? %>
     <%= f.check_box :is_drafted, label: "Drafted?" %>
@@ -55,11 +60,18 @@
   </div>
   <% end %>
 
+  
   <div class="alert alert-info">
+  <% if @contract.full_contract_length > 1 || !@contract.is_drafted %>
+    <%= f.check_box :is_longterm_deal, label: "Sign to long-term deal", class: "longterm_check_box disabled", disabled: true %>
+  <% elsif @contract.full_contract_length == 1 && @contract.is_drafted %>
     <%= f.check_box :is_longterm_deal, label: "Sign to long-term deal", class: "longterm_check_box" %>
+  <% end %>
       <small class="col-lg-offset-3">Increase the length of this contract before week 8<br /><br /></small>
     <span class="longterm_length"><%= f.text_field :contract_length, label: "Contract length", class: "form-control" %></span>
+
   </div>
+  
    
 
   <div class="row">
