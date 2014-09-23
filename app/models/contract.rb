@@ -17,7 +17,7 @@ class Contract < ActiveRecord::Base
                     :is_longterm_deal, 
                     :subcontracts_attributes
                     
-  attr_accessor :contracted_team
+  attr_accessor :contracted_team, :faux_contract_start_year
   
   belongs_to :player, fully_load: true
   has_many :subcontracts, dependent: :destroy, fully_load: true
@@ -47,11 +47,11 @@ class Contract < ActiveRecord::Base
     
     salary_progression = SalaryProgression.find_by_auction_value(salary).attributes.to_a
 
-    contract_start_year = self.contract_start_year
+    # contract_start_year = self.contract_start_year
     
     self.contract_length.times do |i|
       sub = Subcontract.new
-      sub.contract_year = contract_start_year + i
+      sub.contract_year = self.contract_start_year + i
       i += 1
       sub.salary_amount = salary_progression[i][1]
       sub.contract_id = self.id

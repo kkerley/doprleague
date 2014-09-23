@@ -4,6 +4,11 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.7.3 [2014/09/23]
+--------------------------------------------------
+- Fixed bug with contract creation for non-admins
+
+
 Version 2.7.2 [2014/09/22]
 --------------------------------------------------
 - "Dead money" logic and styles added to contracts, player roster, players#index

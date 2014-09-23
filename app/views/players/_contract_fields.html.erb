@@ -19,7 +19,8 @@
 		<% if current_user.role == "admin" %>
 			<%= f.text_field :contract_start_year, value: current_year, class: 'form-control' %>
 		<% else %>
-			<%= f.text_field :contract_start_year, value: current_year, class: 'form-control disabled', disabled: true %>
+			<%= f.text_field :faux_contract_start_year, value: current_year, class: 'form-control disabled', disabled: true %>
+			<%= f.hidden_field :contract_start_year, value: current_year %>
 		<% end %>
 		</div>
 	</div>
