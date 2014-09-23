@@ -82,14 +82,21 @@
 						</strong></td>
 						<td>$<%= player.auction_value %></td>
 						
-						<% if player.is_contracted? %>
+						<% if player.is_contracted? && !player.current_contract.is_dead_money %>
 							<td>
-								<span class="label label-danger"><i class="fa fa-check-square-o fa-lg"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>	
+								<span class="label label-danger"><i class="fa fa-check-square-o"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>	
 							</td>
 							<td>
 								<%= link_to player.current_contract, class:"btn btn-primary btn-xs" do %><i class="fa fa-file-text-o"></i><% end %>
 							</td>  
-							
+
+						<% elsif player.is_contracted? && player.current_contract.is_dead_money %>
+							<td>
+								<span class="label dead-money"><i class="fa fa-lemon-o"></i></span> <%= link_to player.this_year.team.team_name, player.this_year.team %>	
+							</td>
+							<td>
+								<%= link_to player.current_contract, class:"btn btn-primary btn-xs" do %><i class="fa fa-file-text-o"></i><% end %>
+							</td>
 						<% else %>
 							<td>
 								<span class="label label-success">FA</span>

@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title><% if current_user %>
-  					<% if global_notification_count > 0 %>
-  						(<%= global_notification_count %>)
-  					<% end %>
-  				<% end %>Disciples of Philip Rivers | <%= yield(:title) %></title>
+  <title>
+  <% if current_user %>
+		<% if global_notification_count > 0 %>
+			(<%= global_notification_count %>)
+		<% end %>
+	<% end %>Disciples of Philip Rivers | <%= yield(:title) %>
+ </title>
 
-  	<%= include_gon(:init => true) %>
-  	<%= stylesheet_link_tag 	"application", :media => "all" %>
-  	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<%= include_gon(:init => true) %>
+<%= stylesheet_link_tag 	"application", :media => "all" %>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-  	<link rel="icon" 
-      type="image/png" 
-      href="/favicon.png">
-  
- 	<%= csrf_meta_tags %>
+<link rel="icon"  type="image/png" href="/favicon.png">
 
+<%= csrf_meta_tags %>
 
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
- 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	    <!--[if lt IE 9]>
-	      <script src="../../assets/js/html5shiv.js"></script>
-	      <script src="../../assets/js/respond.min.js"></script>
-	    <![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="../../assets/js/html5shiv.js"></script>
+  <script src="../../assets/js/respond.min.js"></script>
+<![endif]-->
 
 </head>
 <body>
@@ -225,7 +224,7 @@
 			</p>
 	
 	
-	<p class="h6 muted" style="font-weight: normal;">Site version: <strong>2.7.1</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
+	<p class="h6 muted" style="font-weight: normal;">Site version: <strong>2.7.2</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
 	
 	<p class="muted credit">This site was built, is maintained and constantly updated by <a href="http://kkerley.com" style="color: #999;" target="_blank">Kyle Kerley</a> using a custom Ruby on Rails 3.2.18-powered content management system structured by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and served up on nginx through Phusion Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/?refcode=f069f7096a0a" target="_blank">Digital Ocean</a>.</p>
 	

@@ -201,6 +201,10 @@ fieldset.contract-fields{
 	/*color: #1383c3;*/
 }
 
+.dead-money{
+  background-color: #555 !important;
+  color: #fff;
+}
 
 .white{
 	color: #fff;
@@ -269,11 +273,11 @@ div.conversation{
 }
 
 
- th[data-sort]{
+th[data-sort]{
       cursor:pointer;
     }
 
- @media (max-width: 768px) {
+@media (max-width: 768px) {
   .btn-responsive {
     padding:2px 4px;
     font-size:80%;

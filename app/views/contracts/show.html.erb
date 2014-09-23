@@ -1,7 +1,7 @@
 <% content_for :title, "Contract for #{@contract.player.full_name}" %>
 <% content_for :section_subtitle, "Info for this specific contract; past contracts for this player may exist." %>
 <div class="row">
-	<div class="col-md-7">
+	<div class="col-md-8">
 		<p><%= link_to "View " + @contract.player.full_name + "'s information", @contract.player %> | <%= link_to "View all contracts", contracts_path %></p>
 
 		<% if @contract.is_bought_out %>
@@ -17,6 +17,10 @@
 
 					<% if @contract.is_franchised %>
 						<i class="fa fa-tag"></i>
+					<% end %>
+
+					<% if @contract.is_dead_money %>
+						<i class="fa fa-lemon-o"></i>
 					<% end %>
 					<br />
 					<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= current_year %> auction value: $<%= @contract.player.auction_value %></small>

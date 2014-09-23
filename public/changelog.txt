@@ -4,6 +4,13 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.7.2 [2014/09/22]
+--------------------------------------------------
+- "Dead money" logic and styles added to contracts, player roster, players#index
+- Changed verbiage of the contracts key to accommodate the addition of "dead money" and made the table one column wider (8)
+- Non-admin GMs may delete their $0 contracts from contracts#index
+
+
 Version 2.7.1 [2014/09/17]
 --------------------------------------------------
 - Fixed logic for who can see the "Edit this contract" link on players#show
