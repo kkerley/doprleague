@@ -109,5 +109,10 @@ class ContractsController < ApplicationController
     @contracts = Contract.where('is_extended = ?', true).where('is_franchised = ?', true ).where('is_bought_out != ?', true).includes(:subcontracts).page params[:page]
   end
 
+  def dead_money
+    # uses helper methods
+    @contracts = Contract.where('is_dead_money = ?', true).includes(:subcontracts).page params[:page]
+  end
+
 
 end

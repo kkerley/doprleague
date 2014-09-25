@@ -39,6 +39,9 @@ class Contract < ActiveRecord::Base
   scope :buyouts, lambda {where(is_bought_out: true)}
   scope :extensions, lambda {where(is_bought_out: true)}
 
+  def owner
+    Team.find(Subcontract.find_by_contract_id_and_contract_year(self.id, current_year).team_id)
+  end
 
   def create_subcontracts
     contracted_team_id = self.contracted_team

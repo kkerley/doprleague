@@ -32,7 +32,8 @@ class TeamsController < ApplicationController
     @pending_and_initiated = @initiated_trades + @pending_trades
     @rejected_trades = @trades.rejected_trades
     
-    @players = @team.get_subcontract_players.uniq.sort_by(&:first_name)
+    @players = @team.get_subcontract_players(true).uniq.sort_by(&:first_name)
+    @players_no_buyouts = @team.get_subcontract_players(false).uniq.sort_by(&:first_name)
     # @players = smart_listing_create(:players, 
     #                                 @team.get_subcontract_players.uniq.sort_by(&:first_name),#.joins(:contracts, :nfl_teams), 
     #                                 #sort_attributes: [[:bye_week, "nfl_teams.bye_week"], [:contract_length, "contracts."]],

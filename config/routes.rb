@@ -51,6 +51,7 @@ KkerleyCom::Application.routes.draw do
       get 'extensions'
       get 'franchises'
       get 'extended_and_franchised'
+      get 'dead_money'
     end
   end
 

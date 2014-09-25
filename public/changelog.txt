@@ -3,6 +3,13 @@ Disciples of Philip Rivers (http://doprleague.info) site CHANGELOG
 Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com)
 ====================================================================================================
 
+Version 2.7.4 [2014/09/24]
+--------------------------------------------------
+- Added "Contracts" tab to teams#show for easier management by GMs
+- Added necessary styles to contracts#index (and team#show#contracts) for dead money contracts
+- Added /contracts/dead_money view
+- Added a link in the GM dropdown to go to the #contracts tab of the team page
+
 
 Version 2.7.3 [2014/09/23]
 --------------------------------------------------

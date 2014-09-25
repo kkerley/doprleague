@@ -63,20 +63,28 @@ class Team < ActiveRecord::Base
   end
   
   
-  def get_subcontract_players
+  def get_subcontract_players(include_buyouts)
     subcontracts = self.subcontracts
     valid_subs = []
-    
-    subcontracts.each do |sub|
-      if sub.contract_year >= current_year
-        valid_subs << sub.player
+
+    if include_buyouts 
+      subcontracts.each do |sub|
+        if sub.contract_year >= current_year
+          valid_subs << sub.player
+        end
+      end
+    else # 
+      subcontracts.each do |sub|
+        if sub.contract_year >= current_year && !sub.contract.is_bought_out
+          valid_subs << sub.player
+        end
       end
     end
     valid_subs
   end
 
   def unique_players
-    self.get_subcontract_players.uniq
+    self.get_subcontract_players(true).uniq
   end
   
   
@@ -174,7 +182,7 @@ class Team < ActiveRecord::Base
 
   #breakdown by bye week
   def players_by_bye_week(bye_week, team)
-    players = self.get_subcontract_players
+    players = self.get_subcontract_players(false)
     players_on_bye = []
 
     players.each do|player|

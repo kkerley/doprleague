@@ -6,6 +6,11 @@
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
   <li class="active"><a href="#roster" data-toggle="tab"><i class="fa fa-list"></i> Roster</a></li>
+  <% if current_user %>
+    <% if current_user == @team.user %>
+      <li><a href="#contracts" data-toggle="tab"><i class="fa fa-file-text-o"></i> Contracts</a></li>
+    <% end %>
+  <% end %>
   <li><a href="#payouts" data-toggle="tab" id="payouts-tab"><i class="fa fa-trophy"></i> Payouts</a></li>
   
   <% if current_user %>
@@ -61,6 +66,28 @@
 			</div><!-- end of col-md-4-->	
   	</div><!-- end of row -->
   </div>
+
+  <% if current_user %>
+    <% if current_user == @team.user %>
+      <div class="tab-pane fade" id="contracts"> 
+        <div class="row">
+          
+
+          <div class="col-md-12"><br />
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <p class="panel-title"><a href="/members"><i class="fa fa-file-text-o"></i> Contracts</a></p>
+              </div>
+              <div class="table-responsive">    
+                <%= render "contracts", players: @players %>
+              </div>
+            </div><!-- end of panel -->
+          </div><!-- end of col-md-4--> 
+        </div><!-- end of row -->
+      </div>
+    <% end %>
+  <% end %>
 
 
   <div class="tab-pane fade" id="payouts"> <!-- have to use class .active in order for amCharts to display properly --> 

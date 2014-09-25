@@ -33,13 +33,17 @@
 						<% else %>
 							<%= both_contracts.count %>
 						<% end %>
-
 					</td>
 				</tr>
 				<tr>
 					<td></td>
 					<td>Bought out:</td>
 					<td><%= link_to buyouts_contracts.count, "/contracts/buyouts" %></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>Dead money:</td>
+					<td><%= link_to dead_money_contracts.count, "/contracts/dead_money" %></td>
 				</tr>
 			</tbody>
 		</table>

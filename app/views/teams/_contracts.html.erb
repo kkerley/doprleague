@@ -1,0 +1,73 @@
+<table class="table table-condensed table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Player</th>
+      <th>Terms</th>
+      <th></th>
+       
+    </tr>
+  </thead>
+  <tbody>
+    <% @players_no_buyouts.each do |player| %> 
+    
+      <tr>
+        <td class="<%= player.current_contract.is_dead_money ? 'dead-money' : player.current_contract.is_bought_out ? 'bought-out' : player.current_contract.is_extended && player.current_contract.is_franchised ? 'extended_and_franchised'  : player.current_contract.is_extended ? 'extended' : player.current_contract.is_franchised ? 'franchised' :'' %>"></td>
+        <td class="<%= player.current_contract.is_dead_money ? 'dead-money' : player.current_contract.is_bought_out ? 'bought-out' : player.current_contract.is_extended && player.current_contract.is_franchised ? 'extended_and_franchised'  : player.current_contract.is_extended ? 'extended' : player.current_contract.is_franchised ? 'franchised' :'' %>"><%=link_to player.current_contract.player.full_name, player.current_contract.player %> 
+          <% if player.current_contract.is_bought_out %>
+            <i class="fa fa-usd"></i> 
+          <% else %>
+
+            <% if player.current_contract.is_extended %>
+              <i class="fa fa-plus-circle"></i> 
+            <% end %>
+
+            <% if player.current_contract.is_franchised %>
+              <i class="fa fa-tag"></i>
+            <% end %>
+
+            <% if player.current_contract.is_dead_money %>
+              <i class="fa fa-lemon-o"></i>
+            <% end %>
+          <% end %>
+
+        </td>
+        <td class="<%= player.current_contract.is_dead_money ? 'dead-money' : player.current_contract.is_bought_out ? 'bought-out' : player.current_contract.is_extended && player.current_contract.is_franchised ? 'extended_and_franchised'  : player.current_contract.is_extended ? 'extended' : player.current_contract.is_franchised ? 'franchised' :'' %>">
+          <% if player.current_contract.is_bought_out %> 
+            <%= link_to "bought out", player.current_contract %> by <%= image_tag Team.find(player.current_contract.bought_out_by_team_id).user.avatar.url(:tiny) %> <%= link_to Team.find(player.current_contract.bought_out_by_team_id).team_name, Team.find(player.current_contract.bought_out_by_team_id) %>
+          <% else %> 
+            <%=link_to "contracted", player.current_contract -%>
+              <% if player.current_contract.player.is_contracted? %> 
+                to <%= image_tag Team.find(player.current_contract.player.this_year.team_id).user.avatar.url(:tiny) %> <%= link_to Team.find(player.current_contract.player.this_year.team_id).team_name, Team.find(player.current_contract.player.this_year.team) %>
+              <% else %>
+                to <%= image_tag Team.find(player.current_contract.subcontracts.last.team_id).user.avatar.url(:tiny) %> <%= link_to Team.find(player.current_contract.subcontracts.last.team_id).team_name, Team.find(player.current_contract.subcontracts.last.team_id) %>
+              <% end %>
+          <% end %>
+            
+            
+          for <strong><%= player.current_contract.full_contract_length %></strong> years starting in <%= player.current_contract.subcontracts.map(&:contract_year).first %> until <%= player.current_contract.contract_start_year + player.current_contract.full_contract_length - 1 %>
+          
+        </td>
+        <% if current_user %>
+          <% if can? :manage, player.current_contract %>
+            <% if current_user.role == "admin" || player.current_contract.player.this_year.salary_amount == 0 %>
+            <td class="<%= player.current_contract.is_dead_money ? 'dead-money' : player.current_contract.is_bought_out ? 'bought-out' : player.current_contract.is_extended && player.current_contract.is_franchised ? 'extended_and_franchised'  : player.current_contract.is_extended ? 'extended' : player.current_contract.is_franchised ? 'franchised' :'' %>">
+                
+                  <%= link_to player.current_contract, confirm: 'Are you sure?', method: :delete, class: 'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %>
+                
+            </td>
+
+            <% else %>
+            <td class="<%= player.current_contract.is_dead_money ? 'dead-money' : player.current_contract.is_bought_out ? 'bought-out' : player.current_contract.is_extended && player.current_contract.is_franchised ? 'extended_and_franchised'  : player.current_contract.is_extended ? 'extended' : player.current_contract.is_franchised ? 'franchised' :'' %>"></td>
+            <% end %>
+          <% else %>
+            <td class="<%= player.current_contract.is_dead_money ? 'dead-money' : player.current_contract.is_bought_out ? 'bought-out' : player.current_contract.is_extended && player.current_contract.is_franchised ? 'extended_and_franchised'  : player.current_contract.is_extended ? 'extended' : player.current_contract.is_franchised ? 'franchised' :'' %>"></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="12"><%= render "/contracts/contract_clauses_key_inline" %></td>
+    </tr>
+  </tbody>
+</table>

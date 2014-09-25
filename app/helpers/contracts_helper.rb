@@ -18,4 +18,8 @@ module ContractsHelper
     def both_contracts
     	@contracts = Contract.where('is_extended = ?', true).where('is_franchised = ?', true ).where('is_bought_out != ?', true).includes(:subcontracts)
     end
+
+     def dead_money_contracts
+        @contracts = Contract.where('is_dead_money = ?', true)
+    end
 end
