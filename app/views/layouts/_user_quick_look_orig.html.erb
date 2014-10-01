@@ -1,8 +1,11 @@
-<div class="menu-wrap">
-  <nav class="menu">
-    <h4 class="bold">GM quick glance <%= image_tag current_user.avatar(:mini), class: "img-rounded" %></h4>
-    <hr />
-  
+<div id="user_quick_look">
+  <div id="user_quick_look_trigger">
+    <i class="fa fa-plug"></i>
+  </div>
+
+  <div id="user_quick_look_content" class="hidden-content">
+    <p class="bold">GM quick glance</p>
+    
     <div class="progress" style="margin-bottom: 0;">
       <div 
       <% if current_user_team_cap_spent_percentage < 60 %>
@@ -15,9 +18,7 @@
         <%= current_user_team_cap_spent_percentage %>%
       </div>
     </div>
-
-    <small class="muted"><strong style="color: #333">$<%= current_user_team_cap_remainder %> left.</strong> Spent: $<%= current_user_team_cap_spent %> (of $<%= current_user_team_budget.calculated_amount %>) for <%= current_year %>.</small>
-    
+    <small class="muted"><strong style="color: #fff">$<%= current_user_team_cap_remainder %> left.</strong> Spent: $<%= current_user_team_cap_spent %> (of $<%= current_user_team_budget.calculated_amount %>) for <%= current_year %>.</small>
     <hr />
     <p><i class="fa fa-plus-circle"></i> 
       <% if current_user_team_actions.has_extended %>
@@ -41,7 +42,5 @@
         Buy out still available.
       <% end %>
     </p>
-  </nav>
+  </div>
 </div>
-
-<button class="menu-button" id="open-button"><i class="fa fa-plug"></i><span>Open Menu</span></button>

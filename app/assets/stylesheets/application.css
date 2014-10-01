@@ -4,8 +4,9 @@
  
  *= require bootstrap-extras
  *= require docs.min
- *= require custom
  *= require events
  *= require activities
  *= require contracts
+ *= require menu_cornermorph
+ *= require custom
  */
