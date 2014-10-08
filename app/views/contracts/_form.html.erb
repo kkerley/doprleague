@@ -9,7 +9,7 @@
     <%= f.text_field :contract_length, :class => 'form-control disabled', disabled: true %>
   <% end %>
 
-  <% if @contract.new_record? %>
+  <% if @contract.new_record? || current_user.is_admin %>
     <%= f.check_box :is_drafted, label: "Drafted?" %>
   <% else %>
     <%= f.check_box :is_drafted, label: "Drafted?", class: "disabled", disabled: true  %>
@@ -67,8 +67,12 @@
   <% elsif @contract.full_contract_length == 1 && @contract.is_drafted %>
     <%= f.check_box :is_longterm_deal, label: "Sign to long-term deal", class: "longterm_check_box" %>
   <% end %>
-      <small class="col-lg-offset-3">Increase the length of this contract before week 8<br /><br /></small>
-    <span class="longterm_length"><%= f.text_field :contract_length, label: "Contract length", class: "form-control" %></span>
+    <small class="col-lg-offset-3">Increase the length of this contract before week 8. Whatever number you enter below <strong>INCLUDES THIS YEAR.</strong><br /><br /></small>
+    <span class="longterm_length">
+      <%= f.text_field :contract_length, label: "Contract length", class: "form-control shortened-field" %>
+      <span class="longterm-computed-length">years, ending in <span class="computed-year"><%= current_year + 1 %></span></span>
+    </span>
+
 
   </div>
   

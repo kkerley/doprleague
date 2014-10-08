@@ -4,6 +4,14 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.7.7 [2014/10/07]
+--------------------------------------------------
+- Changed contracts to be marked as "drafted?" by admins at any time
+- Updated the contracts form to use jQuery to show the contract end date after a number is entered in the contract length box
+- Made the GM Actions panel "franchise tag" box singular (said "eligible for franchsie tags" previously)
+- Added "Eligible to sign by week 8 <current_year>" box to GM actions showing all players drafted in the current year, eligible for longterm deals
+
+
 Version 2.7.6 [2014/09/30]
 --------------------------------------------------
 - Changed the GM Quick Look panel to use the Corner Morph effect from here: http://tympanus.net/codrops/2014/09/16/off-canvas-menu-effects/

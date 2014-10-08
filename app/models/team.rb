@@ -127,6 +127,20 @@ class Team < ActiveRecord::Base
     }
   end
 
+  def available_for_longterm_deal(players, year)
+    players_to_sign = []
+
+    players.each do |player|
+      if player.current_contract.is_drafted? && player.current_contract.contract_start_year == current_year
+        # team = player.this_year.team
+        # if player.current_contract.still_belongs_to?(team)
+          players_to_sign << player
+        # end
+      end
+    end
+    players_to_sign
+  end
+
   def available_for_extension(players)
     players_to_extend = []
 

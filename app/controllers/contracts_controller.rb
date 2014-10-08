@@ -39,6 +39,7 @@ class ContractsController < ApplicationController
   # GET /contracts/1/edit
   def edit
     @contract = Contract.find(params[:id])
+    gon.current_year = current_year
   end
 
   # POST /contracts

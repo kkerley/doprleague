@@ -359,6 +359,22 @@ section {
 
 .longterm_length{
   display: none;
+  position: relative;
+
+  .form-group{
+    display: inline !important;
+  }
+  .shortened-field{
+    display: inline !important;
+    width: 50px;
+  }
+
+  .longterm-computed-length{
+    position: absolute;
+    bottom: 25px;
+    left: 300px;
+    width: 300px;
+  }
 }
 
 
@@ -406,6 +422,8 @@ section {
   visibility: hidden;
   z-index: 10;
 }
+
+
 
 .navbar-form .search-clear{
   right: 45px;
