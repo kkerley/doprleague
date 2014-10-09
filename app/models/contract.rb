@@ -35,7 +35,7 @@ class Contract < ActiveRecord::Base
 
   # validate :franchisable, :extendible
 
-
+  default_scope order("created_at desc")
   scope :buyouts, lambda {where(is_bought_out: true)}
   scope :extensions, lambda {where(is_bought_out: true)}
 

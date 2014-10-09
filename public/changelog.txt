@@ -6,6 +6,11 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 
 Version 2.7.7 [2014/10/07]
 --------------------------------------------------
+- Changed contracts#index to sort by newest first
+
+
+Version 2.7.7 [2014/10/07]
+--------------------------------------------------
 - Changed contracts to be marked as "drafted?" by admins at any time
 - Updated the contracts form to use jQuery to show the contract end date after a number is entered in the contract length box
 - Made the GM Actions panel "franchise tag" box singular (said "eligible for franchsie tags" previously)
