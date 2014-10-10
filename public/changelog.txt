@@ -4,7 +4,13 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
-Version 2.7.7 [2014/10/07]
+Version 2.7.9 [2014/10/09]
+--------------------------------------------------
+- Removed the new GM quick look and replaced with original due to the new one's JS library interfering with DoPR's
+- Removed the offending files from the 'javascripts' directory. Will need to revisit later
+
+
+Version 2.7.8 [2014/10/08]
 --------------------------------------------------
 - Changed contracts#index to sort by newest first
 
