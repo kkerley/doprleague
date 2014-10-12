@@ -56,13 +56,13 @@ $(document).ready(function(){
 		}
 		
 		if($(this).parent().css("right") == divRight){
-			$('#user_quick_look').animate({ 'right': 0 }, 400);
+			$('#user_quick_look').animate({ 'right': 0 }, 150);
 			$('#user_quick_look_content').removeClass("hidden-content");
 		} else {
-			$('#user_quick_look').animate({ 'right': divRight }, 400);
+			$('#user_quick_look').animate({ 'right': divRight }, 150);
 			setTimeout(function(){
 				$('#user_quick_look_content').addClass("hidden-content"); 
-			}, 400);
+			}, 150);
 		}
 	});
 

@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-	before_filter :verify_admin
+  before_filter :verify_admin
 
   def index
   	@announcements = Feature.for_announcements
@@ -16,6 +16,6 @@ class AdminController < ApplicationController
   private
 
   def verify_admin
-  	redirect_to root_url, alert: "You need to be an admin to access that page." unless current_user.is_admin?
+  	redirect_to root_url, alert: "You need to be an admin to access that page." unless current_user && current_user.is_admin?
   end
 end

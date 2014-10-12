@@ -1,0 +1,21 @@
+html, 
+body, 
+.container,
+.scroller {
+    height: 100%;
+}
+ 
+.scroller {
+    overflow-y: scroll;
+}
+ 
+.scroller,
+.scroller-inner {
+    position: relative;
+}
+ 
+.container-fluid.theme-showcase {
+    position: relative;
+    overflow: hidden;
+    
+}

@@ -20,8 +20,17 @@ class ApplicationController < ActionController::Base
 
   # check_authorization
 
+  before_filter :setup_beta
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to new_user_session_url, :alert => exception.message
+  end
+
+  def setup_beta
+    if request.subdomain == "beta"
+      prepend_view_path "app/views/beta"
+      # other beta setup
+    end
   end
   
   private
