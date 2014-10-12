@@ -4,7 +4,12 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
-Version 2.7.10 [2014/10/09]
+Version 2.7.11 [2014/10/12]
+--------------------------------------------------
+- Put necessary "current_user" checks in place for the new layout
+
+
+Version 2.7.10 [2014/10/12]
 --------------------------------------------------
 - Changed the speed of the GM Quick Look panel from 400ms to 150ms
 - Changed to container-fluid to make the site full-width
