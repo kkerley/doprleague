@@ -1,10 +1,14 @@
-<div class="col-md-8 col-lg-7"><br />
+<div class="col-md-8 col-lg-8"><br />
 	
 	<div class="panel panel-default">
 		<div class="panel-heading">
         		
 			<p class="panel-title"><%= image_tag @team.user.avatar(:mini), :border => 0, :style => "display: inline;", :align => "right" %>
 				<i class="fa fa-list"></i> Roster
+				<span class="margin-left-2em roster-buttons">
+          <a href="#" class="btn btn-xs bought-out margin-right-1em"><i class="fa fa-minus-square"></i> Buyouts</a>
+          <a href="#" class="btn btn-xs dead-money margin-right-1em"><i class="fa fa-minus-square"></i> Dead money</a>
+        </span>
 			</p>
 			
     </div>
@@ -20,6 +24,7 @@
 					<th>Bye</th>
 					<th class="hidden-sm hidden-xs">Pos</th>
 					<th>Len</th>
+					<th></th>
 					<th>Auc</th>
 					<th><%= current_year %></th>
 					<th><%= current_year.to_i + 1 %></th>
@@ -34,7 +39,14 @@
 
 					<% if @players.count > 0 %>
 						<% @players.each do |player| %>
-							<tr>
+							<% if player.this_team_contract(@team).is_bought_out %>
+                <tr class="tr-bought-out">
+              <% elsif player.this_team_contract(@team).is_dead_money %>
+                <tr class="tr-dead-money">
+              <% else %>
+                <tr>
+              <% end %>
+							
 								<td></td>
 								<td><%= link_to player.full_name, player %> 
 									
@@ -57,6 +69,11 @@
 								<td><%= player.nfl_team_model.bye_week if player.nfl_team_model  %></td>
 								<td class="hidden-sm hidden-xs"><%= player.position %></td>
 								<td class="hidden-sm hidden-xs"><%= player.current_contract.full_contract_length if player.is_contracted? %></td>
+								<td>
+                  <%  if player.is_contracted? %>
+                    <%= link_to player.current_contract, class:"btn btn-primary btn-xs" do %><i class="fa fa-file-text-o"></i><% end %>
+                  <% end %>
+                </td>
 								<td><span class="badge">$<%= player.auction_value %></span></td>
 								<% player.this_team_contract(@team).subcontracts.current_year_or_later.limit(5).each do |sub| %>
 									<% if sub.team_id == @team.id %>
@@ -82,7 +99,7 @@
 					<tr>
 						<td></td>
 						
-						<td colspan="6"><h4><span class="label label-danger">TOTAL SPENT:</span></h4></td>
+						<td colspan="7"><h4><span class="label label-danger">TOTAL SPENT:</span></h4></td>
 						
 						<td><h4>$<%= @total_cap_current_year %></h4></td>
 						<td><h4>$<%= @total_cap_current_year_plus_1 %></h4></td>
@@ -94,7 +111,7 @@
 					<tr>
 						<td></td>
 						
-						<td colspan="6">Yearly budget amount: </td>
+						<td colspan="7">Yearly budget amount: </td>
 						
 						
 						<td class="<%= @team_budget_current_year_stipulations.count > 0 ? 'modified-budget' : '' %>">
@@ -113,7 +130,7 @@
 					<tr>
 						<td></td>
 						
-						<td colspan="6">Remainder: </td>
+						<td colspan="7">Remainder: </td>
 						
 						<td>$<%= @team_remainder_current_year %></td>
 						<td>$<%= @team_remainder_current_year_plus_1 %></td>

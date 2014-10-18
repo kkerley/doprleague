@@ -6,7 +6,7 @@
     <% if global_notification_count > 0 %>
       (<%= global_notification_count %>)
     <% end %>
-  <% end %>Disciples of Philip Rivers | <%= yield(:title) %>
+  <% end %>BETA Disciples of Philip Rivers | <%= yield(:title) %>
  </title>
 
 <%= include_gon(:init => true) %>
@@ -37,212 +37,19 @@
 <!-- Push Wrapper -->
     <div class="mp-pusher" id="mp-pusher">
 
-        <!-- mp-menu -->
-        <nav id="mp-menu" class="mp-menu mp-overlap">
-            <div class="mp-level">
-                <h2 class="icon icon-world">DoPR</h2>
-                <ul>
-                  <li>
-                    <%= form_tag players_path, style: "width: 250px; margin: 0 0 24px 36px", method: :get do %>
-                      <div class="input-group"> 
-                        <%= search_field_tag :query, params[:query], class: "form-control", placeholder: "Search players", id: "global_search_box" %>
-                        <i class="search-clear fa fa-times-circle"></i>
-                      
-                        <span class="input-group-btn">
-                          <%= button_tag(id: "btn_players_search", class: "btn btn-success") do %>
-                            <i class="fa fa-search"></i>
-                          <% end %>
-                        </span>
-                      </div>
-                    <% end %>
-
-                    </li>
-                  <% if current_user %>
-                    <li class="icon icon-arrow-left">
-                      <a href="#" class="icon icon-user">
-                        <%= image_tag current_user.avatar.url(:mini) %> 
-                      
-                        <span class="label <%= global_notification_count > 0 ? 'label-danger' : 'label-default' %>"><%= global_notification_count %></span>
-                      </a>
-
-                      <div class="mp-level">
-                        <h2 class="icon icon-display">My team</h2>
-                        <a class="mp-back" href="#">back</a>
-                          <ul>
-                            <li id="li-user-first-name"><%= link_to (image_tag current_user.avatar.url(:tiny)) + " " + current_user.team.team_name, current_user.team, class: 'mp-menu-small-link' %></li> 
-                            <li>
-                              <%= link_to("/teams/#{current_user.team.to_param}/#contracts", class: 'mp-menu-small-link') do %>
-                                <i class="fa fa-file-text-o"></i> Contracts
-                              <% end %>
-                            </li>
-                            <li>
-                              <%= link_to("/teams/#{current_user.team.to_param}/#payouts", class: 'mp-menu-small-link') do %>
-                                <i class="fa fa-trophy"></i> Payouts
-                              <% end %>
-                            </li>
-                            <li>
-                              <%= link_to("/teams/#{current_user.team.to_param}/#draftrosters", class: 'mp-menu-small-link') do %>
-                                <i class="fa fa-eye"></i> Draft rosters
-                              <% end %>
-                            </li>
-                            <li>
-                              <%= link_to("/teams/#{current_user.team.to_param}/#trades", class: 'mp-menu-small-link') do %>
-                                <i class="fa fa-exchange"></i> Trades <span class="badge"><%= current_user_pending_trades.count %></span>
-                              <% end %>
-                            </li>
-                            <li>
-                              <%= link_to("/teams/#{current_user.team.to_param}/#inbox", class: 'mp-menu-small-link') do %>
-                                <i class="fa fa-inbox"></i> Messages <span class="badge"><%= current_user_inbox.count %></span>
-                              <% end %>
-                            </li>
-                            
-
-                            <li class="divider"></li>
-                            <li>
-                              <%= link_to edit_user_path(current_user), class: 'mp-menu-small-link' do %>
-                                <i class="fa fa-pencil-square-o"></i> Edit account info
-                              <% end %>
-                            </li>
-
-                            <li id="logout">
-                              <%= link_to(destroy_user_session_url, class: 'mp-menu-small-link', method: :delete) do %>
-                                <i class="fa fa-sign-out"></i> Log out</a>
-                              <% end %>
-                            </li>
-                          </ul>
-                        </div>
-
-                    </li>
-                 
-
-                <% else %>
-                  <li><a href="<%= new_user_session_path %>"><i class="fa fa-sign-in"></i> Login</a></li>
-                <% end %>
-
-
-                <li class="icon icon-arrow-left">
-                  <a href="#"><i class="fa fa-users"></i> Members</a>
-                  <div class="mp-level">
-                    <h2 class="icon icon-display">Members</h2>
-                    <a class="mp-back" href="#">back</a>
-                    <ul>
-                      <li><h2>Philip Division</h2></li>
-                      <% current_philip_members.each do |user|%>
-                        <li>
-                          <%= link_to(user.team, class: 'mp-menu-small-link') do %>
-                            <%= render 'layouts/team_user_dropdown_beta', user: user %>
-                          <% end %>
-                        </li>
-                      <% end %>
-                     
-                      <li><h2>Russell Division</h2></li>
-                      <% current_russell_members.each do |user|%>
-                        
-                        <li>
-                          <%= link_to(user.team, class: 'mp-menu-small-link') do %>
-                            <%= render 'layouts/team_user_dropdown_beta', user: user %>
-                          <% end %>
-                        </li>
-                      <% end %>
-                      
-                    </ul>
-                  </li>
-
-                  <li class="icon icon-arrow-left">
-                      <a href="#"><i class="fa fa-info-circle"></i> League Info</a>
-                       
-                      <div class="mp-level">
-                          <h2><i class="fa fa-info-circle"></i> League Info</h2>
-                          <a class="mp-back" href="#">back</a>
-                          <ul>
-                              
-                            
-                            
-                            <li><h2>NFL-specific</h2></li>
-                            <li><a href="/players" class="mp-menu-small-link"><i class="fa fa-bullhorn"></i> NFL players</a></li>
-                            <li><a href="/contracts" class="mp-menu-small-link"><i class="fa fa-file-text-o"></i> Contracts</a></li>
-                            <li><a href="/salary_progressions" class="mp-menu-small-link"><i class="fa fa-money"></i> Salary progressions</a></li>
-                            <li><a href="/nfl_teams" class="mp-menu-small-link"><i class="fa fa-shield"></i> NFL teams</a></li>
-                            
-
-
-                            <li><h2>League-specific</h2></li>
-                            <li><a href="/constitution" class="mp-menu-small-link"><i class="fa fa-gavel"></i> Constitution</a></li>
-                            <li><a href="/polls" class="mp-menu-small-link"><i class="fa fa-tasks"></i> Facebook polls</a></li>
-                            <li><a href="/trades" class="mp-menu-small-link"><i class="fa fa-exchange"></i> Trades</a></li>
-                            <li><a href="/payouts" class="mp-menu-small-link"><i class="fa fa-trophy"></i> League payouts &amp; awards</a></li>
-                            <li><a href="/standings" class="mp-menu-small-link"><i class="fa fa-sort-numeric-asc"></i> All-time standings</a></li>
-                            <li><a href="/events" class="mp-menu-small-link"><i class="fa fa-calendar"></i> Events</a></li>
-                            <li><a href="/super_bowls" class="mp-menu-small-link"><i class="fa fa-ticket"></i> Super Bowl Picks</a></li>
-                            <li><a href="/faqs" class="mp-menu-small-link"><i class="fa fa-question-circle"></i> FAQs</a></li>
-                           
-                            
-                
-                          </ul>
-                      </div>
-                  </li>
-                  <li><a href="/announcements"><i class="fa fa-exclamation-circle"></i> Announcements</a></li>
-                  <li><a href="/help"><i class="fa fa-life-ring"></i> Site help</a></li>
-                  <% if current_user %>
-                    <% if current_user.role == "admin" %>
-                      <li><a href="/admin"><i class="fa fa-cogs"></i> Admin</a></li>
-                    <% end %>
-                  
-                      <li class="gm-quick-glance">
-                        <p class="bold">GM quick glance</p>
-        
-                        <div class="progress" style="margin-bottom: 0;">
-                          <div 
-                          <% if current_user_team_cap_spent_percentage < 60 %>
-                            class="progress-bar progress-bar-success progress-bar-striped active" 
-                          <% elsif current_user_team_cap_spent_percentage < 60 && current_user_team_cap_spent_percentage > 80 %>
-                            class="progress-bar progress-bar-warning progress-bar-striped active" 
-                          <% else %>
-                            class="progress-bar progress-bar-danger progress-bar-striped active" 
-                          <% end %> role="progressbar" aria-valuenow="<%= current_user_team_cap_spent_percentage %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= current_user_team_cap_spent_percentage %>%">
-                            <%= current_user_team_cap_spent_percentage %>%
-                          </div>
-                        </div>
-                        <small style="color: #fff"><strong>$<%= current_user_team_cap_remainder %> left.</strong> Spent: $<%= current_user_team_cap_spent %> (of $<%= current_user_team_budget.calculated_amount %>) for <%= current_year %>.</small>
-                        <hr />
-                        <p><i class="fa fa-plus-circle"></i> 
-                          <% if current_user_team_actions.has_extended %>
-                            Extended <%= link_to Player.find(current_user_team_actions.extended_player_id).full_name, Player.find(current_user_team_actions.extended_player_id) %>
-                          <% else %>
-                            Extension still available.
-                          <% end %>
-
-                        </p>
-                        <p><i class="fa fa-tag"></i>
-                          <% if current_user_team_actions.has_franchised %>
-                            Franchised <%= link_to Player.find(current_user_team_actions.franchised_player_id).full_name, Player.find(current_user_team_actions.franchised_player_id) %>
-                          <% else %>
-                            Franchise tag still available.
-                          <% end %>
-                        </p>
-                        <p><i class="fa fa-usd"></i>
-                          <% if current_user_team_actions.has_bought_out %>
-                            Bought out <%= link_to Player.find(current_user_team_actions.bought_out_player_id).full_name, Player.find(current_user_team_actions.bought_out_player_id) %>
-                          <% else %>
-                            Buy out still available.
-                          <% end %>
-                        </p>
-                      </li>
-                    <% end %>
-                <!-- ... -->
-            </ul>
-          </div>
-        </nav>
-        <!-- /mp-menu -->
+        <%= render "/layouts/mp_menu" %>
 
     
       
           <div class="scroller"><!-- this is for emulating position fixed of the nav -->
             <div class="scroller-inner">
-              <a href="#" id="trigger"><img src="/images/dopr_mini_alt.png" alt="Disciples of Philip Rivers Fantasy Football League" border="0" class="img-responsive" /></a>
-              <div class="container-fluid">
+              <div class="sticky-header">
+                <a href="#" id="trigger"><img src="/images/dopr_mini_alt.png" alt="Disciples of Philip Rivers Fantasy Football League" border="0" class="img-responsive" /></a>
+              </div>
 
-                  <a id="top"></a>
+              <div class="container-fluid container-fluid-padding-top">
+
+                  <a id="top" class="margin-top-2em"></a>
 
                   <% if flash[:notice] %>
                   <br />
@@ -279,21 +86,21 @@
                   <div class="container-fluid">
                     <div class="row">
                       <div class="col-md-12">
-                        <p class="h5 muted" style="font-weight: normal;">
+                        <p class="muted" style="font-weight: normal;">
                           <% if current_user %>
                             Hey, <%= link_to current_user.display_name, current_user.team %> (<%= current_user.email %>) | <i class="fa fa-pencil-square-o"></i> <%= link_to "Edit profile", edit_user_path(current_user) %>
                             
                           <% else %>
                             <a href="<%= new_user_session_path %>"><i class="fa fa-sign-in"></i> Login</a>
-                          <% end %> 
+                          <% end %> | <a href="/">Home</a>
                         </p>
                     
                     
-                        <p class="h6 muted" style="font-weight: normal;">Site version: <strong>2.7.10</strong>. See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
+                       
                         
-                        <p class="muted credit">This site was built, is maintained and constantly updated by <a href="http://kkerley.com" style="color: #999;" target="_blank">Kyle Kerley</a> using a custom Ruby on Rails 3.2.18-powered content management system structured by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and served up on nginx through Phusion Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/?refcode=f069f7096a0a" target="_blank">Digital Ocean</a>.</p>
-                        
-                        <p class="muted credit">&copy; 2013-<%= current_year_footer %> <a href="http://kkerley.com" style="color: #999;" target="_blank">Kyle Kerley</a>. All rights reserved.</p>
+                        <p class="muted">This site was built, is maintained and constantly updated by <a href="http://kkerley.com" style="color: #999;" target="_blank">Kyle Kerley</a> using a custom Ruby on Rails 3.2.18-powered content management system structured by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and served up on nginx through Phusion Passenger using the wonderfully cheap, fast and reliable VPS services of <a href="https://www.digitalocean.com/?refcode=f069f7096a0a" target="_blank">Digital Ocean</a>.</p>
+                         <p class="muted">Site version: <strong><%= site_version %> BETA</strong>.<br />See the <a href="/changelog.txt" target="_blank"><i class="fa fa-puzzle-piece"></i> changelog</a> for details.</p> 
+                        <p class="muted">&copy; 2013-<%= current_year_footer %> <a href="http://kkerley.com" style="color: #999;" target="_blank">Kyle Kerley</a>. All rights reserved.</p>
                         
                       </div>
                     </div>

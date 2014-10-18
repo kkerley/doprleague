@@ -41,6 +41,8 @@ GEM
       activerecord (>= 3.0)
     addressable (2.3.6)
     arel (3.0.3)
+    autoprefixer-rails (3.1.0.20140911)
+      execjs
     bcrypt (3.1.7)
     best_in_place (2.1.0)
       jquery-rails
@@ -50,6 +52,8 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     builder (3.0.4)
     bullet (4.11.3)
       activesupport (>= 3.0.0)
@@ -301,9 +305,11 @@ PLATFORMS
 DEPENDENCIES
   RedCloth (~> 4.2.3)
   acts_as_list
+  autoprefixer-rails
   best_in_place
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 3.2.0)
   bullet
   cancan
   capistrano (~> 3.1.0)

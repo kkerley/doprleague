@@ -49,35 +49,35 @@ ul.ul-events li{
 }
 
 .margin-top-0{ 
-	margin-top: 0;
+	margin-top: 0 !important;
 }
 
 .margin-top-1em{
-	margin-top: 1em;
+	margin-top: 1em !important;
 }
 
 .margin-top-2em{
-	margin-top: 2em;
+	margin-top: 2em !important;
 }
 
 .margin-top-3em{
-	margin-top: 3em;
+	margin-top: 3em !important;
 }
 
 .margin-top-4em{
-	margin-top: 4em;
+	margin-top: 4em !important;
 }
 
 .margin-top-5em{
-	margin-top: 5em;
+	margin-top: 5em !important;
 }
 
 .margin-top-6em{
-	margin-top: 6em;
+	margin-top: 6em !important;
 }
 
 .margin-top-7em{
-	margin-top: 7em;
+	margin-top: 7em !important;
 }
 
 .margin-bottom-0{
@@ -104,6 +104,10 @@ ul.ul-events li{
 	margin-left: 1em !important;
 }
 
+.margin-left-1pt5em{
+  margin-left: 1.5em !important;
+}
+
 .margin-left-2em{
 	margin-left: 2em !important;
 }
@@ -114,6 +118,22 @@ ul.ul-events li{
 
 .margin-right-1em{
 	margin-right: 1em !important;
+}
+
+.padding-top-1em{
+  padding-top: 1em !important;
+}
+
+.padding-top-2em{
+  padding-top: 2em !important;
+}
+
+.padding-top-3em{
+  padding-top: 3em !important;
+}
+
+.padding-top-4em{
+  padding-top: 4em !important;
 }
 
 .bold{
@@ -183,22 +203,22 @@ fieldset.contract-fields{
 
 .bought-out{
 	background-color: #ff9f9f !important;
-	/*color: #5800a3;*/
+	color: #f42a24;
 }
 
 .extended{
 	background-color: #d6ffd4 !important;
-	/*color: #056e00;*/
+	color: #056e00;
 }
 
 .franchised{
 	background-color: #fff1a6 !important;
-	/*color: #a76a00;*/
+	color: #a76a00;
 }
 
 .extended_and_franchised{
 	background-color: #e1bcff !important;
-	/*color: #1383c3;*/
+	color: #1383c3;
 }
 
 .dead-money{
@@ -429,6 +449,41 @@ section {
   right: 45px;
 }
 
+.important-date{
+  
+  border: 1px solid #222;
+
+  .important-date-datetime{
+    background-color: #555;
+    color: #fff;
+    display: block;
+    font-size: 1.8em;
+    //font-weight: bold;
+    padding: 10px;
+  }
+
+  .important-date-details{
+    color: #333;
+    display: block;
+    
+    padding: 10px;
+  }
+}
+
+hr{
+  border-top: 1px solid #ccc;
+}
+
+
+a.btn.btn-xs.bought-out, a.btn.btn-xs.bought-out:visited{
+  color: #fff;
+}
+
+a.btn.btn-xs.bought-out:hover{
+  color: #f42a24;
+}
+
+
 @media all and (max-width: 1199px){
   body{
     background-image: url('/images/bg_dopr_top_1199.png');
@@ -452,8 +507,4 @@ section {
     right: -244px;
     width: 300px;
   }
-}
-
-hr{
-  border-top: 1px solid #ccc;
 }

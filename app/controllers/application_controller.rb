@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
                 :current_user_team_cap_remainder, 
                 :current_user_team_cap_spent, 
                 :current_user_team_cap_spent_percentage, 
-                :global_notification_count
+                :global_notification_count,
+                :site_version
 
   # check_authorization
 
@@ -34,6 +35,11 @@ class ApplicationController < ActionController::Base
   end
   
   private
+
+  def site_version
+    '2.7.12'
+  end
+
   def not_authenticated
     redirect_to new_user_session_url, :alert => "Log in to view this page."
   end

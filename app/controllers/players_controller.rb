@@ -154,6 +154,8 @@ class PlayersController < ApplicationController
 
   def search
     # just a search form and some info about where to find site updates now
+    @contracts = Contract.order("updated_at desc").limit(10)
+    @announcement = Feature.for_announcements.published.first
   end
 
   private

@@ -9,73 +9,80 @@
     <%= f.text_field :contract_length, :class => 'form-control disabled', disabled: true %>
   <% end %>
 
-  <% if @contract.new_record? || current_user.is_admin %>
+  <% if @contract.new_record? || current_user.role == "admin" %>
     <%= f.check_box :is_drafted, label: "Drafted?" %>
   <% else %>
     <%= f.check_box :is_drafted, label: "Drafted?", class: "disabled", disabled: true  %>
   <% end %>
       <small class="col-lg-offset-3">Only drafted players may be signed to long-term contracts</small>
     <br /><br />
-
-  <% if @contract.extendible %>
-    <% if current_user.role == "admin" || !current_user.team.current_year_actions.has_extended %>
-      <%= f.check_box :is_extended, label: "Apply extension" %>
-    <% else %>
-      <%= f.check_box :is_extended, label: "Apply extension", class: "disabled", disabled: true %>
-    <% end %>
-  <% else %>
-   <%= f.check_box :is_extended, label: "Apply extension", class: "disabled", disabled: true %>
-  <% end %>
-    <small class="col-lg-offset-3">Adds one more year to the contract using the progression from the contract's creation</small>
-  <br /><br />
-
-
-  <% if @contract.franchisable %>
-    <% if current_user.role == "admin" || !current_user.team.current_year_actions.has_franchised %>
-      <%= f.check_box :is_franchised, label: "Apply franchise tag" %>
-    <% else %>
-      <%= f.check_box :is_franchised, label: "Apply franchise tag", class: "disabled", disabled: true %>
-    <% end %>
-  <% else %>
-   <%= f.check_box :is_franchised, label: "Apply franchise tag", class: "disabled", disabled: true %>
-  <% end %>
-    <small class="col-lg-offset-3">Only usable on contracts expiring this year or mid-season pickups. Salary is average of top 5 of this player's position</small>
-  <br /><br />
-
-  <% if current_user.role == "admin" || !current_user.team.current_year_actions.has_bought_out %>
-  <div class="alert alert-warning">
-    <%= f.check_box :is_bought_out, label: "Apply buy out clause" %>
-      <small class="col-lg-offset-3">Buyout clause applied to remaining contract years for 60% of the contracted amount<br /><br /></small>
-    <% if current_user.role == "admin" %>
-    <%= f.select(:bought_out_by_team_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { include_blank: true }, { class: "form-control", label: "Bought out by" })%>
-      <small class="col-lg-offset-3">Only necessary if player is bought out. Player may NOT be picked up again by buyout team until all contracts have expired.</small>
-    <% else %>
-      <%= f.hidden_field :bought_out_by_team_id, value: current_user.team.id %>
-    <% end %>
-  </div>
-  <% else %>
-  <div class="alert alert-warning">
-    <%= f.check_box :is_bought_out, label: "Apply buy out clause", class: "disabled", disabled: true %>
-      <small class="col-lg-offset-3">Buyout clause applied to remaining contract years for 60% of the contracted amount<br /><br /></small>
-  </div>
-  <% end %>
-
   
-  <div class="alert alert-info">
-  <% if @contract.full_contract_length > 1 || !@contract.is_drafted %>
-    <%= f.check_box :is_longterm_deal, label: "Sign to long-term deal", class: "longterm_check_box disabled", disabled: true %>
-  <% elsif @contract.full_contract_length == 1 && @contract.is_drafted %>
-    <%= f.check_box :is_longterm_deal, label: "Sign to long-term deal", class: "longterm_check_box" %>
+    <% if @contract.extendible %>
+      <% if current_user.role == "admin" || !@contract.is_dead_money && !current_user.team.current_year_actions.has_extended %>
+        <%= f.check_box :is_extended, label: "Apply extension" %>
+      <% else %>
+        <%= f.check_box :is_extended, label: "Apply extension", class: "disabled", disabled: true %>
+      <% end %>
+    <% else %>
+     <%= f.check_box :is_extended, label: "Apply extension", class: "disabled", disabled: true %>
+    <% end %>
+      <small class="col-lg-offset-3">Adds one more year to the contract using the progression from the contract's creation</small>
+    <br /><br />
+
+
+    <% if @contract.franchisable %>
+      <% if current_user.role == "admin" || !@contract.is_dead_money && !current_user.team.current_year_actions.has_franchised %>
+        <%= f.check_box :is_franchised, label: "Apply franchise tag" %>
+      <% else %>
+        <%= f.check_box :is_franchised, label: "Apply franchise tag", class: "disabled", disabled: true %>
+      <% end %>
+    <% else %>
+     <%= f.check_box :is_franchised, label: "Apply franchise tag", class: "disabled", disabled: true %>
+    <% end %>
+      <small class="col-lg-offset-3">Only usable on contracts expiring this year or mid-season pickups. Salary is average of top 5 of this player's position</small>
+    <br /><br />
+
+    <% if current_user.role == "admin" || !@contract.is_dead_money && !current_user.team.current_year_actions.has_bought_out %>
+    <div class="alert alert-warning">
+      <%= f.check_box :is_bought_out, label: "Apply buy out clause" %>
+        <small class="col-lg-offset-3">Buyout clause applied to remaining contract years for 60% of the contracted amount<br /><br /></small>
+      <% if current_user.role == "admin" %>
+      <%= f.select(:bought_out_by_team_id, Team.current_league_members.map {|c| [c.team_name, c.id]}, { include_blank: true }, { class: "form-control", label: "Bought out by" })%>
+        <small class="col-lg-offset-3">Only necessary if player is bought out. Player may NOT be picked up again by buyout team until all contracts have expired.</small>
+      <% else %>
+        <%= f.hidden_field :bought_out_by_team_id, value: current_user.team.id %>
+      <% end %>
+    </div>
+    <% else %>
+    <div class="alert alert-warning">
+      <%= f.check_box :is_bought_out, label: "Apply buy out clause", class: "disabled", disabled: true %>
+        <small class="col-lg-offset-3">Buyout clause applied to remaining contract years for 60% of the contracted amount<br /><br /></small>
+    </div>
+    <% end %>
+
+    
+    <div class="alert alert-info">
+    <% if @contract.full_contract_length > 1 || !@contract.is_drafted || @contract.is_dead_money %>
+      <%= f.check_box :is_longterm_deal, label: "Sign to long-term deal", class: "longterm_check_box disabled", disabled: true %>
+    <% elsif @contract.full_contract_length == 1 && @contract.is_drafted %>
+      <%= f.check_box :is_longterm_deal, label: "Sign to long-term deal", class: "longterm_check_box" %>
+    <% end %>
+      <small class="col-lg-offset-3">Increase the length of this contract before week 8. Whatever number you enter below <strong>INCLUDES THIS YEAR.</strong><br /><br /></small>
+      <span class="longterm_length">
+        <%= f.text_field :contract_length, label: "Contract length", class: "form-control shortened-field" %>
+        <span class="longterm-computed-length">years, ending in <span class="computed-year"><%= current_year + 1 %></span></span>
+      </span>
+
+
+    </div>
+  <% if @contract.is_dead_money %>
+    <span class="col-lg-offset-3 h4">Claim dead money contract<br /><br /></span>
+    <%= f.check_box :pick_up_dead_money, label: "Pick up this contract" %>
+
+    <span class="col-lg-offset-3">...and uncheck the box below.<br /><br /></span>
+    <%= f.hidden_field :pick_up_dead_money_team_id, value: current_user.team.id %>
   <% end %>
-    <small class="col-lg-offset-3">Increase the length of this contract before week 8. Whatever number you enter below <strong>INCLUDES THIS YEAR.</strong><br /><br /></small>
-    <span class="longterm_length">
-      <%= f.text_field :contract_length, label: "Contract length", class: "form-control shortened-field" %>
-      <span class="longterm-computed-length">years, ending in <span class="computed-year"><%= current_year + 1 %></span></span>
-    </span>
 
-
-  </div>
-  
   <%= f.check_box :is_dead_money, label: "Dead money" %>
     <small class="col-lg-offset-3">Denotes that this player is on your bankroll but not your roster</small>
   <br /><br />

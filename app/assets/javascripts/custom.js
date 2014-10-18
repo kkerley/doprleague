@@ -83,5 +83,14 @@ $(document).ready(function(){
     //alert(computed_year);
     $('span.longterm-computed-length span.computed-year').html(computed_year).animate({'color': '#c00'}, 300);
   });
+
+  // Showing/hiding buyouts and dead money on roster
+  $('a.btn.btn-xs.bought-out').on('click', function(){
+  	$('tr.tr-bought-out').toggle();
+	});
+
+	$('a.btn.btn-xs.dead-money').on('click', function(){
+  	$('tr.tr-dead-money').toggle();
+	});
   
 });

@@ -165,13 +165,17 @@ html, body, .container-fluid, .scroller {
 	list-style: none;
 }
 
-.mp-menu h2 {
+.mp-menu h2, .mp-menu h3 {
 	margin: 0;
 	padding: 1em;
 	color: rgba(0,0,0,0.4);
 	text-shadow: 0 0 1px rgba(0,0,0,0.1);
 	font-weight: 300;
 	font-size: 2em;
+}
+
+.mp-menu h3 { 
+	font-size: 1.5em;
 }
 
 .mp-menu.mp-overlap h2::before {

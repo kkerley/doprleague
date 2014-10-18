@@ -27,6 +27,8 @@ gem 'smart_listing'
 gem 'haml'
 # gem 'dependent-fields-rails'
 gem 'goldiloader'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 
 
 # Gems used only for assets and not required

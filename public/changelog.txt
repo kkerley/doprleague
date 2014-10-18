@@ -4,6 +4,24 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.7.12 [2014/10/12]
+--------------------------------------------------
+- Added site_version method to application_controller.rb
+- Added links to switch between beta/regular version of the site
+- Various aeshetic updates (color changes, global squaring of rounded borders/corners)
+- Installed bootstrap-sass, autoprefixer-rails gems for easier customization of the stylesheets
+- BETA: Added "BETA" to the logo for the beta version
+- BETA: Added "BETA" to the page title of the beta version's application.html.erb
+- BETA: Put the mp-menu in its own partial
+- BETA: Moved the GM Quick Glance info right below the link to the logged-in GM's page
+- BETA: Added a "Home" link to the menu
+- BETA: Added important upcoming dates to the homepage
+- BETA: made header sticky
+- BOTH: Added column to get right to a player's contract on teams#show
+- BOTH: Added jQuery to show/hide bought out and dead money contracts on teams#show
+- BOTH: dead money contracts can now be edited by anyone in order to make roster management easier
+
+
 Version 2.7.11 [2014/10/12]
 --------------------------------------------------
 - Put necessary "current_user" checks in place for the new layout

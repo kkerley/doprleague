@@ -1,0 +1,22 @@
+/*
+ *= require jquery.ui.all
+ 
+ *= require docs.min
+ *= require events
+ *= require activities
+ *= require contracts
+ *= require menu_cornermorph
+ *= require custom
+ */
+
+// colors
+$brand-primary: #1483c4;
+$brand-danger: #f42a24;
+$brand-warning: #ffb400;
+
+$link-hover-color: lighten($brand-primary, 20%);
+
+$border-radius-base: 0;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
