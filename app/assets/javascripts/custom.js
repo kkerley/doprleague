@@ -79,7 +79,7 @@ $(document).ready(function(){
 
   // Dynamically updating the contract end date on contracts#edit form when signing a longterm deal
   $('.shortened-field').on('input propertychange paste', function(){
-    var computed_year = Number(gon.current_year) + Number($(this).val());
+    var computed_year = Number(gon.current_year) + Number($(this).val() - 1);
     //alert(computed_year);
     $('span.longterm-computed-length span.computed-year').html(computed_year).animate({'color': '#c00'}, 300);
   });

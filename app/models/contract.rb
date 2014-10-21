@@ -30,10 +30,10 @@ class Contract < ActiveRecord::Base
 
   after_create :create_subcontracts
 
-  after_update :sign_longterm, :if => Proc.new { |a| a.is_longterm_deal_changed? }
-  after_update :check_for_buyout, :if => Proc.new { |a| a.is_bought_out_changed? }
-  after_update :check_for_extension, :if => Proc.new { |a| a.is_extended_changed? }
-  after_update :check_for_franchise, :if => Proc.new { |a| a.is_franchised_changed? }
+  after_update :sign_longterm,        :if => Proc.new { |a| a.is_longterm_deal_changed? }
+  after_update :check_for_buyout,     :if => Proc.new { |a| a.is_bought_out_changed? }
+  after_update :check_for_extension,  :if => Proc.new { |a| a.is_extended_changed? }
+  after_update :check_for_franchise,  :if => Proc.new { |a| a.is_franchised_changed? }
   after_update :check_for_dead_money, :if => Proc.new { |a| a.is_dead_money_changed? }
 
   # validate :franchisable, :extendible
@@ -193,7 +193,7 @@ class Contract < ActiveRecord::Base
   end
 
   def check_for_dead_money
-    if !self.is_dead_money
+    if !self.is_dead_money && self.pick_up_dead_money
       self.subcontracts.each do |sub|
         if sub.contract_year >= current_year
           sub.team_id = self.pick_up_dead_money_team_id

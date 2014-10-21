@@ -4,6 +4,12 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.7.15 [2014/10/20]
+--------------------------------------------------
+- Fixed an issue with the longterm contract deal JS miscalculating the end year 
+- Fixed an issue with admins creating contracts causing the existing subcontract's team_id to nil out
+
+
 Version 2.7.14 [2014/10/18]
 --------------------------------------------------
 - BETA:  Removed errant show.html.erb for Team that ended up in the players directory
