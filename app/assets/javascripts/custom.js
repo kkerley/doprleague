@@ -85,11 +85,13 @@ $(document).ready(function(){
   });
 
   // Showing/hiding buyouts and dead money on roster
-  $('a.btn.btn-xs.bought-out').on('click', function(){
+  $('a.btn.btn-xs.bought-out').on('click', function(e){
+  	e.preventDefault();
   	$('tr.tr-bought-out').toggle();
 	});
 
-	$('a.btn.btn-xs.dead-money').on('click', function(){
+	$('a.btn.btn-xs.dead-money').on('click', function(e){
+		e.preventDefault();
   	$('tr.tr-dead-money').toggle();
 	});
   
