@@ -4,6 +4,11 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.7.16 [2014/10/25]
+--------------------------------------------------
+- Changed code on players#edit contract fields to allow admins to mark contracts as being drafted
+
+
 Version 2.7.15 [2014/10/20]
 --------------------------------------------------
 - Fixed an issue with the longterm contract deal JS miscalculating the end year 
