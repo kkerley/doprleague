@@ -65,12 +65,20 @@
     <% if @contract.full_contract_length > 1 || !@contract.is_drafted || @contract.is_dead_money %>
       <%= f.check_box :is_longterm_deal, label: "Sign to long-term deal", class: "longterm_check_box disabled", disabled: true %>
     <% elsif @contract.full_contract_length == 1 && @contract.is_drafted %>
-      <%= f.check_box :is_longterm_deal, label: "Sign to long-term deal", class: "longterm_check_box" %>
+      <% if current_user.role == "admin" %>
+        <%= f.check_box :is_longterm_deal, label: "Sign to long-term deal", class: "longterm_check_box" %>
+      <% else %>
+        <%= f.check_box :is_longterm_deal, label: "Sign to long-term deal", class: "longterm_check_box disabled", disabled: true %>
+      <% end %>
     <% end %>
       <small class="col-lg-offset-3">Increase the length of this contract before week 8. Whatever number you enter below <strong>INCLUDES THIS YEAR.</strong><br /><br /></small>
       <span class="longterm_length">
-        <%= f.text_field :contract_length, label: "Contract length", class: "form-control shortened-field" %>
-        <span class="longterm-computed-length">years, ending in <span class="computed-year"><%= current_year + 1 %></span></span>
+        <% if current_user.role == "admin" %>
+          <%= f.text_field :contract_length, label: "Contract length", class: "form-control shortened-field" %>
+        <% else %>
+          <%= f.text_field :contract_length, label: "Contract length", class: "form-control shortened-field disabled", disabled: true %>
+        <% end %>
+        <span class="longterm-computed-length">years, ending after the <span class="computed-year"><%= current_year %></span> season</span>
       </span>
 
 

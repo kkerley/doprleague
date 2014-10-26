@@ -116,9 +116,13 @@
 														<% if @player.is_contracted? %>
 															<% if can? :manage, @player.current_contract %>
 																<i class="fa fa-pencil-square-o fa-lg"></i> <%= link_to "Edit this contract for #{@player.full_name}", edit_contract_path(contract) %> | 
+																<% if current_user.role == "admin" || @player.current_contract.player.this_year.salary_amount == 0 %>
+			                  					<%= link_to @player.current_contract, confirm: 'Are you sure?', method: :delete, class: 'label label-danger' do %><i class="fa fa-minus-circle"></i> Delete<% end %> |
+			                  				<% end %>
 															<% end %>
 														<% end %>
-													<% end %> <%= link_to "View this contract", contract %>
+													<% end %> <%= link_to "View this contract", contract %> 
+													
 												</td>
 											</tr>
 									</tbody>

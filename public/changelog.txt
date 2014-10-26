@@ -4,6 +4,13 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.7.17 [2014/10/26]
+--------------------------------------------------
+- Contracts may now only be signed to longterm deals by admins
+- Added a link on players#show to delete the current conrtract to remove a few steps from the process
+- Updated verbiage when signing to longterm deal to make it less confusing/make sense
+
+
 Version 2.7.16 [2014/10/25]
 --------------------------------------------------
 - Changed code on players#edit contract fields to allow admins to mark contracts as being drafted
