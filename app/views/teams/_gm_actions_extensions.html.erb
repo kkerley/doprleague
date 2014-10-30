@@ -1,0 +1,29 @@
+<div class="gm-actions-extensions">
+  <p class="h4"><i class="fa fa-plus-circle"></i> Eligible for extension:</p>
+  <div class="alert alert-success">
+    <% if @last_chance_to_extend.count > 0 %>
+     <i class="fa fa-clock-o"></i> Last chance
+     <hr style="margin: .33333333em 0 .5em 0;" />
+      <ul>
+        <% @last_chance_to_extend.each do |p| %>
+          <li><i class="fa fa-plus-circle"></i> <%= link_to p.full_name, p, class: "alert-link" %> (<%= p.position %>) for&nbsp;<span class="extended" style="font-weight: bold;">&nbsp;$<%= p.to_extend_now %>&nbsp;</span>&nbsp;in <%= p.current_contract.full_contract_length + p.current_contract.subcontracts.first.contract_year %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      No players eligible to extend this season.
+    <% end %>
+  </div>
+  
+  <% if @players_to_extend.count > 0 %>
+    <div class="indent-left-1em">
+      <p class="margin-top-1em"><a name="extension" class="expand" style="cursor: pointer;"><%= @players_to_extend.count %> other extension option(s) <i class="fa fa-angle-down only-this"></i></a></p>
+      <div class="hidden-content">
+        <ul>
+          <% @players_to_extend.each do |p| %>
+            <li><i class="fa fa-plus-circle"></i> <%= link_to p.full_name, p %> (<%= p.position %>) for&nbsp;<span class="extended" style="font-weight: bold;">&nbsp;$<%= p.to_extend_now %>&nbsp;</span>&nbsp;in <%= p.current_contract.full_contract_length + p.current_contract.subcontracts.first.contract_year %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>  

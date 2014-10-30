@@ -33,7 +33,7 @@ ul.ul-events li{
 	margin-top: -40px;
 }
 
-.panel-body ul {
+.panel-body ul, .gm-actions-extensions ul, .gm-actions-franchises ul, .gm-actions-longterm ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -243,6 +243,11 @@ fieldset.contract-fields{
 	padding-left: 10px;
 	padding-right: 10px; 
 	border-right: 1px solid #ccc;
+}
+
+.roster-breakdown-by-player-row:last-child{
+  padding-right: 0;
+  border-right: none;
 }
 
 .vert-align-mid{

@@ -1,0 +1,14 @@
+<div class="gm-actions-longterm">
+  <p class="h4"><i class="fa fa-file-text-o"></i> Eligible to sign by week 8 <%= current_year %>:</p>
+  <div class="alert alert-info" role="alert">
+    <% if @players_to_sign.count > 0 %>
+      <ul>
+        <% @players_to_sign.each do |p| %>
+          <li><i class="fa fa-tag"></i> <%= link_to p.full_name, p, class: "alert-link" %> (<%= p.position %>) starting at&nbsp;<span style="font-weight: bold;">&nbsp;$<%= p.auction_value %>&nbsp;</span></li>
+        <% end %>
+      </ul>
+    <% else %>
+      No players eligible to sign longterm this season.
+    <% end %>
+  </div>  
+</div>

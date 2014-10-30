@@ -20,7 +20,7 @@
                     </li>
                   <% if current_user %>
                     <li class="icon icon-arrow-left">
-                      <a href="#" class="icon icon-user">
+                      <a href="#">
                         <%= image_tag current_user.avatar.url(:mini) %> 
                       
                         <span class="label <%= global_notification_count > 0 ? 'label-danger' : 'label-default' %>"><%= global_notification_count %></span>

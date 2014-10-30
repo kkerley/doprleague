@@ -23,9 +23,8 @@ $(document).ready(function(){
 		
 	});
 	
-	
-	$("div.alert-success").fadeOut(2000);
-	$("div.alert-danger").fadeOut(2000);
+	// new custom class for success/error alerts that should fade, allowing the styles to be used elsewhere
+	$("div.alert-fade").fadeOut(2000);
 
 
 

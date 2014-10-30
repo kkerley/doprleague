@@ -49,10 +49,10 @@
 				
 				<div class="panel panel-default">
 					<div class="panel-heading">
-			    	<p class="panel-title"><a href="/members"><i class="fa fa-cog"></i> GM actions</a></p>
+			    	<p class="panel-title"><i class="fa fa-cog"></i> GM actions</p>
 			  	</div>
   				<div class="panel-body"> 
-  					<%= render 'gm_actions_extensions_franchises' %>
+  					<%= render 'gm_actions' %>
   					<% if current_user %>
   						<% if current_user == @team.user %>
   							<hr />

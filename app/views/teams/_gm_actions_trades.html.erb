@@ -1,14 +1,8 @@
 <div class="row">
-	<div class="col-sm-7">
+	<div class="col-sm-12">
 		<p class="h4"><i class="fa fa-exchange"></i> Pending trades</p>
 	</div>
-	<div class="col-sm-3">
-		<p class="h4">
-			<%= link_to new_trade_path, class: "btn btn-success btn-xs" do %>
-				<i class="fa fa-plus-circle"></i> New trade 
-			<% end %>
-		</p>
-	</div>
+	
 </div>
 <div class="row">
 	<div id="gm_trades" class="col-md-12">
@@ -29,5 +23,11 @@
 		<% else %>
 			<p>No pending trades.</p>
 		<% end %>
+
+		<p class="h4">
+			<%= link_to new_trade_path, class: "btn btn-success btn-xs" do %>
+				<i class="fa fa-plus-circle"></i> New trade 
+			<% end %>
+		</p>
 	</div>
 </div>

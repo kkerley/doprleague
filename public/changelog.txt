@@ -4,6 +4,18 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.7.18 [2014/10/28]
+--------------------------------------------------
+- Removed link to "/members" from the title of the GM Actions panel
+- BETA: removed "important date" for 10/26 from the homepage
+- BOTH: A number of aesthetic changes
+- BOTH: Removed borders from all tables
+- BOTH: Removed the right-border from the final item in the roster breakdown by x tables
+- BOTH: Removed the "eligible to sign by week 8" box from the GM Actions panel on teams#show
+- BOTH: created new partials to better manage the GM Actions
+- BOTH: made a new class for jQuery to target to make alerts fade when appropriate to allow those styles to be used elsewhere on the site
+
+
 Version 2.7.17 [2014/10/26]
 --------------------------------------------------
 - Contracts may now only be signed to longterm deals by admins

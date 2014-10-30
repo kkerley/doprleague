@@ -18,5 +18,7 @@ $link-hover-color: lighten($brand-primary, 20%);
 
 $border-radius-base: 0;
 
+$table-border-color: none;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
