@@ -1,0 +1,40 @@
+<div class="gm-actions-super-bowl-picks">
+  <% if @current_sb.nil? %>
+  <p class="h4"><i class="fa fa-ticket"></i> Super Bowl pick</p>
+  <div class="indent-left-1em">
+    <p>No current Super Bowl</p>
+  </div>
+  <% else %>
+
+    <p class="h4"><i class="fa fa-ticket"></i> <%= @current_sb.year %> Super Bowl pick</p>
+
+    <div class="row">
+        <div id="enter_pick" class="col-md-12">
+          <div class="indent-left-1em">
+            <% unless @current_user_submitted %>
+              <p>No pick entered yet.</p>
+              <p>
+                <%= link_to new_super_bowl_pick_path, class: "btn btn-primary btn-xs", id: "new_pick", remote: true do %>
+                  <i class="fa fa-plus-circle"></i> Submit your pick now
+                <% end %>
+              </p>
+               
+            <% else %>
+            <div class="row">
+              <div class="col-sm-12">
+                <%= link_to (image_tag @my_pick.nfl_team.avatar(:thumb)), @my_pick.nfl_team if @my_pick.nfl_team %>
+              </div>
+
+              <div class="col-sm-12">
+                <p>
+                  You picked the <%= image_tag @my_pick.nfl_team.avatar(:tiny) if @my_pick.nfl_team %> <strong><%= @my_pick.nfl_team.full_team_name if @my_pick.nfl_team %></strong> to win the <%= link_to "#{@current_sb.year} Super Bowl", @current_sb %>. 
+                <% if @current_sb.tie_breaker %><%= link_to "Edit", edit_super_bowl_pick_path(@my_pick) %><% end %></p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <div id="current_picks_list" class="col-md-12"></div>
+    </div>
+  <% end %>
+  </div>

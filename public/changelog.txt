@@ -4,6 +4,17 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.7.20 [2014/11/02]
+--------------------------------------------------
+
+
+
+Version 2.7.19 [2014/11/02]
+--------------------------------------------------
+- BETA: tweaked the mobile layout of teams#show a bit to better take advantage of the space available
+- BOTH: changed layout of the teams#show#roster tab to have the breakdowns by position and bye week go full-width of the container
+
+
 Version 2.7.18 [2014/10/28]
 --------------------------------------------------
 - Removed link to "/members" from the title of the GM Actions panel

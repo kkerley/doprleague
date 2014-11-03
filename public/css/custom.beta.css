@@ -54,6 +54,10 @@ body{
   margin-top: 0;
 }
 
+.gm-actions-super-bowl-picks{
+  background-color: #b400ff;
+}
+
 @media all and (max-width: 1199px){
   body{
     background-image: url('/images/bg_dopr_top_1199_alt.png');
