@@ -37,16 +37,19 @@
 <!-- Push Wrapper -->
     <div class="mp-pusher" id="mp-pusher">
 
-        <%= render "/layouts/mp_menu" %>
+        <% render "/layouts/mp_menu" %>
+        
 
     
       
           <div class="scroller"><!-- this is for emulating position fixed of the nav -->
             <div class="scroller-inner">
+             
               <div class="sticky-header">
-                <a href="#" id="trigger"><img src="/images/dopr_mini_alt.png" alt="Disciples of Philip Rivers Fantasy Football League" border="0" class="img-responsive" /></a>
+                 <!--<a href="#" id="trigger"><img src="/images/dopr_mini_alt.png" alt="Disciples of Philip Rivers Fantasy Football League" border="0" class="img-responsive" /></a>-->
+                 <%= render "/layouts/slide_out_menu" %>
               </div>
-
+              
               <div class="container-fluid container-fluid-padding-top">
 
                   <a id="top" class="margin-top-2em"></a>
@@ -117,10 +120,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <%= javascript_include_tag "application" %>
   <script type="text/javascript" src="/js/classie.js"></script>
-    <script type="text/javascript" src="/js/mlpushmenu.js"></script>
-    <script type="text/javascript">
-      new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
-    </script>
+  <!--<script type="text/javascript" src="/js/mlpushmenu.js"></script>
+  <script type="text/javascript">
+    new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
+  </script>-->
+
+  <script type="text/javascript" src="/js/cbpHorizontalSlideOutMenu.js"></script>
+  <script>
+    var menu = new cbpHorizontalSlideOutMenu( document.getElementById( 'cbp-hsmenu-wrapper' ) );
   </script>
+  
 </body>
 </html>
