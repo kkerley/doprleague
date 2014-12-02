@@ -3,6 +3,11 @@ Disciples of Philip Rivers (http://doprleague.info) site CHANGELOG
 Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com)
 ====================================================================================================
 
+Version 2.7.22 [2014/12/02]
+--------------------------------------------------
+- Fixed the Admin table row for Standings, too.
+
+
 Version 2.7.21 [2014/12/02]
 --------------------------------------------------
 - Added logic to prevent Standings from erroring out when something gets screwed up by Tanker
