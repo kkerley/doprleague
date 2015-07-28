@@ -24,7 +24,7 @@ class Ability
                 can :manage, Player
                 can :create, Contract
                 can :manage, Contract do |con|
-                    con.player.this_year.team_id == user.team.id || con.is_bought_out? || con.is_dead_money
+                    con.is_bought_out? || con.is_dead_money || con.player.this_year.team_id == user.team.id 
                 end
 
                 can :manage, Subcontract do |sub|
