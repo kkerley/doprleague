@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # upgrading to the latest version of 3.2.x for security
-gem 'rails', '3.2.22'
+gem 'rails', '3.2.18'
 
 gem 'devise'
 gem 'RedCloth', '~> 4.2.3', :require => 'redcloth'
