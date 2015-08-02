@@ -4,12 +4,12 @@
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
 # Don't declare `role :all`, it's a meta role
-role :app, %w{kkerley@kkerley.com}
-role :web, %w{kkerley@kkerley.com}
+role :app, %w{kkerley@192.241.218.18}
+role :web, %w{kkerley@192.241.218.18}
 #role :db,  %w{postgres@198.199.101.218}
 
 set :password, ask('Server password', nil)
-server 'kkerley.com', user: 'kkerley', port: 22, password: fetch(:password), roles: %w{web app}
+server '192.241.218.18', user: 'kkerley', port: 22, password: fetch(:password), roles: %w{web app}
 
 # Extended Server Syntax
 # ======================
