@@ -29,7 +29,7 @@ gem 'haml'
 gem 'goldiloader'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
-
+gem 'test-unit', '~> 3.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -49,7 +49,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
-  gem 'test-unit', '~> 3.0'
+  
 end
 
 group :test do
