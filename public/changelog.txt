@@ -4,6 +4,11 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.8.1 [2015/08/07]
+--------------------------------------------------
+- Added gem to the Gemfile to try and get rails c to work in production
+
+
 Version 2.8.0 [2015/07/28]
 --------------------------------------------------
 - Upgraded to Rails 3.2.22
