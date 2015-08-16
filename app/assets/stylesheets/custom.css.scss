@@ -513,3 +513,21 @@ a.btn.btn-xs.bought-out:hover{
     width: 300px;
   }
 }
+
+tr.tr-void{
+  td{
+    background-color: #666666 !important;
+    color: #fff;
+    text-decoration: line-through;
+
+    a, a:visited{
+      color: #fff;
+    }
+  }
+}
+
+.voided{
+  background-color: #666666 !important;
+  color: #fff;
+  text-decoration: line-through;
+}

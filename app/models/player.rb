@@ -63,7 +63,7 @@ class Player < ActiveRecord::Base
     else 
       these_contracts = [] # empty array to hold non-bought out contracts
       self.contracts.each do |contract|
-        unless contract.is_bought_out
+        unless contract.is_bought_out || contract.void
           these_contracts << contract # adding non-bought out contract to array
         end
       end # end of |contract| block
@@ -101,8 +101,10 @@ class Player < ActiveRecord::Base
 
   def this_year # used for getting the subcontract for the current year to display the correct team name on the players#index action
     self.subcontracts.each do |sub|
-      if sub.contract_year == current_year && !sub.contract.is_bought_out
+      if sub.contract_year == current_year && !sub.contract.is_bought_out || !sub.contract.void
+        
         return sub
+        
       end
     end
   end

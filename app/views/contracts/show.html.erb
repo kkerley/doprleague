@@ -10,7 +10,11 @@
 			<div class="panel panel-default margin-bottom-2em">
 		<% end %>
 				<div class="panel-heading">   		
-					<p class="panel-title"><i class="fa fa-file-text-o"></i> Contract started in <%= @contract.contract_start_year %> for <%= @contract.full_contract_length%> <% if @contract.contract_length == 1 %>year<% else %>years<% end %>
+					<p class="panel-title"><i class="fa fa-file-text-o"></i>
+					<% if @contract.void %>
+						<strong><i class="fa fa-times-circle"></i> VOIDED</strong>
+					<% end %>
+					 Contract started in <%= @contract.contract_start_year %> for <%= @contract.full_contract_length%> <% if @contract.contract_length == 1 %>year<% else %>years<% end %>
 					<% if @contract.is_extended %>
 						<i class="fa fa-plus-circle"></i> 
 					<% end %>
@@ -28,9 +32,9 @@
 				</div>
 				
 				<% if @contract.is_bought_out %>
-				<table class="table table-condensed">
+					<table class="table table-condensed">
 				<% else %>
-				<table class="table table-condensed table-striped">
+					<table class="table table-condensed table-striped">
 				<% end %>
 					<%= render 'contract_info_table', contract: @contract %>
 						<% if current_user %>
@@ -46,7 +50,5 @@
 			</div>
 		
 	</div>
-	<div class="col-md-3 margin-top-2em">
 
-	</div>
 </div>

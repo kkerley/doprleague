@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140914215044) do
+ActiveRecord::Schema.define(:version => 20150816162311) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20140914215044) do
     t.boolean  "is_dead_money"
     t.boolean  "is_drafted"
     t.boolean  "is_longterm_deal"
+    t.boolean  "void"
   end
 
   create_table "conversations", :force => true do |t|

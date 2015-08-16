@@ -21,7 +21,10 @@
 							<tr>
 								<td class="<%= contract.is_dead_money ? 'dead-money' : contract.is_bought_out ? 'bought-out' : contract.is_extended && contract.is_franchised ? 'extended_and_franchised'  : contract.is_extended ? 'extended' : contract.is_franchised ? 'franchised' :'' %>"></td>
 								<td class="<%= contract.is_dead_money ? 'dead-money' : contract.is_bought_out ? 'bought-out' : contract.is_extended && contract.is_franchised ? 'extended_and_franchised'  : contract.is_extended ? 'extended' : contract.is_franchised ? 'franchised' :'' %>"><%=link_to contract.player.full_name, contract.player %> 
-									<% if contract.is_bought_out %>
+									
+									<% if contract.void %>
+										<i class="fa fa-times-circle"></i>
+									<% elsif contract.is_bought_out %>
 										<i class="fa fa-usd"></i> 
 									<% else %>
 

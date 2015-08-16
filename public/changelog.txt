@@ -4,6 +4,19 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.8.3 [2015/08/16]
+--------------------------------------------------
+- Added a new "void" boolean to Contract
+- Added some logic to treat players with voided contracts as Free Agents
+- Added text denoting voided contracts on players#show and contracts#show
+- Upgraded to Font Awesome 4.4.0
+
+
+Version 2.8.2 [2015/08/09]
+--------------------------------------------------
+- Added caching to a number of areas of the site to improve performance
+
+
 Version 2.8.1 [2015/08/07]
 --------------------------------------------------
 - Added gem to the Gemfile to try and get rails c to work in production

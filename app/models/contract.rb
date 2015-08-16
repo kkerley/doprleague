@@ -17,11 +17,12 @@ class Contract < ActiveRecord::Base
                     :is_longterm_deal, 
                     :subcontracts_attributes, 
                     :pick_up_dead_money, 
-                    :pick_up_dead_money_team_id
+                    :pick_up_dead_money_team_id, 
+                    :void
                     
   attr_accessor :contracted_team, :pick_up_dead_money, :pick_up_dead_money_team_id
   
-  belongs_to :player, fully_load: true
+  belongs_to :player, fully_load: true, touch: true
   has_many :subcontracts, dependent: :destroy, fully_load: true
   has_many :teams, through: :subcontracts, fully_load: true
   
@@ -30,11 +31,12 @@ class Contract < ActiveRecord::Base
 
   after_create :create_subcontracts
 
-  after_update :sign_longterm,        :if => Proc.new { |a| a.is_longterm_deal_changed? }
-  after_update :check_for_buyout,     :if => Proc.new { |a| a.is_bought_out_changed? }
-  after_update :check_for_extension,  :if => Proc.new { |a| a.is_extended_changed? }
-  after_update :check_for_franchise,  :if => Proc.new { |a| a.is_franchised_changed? }
-  after_update :check_for_dead_money, :if => Proc.new { |a| a.is_dead_money_changed? }
+  after_update :sign_longterm,          :if => Proc.new { |a| a.is_longterm_deal_changed? }
+  after_update :check_for_buyout,       :if => Proc.new { |a| a.is_bought_out_changed? }
+  after_update :check_for_extension,    :if => Proc.new { |a| a.is_extended_changed? }
+  after_update :check_for_franchise,    :if => Proc.new { |a| a.is_franchised_changed? }
+  after_update :check_for_dead_money,   :if => Proc.new { |a| a.is_dead_money_changed? }
+  # after_update :check_for_void,         :if => Proc.new { |a| a.void_changed? }
 
   # validate :franchisable, :extendible
 
@@ -86,6 +88,13 @@ class Contract < ActiveRecord::Base
       end
     end
   end
+
+  # Logic for voiding out a contract when a new GM takes over a team and doesn't want to keep existing contracts
+  # def check_for_void
+  #   if self.void
+
+  #   end
+  # end
 
 
   # Logic for applying buyout conditions to the remainder of a contract if is_bought_out is checked

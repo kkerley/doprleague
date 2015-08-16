@@ -84,14 +84,18 @@
 					<% end %>
 							<div class="panel-heading">
 				          		
-								<p class="panel-title"><i class="fa fa-file-text-o"></i> Contract started in <%= contract.contract_start_year %> for <%= contract.full_contract_length%> years
-								<% if contract.is_extended %>
-									<i class="fa fa-plus-circle"></i> 
-								<% end %>
+								<p class="panel-title"><i class="fa fa-file-text-o"></i> 
+									<% if contract.void %>
+										<strong><i class="fa fa-times-circle"></i> VOIDED</strong>
+									<% end %>
+									Contract started in <%= contract.contract_start_year %> for <%= contract.full_contract_length%> years
+									<% if contract.is_extended %>
+										<i class="fa fa-plus-circle"></i> 
+									<% end %>
 
-								<% if contract.is_franchised %>
-									<i class="fa fa-tag"></i>
-								<% end %>
+									<% if contract.is_franchised %>
+										<i class="fa fa-tag"></i>
+									<% end %>
 								</p>
 								
 							</div>

@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   private
 
   def site_version
-    '2.8.1'
+    '2.8.3'
   end
 
   def not_authenticated

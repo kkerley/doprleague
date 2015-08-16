@@ -41,14 +41,17 @@
               <tr class="tr-bought-out">
             <% elsif player.this_team_contract(@team).is_dead_money %>
               <tr class="tr-dead-money">
+             <% elsif player.this_team_contract(@team).void %>
+             	<tr class="tr-void">
             <% else %>
               <tr>
             <% end %>
 						
 							<td></td>
 							<td><%= link_to player.full_name, player %> 
-								
-								<% if player.this_team_contract(@team).is_bought_out %>
+								<% if player.this_team_contract(@team).void %>
+									<i class="fa fa-times-circle"></i>
+								<% elsif player.this_team_contract(@team).is_bought_out %>
 									<i class="fa fa-usd"></i> 
 								<% else %>
 									<% if player.this_team_contract(@team).is_extended %>

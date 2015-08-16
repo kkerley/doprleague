@@ -94,6 +94,14 @@
   <%= f.check_box :is_dead_money, label: "Dead money" %>
     <small class="col-lg-offset-3">Denotes that this player is on your bankroll but not your roster</small>
   <br /><br />
+
+  <% if current_user.role == "admin" %>
+    <%= f.check_box :void, label: "Voided contract?" %>
+  <% else %>
+    <%= f.check_box :is_drafted, label: "Voided contract?", class: "disabled", disabled: true  %>
+  <% end %>
+      <small class="col-lg-offset-3">Only for use when there is a league member change and old contracts have not be picked up by the new GM</small>
+  <br /><br />
    
 
   <div class="row">
