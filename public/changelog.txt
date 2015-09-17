@@ -4,6 +4,11 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.8.4 [2015/09/16]
+--------------------------------------------------
+- Added validations for year and terms on Stipulation
+
+
 Version 2.8.3 [2015/08/16]
 --------------------------------------------------
 - Added a new "void" boolean to Contract
