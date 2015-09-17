@@ -4,7 +4,9 @@ class Stipulation < ActiveRecord::Base
   belongs_to :player
 
   validates_presence_of :stipulation_type
+  validates_presence_of :year
   validates_presence_of :trade_direction
+  validates :terms, numericality: { only_integer: true }, allow_blank: true
   validates_presence_of :player_id, if: :player_trade?
 
   scope :cap_space, lambda { where("stipulation_type = ?", "Cap space") }
@@ -16,6 +18,10 @@ class Stipulation < ActiveRecord::Base
 
   def player_trade?
   	self.stipulation_type == "Player"
+  end
+
+  def other_trade?
+    self.stipulation_type == "Other"
   end
 
   def trade_accepted?
