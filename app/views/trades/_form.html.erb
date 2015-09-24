@@ -1,4 +1,4 @@
-<%= labeled_form_for @trade, html: { class: "form-horizontal" } do |f| %>
+<%= form_for @trade, html: { class: "form-inline" } do |f| %>
   <% if @trade.errors.any? %>
     <div class="row">
       <div class="col-sm-9 col-sm-offset-2">
@@ -37,18 +37,18 @@
   <% end %>
   
   
-  <% if @trade.new_record? %>
-    <%= f.check_box :trader1_accepted, label: "Trade initiator: do you accept this trade?" %><br />
-  <% else %>
-    <% if current_user.team.id == @trade.trader1_id %>
-      <%= f.check_box :trader1_accepted, label: "Trade initiator: do you accept this trade?" %><br />
-    <% elsif current_user.team.id == @trade.trader2_id %>
-      <%= f.check_box :trader2_accepted, label: "Trade recipient: do you accept this trade?" unless @trade.trader2_accepted %><br />
-      <%= f.check_box :is_rejected, label: "Reject this trade?" unless @trade.trader2_accepted %>
-      <br />
-    <% end %>
-  <% end %>
+  <p><% if @trade.new_record? %>
+      <%= f.check_box :trader1_accepted, label: "Trade initiator: do you accept this trade?" %> Trade initiator: do you accept this trade?<br />
+    <% else %>
+      <% if current_user.team.id == @trade.trader1_id %>
+        <%= f.check_box :trader1_accepted, label: "Trade initiator: do you accept this trade?" %> Trade initiator: do you accept this trade?<br />
+      <% elsif current_user.team.id == @trade.trader2_id %>
+        <%= f.check_box :trader2_accepted, label: "Trade recipient: do you accept this trade?" unless @trade.trader2_accepted %><br />
+        <%= f.check_box :is_rejected, label: "Reject this trade?" unless @trade.trader2_accepted %>
+        <br />
+      <% end %>
+    <% end %></p>
 
-  <%= f.submit class: "btn btn-success" %>
+  <p><%= f.submit class: "btn btn-success" %></p>
 
 <% end %>

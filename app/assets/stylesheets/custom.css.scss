@@ -324,7 +324,22 @@ th[data-sort]{
 	border-radius: 4px;
 	background-color: #f7f7f7;
 	padding: 1em;
-	margin-bottom: 1em;
+	margin-bottom: 1em;  
+
+  .terms-field{
+    display: none;
+
+    .input-group-addon{
+      &.draft-spot{
+        // display: none;
+      }
+
+      &.cap-space{
+        // display: none;
+      }
+    } 
+  }
+  
 }
 
 .player-trade-fields{

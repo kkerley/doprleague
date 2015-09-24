@@ -8,7 +8,7 @@ $(document).ready(function(){
 	var options;
 	var players = $('.filtered-players-select').html();
 	var directionBox;
-	var dbLoctation
+	var dbLoctation;
 
 	// console.log(players);
 
@@ -28,41 +28,50 @@ $(document).ready(function(){
 
 	$(document).on('change', '.stipulation-type', function(){
 		var selectBox = $(this);
-		var location = selectBox.parent().parent().parent();
-	
+		var location = selectBox.closest(".stipulation.fields");	
 		var tradeType = selectBox.val();
 
-		//$('div', location).next('.trade-direction').prop('selectedIndex',0);
 		$('div', location).find('.trade-direction').prop('selectedIndex',0);
 
 
 		if(tradeType == "Player"){
 			$(document).on('change', '.trade-direction', function(){
 				directionBox = $(this);
-				dbLoctation = directionBox.parent().parent().parent();
+				dbLoctation = directionBox.closest(".stipulation.fields");
 				
-				var directionBoxRelatedPlayers = $('div', dbLoctation).next('.player-trade-fields');
-				directionBoxRelatedPlayers.show();
+				
+				var directionBoxRelatedPlayers = dbLoctation.find('.player-trade-fields');
+				directionBoxRelatedPlayers.toggle();
 
 				$('div', dbLoctation).next('.terms-field').hide();
 
 				if(directionBox.val() == "from"){
 					setDropdowns(trader2, directionBoxRelatedPlayers);
-					//console.log(options);
+					
 				} else {
 					trader1 = $('#trader1_team_name').text();
 					setDropdowns(trader1, directionBoxRelatedPlayers);
-					//$('div', dbLoctation).next('.player-trade-fields').css("background-color", "#c00");
 				}
 			});
 			
 			
-		} else {
+		} else if(tradeType == "Cap space") {
 			$(document).on('change', '.trade-direction', function(){
 				directionBox = $(this);
-				dbLoctation = directionBox.parent().parent().parent();
-				$('div', location).next('.player-trade-fields').hide();
-				$('div', location).next('.terms-field').show();
+				dbLoctation = directionBox.closest(".stipulation.fields");
+				
+				location.find('.player-trade-fields').hide();
+				location.find('.terms-field').show();
+				location.find('.input-group-addon.cap-space').css('display', 'table-cell');
+			});
+		} else if(tradeType == "Draft spot") {
+			$(document).on('change', '.trade-direction', function(){
+				directionBox = $(this);
+				dbLoctation = directionBox.closest(".stipulation.fields");
+				
+				location.find('.player-trade-fields').hide();
+				location.find('.terms-field').show();
+				location.find('.input-group-addon.draft-spot').css('display', 'table-cell');
 			});
 		}
 	});

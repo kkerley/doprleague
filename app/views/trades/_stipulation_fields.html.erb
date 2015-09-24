@@ -1,17 +1,17 @@
-<fieldset class="stipulation fields">
-	<p class="h4"><i class="fa fa-dot-circle-o"></i> Trade stipulation</p>
-	<hr />
+<div class="stipulation fields">
+	<!-- <i class="fa fa-dot-circle-o"></i> -->
+	
 
 	<%= f.select 	:stipulation_type, 
 								[ 'Cap space', 'Draft spot', 'Player', 'Other' ], 
-								{ prompt: "Select" }, 
-								{ class: "form-control stipulation-type", style: "width: 150px;", label: "Type" } %>
+								{ prompt: "Type" }, 
+								{ class: "form-control stipulation-type", style: "width: 150px; display: inline-block;", label: "Type" } %>
 
 
 	<%= f.select 	:trade_direction, 
 								[ 'from', 'to' ], 
-								{ prompt: "Select"}, 
-								{ class: "form-control trade-direction", style: "width: 150px;", label: "Direction", 
+								{ prompt: "Direction"}, 
+								{ class: "form-control trade-direction", style: "width: 150px; display: inline-block;", label: "Direction", 
 									data: { 
 										container: "body",
 										toggle: "popover",
@@ -21,7 +21,7 @@
 										} 
 								} %>
 
-	<%= f.text_field 	:year, class:'form-control', style: "width: 150px;" %>
+	<div class="margin-top-1em"><%= f.text_field 	:year, class:'form-control', placeholder: "Year (yyyy)", style: "width: 100px; display: inline-block" %></div>
 
 	<div class="player-trade-fields">
 		<hr />
@@ -30,12 +30,20 @@
 		<hr />
 	</div>
 	
-	<div class="terms-field">
-		<%= f.text_field	:terms, class:'form-control' %>
-	</div>
-	<%= f.text_area 	:description, class:'form-control', style: "height: 100px;" %>
+	<div class="terms-field margin-top-1em">
+		<div class="input-group">
+      <div class="input-group-addon cap-space" style="display: none;">$</div>
+      <div class="input-group-addon draft-spot" style="display: none;">in round #</div>
+			<%= f.text_field	:terms, placeholder: "Numbers ONLY", class:'form-control' %>
+			<div class="input-group-addon cap-space" style="display: none;">of cap space</div>
+			<div class="input-group-addon draft-spot" style="display: none;">(specify the pick in the details box)</div>
+		</div>
 
-	<%= f.hidden_field :_destroy %>
-  <%= link_to "[-] remove", '#', class: "remove_fields" %>
+	</div>
+
+	<div class="margin-top-1em margin-bottom-1em"><%= f.text_area :description, placeholder: "Details/notes about this stipulation such as which pick in whatever round is being traded.", class:'form-control', style: "height: 100px; width: 300px;" %></div>
+
+	<p><%= f.hidden_field :_destroy %>
+	  <%= link_to "[-] remove", '#', class: "remove_fields" %></p>
 	
-</fieldset>
+</div>
