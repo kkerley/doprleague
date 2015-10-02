@@ -4,6 +4,11 @@ Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com
 ====================================================================================================
 
 
+Version 2.8.6 [2015/10/01]
+--------------------------------------------------
+- Removed the logic preventing non-admins from signing longterm deals
+
+
 Version 2.8.5 [2015/09/19]
 --------------------------------------------------
 - Much needed updates to the trade interface
