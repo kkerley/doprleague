@@ -93,5 +93,11 @@ $(document).ready(function(){
 		e.preventDefault();
   	$('tr.tr-dead-money').toggle();
 	});
+
+	var weekEight = moment.tz("2015-11-01 13:00", "America/New_York");
+
+	$('#clock').countdown(weekEight.toDate(), function(event) {
+		$(this).html(event.strftime('%D days %H:%M:%S'));
+	});
   
 });

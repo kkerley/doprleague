@@ -17,6 +17,9 @@
 //= require JQtextile
 //= require stupidtable
 //= require smart_listing
+//= require moment
+//= require moment-timezone
+//= require jquery.countdown
 //= require custom
 //= require_self
 //= require_tree .
