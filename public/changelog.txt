@@ -3,6 +3,15 @@ Disciples of Philip Rivers (http://doprleague.info) site CHANGELOG
 Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com)
 ====================================================================================================
 
+Version 2.8.8 [2015/10/13]
+--------------------------------------------------
+- Removed the abililty for non-admins to create longterm contracts again
+
+
+Version 2.8.7 [2015/10/13]
+--------------------------------------------------
+- Added a number of JS files and necessary code to get a countdown to the week 8 deadline for contracts in place
+
 
 Version 2.8.6 [2015/10/01]
 --------------------------------------------------
