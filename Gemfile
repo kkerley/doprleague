@@ -8,7 +8,7 @@ gem 'RedCloth', '~> 4.2.3', :require => 'redcloth'
 gem 'paperclip', '~> 3.0'
 gem 'pg'
 gem 'best_in_place'
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 gem 'gon'
 gem 'thin' # Webrick's annoying messages in the console got to be too much
 gem 'cancan' # user roles management

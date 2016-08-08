@@ -112,7 +112,7 @@ class Team < ActiveRecord::Base
   end
   
   def build_budgets
-    if Time.now.month < 8
+    if Time.now.month < 9
       current_year = Time.now.year - 1
     else
       current_year = Time.now.year

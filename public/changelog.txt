@@ -3,7 +3,17 @@ Disciples of Philip Rivers (http://doprleague.info) site CHANGELOG
 Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com)
 ====================================================================================================
 
-Version 2.8.8 [2015/10/13]
+Version 2.8.10 [2015/11/06]
+--------------------------------------------------
+- Changed the year change date to 9/1
+
+
+Version 2.8.9 [2015/11/06]
+--------------------------------------------------
+- Removed new relic gem
+
+
+Version 2.8.8 [2015/11/01]
 --------------------------------------------------
 - Removed the abililty for non-admins to create longterm contracts again
 
