@@ -3,6 +3,11 @@ Disciples of Philip Rivers (http://doprleague.info) site CHANGELOG
 Created: 2013-09-25 by Kyle Kerley (kyle.l.kerley@gmail.com | http://kkerley.com)
 ====================================================================================================
 
+Version 2.8.11 [2016/10/10]
+--------------------------------------------------
+- Removed the check to see if a user is an admin so now all users can create longterm contracts for drafted players
+
+
 Version 2.8.10 [2015/11/06]
 --------------------------------------------------
 - Changed the year change date to 9/1
